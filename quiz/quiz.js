@@ -12,9 +12,9 @@
       choose: 'Or choose a round', items: n => `${n} items`, recent: 'Your recent rounds', round: 'Round', date: 'Date', score: 'Score', forget: 'Forget my history in this browser',
       poolNote: (ni, n) => `${ni} items in ${n} matched sets. A round draws one item from each of several sets; a coin flip decides whether you see the original or an AI imitation. The split need not be even, so counting will not help. New rounds show sets you have not seen first.`,
       howLink: 'How the items were made and checked', exhausted: 'You have seen every set in this round at least once. Items from sets whose original you have already seen will not count towards your score.',
-      progress: (i, n) => `Item ${i} of ${n}`, sure: 'How sure are you?', conf: { guess: 'Guessing', fair: 'Fairly sure', sure: 'Certain' },
+      progress: (i, n) => `Item ${i} of ${n}`, endRound: 'End round and see results',
       human: 'Human', ai: 'AI', known: k => `I already know this ${k} (it will not count towards your score)`, kText: 'text', kPic: 'picture',
-      keys: 'Keys while the item has focus: <span class="kbd">H</span> human, <span class="kbd">A</span> AI, <span class="kbd">1</span>–<span class="kbd">3</span> confidence, <span class="kbd">K</span> I know it.',
+      keys: 'Keys while the item has focus: <span class="kbd">H</span> human, <span class="kbd">A</span> AI, <span class="kbd">K</span> I know it.',
       question: 'Read the question that was asked', right: 'Right', wrong: 'Wrong', madeH: 'made by a human', madeA: 'made by AI',
       notScoredKnown: '(you knew it: not scored)', notScoredSeen: '(you have seen this set’s original before: not scored)',
       badgeH: 'HUMAN', badgeA: 'AI', promptSum: 'The exact prompt and how this output was chosen',
@@ -22,15 +22,14 @@
       spoil: 'Opening this shows the answer for the whole set: later items from this set will not count towards your score.',
       next: 'Next item', finish: 'Finish and see the results', said: (ok, h) => `${ok ? 'Right' : 'Wrong'}. This was made by ${h ? 'a human' : 'AI'}.`,
       result: 'Your result', allKnown: 'You knew every item, so nothing was scored.',
-      better: (lo, hi, n) => `That is better than a coin flip would plausibly do: 95 % of pure guessers score between ${lo} and ${hi} out of ${n}.`,
-      worse: (lo, hi, n) => `That is worse than chance — the imitations fooled you more often than a coin would have (95 % of pure guessers score ${lo}–${hi} out of ${n}).`,
-      within: (lo, hi, n) => `That is within the range of pure guessing: 95 % of people flipping a coin would score between ${lo} and ${hi} out of ${n}. One round is a small sample — play another to tell skill from luck.`,
+      chance: (k, n, odds) => `${k} or more of ${n} by pure guessing: ${odds}. More items give a clearer picture.`,
+      odds: (oneIn, percent) => `about 1 in ${oneIn} (${percent} %)`,
       byKind: 'By what it was', kind: 'Kind', origH: 'Human originals', origA: 'AI imitations', byCat: 'By category', cat: 'Category', cats: { literature: 'Literature & poetry', everyday: 'Everyday writing', images: 'Images' },
-      byModel: 'AI imitations by model', model: 'Model', byEra: 'By era of the item', era: 'Era', byConf: 'By your confidence', confCol: 'Confidence',
+      byModel: 'AI imitations by model', model: 'Model', byEra: 'By era of the item', era: 'Era',
       rightCol: 'Right', meterSr: 'Share right; the line marks 50 %', allRounds: (a, b, p) => `All your rounds in this browser so far: ${a} right out of ${b} (${p} %).`,
       others: 'How others have done', review: 'Review this round', item: 'Item', youSaid: 'You said', knownShort: 'not scored',
       again: t => `Play another round: ${t}`, another: 'Choose another round', copy: 'Copy my result', copied: 'Copied',
-      share: (t, ok, n, lo, hi) => `Human or AI? — ${t}: ${ok}/${n} (pure guessing: ${lo}–${hi}).`,
+      share: (t, ok, n) => `Human or AI? ${t}: ${ok}/${n}.`,
       learn: 'Want to learn the tells? The <a href="../">catalogue of AI tells</a> lists them by medium and by when they appeared.', back: 'Back to the rounds',
     },
     cs: {
@@ -39,9 +38,9 @@
       choose: 'Nebo si vyberte kolo', items: n => `${n} položek`, recent: 'Vaše poslední kola', round: 'Kolo', date: 'Datum', score: 'Skóre', forget: 'Smazat moji historii v tomto prohlížeči',
       poolNote: (ni, n) => `${ni} položek v ${n} sadách. Kolo vybere po jedné položce z několika sad a o tom, jestli uvidíte originál, nebo napodobeninu, rozhodne hod mincí. Poměr nemusí vyjít půl na půl a počítat se nevyplatí. Nová kola dávají přednost sadám, které jste ještě neviděli.`,
       howLink: 'Jak jsme položky vybírali a ověřovali', exhausted: 'Všechny sady tohoto kola už jste aspoň jednou viděli. Položky ze sad, jejichž originál už znáte, se do skóre nepočítají.',
-      progress: (i, n) => `Položka ${i} z ${n}`, sure: 'Jak moc si jste jistí?', conf: { guess: 'Hádám', fair: 'Docela jistě', sure: 'Určitě' },
+      progress: (i, n) => `Položka ${i} z ${n}`, endRound: 'Ukončit kolo a ukázat výsledky',
       human: 'Člověk', ai: 'AI', known: k => `Tenhle ${k} už znám (do skóre se nezapočítá)`, kText: 'text', kPic: 'obrázek',
-      keys: 'Klávesy, když je položka aktivní: <span class="kbd">H</span> člověk, <span class="kbd">A</span> AI, <span class="kbd">1</span>–<span class="kbd">3</span> jistota, <span class="kbd">K</span> už znám.',
+      keys: 'Klávesy, když je položka aktivní: <span class="kbd">H</span> člověk, <span class="kbd">A</span> AI, <span class="kbd">K</span> už znám.',
       question: 'Přečíst si původní dotaz', right: 'Správně', wrong: 'Vedle', madeH: 'vytvořil to člověk', madeA: 'vytvořila to AI',
       notScoredKnown: '(znali jste to, nepočítá se)', notScoredSeen: '(originál z této sady už jste viděli, nepočítá se)',
       badgeH: 'ČLOVĚK', badgeA: 'AI', promptSum: 'Přesné zadání a jak jsme tenhle výstup vybrali',
@@ -49,19 +48,17 @@
       spoil: 'Když tohle otevřete, prozradíte si odpověď pro celou sadu. Další položky z ní se pak do skóre nepočítají.',
       next: 'Další položka', finish: 'Dokončit a ukázat výsledek', said: (ok, h) => `${ok ? 'Správně' : 'Vedle'}. ${h ? 'Vytvořil to člověk' : 'Vytvořila to AI'}.`,
       result: 'Váš výsledek', allKnown: 'Všechny položky jste znali, takže se nic nepočítalo.',
-      better: (lo, hi, n) => `To je víc, než by se dalo čekat od náhody: 95 % lidí, kteří jen hází mincí, má mezi ${lo} a ${hi} z ${n}.`,
-      worse: (lo, hi, n) => `To je méně, než by dala náhoda. Napodobeniny vás oklamaly častěji než hod mincí (95 % hádajících má ${lo}–${hi} z ${n}).`,
-      within: (lo, hi, n) => `To je v rozmezí čisté náhody: 95 % lidí, kteří jen hází mincí, má mezi ${lo} a ${hi} z ${n}. Jedno kolo je malý vzorek, zkuste další.`,
+      chance: (k, n, odds) => `${k} a víc ${[2, 3, 4, 6, 7, 12, 13, 14, 17].includes(n) ? 'ze' : 'z'} ${n} čistým hádáním: ${odds}. Více položek dá přesnější představu.`,
+      odds: (oneIn, percent) => `zhruba 1 z ${oneIn} (${percent} %)`,
       byKind: 'Podle původu', kind: 'Původ', origH: 'Lidské originály', origA: 'Napodobeniny od AI', byCat: 'Podle kategorie', cat: 'Kategorie', cats: { literature: 'Literatura a poezie', everyday: 'Běžné texty', images: 'Obrázky' },
-      byModel: 'Napodobeniny podle modelu', model: 'Model', byEra: 'Podle doby vzniku', era: 'Doba', byConf: 'Podle vaší jistoty', confCol: 'Jistota',
+      byModel: 'Napodobeniny podle modelu', model: 'Model', byEra: 'Podle doby vzniku', era: 'Doba',
       rightCol: 'Správně', meterSr: 'Podíl správných odpovědí; čára značí 50 %', allRounds: (a, b, p) => `Všechna vaše kola v tomto prohlížeči: ${a} správně z ${b} (${p} %).`,
       others: 'Jak dopadli jiní', review: 'Přehled kola', item: 'Položka', youSaid: 'Vaše odpověď', knownShort: 'nepočítá se',
       again: t => `Další kolo: ${t}`, another: 'Vybrat jiné kolo', copy: 'Zkopírovat výsledek', copied: 'Zkopírováno',
-      share: (t, ok, n, lo, hi) => `Člověk, nebo AI? — ${t}: ${ok}/${n} (čistá náhoda: ${lo}–${hi}).`,
+      share: (t, ok, n) => `Člověk, nebo AI? ${t}: ${ok}/${n}.`,
       learn: 'Chcete se znaky AI naučit? Projděte si <a href="../../">katalog znaků AI (anglicky)</a>.', back: 'Zpátky na výběr kol',
     },
   }[LANG];
-  const CONF = ['guess', 'fair', 'sure'];
 
   /* Czech typography: no line break after a one-letter preposition or conjunction (v, k, s, z, o, u, a, i) */
   if (LANG === 'cs') {
@@ -104,11 +101,21 @@
     if (it.mod === 'image') return `<figure class="img"><img src="${esc(it.img)}" alt="${esc(it.alt)}" width="${it.w}" height="${it.h}" decoding="async"></figure>`;
     return textHTML(it);
   }
-  function chanceRange(n) {
-    const pmf = []; let c = 1; for (let k = 0; k <= n; k++) { pmf.push(c / 2 ** n); c = c * (n - k) / (k + 1); }
-    let lo = 0, acc = 0; while (acc + pmf[lo] <= 0.025) acc += pmf[lo++];
-    let hi = n; acc = 0; while (acc + pmf[hi] <= 0.025) acc += pmf[hi--];
-    return [lo, hi];
+  function binomialTail(k, n) {
+    let combinations = 1, tail = 0;
+    for (let j = 0; j <= n; j++) {
+      if (j >= k) tail += combinations;
+      combinations = combinations * (n - j) / (j + 1);
+    }
+    return tail / 2 ** n;
+  }
+  function chanceMessage(k, n) {
+    const probability = binomialTail(k, n), locale = LANG === 'cs' ? 'cs-CZ' : 'en-GB';
+    const percent = new Intl.NumberFormat(locale, { maximumSignificantDigits: 2 }).format(100 * probability);
+    // Common outcomes read more clearly as a percentage than as "1 in 1".
+    const odds = probability > 0.5 ? `${percent} %`
+      : T.odds(new Intl.NumberFormat(locale).format(Math.round(1 / probability)), percent);
+    return T.chance(k, n, odds);
   }
   const pct = (a, b) => b ? Math.round(100 * a / b) : 0;
   const displayDate = date => /^\d{4}-\d{2}-\d{2}$/.test(date)
@@ -151,7 +158,7 @@
       <p class="row"><button class="btn primary" type="button" id="startMixed">${esc(T.start)}</button></p>
       <h2>${esc(T.choose)}</h2>
       <div class="rounds">${DATA.rounds.map(r => `
-        <button class="round" type="button" data-round="${r.id}"><b>${esc(r.title)}</b><span>${esc(r.blurb)}</span><br><span class="tag">${esc(T.items(r.n))} · ${esc(r.tag)}</span></button>`).join('')}
+        <button class="round" type="button" data-round="${r.id}"><b>${esc(r.title)}</b><span>${esc(r.blurb)}</span><br><span class="tag">${esc(T.items(roundSize(r)))} · ${esc(r.tag)}</span></button>`).join('')}
       </div>
       <p class="small muted">${esc(T.poolNote(DATA.items.length, DATA.sets.length))} <a href="#about">${esc(T.howLink)}</a>.</p>
       ${hist.length ? `<h2>${esc(T.recent)}</h2><div class="tablewrap"><table class="res"><thead><tr><th>${esc(T.round)}</th><th>${esc(T.date)}</th><th class="num">${esc(T.score)}</th></tr></thead><tbody>${hist.map(h => `<tr><td>${esc(h.title)}</td><td>${esc(displayDate(h.date))}</td><td class="num">${h.ok} / ${h.n}</td></tr>`).join('')}</tbody></table></div>
@@ -170,15 +177,21 @@
   /* ---------- a round ---------- */
   let game = null;
   const seenCount = id => store.seen[id] || 0;
+  const eligibleSets = round => DATA.sets.filter(s => round.cats.includes(s.cat) && (!round.lang || s.lang === round.lang));
+  function roundSize(round) {
+    const available = eligibleSets(round).length;
+    return Math.min(available, round.cats.length === 1 && round.cats[0] === 'images' ? 12 : round.n);
+  }
   function draw(round) {
-    let sets = DATA.sets.filter(s => round.cats.includes(s.cat) && (!round.lang || s.lang === round.lang));
+    let sets = eligibleSets(round);
+    const n = roundSize(round);
     const lvl = s => store.setsShown[s.id] || 0;  // never-shown sets first, then the least shown
     sets = shuffle(sets).sort((a, b) => lvl(a) - lvl(b));
     if (round.cats.length > 1) {  // Mixed: every category appears
       const byCat = round.cats.map(c => sets.filter(s => s.cat === c)), picked = [];
-      for (let k = 0; picked.length < round.n && byCat.some(b => b.length); k = (k + 1) % byCat.length) if (byCat[k].length) picked.push(byCat[k].shift());
+      for (let k = 0; picked.length < n && byCat.some(b => b.length); k = (k + 1) % byCat.length) if (byCat[k].length) picked.push(byCat[k].shift());
       sets = picked;
-    } else sets = sets.slice(0, round.n);
+    } else sets = sets.slice(0, n);
     const exhausted = sets.some(s => lvl(s) > 0);
     // the coin flip does not depend on what was seen; among AI members the least-seen one is shown
     const ids = shuffle(sets).map(s => {
@@ -201,15 +214,13 @@
     main.innerHTML = `
       <div class="progress"><span>${esc(g.round.title)}</span><span>${esc(T.progress(g.i + 1, g.ids.length))}</span></div>
       <div class="bar" aria-hidden="true"><i style="width:${100 * g.i / g.ids.length}%"></i></div>
+      <p class="round-actions"><button class="btn" type="button" id="endRound"${g.answers.length ? '' : ' disabled'}>${esc(T.endRound)}</button></p>
       ${g.i === 0 && g.exhausted ? `<p class="note small">${esc(T.exhausted)}</p>` : ''}
       <article class="card" aria-labelledby="ctx">
         <p class="context" id="ctx">${md(set.context)}${LANG === 'en' && it.lang === 'cs' ? '<span class="flag" title="Czech">CZ</span>' : ''}${LANG === 'cs' && it.lang === 'en' ? '<span class="flag" title="anglicky">EN</span>' : ''}</p>
         ${set.question ? `<details class="question"><summary>${esc(T.question)}</summary><div class="text" lang="${set.lang}">${set.question.split(/\n\n+/).map(p => `<p>${esc(p)}</p>`).join('')}</div></details>` : ''}
         ${contentHTML(it)}
         <div id="ask">
-          <div class="conf"><fieldset><legend>${esc(T.sure)}</legend><div class="seg">
-            ${CONF.map((v, k) => `<label><input type="radio" name="conf" value="${v}"${k === 1 ? ' checked' : ''}><span>${esc(T.conf[v])}</span></label>`).join('')}
-          </div></fieldset></div>
           <div class="answer">
             <button class="btn human" type="button" data-ans="human">${esc(T.human)}</button>
             <button class="btn ai" type="button" data-ans="ai">${esc(T.ai)}</button>
@@ -220,17 +231,18 @@
         <div id="rev"></div>
       </article>`;
     main.querySelectorAll('[data-ans]').forEach(b => b.addEventListener('click', () => answer(b.dataset.ans)));
+    $('#endRound').addEventListener('click', results);
     focusMain();
     say(`${T.progress(g.i + 1, g.ids.length)}. ${plain(set.context)}`);
   }
   function answer(choice) {
     const g = game, it = ITEMS[g.ids[g.i]], x = decode(it.x), set = SETS[it.set];
     if (g.answers[g.i]) return;
-    const conf = (main.querySelector('input[name=conf]:checked') || {}).value || 'fair';
     const knownTick = $('#known').checked, prevOrig = !!store.origSeen[set.id];
     const known = knownTick || prevOrig;  // a player who has seen the set's original can compare from memory
     const ok = (choice === 'human') === !!it.h;
-    g.answers[g.i] = { id: it.id, choice, conf, known, ok, h: !!it.h, cat: set.cat, family: x.family || null, era: x.era || null };
+    g.answers[g.i] = { id: it.id, choice, known, ok, h: !!it.h, cat: set.cat, family: x.family || null, era: x.era || null };
+    $('#endRound').disabled = false;
     store.seen[it.id] = seenCount(it.id) + 1; store.setsShown[set.id] = (store.setsShown[set.id] || 0) + 1;
     if (it.h) store.origSeen[set.id] = 1;
     save(store);
@@ -276,14 +288,15 @@
       <tr><td>${esc(k)}</td><td class="num">${t.ok} / ${t.n}</td><td><div class="meter" role="img" aria-label="${pct(t.ok, t.n)} %"><i style="width:${pct(t.ok, t.n)}%"></i><b></b></div></td></tr>`).join('')}</tbody></table></div>`;
   }
   function results() {
-    const g = game, scored = g.answers.filter(a => !a.known), ok = scored.filter(a => a.ok).length, n = scored.length;
-    const [lo, hi] = chanceRange(Math.max(n, 1));
+    const g = game;
+    if (!g || !g.answers.length) return;
+    game = null;
+    const scored = g.answers.filter(a => !a.known), ok = scored.filter(a => a.ok).length, n = scored.length;
     const date = new Date().toISOString().slice(0, 10);
-    store.history.push({ round: g.round.id, title: g.round.title, date, ok, n, answers: g.answers.map(a => ({ id: a.id, ok: a.ok, conf: a.conf, known: a.known })) });
+    store.history.push({ round: g.round.id, title: g.round.title, date, ok, n, answers: g.answers.map(a => ({ id: a.id, ok: a.ok, known: a.known })) });
     store.history = store.history.slice(-200); save(store);
-    const verdict = !n ? T.allKnown : ok > hi ? T.better(lo, hi, n) : ok < lo ? T.worse(lo, hi, n) : T.within(lo, hi, n);
+    const verdict = !n ? T.allKnown : chanceMessage(ok, n);
     const allRows = store.history.flatMap(h => h.answers || []).filter(a => !a.known && ITEMS[a.id]);
-    const confOrder = Object.values(T.conf);
     main.innerHTML = `
       <h1>${esc(T.result)}</h1>
       <p class="muted">${esc(g.round.title)}</p>
@@ -293,13 +306,12 @@
       ${tableHTML(T.byCat, tally(scored, a => T.cats[a.cat]), T.cat)}
       ${tableHTML(T.byModel, tally(scored.filter(a => !a.h), a => a.family), T.model)}
       ${tableHTML(T.byEra, tally(scored, a => a.era).sort((x, y) => x[0].localeCompare(y[0])), T.era)}
-      ${tableHTML(T.byConf, tally(scored, a => T.conf[a.conf]).sort((x, y) => confOrder.indexOf(x[0]) - confOrder.indexOf(y[0])), T.confCol)}
       ${allRows.length > n ? `<p class="small muted">${esc(T.allRounds(allRows.filter(a => a.ok).length, allRows.length, pct(allRows.filter(a => a.ok).length, allRows.length)))}</p>` : ''}
       <h2>${esc(T.others)}</h2>
       <ul class="studies">${DATA.studies.map(s => `<li>${md(s)}</li>`).join('')}</ul>
       <h2>${esc(T.review)}</h2>
       <div class="tablewrap"><table class="res"><thead><tr><th>#</th><th>${esc(T.item)}</th><th>${esc(T.youSaid)}</th><th></th></tr></thead><tbody>${g.answers.map((a, k) => { const x = decode(ITEMS[a.id].x); return `
-        <tr><td class="num">${k + 1}</td><td><span class="badge ${a.h ? 'human' : 'ai'}">${esc(a.h ? T.badgeH : T.badgeA)}</span>${md(x.who)}</td><td>${esc(a.choice === 'human' ? T.human : T.ai)} <span class="small muted">(${esc(T.conf[a.conf])})</span></td><td>${a.known ? `<span class="small muted">${esc(T.knownShort)}</span>` : a.ok ? '✓' : '✗'}</td></tr>`; }).join('')}</tbody></table></div>
+        <tr><td class="num">${k + 1}</td><td><span class="badge ${a.h ? 'human' : 'ai'}">${esc(a.h ? T.badgeH : T.badgeA)}</span>${md(x.who)}</td><td>${esc(a.choice === 'human' ? T.human : T.ai)}</td><td>${a.known ? `<span class="small muted">${esc(T.knownShort)}</span>` : a.ok ? '✓' : '✗'}</td></tr>`; }).join('')}</tbody></table></div>
       <div class="row">
         <button class="btn primary" type="button" id="again">${esc(T.again(g.round.title))}</button>
         <button class="btn" type="button" data-go="home">${esc(T.another)}</button>
@@ -308,7 +320,7 @@
       <p class="small muted">${T.learn}</p>`;
     $('#again').addEventListener('click', () => start(g.round));
     $('#copy').addEventListener('click', e => {
-      const t = `${T.share(g.round.title, ok, n, lo, hi)} ${location.href.split('#')[0]}`;
+      const t = `${T.share(g.round.title, ok, n)} ${verdict} ${location.href.split('#')[0]}`;
       (navigator.clipboard ? navigator.clipboard.writeText(t) : Promise.reject()).then(() => { e.target.textContent = T.copied; }, () => { e.target.textContent = t; });
     });
     focusMain(); say(`${T.result}: ${ok} / ${n}.`);
@@ -318,10 +330,9 @@
   document.addEventListener('keydown', e => {
     if (!game || !main.contains(document.activeElement) || e.altKey || e.ctrlKey || e.metaKey) return;
     const tag = (e.target.tagName || '').toLowerCase();
-    if ((tag === 'input' && !/radio|checkbox/.test(e.target.type)) || tag === 'textarea' || tag === 'select') return;
+    if ((tag === 'input' && e.target.type !== 'checkbox') || tag === 'textarea' || tag === 'select') return;
     const k = e.key.toLowerCase(), asking = $('#ask') && !game.answers[game.i];
     if (asking && (k === 'h' || k === 'a')) { e.preventDefault(); answer(k === 'h' ? 'human' : 'ai'); }
-    else if (asking && /^[123]$/.test(k)) { const r = main.querySelectorAll('input[name=conf]')[+k - 1]; if (r) r.checked = true; }
     else if (asking && k === 'k') { const c = $('#known'); c.checked = !c.checked; }
   });
 })();

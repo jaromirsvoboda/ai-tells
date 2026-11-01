@@ -45,14 +45,13 @@ for (const lang of ['en', 'cs']) {
       await activate(page, page.getByRole('button').filter({ has: page.locator('b', { hasText: round.title }) }));
       const human = page.getByRole('button', { name: lang === 'cs' ? 'Člověk' : 'Human', exact: true });
       const next = page.getByRole('button', { name: /^(Next item|Finish and see the results|Další položka|Dokončit a ukázat výsledek)$/ });
-      const n = Math.min(round.n, data.sets.filter(s => round.cats.includes(s.cat) && (!round.lang || s.lang === round.lang)).length);
+      const limit = round.cats.length === 1 && round.cats[0] === 'images' ? 12 : round.n;
+      const n = Math.min(limit, data.sets.filter(s => round.cats.includes(s.cat) && (!round.lang || s.lang === round.lang)).length);
       for (let i = 0; i < n; i++) {
         await expect(human).toBeEnabled();
         await assertNoOverflow(page);
-        await page.keyboard.press(String(1 + i % 3));
         await page.keyboard.press(i % 2 ? 'a' : 'h');
         await expect(page.locator('#rev section')).toBeVisible();
-        await expect(page.locator('input[name=conf]:checked')).toHaveValue(['guess', 'fair', 'sure'][i % 3]);
         await page.locator('article img').evaluateAll(async imgs => {
           await Promise.all(imgs.map(img => img.decode()));
           if (imgs.some(img => img.naturalWidth <= 0)) throw new Error('Broken image');
@@ -70,6 +69,7 @@ for (const lang of ['en', 'cs']) {
     }
     await activate(page, page.locator('header a[href="#about"]'));
     await expect(page.locator('h1#about')).toBeVisible();
+    await expect(page.locator('main')).not.toContainText(/confidence|How sure|Jak moc si jste jistí|Podle vaší jistoty/i);
     await assertNoOverflow(page);
     const aboutLinks = await page.locator('main a[href]').evaluateAll(links =>
       [...new Set(links.map(a => a.getAttribute('href')))]);
