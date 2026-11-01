@@ -24,12 +24,14 @@ screenshots are retained in `test-results/`.
 - Themes/contrast: system preference, toggle and saved choice work; computed body/link/filter-label colors meet 4.5:1 in both themes, with alpha compositing and explicit failure on unresolved backgrounds.
 - Keyboard: Tab reaches filter controls and every summary in order with visible focus; Enter and Space toggle entries.
 - Stability/print: opening an entry leaves the filter box stable; print hides filters and expands entries.
-- Quiz: load/errors/overflow, media URLs, pre-answer DOM/encoded-length leakage, keyboard round, language links and catalogue targets; all six tests are NOT RUN on the catalogue-only base and skip when quiz/index.html is absent.
+- Quiz: both EN and CS load and run with shared CSS/JS; all retained items are checked for pre-answer DOM/class/data leakage and equal encoded payload length. Single-item fixtures include only the matching set and a valid round. Public hash routing isolates each fixture; a unique query forces a fresh document load.
+- Quiz integrity: complete set membership, one human plus AI per set, complete item/source/prompt credits, consistent translated image paths and non-empty reveal notes.
+- Quiz smoke: every round by keyboard (advertised H/A and 1–3 shortcuts, Tab/Enter for navigation), every referenced image decoded, no external requests or horizontal overflow at home/item/reveal/results/About. Runs in both languages under `/ai-tells/`, at all ten configured viewport/theme combinations, including the required 360/390/1280 widths. Language links work in both directions; storage denial and shortcut focus scope are checked.
 
-The future quiz tests use accessible button names (Human/AI, Start, Next/Finish,
-or Czech equivalents), not implementation selectors. The explicit data adapter
-accepts an array or `{ items: [...] }` and base64/base64url human/ai labels or
-JSON carrying `answer`, `label`, `origin`, `kind`, `isAI` or `is_ai`. A different
-encoding fails with a contract error and needs an adapter update when the quiz
-is integrated. Per-item DOM checks intercept items.json with one item to avoid
-assuming a shuffle algorithm. No quiz files were read to derive this contract.
+Offline surface measurements use the installed Python NumPy and Pillow packages (no model calls or web access):
+
+```sh
+OPENBLAS_NUM_THREADS=1 python3 tests/surface_audit.py --output /path/to/report
+```
+
+The audit decodes the actual padded base64 JSON. It gives equal probability to human and AI within a set, with uniform AI selection for a fresh browser, and follows the quiz's category allocation. It reports feature means, the best fitted threshold/direction, leave-one-set-out thresholds and logistic predictions. Image metadata is measured separately; Mixed text results condition on text. See [surface-report.md](surface-report.md) for the saved BEFORE/AFTER tables, definitions, image checks and measurement limits. Maximum single-feature CV values still involve feature selection on these data; they are not an independent test of a preselected feature. The lead accepted publication with the measured sentence-rhythm signal disclosed; the public explanation is in [quiz/fairness.md](../quiz/fairness.md).
