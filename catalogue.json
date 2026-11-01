@@ -47,6 +47,11 @@
    "id": "languages",
    "label": "Other languages",
    "intro": "Tells outside English, with a focus on Czech. Evidence here is thinner than for English."
+  },
+  {
+   "id": "czech",
+   "label": "Czech",
+   "intro": "Czech has its own AI writing habits, shaped partly by English templates and by the genres models imitate. A stock connective can be useful, and official Czech often needs a nominal style. Read each pattern in context and identify the missing meaning before editing. Evidence varies across this section: most entries describe practitioner observations. Corpus research measures some repeated frames; a Czech reader study found general versus specific reference was the only stylistic dimension associated with accurate detection among readers receiving feedback. These findings offer editing leads without establishing an authorship test."
   }
  ],
  "eras": [
@@ -9568,7 +9573,7 @@
    "why_basis": "inferred",
    "evidence": "Observed by the compilers in Czech AI drafts; the Czech norm is documented by the Czech Language Institute (ÚJČ). A Polish study of AI-written e-mails found that typography and spelling features carried much of a detector's signal. No measurement of quotation marks in Czech AI output.",
    "strength": "anecdotal",
-   "false_positive_risk": "Human typists often use straight quotes because standard keyboard layouts require special shortcuts for locale-specific characters, making it a common human error as well.",
+   "false_positive_risk": "High. Keyboard defaults and publishing software often produce straight or foreign quotation marks in human writing. Code and verbatim quotations can require their original characters.",
    "avoid_or_fix": "Enforce locale typographical entities in post-processing or explicitly instruct the model to use local punctuation standards.",
    "sources": [
     {
@@ -9585,7 +9590,7 @@
     }
    ],
    "disagreement": "",
-   "verification_note": "Compilers' observation plus norm reference; no measured rate.",
+   "verification_note": "Keep the multilingual overview. Czech norms and a Czech reference example are covered in cz-quotes; do not count the same punctuation twice. IJP id 162 was checked on 2026-11-01. The existing Polish study was not re-audited for this proposal.",
    "lanes": [
     "gemini-modern"
    ],
@@ -9606,7 +9611,7 @@
   },
   {
    "id": "lang-title-case",
-   "name": "English Title Case in other languages",
+   "name": "English heading capitals in other languages",
    "modality": "languages",
    "theme": "typography",
    "era": "2022-23",
@@ -9620,14 +9625,14 @@
    "status_note": "Common in multilingual output from current models.",
    "fixed_by": "",
    "end_date": "",
-   "what_it_looks_like": "Headings in Czech, German, French, or Spanish capitalize every major word, mimicking English headline style. Examples include „Průvodce Pro Úspěšný Vývoj Modelů“ or „Estrategias Para El Futuro Digital“.",
+   "what_it_looks_like": "A heading adopts English capitalisation without checking the conventions of its language. The Czech case is covered separately in cz-capitalisation.",
    "example": "A generated Spanish report heading reads „Estrategias Para El Futuro Digital“ instead of the standard „Estrategias para el futuro digital“.",
    "why": "Models are trained on large amounts of English text where title case is common in headlines. They incorrectly apply this formatting norm to other European languages that use sentence case.",
    "why_basis": "inferred",
-   "evidence": "Wikipedia's guide lists Title Case section headings as a style sign in English. In Czech, Spanish or German headings it also breaks the language's own rules (ÚJČ for Czech). No measurement.",
+   "evidence": "The existing entry supplies practitioner observations, without a measured frequency. IJP documents Czech capitalisation, which is covered by cz-capitalisation. This is no measurement of AI use in other languages.",
    "strength": "anecdotal",
-   "false_positive_risk": "Low. Professional European publishers and native speakers rarely use this style, except in automated translations or by non-native speakers adopting American habits.",
-   "avoid_or_fix": "Use standard sentence case: capitalize only the first word and proper nouns.",
+   "false_positive_risk": "High. Human branding and imported templates can produce the same result. Preserve actual proper names and official spellings; each language requires its own check.",
+   "avoid_or_fix": "Apply the conventions of the heading’s language and preserve proper names. Review Czech examples under cz-capitalisation.",
    "sources": [
     {
      "title": "Internetová jazyková příručka ÚJČ AV ČR: velká písmena v názvech",
@@ -9643,142 +9648,7 @@
     }
    ],
    "disagreement": "",
-   "verification_note": "Compilers' observation plus norm reference; no measured rate.",
-   "lanes": [
-    "gemini-modern"
-   ],
-   "written_by": "lane draft, edited",
-   "timeline": true,
-   "examples": ""
-  },
-  {
-   "id": "lang-cz-inflation",
-   "name": "Klíčový, zásadní: Czech importance words",
-   "modality": "languages",
-   "theme": "Czech",
-   "era": "2022-23",
-   "first_seen": {
-    "date": "2023",
-    "label": "2023, chatbots writing Czech (approximate)"
-   },
-   "peak": "",
-   "peak_date": "",
-   "status_2026": "current",
-   "status_note": "Common in Czech drafts from major models in 2026, by the compilers' observation.",
-   "fixed_by": "",
-   "end_date": "",
-   "what_it_looks_like": "Czech text uses words like \"klíčový\" (key) or \"zásadní\" (crucial) to describe ordinary actions. Phrases like \"plays a key role\" are frequent.",
-   "example": "„Tato dohoda hraje klíčovou roli v regulaci systémů.“",
-   "why": "English favourites such as crucial and pivotal carry over into Czech as klíčový and zásadní, words that declare importance without explaining it.",
-   "why_basis": "inferred",
-   "evidence": "Czech copywriting guides criticise empty importance words; the link to AI is the compilers' observation and the analogy with English crucial and pivotal (Kobak et al.). No Czech measurement.",
-   "strength": "anecdotal",
-   "false_positive_risk": "Czech administrative and corporate writing often uses similar bureaucratic clichés. Human writers in these fields may produce the same patterns.",
-   "avoid_or_fix": "Replace vague importance words with concrete actions. Instead of saying a deal plays a key role, state what the deal actually does.",
-   "sources": [
-    {
-     "title": "Otto Bohuš: 9 nesmyslů, které nikdy nepište",
-     "url": "https://ottobohus.cz/9-nesmyslu-ktere-nikdy-nepiste",
-     "date": "undated, read 2026-10-27",
-     "type": "practitioner"
-    }
-   ],
-   "disagreement": "",
-   "verification_note": "No Czech frequency study; treat as an editor's heuristic. Practitioner or forum sources only.",
-   "lanes": [
-    "gemini-modern"
-   ],
-   "written_by": "lane draft, edited",
-   "timeline": true,
-   "examples": ""
-  },
-  {
-   "id": "lang-cz-calques",
-   "name": "Dává smysl, odemknout potenciál: Czech calques",
-   "modality": "languages",
-   "theme": "Czech",
-   "era": "2022-23",
-   "first_seen": {
-    "date": "2023",
-    "label": "2023, chatbots writing Czech (approximate)"
-   },
-   "peak": "",
-   "peak_date": "",
-   "status_2026": "current",
-   "status_note": "Common in current Czech output, especially corporate and tech copy.",
-   "fixed_by": "",
-   "end_date": "",
-   "what_it_looks_like": "Czech text uses direct word-for-word translations of English idioms and corporate jargon. Examples include „dává smysl“ (makes sense), „na denní bázi“ (on a daily basis), „navigovat složitost“ (navigate complexity), and „odemknout potenciál“ (unlock potential).",
-   "example": "„Pomůžeme vám navigovat složitosti digitální transformace a odemknout plný potenciál vašeho týmu.“",
-   "why": "Language models translate English idioms literally into Czech because these phrases are ubiquitous in training data.",
-   "why_basis": "inferred",
-   "evidence": "Calques are a known feature of Czech influenced by English (CzechEncy); their link to AI drafts is the compilers' observation and Czech copywriters' complaints. No measurement.",
-   "strength": "anecdotal",
-   "false_positive_risk": "High for everyday phrases like „dává smysl“ and „na denní bázi“, as younger Czech professionals and IT workers have adopted them into spoken and written jargon. Moderate for corporate terms like „odemknout potenciál“, which are used by management consultants.",
-   "avoid_or_fix": "Use authentic Czech equivalents such as „je rozumné“, „denně“, „vyznat se v“, or „rozvinout schopnosti“ instead of literal English calques.",
-   "sources": [
-    {
-     "title": "CzechEncy: kalk",
-     "url": "https://www.czechency.org/slovnik/KALK",
-     "date": "reference",
-     "type": "standard"
-    },
-    {
-     "title": "Otto Bohuš: 9 nesmyslů, které nikdy nepište",
-     "url": "https://ottobohus.cz/9-nesmyslu-ktere-nikdy-nepiste",
-     "date": "undated, read 2026-10-27",
-     "type": "practitioner"
-    }
-   ],
-   "disagreement": "The lanes conflict on the first seen date (2023-02 vs 2024-12) and peak period (2023-08 to 2024-12 vs 2025-04 to 2026-02), likely reflecting different subsets of calques (everyday vs corporate).",
-   "verification_note": "No Czech frequency study; many of these calques are also common in human Czech.",
-   "lanes": [
-    "gemini-modern"
-   ],
-   "written_by": "lane draft, edited",
-   "timeline": true,
-   "examples": ""
-  },
-  {
-   "id": "lang-cz-syntax",
-   "name": "English word order in Czech",
-   "modality": "languages",
-   "theme": "Czech",
-   "era": "2022-23",
-   "first_seen": {
-    "date": "2023",
-    "label": "2023, chatbots writing Czech (approximate)"
-   },
-   "peak": "",
-   "peak_date": "",
-   "status_2026": "current",
-   "status_note": "Widely used tools still produce this pattern in 2026.",
-   "fixed_by": "",
-   "end_date": "",
-   "what_it_looks_like": "Czech text uses rigid Subject-Verb-Object order instead of natural topic-comment flow. Pronouns and auxiliary words like 'se' appear in the wrong position, often after the verb rather than in the second slot of the clause. Verbs are frequently turned into abstract nouns, creating stiff, bureaucratic phrases.",
-   "example": "“Tým provede realizaci analýzy rizik.” (The team will perform the realization of risk analysis.) instead of “Tým zanalyzuje rizika.” (The team will analyze risks.)",
-   "why": "Language models often translate from English deep structures where word order is fixed. Czech relies on functional sentence perspective and strict rules for clitic placement (Wackernagel's law). When models mimic English syntax, they strand these short words in incorrect positions or overuse nominalizations.",
-   "why_basis": "inferred",
-   "evidence": "The Czech rules on word order and clitic position are standard grammar (CzechEncy). That AI drafts break them is the compilers' observation; the AI-Koditex benchmark (see the entry on Czech style drift) measures the broader register shift.",
-   "strength": "weak",
-   "false_positive_risk": "Native speakers rarely make these errors, though they may appear in official European Union legislative translations.",
-   "avoid_or_fix": "Replace abstract noun phrases with active verbs. Ensure short pronouns and auxiliary words occupy the second position in the clause.",
-   "sources": [
-    {
-     "title": "CzechEncy: slovosled",
-     "url": "https://www.czechency.org/slovnik/SLOVOSLED",
-     "date": "reference",
-     "type": "standard"
-    },
-    {
-     "title": "CzechEncy: nominalizace",
-     "url": "https://www.czechency.org/slovnik/NOMINALIZACE",
-     "date": "reference",
-     "type": "standard"
-    }
-   ],
-   "disagreement": "",
-   "verification_note": "Grammar references plus compilers' observation.",
+   "verification_note": "H6 corrects the Czech scope. The old low false-positive claim was unsupported. A Czech norm cannot establish rules for every other language; non-Czech sources were not re-audited.",
    "lanes": [
     "gemini-modern"
    ],
@@ -9837,7 +9707,7 @@
     }
    ],
    "disagreement": "",
-   "verification_note": "Practitioner sources only; the Czech example is borderline.",
+   "verification_note": "Keep the multilingual opener overview and its existing generated sample. Czech editorial calibration is supplied by cz-stock-openers. A real present-versus-past contrast can justify the phrase; its presence alone is no cue. The earlier multilingual practitioner sources and model sample were not rerun for this proposal.",
    "lanes": [
     "gemini-modern"
    ],
@@ -9857,51 +9727,6 @@
    ]
   },
   {
-   "id": "lang-koditex",
-   "name": "Czech AI text drifts further from human style",
-   "modality": "languages",
-   "theme": "Czech",
-   "era": "2025",
-   "first_seen": {
-    "date": "2025-09",
-    "label": "2025, study of 16 models from GPT-3 to GPT-4.5"
-   },
-   "peak": "",
-   "peak_date": "",
-   "status_2026": "current",
-   "status_note": "Newer or larger models did not score better than older ones in this benchmark.",
-   "fixed_by": "",
-   "end_date": "",
-   "what_it_looks_like": "Not a single word but an overall register: in Czech, generated continuations of human texts move further from the original style than in English, and most models move in the same directions. A text can be grammatical and still read as off in genre.",
-   "example": "A continuation of a Czech short story that slips from narration into explanatory, report-like prose.",
-   "why": "Czech constitutes a small part of the training data, and no base model writes coherent Czech. Consequently, every Czech-writing model carries the helpful-assistant style from tuning.",
-   "why_basis": "measured",
-   "evidence": "Milička, Marklová and Cvrček studied 16 models in English and Czech (unusable Czech generations were excluded) and compared the Czech AI-Koditex corpus with matched human texts along Biber-style register dimensions: Czech shifts were larger than English ones; a long ChatGPT-style system prompt shifted style more than the choice of model generation; sampling temperature had no systematic effect.",
-   "strength": "strong",
-   "false_positive_risk": "Human writers also vary in register; the result is about corpora, not single texts.",
-   "avoid_or_fix": "When editing Czech AI drafts, check that the genre is right (narration, argument, conversation) as well as the wording.",
-   "sources": [
-    {
-     "title": "Milička, Marklová and Cvrček, \"Benchmark of stylistic variation in LLM-generated texts\" (International Journal of Corpus Linguistics, 2026)",
-     "url": "https://arxiv.org/abs/2509.10179",
-     "date": "2025-09-12; journal 2026-09-15",
-     "type": "peer-reviewed study"
-    },
-    {
-     "title": "Czech National Corpus: AI-Koditex",
-     "url": "https://wiki.korpus.cz/doku.php/cnk:aikoditex",
-     "date": "2025",
-     "type": "dataset analysis"
-    }
-   ],
-   "disagreement": "",
-   "verification_note": "",
-   "lanes": [],
-   "written_by": "lead, from verified sources",
-   "timeline": true,
-   "examples": ""
-  },
-  {
    "id": "lang-translationese",
    "name": "Translationese in other languages",
    "modality": "languages",
@@ -9919,8 +9744,8 @@
    "end_date": "",
    "what_it_looks_like": "Text generated directly in German or Spanish (not translated) still shows the marks of translated text: connecting words in translated patterns in German, far fewer articles than native Spanish uses.",
    "example": "A German paragraph whose connectors and sentence shapes read like a translation from English.",
-   "why": "Models learn mostly from English and transfer its patterns to other languages. This transfer creates stronger translationese effects in non-English output.",
-   "why_basis": "measured",
+   "why": "English influence is one proposed explanation for translation-like patterns. The cited comparisons examine translationese indicators; they do not prove that the models internally translate from English.",
+   "why_basis": "inferred",
    "evidence": "A 2026 preprint found translationese indicators in LLM output in all tested languages, elevated outside English; human annotators mostly caught odd word choices while a classifier caught deeper statistical shifts. Only the abstract and introduction were read for this catalogue.",
    "strength": "moderate",
    "false_positive_risk": "Real translations and non-native writers show the same features.",
@@ -9934,11 +9759,1263 @@
     }
    ],
    "disagreement": "",
-   "verification_note": "",
+   "verification_note": "The abstract, introduction and language scope of the cited 2026 preprint were opened on 2026-11-01. Czech was not among its five languages. Retain this multilingual entry without transferring its evidence to Czech calques. The full feature analysis was not re-audited here.",
    "lanes": [],
    "written_by": "lead, from verified sources",
    "timeline": true,
    "examples": ""
+  },
+  {
+   "id": "lang-koditex",
+   "name": "Czech register drift in matched corpus continuations",
+   "modality": "czech",
+   "theme": "Czech",
+   "era": "2025",
+   "first_seen": {
+    "date": "2025-09",
+    "label": "September 2025 preprint; dates the report"
+   },
+   "peak": "",
+   "peak_date": "",
+   "status_2026": "current",
+   "status_note": "The verified preprint samples models through early 2025. Its results do not establish the behaviour of 2026 models.",
+   "fixed_by": "",
+   "end_date": "",
+   "what_it_looks_like": "Generated Czech continuations depart from the register of matched human texts. The benchmark shows a tendency toward more general reference across the sampled models.",
+   "example": "Illustration made for this catalogue (CC0): „Někdo se někdy rozhodne pro změnu a objeví nové možnosti.“ English gloss: Someone sometimes decides on a change and discovers new possibilities. This illustrates generality; it is not a benchmark excerpt.",
+   "why": "The authors suggest English dominance and assistant tuning as explanations. The comparisons measure register drift; they do not establish a single causal mechanism.",
+   "why_basis": "inferred",
+   "evidence": "The 2025 preprint compares 16 models across English and Czech, with unusable Czech output excluded. Section 4.1.2 reports larger Czech register shifts and a tendency toward general reference. This supports a corpus-level observation.",
+   "strength": "moderate",
+   "false_positive_risk": "High for judging an individual passage. Humans change register too. Formal, prepared or nominal Czech alone does not establish model authorship.",
+   "avoid_or_fix": "Match the intended genre and use the source details the subject needs. Do not add unsupported names or figures to make a passage appear specific.",
+   "sources": [
+    {
+     "title": "Milička, Marklová and Cvrček: Benchmark of stylistic variation, section 4.1.2",
+     "url": "https://arxiv.org/html/2509.10179v1",
+     "date": "2025-09-12; checked 2026-11-01",
+     "type": "preprint"
+    }
+   ],
+   "disagreement": "",
+   "verification_note": "Verified against arXiv version 1. The existing journal-publication metadata was not reverified and is removed from this proposal. Overlaps cz-generality; retain this entry only for the broader corpus comparison. Do not count both as separate cues for the same wording.",
+   "lanes": [],
+   "written_by": "Codex; source-scoped revision proposal",
+   "timeline": false,
+   "examples": [
+    {
+     "type": "text-ours",
+     "caption": "Constructed illustration of general reference, not an excerpt from the study. English gloss: Someone sometimes decides on a change and discovers new possibilities.",
+     "made_by_us": true,
+     "generator": "Codex, constructed editorial illustration",
+     "date": "2026-11-01",
+     "text": "„Někdo se někdy rozhodne pro změnu a objeví nové možnosti.“",
+     "attribution": "Made for this catalogue; illustrative, not an observed quotation",
+     "licence": "CC0"
+    }
+   ]
+  },
+  {
+   "id": "cz-connective-frames",
+   "name": "Repeated connective frames in AI-Koditex",
+   "modality": "czech",
+   "theme": "structure",
+   "era": "2025",
+   "first_seen": {
+    "date": "2025-09",
+    "label": "September 2025 corpus report; onset unknown"
+   },
+   "peak": "",
+   "peak_date": "",
+   "status_2026": "current",
+   "status_note": "Available as an editorial check in 2026; current-model frequency has not been measured.",
+   "fixed_by": "",
+   "end_date": "",
+   "what_it_looks_like": "„Ať už jde o…“ and „a co se týče…“ repeatedly introduce alternatives or topics that the surrounding paragraph has already made clear.",
+   "example": "Illustration made for this catalogue (CC0): „Ať už jde o porady, nebo zápisy, změna se týká všech. A co se týče podkladů, také se mění.“ English gloss: Whether it concerns meetings or minutes, the change affects everyone. As for the documents, they change too.",
+   "why": "These frames supply reusable transitions. Corpus counts establish repetition, while any explanation involving training remains a hypothesis.",
+   "why_basis": "measured",
+   "evidence": "M1 section 4.3.1 reports „ať už jde o“ at 178 instances per million words for GPT-4-turbo, 144 for DeepSeek chat and 113 for each of Claude 3 Haiku and Claude 3.5 Sonnet. „A co se týče“ reaches 126 in pooled AI-Koditex and 653 in Gemini 2.0 Flash experimental. The most frequent human Koditex four-gram, a different phrase, reaches 14.71.",
+   "strength": "moderate",
+   "false_positive_risk": "High for one occurrence. These are ordinary Czech constructions. The human comparison is the most frequent human four-gram, not the human frequency of either quoted frame. Gemini repetition loops inflate the pooled figures.",
+   "avoid_or_fix": "Keep a frame that marks a real relation. When describing repetition, report the count with passage length and genre. Ordinary „nicméně“, „navíc“ and „co se týče“ need no blanket ban.",
+   "sources": [
+    {
+     "title": "Milička, Marklová and Cvrček: AI Brown and AI Koditex, section 4.3.1",
+     "url": "https://arxiv.org/html/2509.22996v1",
+     "date": "2025-09; checked 2026-11-01",
+     "type": "preprint"
+    }
+   ],
+   "disagreement": "",
+   "verification_note": "Corpus-level rates for the sampled older models, not per-text cutoffs or measurements of 2026 models. No validated detection threshold follows from these counts.",
+   "lanes": [],
+   "written_by": "Codex; examples made for this catalogue",
+   "timeline": false,
+   "examples": [
+    {
+     "type": "text-ours",
+     "caption": "Constructed illustration of the pattern; no observed author or event. English gloss: Whether it concerns meetings or minutes, the change affects everyone. As for the documents, they change too.",
+     "made_by_us": true,
+     "generator": "Codex, constructed editorial illustration",
+     "date": "2026-11-01",
+     "text": "„Ať už jde o porady, nebo zápisy, změna se týká všech. A co se týče podkladů, také se mění.“",
+     "attribution": "Made for this catalogue; illustrative, not an observed quotation",
+     "licence": "CC0"
+    }
+   ]
+  },
+  {
+   "id": "cz-generality",
+   "name": "Interchangeable generality where specifics are needed",
+   "modality": "czech",
+   "theme": "style",
+   "era": "2025",
+   "first_seen": {
+    "date": "2025-09",
+    "label": "2025 corpus and reader studies; onset unknown"
+   },
+   "peak": "",
+   "peak_date": "",
+   "status_2026": "current",
+   "status_note": "Available as an editorial check in 2026; current-model frequency has not been measured.",
+   "fixed_by": "",
+   "end_date": "",
+   "what_it_looks_like": "A paragraph about a particular decision could fit any organisation. The relevant names or figures are missing, and no date or concrete case anchors the claim.",
+   "example": "Illustration made for this catalogue (CC0): „Naše organizace reaguje na nové výzvy a podporuje další rozvoj. Změny přinášejí nové možnosti pro všechny.“ English gloss: Our organisation responds to new challenges and supports further development. Changes bring new possibilities for everyone.",
+   "why": "Czech corpus comparisons show a tendency toward general reference. The surface reading uses the measured dimension and its feature loadings; it is an editorial interpretation.",
+   "why_basis": "measured",
+   "evidence": "M2 reports a shift toward general reference in Czech. M3 identifies general versus specific reference as the only stylistic dimension significantly associated with correct identification in the feedback group (p = 0.044). Its group mean accuracy was 55.4 % without feedback and 65.1 % with feedback.",
+   "strength": "moderate",
+   "false_positive_risk": "High in introductions and abstract explanations. These studies used older models and matched continuations. A paragraph can legitimately lack names or figures; invented detail also occurs in generated text.",
+   "avoid_or_fix": "Ask which specifics the subject actually needs. Use only verified details from the source, or request them. A name or anecdote is never required in every paragraph.",
+   "sources": [
+    {
+     "title": "Milička, Marklová and Cvrček: Benchmark of stylistic variation, section 4.1.2",
+     "url": "https://arxiv.org/html/2509.10179v1",
+     "date": "2025-09-12; checked 2026-11-01",
+     "type": "preprint"
+    },
+    {
+     "title": "Milička et al.: Learning to detect AI texts and learning the limits, sections 3.1 and 3.2.3",
+     "url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0333007",
+     "date": "2025; checked 2026-11-01",
+     "type": "peer-reviewed study"
+    },
+    {
+     "title": "Czech National Corpus: Dimensions of Czech multidimensional analysis",
+     "url": "https://wiki.korpus.cz/doku.php/en:cnk:mda",
+     "date": "living reference; checked 2026-11-01",
+     "type": "standard"
+    }
+   ],
+   "disagreement": "",
+   "verification_note": "The accuracy percentages are group means across the experiment, not an improvement from 55.4 % to 65.1 % within each reader. The finding concerns one of eight stylistic dimensions; it is not the only possible measured cue of any kind.",
+   "lanes": [],
+   "written_by": "Codex; examples made for this catalogue",
+   "timeline": false,
+   "examples": [
+    {
+     "type": "text-ours",
+     "caption": "Constructed illustration of the pattern; no observed author or event. English gloss: Our organisation responds to new challenges and supports further development. Changes bring new possibilities for everyone.",
+     "made_by_us": true,
+     "generator": "Codex, constructed editorial illustration",
+     "date": "2026-11-01",
+     "text": "„Naše organizace reaguje na nové výzvy a podporuje další rozvoj. Změny přinášejí nové možnosti pro všechny.“",
+     "attribution": "Made for this catalogue; illustrative, not an observed quotation",
+     "licence": "CC0"
+    }
+   ]
+  },
+  {
+   "id": "lang-cz-inflation",
+   "name": "Importance words without a stated consequence",
+   "modality": "czech",
+   "theme": "vocabulary",
+   "era": "2026",
+   "first_seen": {
+    "date": "",
+    "label": "Editorial documentation checked in 2026; onset unknown"
+   },
+   "peak": "",
+   "peak_date": "",
+   "status_2026": "current",
+   "status_note": "Available as an editorial check in 2026; current-model frequency has not been measured.",
+   "fixed_by": "",
+   "end_date": "",
+   "what_it_looks_like": "„Klíčový“ and „zásadní“ repeatedly declare importance while leaving the consequence unstated. Inflected forms need the same reading.",
+   "example": "Illustration made for this catalogue (CC0): „Tato úprava je zásadní a hraje klíčovou roli v dalším rozvoji.“ English gloss: This adjustment is fundamental and plays a key role in further development.",
+   "why": "The importance claim can substitute for an explanation of what depends on the adjustment.",
+   "why_basis": "documented",
+   "evidence": "Dřímalka lists importance words; the blog explains why familiar Czech phrases need context. No model-specific Czech lemma frequencies were verified.",
+   "strength": "anecdotal",
+   "false_positive_risk": "High in official reports and technical work. „Klíčový“ can precisely describe a dependency. „Efektivní“, „komplexní“ and technical „robustní“ are ordinary words when their meaning is clear.",
+   "avoid_or_fix": "State what the change enables or prevents using the source. Keep an importance word when that dependence is established. Search stems such as klíčov to locate forms, then read each use.",
+   "sources": [
+    {
+     "title": "Filip Dřímalka: Czech anti-slop guide (MIT)",
+     "url": "https://github.com/nowork-ai/anti-ai-slop-cz/blob/main/cela-verze.md",
+     "date": "undated; checked 2026-11-01",
+     "type": "practitioner"
+    },
+    {
+     "title": "Rajtík: Why Czech anti-slop needs context",
+     "url": "https://blog.rajtik.com/clanky/anti-slop-v-cestine-neni-blacklist",
+     "date": "2026-08-23; checked 2026-11-01",
+     "type": "practitioner"
+    }
+   ],
+   "disagreement": "",
+   "verification_note": "Anecdotal editorial cue. Three vague adjectives are one vocabulary-category concern, not three independent authorship signals.",
+   "lanes": [],
+   "written_by": "Codex; examples made for this catalogue",
+   "timeline": false,
+   "examples": [
+    {
+     "type": "text-ours",
+     "caption": "Constructed illustration of the pattern; no observed author or event. English gloss: This adjustment is fundamental and plays a key role in further development.",
+     "made_by_us": true,
+     "generator": "Codex, constructed editorial illustration",
+     "date": "2026-11-01",
+     "text": "„Tato úprava je zásadní a hraje klíčovou roli v dalším rozvoji.“",
+     "attribution": "Made for this catalogue; illustrative, not an observed quotation",
+     "licence": "CC0"
+    }
+   ]
+  },
+  {
+   "id": "lang-cz-calques",
+   "name": "English-shaped figurative frames",
+   "modality": "czech",
+   "theme": "vocabulary",
+   "era": "2026",
+   "first_seen": {
+    "date": "",
+    "label": "Editorial documentation checked in 2026; onset unknown"
+   },
+   "peak": "",
+   "peak_date": "",
+   "status_2026": "current",
+   "status_note": "Available as an editorial check in 2026; current-model frequency has not been measured.",
+   "fixed_by": "",
+   "end_date": "",
+   "what_it_looks_like": "A routine invitation to „ponořit se do“ a topic, a figurative „na konci dne“, or „je svědectvím toho, že…“ can reproduce an English frame without adding meaning.",
+   "example": "Illustration made for this catalogue (CC0): „Pojďme se ponořit do plánování porad. Na konci dne je to svědectvím toho, že spolupráce vítězí.“ English gloss: Let us dive into meeting planning. At the end of the day, this testifies that cooperation wins.",
+   "why": "An English-shaped formula may be an easy default. That explanation is an inference, and the surrounding claim still needs examination.",
+   "why_basis": "inferred",
+   "evidence": "Dřímalka lists stock invitations and figurative English-shaped closers. The authorship link is anecdotal; no frequency of these Czech frames was measured.",
+   "strength": "anecdotal",
+   "false_positive_risk": "High. „Ponořit se do četby“ is natural Czech. A literal „na konci dne“ can state a time. A testimony frame is useful when it names evidence. Shared imagery alone cannot establish borrowing.",
+   "avoid_or_fix": "Name the subject directly. Use „nakonec“ for the intended figurative sense and explain what any claimed evidence actually supports.",
+   "sources": [
+    {
+     "title": "Filip Dřímalka: Czech anti-slop guide (MIT)",
+     "url": "https://github.com/nowork-ai/anti-ai-slop-cz/blob/main/cela-verze.md",
+     "date": "undated; checked 2026-11-01",
+     "type": "practitioner"
+    }
+   ],
+   "disagreement": "",
+   "verification_note": "Practitioner guidance only. No Czech authorship test or frequency estimate for this pattern.",
+   "lanes": [],
+   "written_by": "Codex; examples made for this catalogue",
+   "timeline": false,
+   "examples": [
+    {
+     "type": "text-ours",
+     "caption": "Constructed illustration of the pattern; no observed author or event. English gloss: Let us dive into meeting planning. At the end of the day, this testifies that cooperation wins.",
+     "made_by_us": true,
+     "generator": "Codex, constructed editorial illustration",
+     "date": "2026-11-01",
+     "text": "„Pojďme se ponořit do plánování porad. Na konci dne je to svědectvím toho, že spolupráce vítězí.“",
+     "attribution": "Made for this catalogue; illustrative, not an observed quotation",
+     "licence": "CC0"
+    }
+   ]
+  },
+  {
+   "id": "lang-cz-syntax",
+   "name": "Nominal chains that hide a known actor",
+   "modality": "czech",
+   "theme": "style",
+   "era": "2026",
+   "first_seen": {
+    "date": "",
+    "label": "Editorial documentation checked in 2026; onset unknown"
+   },
+   "peak": "",
+   "peak_date": "",
+   "status_2026": "current",
+   "status_note": "Available as an editorial check in 2026; current-model frequency has not been measured.",
+   "fixed_by": "",
+   "end_date": "",
+   "what_it_looks_like": "Chains of verbal nouns ending in -ní or -tí obscure an action: „provádění zlepšování nastavení“. An impersonal sentence can also omit an actor the source identifies.",
+   "example": "Illustration made for this catalogue (CC0): „Dojde k zahájení provádění kontroly nastavení.“ English gloss: The commencement of carrying out a settings check will occur.",
+   "why": "The noun chain makes it harder to see the action and, where known, responsibility for it.",
+   "why_basis": "documented",
+   "evidence": "Practitioner sources criticise this padding. The GPT-4o reader study does not validate nominal or formal style alone as a tell.",
+   "strength": "anecdotal",
+   "false_positive_risk": "High in official and legal Czech. An impersonal form is appropriate when the actor is unknown or irrelevant. Formality alone is no cue.",
+   "avoid_or_fix": "„Začne kontrola nastavení.“ keeps the event without inventing an actor. Name the actor only if the source supplies one. Preserve legal distinctions and the difference between a process and a resulting state.",
+   "sources": [
+    {
+     "title": "Filip Dřímalka: Czech anti-slop guide (MIT)",
+     "url": "https://github.com/nowork-ai/anti-ai-slop-cz/blob/main/cela-verze.md",
+     "date": "undated; checked 2026-11-01",
+     "type": "practitioner"
+    },
+    {
+     "title": "Rajtík: Why Czech anti-slop needs context",
+     "url": "https://blog.rajtik.com/clanky/anti-slop-v-cestine-neni-blacklist",
+     "date": "2026-08-23; checked 2026-11-01",
+     "type": "practitioner"
+    },
+    {
+     "title": "Milička et al.: Learning to detect AI texts and learning the limits, sections 3.1 and 3.2.3",
+     "url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0333007",
+     "date": "2025; checked 2026-11-01",
+     "type": "peer-reviewed study"
+    }
+   ],
+   "disagreement": "",
+   "verification_note": "The -ní/-tí chain is an editorial example. Its model frequency is unmeasured; do not infer authorship from a passive or a nominal style.",
+   "lanes": [],
+   "written_by": "Codex; examples made for this catalogue",
+   "timeline": false,
+   "examples": [
+    {
+     "type": "text-ours",
+     "caption": "Constructed illustration of the pattern; no observed author or event. English gloss: The commencement of carrying out a settings check will occur.",
+     "made_by_us": true,
+     "generator": "Codex, constructed editorial illustration",
+     "date": "2026-11-01",
+     "text": "„Dojde k zahájení provádění kontroly nastavení.“",
+     "attribution": "Made for this catalogue; illustrative, not an observed quotation",
+     "licence": "CC0"
+    }
+   ]
+  },
+  {
+   "id": "cz-negative-parallelism",
+   "name": "Negative parallelism staged as a reveal",
+   "modality": "czech",
+   "theme": "rhetoric",
+   "era": "2026",
+   "first_seen": {
+    "date": "",
+    "label": "Editorial documentation checked in 2026; onset unknown"
+   },
+   "peak": "",
+   "peak_date": "",
+   "status_2026": "current",
+   "status_note": "Available as an editorial check in 2026; current-model frequency has not been measured.",
+   "fixed_by": "",
+   "end_date": "",
+   "what_it_looks_like": "Repeated frames such as „Ne proto, že…, ale protože…“ delay a reason. „Nejde jen o…“ can inflate an ordinary distinction into a revelation.",
+   "example": "Illustration made for this catalogue (CC0): „Ne proto, že bychom měli hotovo, ale protože chceme změnit budoucnost.“ English gloss: Not because we have finished, but because we want to change the future.",
+   "why": "The denied explanation creates suspense while the stated reason can remain vague.",
+   "why_basis": "documented",
+   "evidence": "Kovařík discusses this Czech causal frame and stacked denials; Dřímalka also discusses staged contrasts. These are editorial observations.",
+   "strength": "anecdotal",
+   "false_positive_risk": "High in speeches and persuasive writing. A correction between real alternatives can need this construction. Czech negative concord, as in „Nikdo nic neřekl.“, is normal grammar.",
+   "avoid_or_fix": "State the actual reason. Retain a contrast when both alternatives matter; identify what the dramatic version leaves unexplained.",
+   "sources": [
+    {
+     "title": "Pavel Kovařík: Nepiš jako robot, 19+1 writing patterns",
+     "url": "https://pavelkovarik.cz/nepis-jako-robot/",
+     "date": "undated; checked 2026-11-01",
+     "type": "practitioner"
+    },
+    {
+     "title": "Filip Dřímalka: Czech anti-slop guide (MIT)",
+     "url": "https://github.com/nowork-ai/anti-ai-slop-cz/blob/main/cela-verze.md",
+     "date": "undated; checked 2026-11-01",
+     "type": "practitioner"
+    }
+   ],
+   "disagreement": "",
+   "verification_note": "Practitioner guidance only. No Czech authorship test or frequency estimate for this pattern.",
+   "lanes": [],
+   "written_by": "Codex; examples made for this catalogue",
+   "timeline": false,
+   "examples": [
+    {
+     "type": "text-ours",
+     "caption": "Constructed illustration of the pattern; no observed author or event. English gloss: Not because we have finished, but because we want to change the future.",
+     "made_by_us": true,
+     "generator": "Codex, constructed editorial illustration",
+     "date": "2026-11-01",
+     "text": "„Ne proto, že bychom měli hotovo, ale protože chceme změnit budoucnost.“",
+     "attribution": "Made for this catalogue; illustrative, not an observed quotation",
+     "licence": "CC0"
+    }
+   ]
+  },
+  {
+   "id": "cz-negation-dodge",
+   "name": "Negation that evades a direct claim",
+   "modality": "czech",
+   "theme": "rhetoric",
+   "era": "2026",
+   "first_seen": {
+    "date": "",
+    "label": "Editorial documentation checked in 2026; onset unknown"
+   },
+   "peak": "",
+   "peak_date": "",
+   "status_2026": "current",
+   "status_note": "Available as an editorial check in 2026; current-model frequency has not been measured.",
+   "fixed_by": "",
+   "end_date": "",
+   "what_it_looks_like": "A stack of negatives leaves the reader unsure whether the writer promises an action or only allows that it is possible.",
+   "example": "Illustration made for this catalogue (CC0): „Není to tak, že by nebylo možné žádost vyřídit.“ English gloss: It is not the case that processing the application would be impossible.",
+   "why": "The qualifications can conceal a weaker commitment than the reader expects.",
+   "why_basis": "documented",
+   "evidence": "Kovařík identifies evasive negation as a writing problem. Its frequency in Czech model output is unmeasured.",
+   "strength": "anecdotal",
+   "false_positive_risk": "High. Diplomatic refusals and legal qualifications can require a negative formulation. Ordinary Czech double negation is unrelated.",
+   "avoid_or_fix": "Determine whether the claim concerns possibility or a commitment. For possibility, „Žádost lze vyřídit.“ preserves the meaning. Do not turn it into a promise.",
+   "sources": [
+    {
+     "title": "Pavel Kovařík: Nepiš jako robot, 19+1 writing patterns",
+     "url": "https://pavelkovarik.cz/nepis-jako-robot/",
+     "date": "undated; checked 2026-11-01",
+     "type": "practitioner"
+    }
+   ],
+   "disagreement": "",
+   "verification_note": "Practitioner guidance only. No Czech authorship test or frequency estimate for this pattern.",
+   "lanes": [],
+   "written_by": "Codex; examples made for this catalogue",
+   "timeline": false,
+   "examples": [
+    {
+     "type": "text-ours",
+     "caption": "Constructed illustration of the pattern; no observed author or event. English gloss: It is not the case that processing the application would be impossible.",
+     "made_by_us": true,
+     "generator": "Codex, constructed editorial illustration",
+     "date": "2026-11-01",
+     "text": "„Není to tak, že by nebylo možné žádost vyřídit.“",
+     "attribution": "Made for this catalogue; illustrative, not an observed quotation",
+     "licence": "CC0"
+    }
+   ]
+  },
+  {
+   "id": "cz-question-answer",
+   "name": "Question-answer fragments in exposition",
+   "modality": "czech",
+   "theme": "structure",
+   "era": "2026",
+   "first_seen": {
+    "date": "",
+    "label": "Editorial documentation checked in 2026; onset unknown"
+   },
+   "peak": "",
+   "peak_date": "",
+   "status_2026": "current",
+   "status_note": "Available as an editorial check in 2026; current-model frequency has not been measured.",
+   "fixed_by": "",
+   "end_date": "",
+   "what_it_looks_like": "A nominal question followed by a one-word answer, such as „Výsledek? Rychlost.“, repeatedly supplies emphasis instead of an explanation.",
+   "example": "Illustration made for this catalogue (CC0): „Přínos? Pohodlí. Změna? Jistota.“ English gloss: The benefit? Convenience. The change? Certainty.",
+   "why": "The reader gets the rhythm of an answer without learning how the benefit arises.",
+   "why_basis": "documented",
+   "evidence": "Kovařík and Dřímalka both identify this copywriting pattern. Neither provides a Czech detection rate.",
+   "strength": "anecdotal",
+   "false_positive_risk": "High in advertising and teaching. FAQs and genuine questions followed by useful answers are appropriate.",
+   "avoid_or_fix": "Explain the change in a sentence using the available evidence. Keep an actual question when the answer needs it.",
+   "sources": [
+    {
+     "title": "Pavel Kovařík: Nepiš jako robot, 19+1 writing patterns",
+     "url": "https://pavelkovarik.cz/nepis-jako-robot/",
+     "date": "undated; checked 2026-11-01",
+     "type": "practitioner"
+    },
+    {
+     "title": "Filip Dřímalka: Czech anti-slop guide (MIT)",
+     "url": "https://github.com/nowork-ai/anti-ai-slop-cz/blob/main/cela-verze.md",
+     "date": "undated; checked 2026-11-01",
+     "type": "practitioner"
+    }
+   ],
+   "disagreement": "",
+   "verification_note": "Practitioner guidance only. No Czech authorship test or frequency estimate for this pattern.",
+   "lanes": [],
+   "written_by": "Codex; examples made for this catalogue",
+   "timeline": false,
+   "examples": [
+    {
+     "type": "text-ours",
+     "caption": "Constructed illustration of the pattern; no observed author or event. English gloss: The benefit? Convenience. The change? Certainty.",
+     "made_by_us": true,
+     "generator": "Codex, constructed editorial illustration",
+     "date": "2026-11-01",
+     "text": "„Přínos? Pohodlí. Změna? Jistota.“",
+     "attribution": "Made for this catalogue; illustrative, not an observed quotation",
+     "licence": "CC0"
+    }
+   ]
+  },
+  {
+   "id": "cz-fragment-drumbeats",
+   "name": "Fragment drumbeats and default triads",
+   "modality": "czech",
+   "theme": "structure",
+   "era": "2026",
+   "first_seen": {
+    "date": "",
+    "label": "Editorial documentation checked in 2026; onset unknown"
+   },
+   "peak": "",
+   "peak_date": "",
+   "status_2026": "current",
+   "status_note": "Available as an editorial check in 2026; current-model frequency has not been measured.",
+   "fixed_by": "",
+   "end_date": "",
+   "what_it_looks_like": "Exposition repeatedly breaks into tiny fragments. A run of near-synonymous words supplies a rhythm that the argument does not need.",
+   "example": "Illustration made for this catalogue (CC0): „Přehledně. Srozumitelně. Jasně. Bez váhání. Tečka.“ English gloss: Clearly laid out. Understandably. Clearly. Without hesitation. Full stop.",
+   "why": "Repeated fragments can replace a description of what actually changes.",
+   "why_basis": "documented",
+   "evidence": "Kovařík discusses fragment rhythms; Dřímalka warns against automatic groups of three. This is practitioner advice.",
+   "strength": "anecdotal",
+   "false_positive_risk": "High in slogans and deliberate literary rhythm. A list of three distinct facts has a reason to contain three items.",
+   "avoid_or_fix": "Combine redundant fragments and say what the reader can do. Preserve a deliberate rhythm when it contributes meaning.",
+   "sources": [
+    {
+     "title": "Filip Dřímalka: Czech anti-slop guide (MIT)",
+     "url": "https://github.com/nowork-ai/anti-ai-slop-cz/blob/main/cela-verze.md",
+     "date": "undated; checked 2026-11-01",
+     "type": "practitioner"
+    },
+    {
+     "title": "Pavel Kovařík: Nepiš jako robot, 19+1 writing patterns",
+     "url": "https://pavelkovarik.cz/nepis-jako-robot/",
+     "date": "undated; checked 2026-11-01",
+     "type": "practitioner"
+    }
+   ],
+   "disagreement": "",
+   "verification_note": "Practitioner guidance only. No Czech authorship test or frequency estimate for this pattern.",
+   "lanes": [],
+   "written_by": "Codex; examples made for this catalogue",
+   "timeline": false,
+   "examples": [
+    {
+     "type": "text-ours",
+     "caption": "Constructed illustration of the pattern; no observed author or event. English gloss: Clearly laid out. Understandably. Clearly. Without hesitation. Full stop.",
+     "made_by_us": true,
+     "generator": "Codex, constructed editorial illustration",
+     "date": "2026-11-01",
+     "text": "„Přehledně. Srozumitelně. Jasně. Bez váhání. Tečka.“",
+     "attribution": "Made for this catalogue; illustrative, not an observed quotation",
+     "licence": "CC0"
+    }
+   ]
+  },
+  {
+   "id": "cz-corporate-fog",
+   "name": "Nominal chains that hide a known actor",
+   "modality": "czech",
+   "theme": "style",
+   "era": "2026",
+   "first_seen": {
+    "date": "",
+    "label": "Editorial documentation checked in 2026; onset unknown"
+   },
+   "peak": "",
+   "peak_date": "",
+   "status_2026": "current",
+   "status_note": "Available as an editorial check in 2026; current-model frequency has not been measured.",
+   "fixed_by": "",
+   "end_date": "",
+   "what_it_looks_like": "Chains of verbal nouns ending in -ní or -tí obscure an action: „provádění zlepšování nastavení“. An impersonal sentence can also omit an actor the source identifies.",
+   "example": "Illustration made for this catalogue (CC0): „Dojde k zahájení provádění kontroly nastavení.“ English gloss: The commencement of carrying out a settings check will occur.",
+   "why": "The noun chain makes it harder to see the action and, where known, responsibility for it.",
+   "why_basis": "documented",
+   "evidence": "Practitioner sources criticise this padding. The GPT-4o reader study does not validate nominal or formal style alone as a tell.",
+   "strength": "anecdotal",
+   "false_positive_risk": "High in official and legal Czech. An impersonal form is appropriate when the actor is unknown or irrelevant. Formality alone is no cue.",
+   "avoid_or_fix": "„Začne kontrola nastavení.“ keeps the event without inventing an actor. Name the actor only if the source supplies one. Preserve legal distinctions and the difference between a process and a resulting state.",
+   "sources": [
+    {
+     "title": "Filip Dřímalka: Czech anti-slop guide (MIT)",
+     "url": "https://github.com/nowork-ai/anti-ai-slop-cz/blob/main/cela-verze.md",
+     "date": "undated; checked 2026-11-01",
+     "type": "practitioner"
+    },
+    {
+     "title": "Rajtík: Why Czech anti-slop needs context",
+     "url": "https://blog.rajtik.com/clanky/anti-slop-v-cestine-neni-blacklist",
+     "date": "2026-08-23; checked 2026-11-01",
+     "type": "practitioner"
+    },
+    {
+     "title": "Milička et al.: Learning to detect AI texts and learning the limits, sections 3.1 and 3.2.3",
+     "url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0333007",
+     "date": "2025; checked 2026-11-01",
+     "type": "peer-reviewed study"
+    }
+   ],
+   "disagreement": "",
+   "verification_note": "The -ní/-tí chain is an editorial example. Its model frequency is unmeasured; do not infer authorship from a passive or a nominal style.",
+   "lanes": [],
+   "written_by": "Codex; examples made for this catalogue",
+   "timeline": false,
+   "examples": [
+    {
+     "type": "text-ours",
+     "caption": "Constructed illustration of the pattern; no observed author or event. English gloss: The commencement of carrying out a settings check will occur.",
+     "made_by_us": true,
+     "generator": "Codex, constructed editorial illustration",
+     "date": "2026-11-01",
+     "text": "„Dojde k zahájení provádění kontroly nastavení.“",
+     "attribution": "Made for this catalogue; illustrative, not an observed quotation",
+     "licence": "CC0"
+    }
+   ]
+  },
+  {
+   "id": "cz-calqued-frames",
+   "name": "English-shaped figurative frames",
+   "modality": "czech",
+   "theme": "vocabulary",
+   "era": "2026",
+   "first_seen": {
+    "date": "",
+    "label": "Editorial documentation checked in 2026; onset unknown"
+   },
+   "peak": "",
+   "peak_date": "",
+   "status_2026": "current",
+   "status_note": "Available as an editorial check in 2026; current-model frequency has not been measured.",
+   "fixed_by": "",
+   "end_date": "",
+   "what_it_looks_like": "A routine invitation to „ponořit se do“ a topic, a figurative „na konci dne“, or „je svědectvím toho, že…“ can reproduce an English frame without adding meaning.",
+   "example": "Illustration made for this catalogue (CC0): „Pojďme se ponořit do plánování porad. Na konci dne je to svědectvím toho, že spolupráce vítězí.“ English gloss: Let us dive into meeting planning. At the end of the day, this testifies that cooperation wins.",
+   "why": "An English-shaped formula may be an easy default. That explanation is an inference, and the surrounding claim still needs examination.",
+   "why_basis": "inferred",
+   "evidence": "Dřímalka lists stock invitations and figurative English-shaped closers. The authorship link is anecdotal; no frequency of these Czech frames was measured.",
+   "strength": "anecdotal",
+   "false_positive_risk": "High. „Ponořit se do četby“ is natural Czech. A literal „na konci dne“ can state a time. A testimony frame is useful when it names evidence. Shared imagery alone cannot establish borrowing.",
+   "avoid_or_fix": "Name the subject directly. Use „nakonec“ for the intended figurative sense and explain what any claimed evidence actually supports.",
+   "sources": [
+    {
+     "title": "Filip Dřímalka: Czech anti-slop guide (MIT)",
+     "url": "https://github.com/nowork-ai/anti-ai-slop-cz/blob/main/cela-verze.md",
+     "date": "undated; checked 2026-11-01",
+     "type": "practitioner"
+    }
+   ],
+   "disagreement": "",
+   "verification_note": "Practitioner guidance only. No Czech authorship test or frequency estimate for this pattern.",
+   "lanes": [],
+   "written_by": "Codex; examples made for this catalogue",
+   "timeline": false,
+   "examples": [
+    {
+     "type": "text-ours",
+     "caption": "Constructed illustration of the pattern; no observed author or event. English gloss: Let us dive into meeting planning. At the end of the day, this testifies that cooperation wins.",
+     "made_by_us": true,
+     "generator": "Codex, constructed editorial illustration",
+     "date": "2026-11-01",
+     "text": "„Pojďme se ponořit do plánování porad. Na konci dne je to svědectvím toho, že spolupráce vítězí.“",
+     "attribution": "Made for this catalogue; illustrative, not an observed quotation",
+     "licence": "CC0"
+    }
+   ]
+  },
+  {
+   "id": "cz-contextual-anglicisms",
+   "name": "Business phrasing that needs a context check",
+   "modality": "czech",
+   "theme": "register",
+   "era": "2026",
+   "first_seen": {
+    "date": "",
+    "label": "Editorial documentation checked in 2026; onset unknown"
+   },
+   "peak": "",
+   "peak_date": "",
+   "status_2026": "current",
+   "status_note": "Available as an editorial check in 2026; current-model frequency has not been measured.",
+   "fixed_by": "",
+   "end_date": "",
+   "what_it_looks_like": "„Na denní bázi“ can pad a time expression; „adresovat problém“ can obscure the action. „Dělat smysl“ merits a language correction. „Dávat smysl“ is standard Czech.",
+   "example": "Illustration made for this catalogue (CC0): „Tuto potíž budeme adresovat na denní bázi.“ English gloss: We will address this difficulty on a daily basis.",
+   "why": "The phrasing leaves open whether the writer will identify the difficulty or work to resolve it.",
+   "why_basis": "documented",
+   "evidence": "These are editorial checks from the supplied Czech guidance. No study cited here measures their distribution in model output.",
+   "strength": "anecdotal",
+   "false_positive_risk": "High in business jargon. „Dává smysl“ and „má smysl“ are standard. „Je to o lidech“ can fit informal Czech. Keep a technical loanword when it is clearest for the audience.",
+   "avoid_or_fix": "Use „denně“ where it preserves the meaning. Choose „pojmenovat“, „zabývat se“ or „řešit“ according to the action intended. Never silently upgrade discussion into a promised solution.",
+   "sources": [
+    {
+     "title": "Rajtík: Why Czech anti-slop needs context",
+     "url": "https://blog.rajtik.com/clanky/anti-slop-v-cestine-neni-blacklist",
+     "date": "2026-08-23; checked 2026-11-01",
+     "type": "practitioner"
+    },
+    {
+     "title": "Filip Dřímalka: Czech anti-slop guide (MIT)",
+     "url": "https://github.com/nowork-ai/anti-ai-slop-cz/blob/main/cela-verze.md",
+     "date": "undated; checked 2026-11-01",
+     "type": "practitioner"
+    }
+   ],
+   "disagreement": "",
+   "verification_note": "Concision and register checks only. The older catalogue wrongly classified „dává smysl“ as a calque tell.",
+   "lanes": [],
+   "written_by": "Codex; examples made for this catalogue",
+   "timeline": false,
+   "examples": [
+    {
+     "type": "text-ours",
+     "caption": "Constructed illustration of the pattern; no observed author or event. English gloss: We will address this difficulty on a daily basis.",
+     "made_by_us": true,
+     "generator": "Codex, constructed editorial illustration",
+     "date": "2026-11-01",
+     "text": "„Tuto potíž budeme adresovat na denní bázi.“",
+     "attribution": "Made for this catalogue; illustrative, not an observed quotation",
+     "licence": "CC0"
+    }
+   ]
+  },
+  {
+   "id": "cz-quotes",
+   "name": "English quotation marks in Czech prose",
+   "modality": "czech",
+   "theme": "typography",
+   "era": "2026",
+   "first_seen": {
+    "date": "",
+    "label": "Editorial documentation checked in 2026; onset unknown"
+   },
+   "peak": "",
+   "peak_date": "",
+   "status_2026": "current",
+   "status_note": "Available as an editorial check in 2026; current-model frequency has not been measured.",
+   "fixed_by": "",
+   "end_date": "",
+   "what_it_looks_like": "English high-high quotation marks or straight quotes appear in Czech prose. The recommended outer Czech pair is „…“, with U+201E opening and U+201C closing.",
+   "example": "Illustration made for this catalogue (CC0): „Změna platí od pondělí.“ English gloss: The change applies from Monday. This example shows the recommended Czech quotation marks.",
+   "why": "Imported punctuation settings can survive generation or editing. This mechanism is inferred.",
+   "why_basis": "inferred",
+   "evidence": "IJP specifies the recommended Czech quote pair and nested alternatives. It does not measure quotation marks in model output.",
+   "strength": "anecdotal",
+   "false_positive_risk": "High. Keyboard defaults and publishing software affect human writing too. Code and verbatim material can require their original characters.",
+   "avoid_or_fix": "Set the output language and typography. Use „…“ for outer quotes and ‚…‘ for nested quotes. Preserve code literals.",
+   "sources": [
+    {
+     "title": "Czech Language Institute, IJP: quotation marks",
+     "url": "https://prirucka.ujc.cas.cz/?id=162",
+     "date": "living reference; checked 2026-11-01",
+     "type": "standard"
+    }
+   ],
+   "disagreement": "",
+   "verification_note": "The norm is verified; the association with AI remains anecdotal. The illustration intentionally uses correct typography.",
+   "lanes": [],
+   "written_by": "Codex; examples made for this catalogue",
+   "timeline": false,
+   "examples": [
+    {
+     "type": "text-ours",
+     "caption": "Correct Czech quotation marks, offered as a reference. English gloss: The change applies from Monday. This example shows the recommended Czech quotation marks.",
+     "made_by_us": true,
+     "generator": "Codex, constructed editorial illustration",
+     "date": "2026-11-01",
+     "text": "„Změna platí od pondělí.“",
+     "attribution": "Made for this catalogue; illustrative, not an observed quotation",
+     "licence": "CC0"
+    }
+   ]
+  },
+  {
+   "id": "cz-dashes",
+   "name": "Dash habits imported into Czech",
+   "modality": "czech",
+   "theme": "typography",
+   "era": "2026",
+   "first_seen": {
+    "date": "",
+    "label": "Editorial documentation checked in 2026; onset unknown"
+   },
+   "peak": "",
+   "peak_date": "",
+   "status_2026": "current",
+   "status_note": "Available as an editorial check in 2026; current-model frequency has not been measured.",
+   "fixed_by": "",
+   "end_date": "",
+   "what_it_looks_like": "A hyphen used for a pause or repeated dramatic dash interruptions can suggest an imported template. Dash length alone does not establish an error.",
+   "example": "Illustration made for this catalogue (CC0): „Podklady jsou hotové – zbývá je odeslat.“ Range: „2025–2026“. English gloss: The documents are ready; they still need to be sent. The year range has no surrounding spaces.",
+   "why": "Repeated interruptions can be a stylistic default. An English influence is possible, although a glyph cannot establish its origin.",
+   "why_basis": "inferred",
+   "evidence": "IJP distinguishes hyphens from dashes and permits consistently used long dashes. It specifies spacing for punctuation and single-word ranges.",
+   "strength": "anecdotal",
+   "false_positive_risk": "High. Czech permits an em dash used consistently. A document may use en dashes for ranges and long dashes for other functions. Density needs a reading of the passage.",
+   "avoid_or_fix": "This section uses spaced en dashes for pauses and unspaced en dashes for single-word ranges. Use spaces around a range dash when either endpoint has several words. Never treat a long dash as proof of AI.",
+   "sources": [
+    {
+     "title": "Czech Language Institute, IJP: dashes",
+     "url": "https://prirucka.ujc.cas.cz/?id=165",
+     "date": "living reference; checked 2026-11-01",
+     "type": "standard"
+    }
+   ],
+   "disagreement": "",
+   "verification_note": "Verified typography; no validated Czech dash-density cutoff. The English heuristic has not been transferred into a Czech detector.",
+   "lanes": [],
+   "written_by": "Codex; examples made for this catalogue",
+   "timeline": false,
+   "examples": [
+    {
+     "type": "text-ours",
+     "caption": "Correct pause and range spacing, offered as a reference. English gloss: The documents are ready; they still need to be sent. The year range has no surrounding spaces.",
+     "made_by_us": true,
+     "generator": "Codex, constructed editorial illustration",
+     "date": "2026-11-01",
+     "text": "„Podklady jsou hotové – zbývá je odeslat.“ Range: „2025–2026“.",
+     "attribution": "Made for this catalogue; illustrative, not an observed quotation",
+     "licence": "CC0"
+    }
+   ]
+  },
+  {
+   "id": "cz-capitalisation",
+   "name": "English heading capitals in Czech",
+   "modality": "czech",
+   "theme": "typography",
+   "era": "2026",
+   "first_seen": {
+    "date": "",
+    "label": "Editorial documentation checked in 2026; onset unknown"
+   },
+   "peak": "",
+   "peak_date": "",
+   "status_2026": "current",
+   "status_note": "Available as an editorial check in 2026; current-model frequency has not been measured.",
+   "fixed_by": "",
+   "end_date": "",
+   "what_it_looks_like": "An ordinary Czech heading capitalises every main word, or a generic term acquires capitals as if it were a proper name.",
+   "example": "Illustration made for this catalogue (CC0): Heading as drafted: „Jak Funguje Správa Hesel“. Edited: „Jak funguje správa hesel“. English gloss: How password management works. Only the opening word needs a capital in this heading.",
+   "why": "English heading conventions may carry over into Czech. This proposed mechanism is unmeasured.",
+   "why_basis": "inferred",
+   "evidence": "IJP distinguishes common expressions from proper names. It supports the capitalisation correction, without a model-frequency claim.",
+   "strength": "anecdotal",
+   "false_positive_risk": "High. Branding and imported templates can produce the same result in human work. Proper names and official spellings retain their capitals.",
+   "avoid_or_fix": "Use Czech sentence capitalisation in an ordinary heading and check each actual proper name. Keep the distinction between generic „ministerstvo“ and the name „Ministerstvo financí“.",
+   "sources": [
+    {
+     "title": "Czech Language Institute, IJP: capital letters",
+     "url": "https://prirucka.ujc.cas.cz/?id=180",
+     "date": "living reference; checked 2026-11-01",
+     "type": "standard"
+    }
+   ],
+   "disagreement": "",
+   "verification_note": "A language norm is not evidence that a particular writer used AI.",
+   "lanes": [],
+   "written_by": "Codex; examples made for this catalogue",
+   "timeline": false,
+   "examples": [
+    {
+     "type": "text-ours",
+     "caption": "Constructed illustration of the pattern; no observed author or event. English gloss: How password management works. Only the opening word needs a capital in this heading.",
+     "made_by_us": true,
+     "generator": "Codex, constructed editorial illustration",
+     "date": "2026-11-01",
+     "text": "Heading as drafted: „Jak Funguje Správa Hesel“. Edited: „Jak funguje správa hesel“.",
+     "attribution": "Made for this catalogue; illustrative, not an observed quotation",
+     "licence": "CC0"
+    }
+   ]
+  },
+  {
+   "id": "cz-number-typography",
+   "name": "Number spacing depends on Czech grammar",
+   "modality": "czech",
+   "theme": "typography",
+   "era": "2026",
+   "first_seen": {
+    "date": "",
+    "label": "Editorial documentation checked in 2026; onset unknown"
+   },
+   "peak": "",
+   "peak_date": "",
+   "status_2026": "current",
+   "status_note": "Available as an editorial check in 2026; current-model frequency has not been measured.",
+   "fixed_by": "",
+   "end_date": "",
+   "what_it_looks_like": "An English decimal point or thousands comma enters running Czech prose. A percentage is joined to the number even when it functions as a noun.",
+   "example": "Illustration made for this catalogue (CC0): „Zbývá 40 % objemu.“ Adjectival use: „40% roztok“. Other Czech forms: „3,5“ and „10 000“. English gloss: Forty percent of the volume remains. A forty-percent solution. Czech uses a decimal comma and a space to group thousands.",
+   "why": "Number formatting can carry over from another locale. The percentage distinction also depends on grammatical function.",
+   "why_basis": "inferred",
+   "evidence": "IJP separates numeric values from symbols and joins them in adjectival expressions. Its published example „20%“ illustrates the adjective rule; the catalogue applies it to 40.",
+   "strength": "anecdotal",
+   "false_positive_risk": "High. „40% roztok“ is correct. Four-digit quantities can sometimes remain ungrouped. Years and identifiers are not grouped; code and datasets may use other conventions.",
+   "avoid_or_fix": "Read the grammar before changing spacing: „40 %“ means forty percent, while „40% roztok“ means a forty-percent solution. Use non-breaking spaces for numeric groups and between a value and its unit at publication.",
+   "sources": [
+    {
+     "title": "Czech Language Institute, IJP: symbols and numbers",
+     "url": "https://prirucka.ujc.cas.cz/?id=785",
+     "date": "living reference; checked 2026-11-01",
+     "type": "standard"
+    }
+   ],
+   "disagreement": "",
+   "verification_note": "The norm is verified. These are formatting checks, with no measured authorship signal. Example values are illustrative, not research results.",
+   "lanes": [],
+   "written_by": "Codex; examples made for this catalogue",
+   "timeline": false,
+   "examples": [
+    {
+     "type": "text-ours",
+     "caption": "Correct noun and adjective percentage forms, with illustrative values. English gloss: Forty percent of the volume remains. A forty-percent solution. Czech uses a decimal comma and a space to group thousands.",
+     "made_by_us": true,
+     "generator": "Codex, constructed editorial illustration",
+     "date": "2026-11-01",
+     "text": "„Zbývá 40 % objemu.“ Adjectival use: „40% roztok“. Other Czech forms: „3,5“ and „10 000“.",
+     "attribution": "Made for this catalogue; illustrative, not an observed quotation",
+     "licence": "CC0"
+    }
+   ]
+  },
+  {
+   "id": "cz-stock-openers",
+   "name": "Stock openers before the actual subject",
+   "modality": "czech",
+   "theme": "openers",
+   "era": "2026",
+   "first_seen": {
+    "date": "",
+    "label": "Editorial documentation checked in 2026; onset unknown"
+   },
+   "peak": "",
+   "peak_date": "",
+   "status_2026": "current",
+   "status_note": "Available as an editorial check in 2026; current-model frequency has not been measured.",
+   "fixed_by": "",
+   "end_date": "",
+   "what_it_looks_like": "„V dnešní době…“ or „Je důležité si uvědomit…“ opens a paragraph without establishing a time contrast or stating the point.",
+   "example": "Illustration made for this catalogue (CC0): „V dnešní době se požadavky neustále mění. Je důležité si uvědomit, že musíme reagovat.“ English gloss: Nowadays requirements keep changing. It is important to realise that we must respond.",
+   "why": "The frame can postpone a claim the writer has yet to make.",
+   "why_basis": "documented",
+   "evidence": "Dřímalka and Kovařík identify generic openings as a writing problem. Their prevalence in Czech model text is unmeasured.",
+   "strength": "anecdotal",
+   "false_positive_risk": "High in school essays and human business writing. A genuine contrast with an earlier period can need „v dnešní době“.",
+   "avoid_or_fix": "Start with the specific change when the source supplies it. Retain an opener that establishes a relevant comparison. Delete an empty introduction without inventing an event.",
+   "sources": [
+    {
+     "title": "Filip Dřímalka: Czech anti-slop guide (MIT)",
+     "url": "https://github.com/nowork-ai/anti-ai-slop-cz/blob/main/cela-verze.md",
+     "date": "undated; checked 2026-11-01",
+     "type": "practitioner"
+    },
+    {
+     "title": "Pavel Kovařík: Nepiš jako robot, 19+1 writing patterns",
+     "url": "https://pavelkovarik.cz/nepis-jako-robot/",
+     "date": "undated; checked 2026-11-01",
+     "type": "practitioner"
+    }
+   ],
+   "disagreement": "",
+   "verification_note": "Practitioner guidance only. No Czech authorship test or frequency estimate for this pattern.",
+   "lanes": [],
+   "written_by": "Codex; examples made for this catalogue",
+   "timeline": false,
+   "examples": [
+    {
+     "type": "text-ours",
+     "caption": "Constructed illustration of the pattern; no observed author or event. English gloss: Nowadays requirements keep changing. It is important to realise that we must respond.",
+     "made_by_us": true,
+     "generator": "Codex, constructed editorial illustration",
+     "date": "2026-11-01",
+     "text": "„V dnešní době se požadavky neustále mění. Je důležité si uvědomit, že musíme reagovat.“",
+     "attribution": "Made for this catalogue; illustrative, not an observed quotation",
+     "licence": "CC0"
+    }
+   ]
+  },
+  {
+   "id": "cz-empty-closers",
+   "name": "Recaps and engagement questions without a purpose",
+   "modality": "czech",
+   "theme": "structure",
+   "era": "2026",
+   "first_seen": {
+    "date": "",
+    "label": "Editorial documentation checked in 2026; onset unknown"
+   },
+   "peak": "",
+   "peak_date": "",
+   "status_2026": "current",
+   "status_note": "Available as an editorial check in 2026; current-model frequency has not been measured.",
+   "fixed_by": "",
+   "end_date": "",
+   "what_it_looks_like": "„Sečteno a podtrženo…“ repeats the same claim, or „A co vy?“ closes an explanation without inviting a useful answer.",
+   "example": "Illustration made for this catalogue (CC0): „Celkově vzato změna přináší nové možnosti. A jak to vidíte vy?“ English gloss: Overall, the change brings new possibilities. And how do you see it?",
+   "why": "A reusable ending can remain after the text has delivered its last new point.",
+   "why_basis": "documented",
+   "evidence": "Dřímalka discusses stock conclusions and engagement endings. The blog argues for context; its claimed technical-text sample has not been independently audited here.",
+   "strength": "anecdotal",
+   "false_positive_risk": "High. A long report or a teaching handout can need a summary. A discussion can need a reader question. Conventional conclusions are also common in human writing.",
+   "avoid_or_fix": "End on the last new point, or keep a summary that helps the reader use a long document. Ask a closing question only when its answer has a purpose.",
+   "sources": [
+    {
+     "title": "Filip Dřímalka: Czech anti-slop guide (MIT)",
+     "url": "https://github.com/nowork-ai/anti-ai-slop-cz/blob/main/cela-verze.md",
+     "date": "undated; checked 2026-11-01",
+     "type": "practitioner"
+    },
+    {
+     "title": "Rajtík: Why Czech anti-slop needs context",
+     "url": "https://blog.rajtik.com/clanky/anti-slop-v-cestine-neni-blacklist",
+     "date": "2026-08-23; checked 2026-11-01",
+     "type": "practitioner"
+    }
+   ],
+   "disagreement": "",
+   "verification_note": "No figure from the blog sample is used as empirical evidence. This entry supplies no measured recap-frequency or authorship claim.",
+   "lanes": [],
+   "written_by": "Codex; examples made for this catalogue",
+   "timeline": false,
+   "examples": [
+    {
+     "type": "text-ours",
+     "caption": "Constructed illustration of the pattern; no observed author or event. English gloss: Overall, the change brings new possibilities. And how do you see it?",
+     "made_by_us": true,
+     "generator": "Codex, constructed editorial illustration",
+     "date": "2026-11-01",
+     "text": "„Celkově vzato změna přináší nové možnosti. A jak to vidíte vy?“",
+     "attribution": "Made for this catalogue; illustrative, not an observed quotation",
+     "licence": "CC0"
+    }
+   ]
+  },
+  {
+   "id": "cz-address-mixing",
+   "name": "Switching address for the same reader",
+   "modality": "czech",
+   "theme": "register",
+   "era": "2026",
+   "first_seen": {
+    "date": "",
+    "label": "Editorial documentation checked in 2026; onset unknown"
+   },
+   "peak": "",
+   "peak_date": "",
+   "status_2026": "current",
+   "status_note": "Available as an editorial check in 2026; current-model frequency has not been measured.",
+   "fixed_by": "",
+   "end_date": "",
+   "what_it_looks_like": "A passage switches between formal or plural vykání and singular informal tykání while still addressing the same person.",
+   "example": "Illustration made for this catalogue (CC0): „Otevřete přílohu a zkontroluj datum.“ English gloss: Open the attachment [formal or plural] and check the date [singular informal].",
+   "why": "Combined templates or an unstable audience assumption can produce inconsistent address. This is an inferred explanation.",
+   "why_basis": "inferred",
+   "evidence": "Vitrehac recommends preserving the chosen address. IJP documents courtesy capitals in letters, including letters to several recipients or an organisation.",
+   "strength": "anecdotal",
+   "false_positive_risk": "High. Human editing can combine incompatible drafts. A quotation or a change of audience can explain a switch. Either consistent address form is legitimate.",
+   "avoid_or_fix": "Choose one address form for the same audience. In official correspondence keep „Vy“ and „Váš“ as courtesy capitals even for multiple recipients. Private mail and web copy follow their chosen register.",
+   "sources": [
+    {
+     "title": "Vitrehac: Czech email register (MIT)",
+     "url": "https://github.com/Vitrehac/anti-ai-slop/blob/master/registry/registers/email-cs.md",
+     "date": "undated; checked 2026-11-01",
+     "type": "practitioner"
+    },
+    {
+     "title": "Czech Language Institute, IJP: salutations and courtesy pronouns",
+     "url": "https://prirucka.ujc.cas.cz/?id=850",
+     "date": "living reference; checked 2026-11-01",
+     "type": "standard"
+    }
+   ],
+   "disagreement": "",
+   "verification_note": "The consistency check and letter convention are documented; the model frequency of address switching is unmeasured.",
+   "lanes": [],
+   "written_by": "Codex; examples made for this catalogue",
+   "timeline": false,
+   "examples": [
+    {
+     "type": "text-ours",
+     "caption": "Constructed illustration of the pattern; no observed author or event. English gloss: Open the attachment [formal or plural] and check the date [singular informal].",
+     "made_by_us": true,
+     "generator": "Codex, constructed editorial illustration",
+     "date": "2026-11-01",
+     "text": "„Otevřete přílohu a zkontroluj datum.“",
+     "attribution": "Made for this catalogue; illustrative, not an observed quotation",
+     "licence": "CC0"
+    }
+   ]
+  },
+  {
+   "id": "cz-template-courtesy",
+   "name": "Courtesy that replaces the purpose of a message",
+   "modality": "czech",
+   "theme": "social media and email",
+   "era": "2026",
+   "first_seen": {
+    "date": "",
+    "label": "Editorial documentation checked in 2026; onset unknown"
+   },
+   "peak": "",
+   "peak_date": "",
+   "status_2026": "current",
+   "status_note": "Available as an editorial check in 2026; current-model frequency has not been measured.",
+   "fixed_by": "",
+   "end_date": "",
+   "what_it_looks_like": "A short Czech request is buried under ceremonial politeness or generic praise. The reader still cannot tell what the writer wants or why they are writing.",
+   "example": "Illustration made for this catalogue (CC0): „Bylo by mi ctí, kdybyste mi laskavě sdělili, zda by bylo možné zaslat ceník.“ English gloss: I would be honoured if you would kindly tell me whether it might be possible to send a price list.",
+   "why": "Stacked courtesy can conceal a simple request and distance the message from its audience.",
+   "why_basis": "documented",
+   "evidence": "Vitrehac discusses Czech email templates and excessive cushioning. Dřímalka also lists generic email phrasing. These are editorial observations.",
+   "strength": "anecdotal",
+   "false_positive_risk": "High in diplomatic and official correspondence. A conventional thanks or a necessary courtesy remains appropriate. Formality alone does not identify AI.",
+   "avoid_or_fix": "State the request in the audience’s register. „Můžete mi prosím poslat ceník?“ is enough for this illustration. Keep the courtesy that the relationship needs.",
+   "sources": [
+    {
+     "title": "Vitrehac: Czech email register (MIT)",
+     "url": "https://github.com/Vitrehac/anti-ai-slop/blob/master/registry/registers/email-cs.md",
+     "date": "undated; checked 2026-11-01",
+     "type": "practitioner"
+    },
+    {
+     "title": "Filip Dřímalka: Czech anti-slop guide (MIT)",
+     "url": "https://github.com/nowork-ai/anti-ai-slop-cz/blob/main/cela-verze.md",
+     "date": "undated; checked 2026-11-01",
+     "type": "practitioner"
+    }
+   ],
+   "disagreement": "",
+   "verification_note": "Practitioner guidance only. No Czech authorship test or frequency estimate for this pattern.",
+   "lanes": [],
+   "written_by": "Codex; examples made for this catalogue",
+   "timeline": false,
+   "examples": [
+    {
+     "type": "text-ours",
+     "caption": "Constructed illustration of the pattern; no observed author or event. English gloss: I would be honoured if you would kindly tell me whether it might be possible to send a price list.",
+     "made_by_us": true,
+     "generator": "Codex, constructed editorial illustration",
+     "date": "2026-11-01",
+     "text": "„Bylo by mi ctí, kdybyste mi laskavě sdělili, zda by bylo možné zaslat ceník.“",
+     "attribution": "Made for this catalogue; illustrative, not an observed quotation",
+     "licence": "CC0"
+    }
+   ]
+  },
+  {
+   "id": "cz-assistant-residue",
+   "name": "Assistant preambles left in Czech copy",
+   "modality": "czech",
+   "theme": "leftovers from the chat window",
+   "era": "2026",
+   "first_seen": {
+    "date": "",
+    "label": "Editorial documentation checked in 2026; onset unknown"
+   },
+   "peak": "",
+   "peak_date": "",
+   "status_2026": "current",
+   "status_note": "Available as an editorial check in 2026; current-model frequency has not been measured.",
+   "fixed_by": "",
+   "end_date": "",
+   "what_it_looks_like": "„Skvělá otázka!“ or a note about being a language model appears before text meant to stand on its own.",
+   "example": "Illustration made for this catalogue (CC0): „Skvělá otázka! Tady je návrh oznámení pro nájemníky: V úterý nepoteče voda.“ English gloss: Great question! Here is a draft announcement for tenants: There will be no water on Tuesday.",
+   "why": "Text copied from a chat can retain the assistant’s introduction.",
+   "why_basis": "inferred",
+   "evidence": "Dřímalka's guide lists assistant phrases such as „Skvělá otázka!“ and „Jako jazykový model…“. The ÚČNK study of AI-generated Czech (AI Koditex) notes meta-commentary before the generated text. Neither gives a frequency for published Czech copy.",
+   "strength": "anecdotal",
+   "false_positive_risk": "Context matters. In an actual chat the preamble can belong. A person can also write these phrases, and a quotation can discuss a model.",
+   "avoid_or_fix": "Remove the chat preamble from standalone copy. Verify the notice itself against its source; the date in this illustration is fictional.",
+   "sources": [
+    {
+     "title": "Filip Dřímalka: Czech anti-slop guide (MIT)",
+     "url": "https://github.com/nowork-ai/anti-ai-slop-cz/blob/main/cela-verze.md",
+     "date": "undated; checked 2026-11-01",
+     "type": "practitioner"
+    },
+    {
+     "title": "Milička, Marklová, Cvrček: AI Brown and AI Koditex (arXiv 2509.22996)",
+     "url": "https://arxiv.org/abs/2509.22996",
+     "date": "2025",
+     "type": "preprint"
+    }
+   ],
+   "disagreement": "",
+   "verification_note": "Practitioner guidance only. No Czech authorship test or frequency estimate for this pattern.",
+   "lanes": [],
+   "written_by": "Codex; examples made for this catalogue",
+   "timeline": false,
+   "examples": [
+    {
+     "type": "text-ours",
+     "caption": "Constructed illustration of the pattern; no observed author or event. English gloss: Certainly! Here is a draft announcement for tenants: There will be no water on Tuesday.",
+     "made_by_us": true,
+     "generator": "Codex, constructed editorial illustration",
+     "date": "2026-11-01",
+     "text": "„Určitě! Tady je návrh oznámení pro nájemníky: V úterý nepoteče voda.“",
+     "attribution": "Made for this catalogue; illustrative, not an observed quotation",
+     "licence": "CC0"
+    }
+   ]
+  },
+  {
+   "id": "cz-importance-words",
+   "name": "Importance words without a stated consequence",
+   "modality": "czech",
+   "theme": "vocabulary",
+   "era": "2026",
+   "first_seen": {
+    "date": "",
+    "label": "Editorial documentation checked in 2026; onset unknown"
+   },
+   "peak": "",
+   "peak_date": "",
+   "status_2026": "current",
+   "status_note": "Available as an editorial check in 2026; current-model frequency has not been measured.",
+   "fixed_by": "",
+   "end_date": "",
+   "what_it_looks_like": "„Klíčový“ and „zásadní“ repeatedly declare importance while leaving the consequence unstated. Inflected forms need the same reading.",
+   "example": "Illustration made for this catalogue (CC0): „Tato úprava je zásadní a hraje klíčovou roli v dalším rozvoji.“ English gloss: This adjustment is fundamental and plays a key role in further development.",
+   "why": "The importance claim can substitute for an explanation of what depends on the adjustment.",
+   "why_basis": "documented",
+   "evidence": "Dřímalka lists importance words; the blog explains why familiar Czech phrases need context. No model-specific Czech lemma frequencies were verified.",
+   "strength": "anecdotal",
+   "false_positive_risk": "High in official reports and technical work. „Klíčový“ can precisely describe a dependency. „Efektivní“, „komplexní“ and technical „robustní“ are ordinary words when their meaning is clear.",
+   "avoid_or_fix": "State what the change enables or prevents using the source. Keep an importance word when that dependence is established. Search stems such as klíčov to locate forms, then read each use.",
+   "sources": [
+    {
+     "title": "Filip Dřímalka: Czech anti-slop guide (MIT)",
+     "url": "https://github.com/nowork-ai/anti-ai-slop-cz/blob/main/cela-verze.md",
+     "date": "undated; checked 2026-11-01",
+     "type": "practitioner"
+    },
+    {
+     "title": "Rajtík: Why Czech anti-slop needs context",
+     "url": "https://blog.rajtik.com/clanky/anti-slop-v-cestine-neni-blacklist",
+     "date": "2026-08-23; checked 2026-11-01",
+     "type": "practitioner"
+    }
+   ],
+   "disagreement": "",
+   "verification_note": "Anecdotal editorial cue. Three vague adjectives are one vocabulary-category concern, not three independent authorship signals.",
+   "lanes": [],
+   "written_by": "Codex; examples made for this catalogue",
+   "timeline": false,
+   "examples": [
+    {
+     "type": "text-ours",
+     "caption": "Constructed illustration of the pattern; no observed author or event. English gloss: This adjustment is fundamental and plays a key role in further development.",
+     "made_by_us": true,
+     "generator": "Codex, constructed editorial illustration",
+     "date": "2026-11-01",
+     "text": "„Tato úprava je zásadní a hraje klíčovou roli v dalším rozvoji.“",
+     "attribution": "Made for this catalogue; illustrative, not an observed quotation",
+     "licence": "CC0"
+    }
+   ]
   }
  ]
 }
