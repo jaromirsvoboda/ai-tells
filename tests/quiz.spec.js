@@ -1,9 +1,24 @@
 const { test, expect, load, assertNoOverflow } = require('./helpers');
+const { readFileSync } = require('node:fs');
+const { join } = require('node:path');
+const { runInNewContext } = require('node:vm');
 
 const humanName = /^(human|člověk|lidsk[ýéá])\b/i;
 // JS \b is ASCII-only: it does not recognise the boundary after Czech í/ě.
 const nextName = /^(next|continue|finish|další|pokračovat|dokončit)(?:\s|:|$)/i;
 const startName = /^(start|play|begin|začít|spustit|hrát)(?:\s|:|$)/i;
+const endName = /^(End round and see results|Ukončit kolo a ukázat výsledky)$/;
+
+test('quiz: exact binomial upper-tail probabilities', () => {
+  // Exercise the production helper without adding a browser API just for tests.
+  const source = readFileSync(join(__dirname, '../quiz/quiz.js'), 'utf8');
+  const helper = source.match(/  function binomialTail\(k, n\) \{[\s\S]*?\n  \}/);
+  expect(helper, 'The exact probability helper must exist').not.toBeNull();
+  const binomialTail = runInNewContext(`(${helper[0]})`);
+  for (const [k, n, expected] of [[5, 6, 7 / 64], [6, 6, 1 / 64], [3, 6, 42 / 64], [8, 12, 794 / 4096], [0, 6, 1], [1, 1, 0.5]]) {
+    expect(binomialTail(k, n), `P(X >= ${k}) for ${n} fair coin flips`).toBeCloseTo(expected, 12);
+  }
+});
 
 async function quizItems(request, base = '/quiz/') {
   const response = await request.get(`${base}items.json`);
@@ -45,6 +60,13 @@ function isolatedFixture(document, item) {
   const set = document.sets.find(s => s.id === item.set);
   return { ...document, items: [item], sets: [{ ...set, members: [item.id] }],
     rounds: [{ ...document.rounds.find(r => r.id === 'mixed'), cats: [set.cat], lang: null, n: 1 }] };
+}
+
+function sameOriginFixture(document, count, origin) {
+  const sets = document.sets.slice(0, count).map(set => ({ ...set, members: [set.members.find(id =>
+    encodedAnswer(document.items.find(item => item.id === id)).answer === origin)] }));
+  return { ...document, sets, items: document.items.filter(item => sets.some(set => set.members.includes(item.id))),
+    rounds: [{ ...document.rounds.find(r => r.id === 'mixed'), n: count }] };
 }
 
 async function keyboardActivate(page, button) {
@@ -216,6 +238,140 @@ test('quiz: complete round with keyboard only', async ({ page, request }) => {
   const { items } = await quizItems(request, base);
   await load(page, base);
   await round(page, items.length);
+});
+
+for (const [count, pending] of [[1, false], [3, true]]) {
+test(`quiz: end early after ${count} answers${pending ? ' with the next item unanswered' : ' from the reveal'}`, async ({ page, request }) => {
+  const { document } = await quizItems(request, base);
+  await page.route(`**${base}items.json`, route => route.fulfill({ json: sameOriginFixture(document, 6, 'ai') }));
+  let dialogs = 0;
+  page.on('dialog', async dialog => { dialogs++; await dialog.dismiss(); });
+  await load(page, base);
+  await start(page);
+  const end = page.getByRole('button', { name: endName });
+  await expect(end).toBeVisible();
+  await expect(end).toBeDisabled();
+  await expect(page.getByRole('radio')).toHaveCount(0);
+  await expect(page.locator('#ask')).not.toContainText(/confidence|jistot|How sure|Jak moc/i);
+  for (let i = 0; i < count; i++) {
+    await page.keyboard.press('h');
+    await expect(page.locator('#rev section')).toBeVisible();
+    await expect(end).toBeEnabled();
+    if (i < count - 1 || pending) await keyboardActivate(page, page.getByRole('button', { name: nextName }));
+  }
+  await expect(end).toBeVisible();
+  await expect(end).toBeEnabled();
+  await keyboardActivate(page, end);
+  await expect(page.getByRole('heading', { name: /^(Your result|Váš výsledek)$/ })).toBeVisible();
+  await expect(page.locator('.score')).toHaveText(`0 / ${count}`);
+  for (const name of (base.includes('/cs/') ? ['Podle původu', 'Podle kategorie', 'Napodobeniny podle modelu', 'Podle doby vzniku']
+    : ['By what it was', 'By category', 'AI imitations by model', 'By era of the item'])) {
+    await expect(page.getByRole('heading', { name, exact: true })).toBeVisible();
+  }
+  const review = page.locator('table').last();
+  await expect(review.locator('tbody tr')).toHaveCount(count);
+  await expect(review).not.toContainText(/Fairly sure|Certain|Guessing|Docela jistě|Určitě|Hádám/);
+  await expect(page.getByRole('heading', { name: /^(By your confidence|Podle vaší jistoty)$/ })).toHaveCount(0);
+  await expect(page.getByRole('radio')).toHaveCount(0);
+  await assertNoOverflow(page);
+  await page.keyboard.press('h');
+  await page.keyboard.press('a');
+  const history = await page.evaluate(lang => JSON.parse(localStorage.getItem(`human-or-ai/v2/${lang}`)).history, base.includes('/cs/') ? 'cs' : 'en');
+  expect(history).toHaveLength(1);
+  expect(history[0]).toMatchObject({ ok: 0, n: count });
+  expect(history[0].answers).toHaveLength(count);
+  for (const answer of history[0].answers) expect(answer).not.toHaveProperty('conf');
+  expect(dialogs).toBe(0);
+  await keyboardActivate(page, page.getByRole('button', { name: /^(Choose another round|Vybrat jiné kolo)$/ }));
+  await expect(page.locator('table tbody tr').last()).toContainText(`0 / ${count}`);
+});
+}
+
+test('quiz: early finish with only known items keeps the review and an unscored history', async ({ page, request }) => {
+  const { document } = await quizItems(request, base);
+  await page.route(`**${base}items.json`, route => route.fulfill({ json: sameOriginFixture(document, 6, 'human') }));
+  await load(page, `${base}#play-mixed`);
+  await expect(page.locator('#ask')).toBeVisible();
+  await page.keyboard.press('k');
+  await expect(page.getByRole('checkbox')).toBeChecked();
+  await page.keyboard.press('h');
+  await keyboardActivate(page, page.getByRole('button', { name: endName }));
+  await expect(page.locator('.score')).toHaveText('0 / 0');
+  await expect(page.locator('main')).toContainText(base.includes('/cs/') ? 'Všechny položky jste znali, takže se nic nepočítalo.' : 'You knew every item, so nothing was scored.');
+  await expect(page.locator('table tbody tr')).toHaveCount(1);
+  const history = await page.evaluate(lang => JSON.parse(localStorage.getItem(`human-or-ai/v2/${lang}`)).history, base.includes('/cs/') ? 'cs' : 'en');
+  expect(history[0]).toMatchObject({ ok: 0, n: 0, answers: [{ known: true }] });
+});
+
+test('quiz: older history remains readable and its confidence field is ignored', async ({ page, request }) => {
+  const { document } = await quizItems(request, base);
+  const fixture = sameOriginFixture(document, 6, 'ai');
+  const lang = base.includes('/cs/') ? 'cs' : 'en';
+  await page.addInitScript(({ lang, id }) => {
+    localStorage.setItem(`human-or-ai/v2/${lang}`, JSON.stringify({ history: [{ title: 'Earlier round', date: '2026-10-31',
+      ok: 1, n: 1, answers: [{ id, ok: true, conf: 'sure', known: false }] }] }));
+  }, { lang, id: fixture.items[0].id });
+  await page.route(`**${base}items.json`, route => route.fulfill({ json: fixture }));
+  await load(page, base);
+  await expect(page.locator('table tbody tr')).toContainText('Earlier round');
+  await start(page);
+  await page.keyboard.press('h');
+  await keyboardActivate(page, page.getByRole('button', { name: endName }));
+  await expect(page.locator('main')).toContainText(lang === 'cs' ? '1 správně z 2 (50 %)' : '1 right out of 2 (50 %)');
+});
+
+test('quiz: exact guessing message for each score, including a perfect small round', async ({ page, request }) => {
+  const { document } = await quizItems(request, base);
+  const cs = base.includes('/cs/');
+  for (const [k, n, oddsEN, oddsCS] of [[5, 6, 'about 1 in 9 (11 %)', 'zhruba 1 z 9 (11 %)'],
+    [6, 6, 'about 1 in 64 (1.6 %)', 'zhruba 1 z 64 (1,6 %)'], [3, 6, '66 %', '66 %'],
+    [8, 12, 'about 1 in 5 (19 %)', 'zhruba 1 z 5 (19 %)']]) {
+    const pattern = `**${base}items.json`;
+    await page.route(pattern, route => route.fulfill({ json: sameOriginFixture(document, n, 'human') }));
+    await load(page, `${base}?score=${k}-${n}#play-mixed`);
+    for (let i = 0; i < n; i++) {
+      await expect(page.getByRole('button', { name: humanName })).toBeEnabled();
+      await page.keyboard.press(i < k ? 'h' : 'a');
+      await page.getByRole('button', { name: nextName }).click();
+    }
+    await expect(page.locator('.score')).toHaveText(`${k} / ${n}`);
+    const message = cs ? `${k} a víc ${n === 6 ? 'ze' : 'z'} ${n} čistým hádáním: ${oddsCS}. Více položek dá přesnější představu.`
+      : `${k} or more of ${n} by pure guessing: ${oddsEN}. More items give a clearer picture.`;
+    await expect(page.locator('.score + p')).toHaveText(message);
+    await page.unroute(pattern);
+    // Each score is an independent round; seen originals must not affect it.
+    await page.evaluate(() => localStorage.clear());
+  }
+});
+
+test('quiz: image menu and draw follow available sets up to 12', async ({ page, request }) => {
+  const { document } = await quizItems(request, base);
+  const imageRound = document.rounds.find(r => r.cats.length === 1 && r.cats[0] === 'images');
+  const sourceSet = document.sets.find(s => s.cat === 'images');
+  const sourceItems = document.items.filter(item => item.set === sourceSet.id);
+  for (const available of [2, 8, 14]) {
+    const sets = [], items = [], n = Math.min(available, 12);
+    for (let i = 0; i < available; i++) {
+      const id = `fixture-set-${i}`;
+      const members = sourceItems.map(item => ({ ...item, id: `${item.id}-${i}`, set: id }));
+      items.push(...members);
+      sets.push({ ...sourceSet, id, members: members.map(item => item.id) });
+    }
+    const pattern = `**${base}items.json`;
+    await page.route(pattern, route => route.fulfill({ json: { ...document, sets, items, rounds: [imageRound] } }));
+    await load(page, `${base}?available=${available}`);
+    const card = page.getByRole('button').filter({ has: page.locator('b', { hasText: imageRound.title }) });
+    await expect(card.locator('.tag')).toContainText(`${n} ${base.includes('/cs/') ? 'položek' : 'items'}`);
+    await keyboardActivate(page, card);
+    for (let i = 0; i < n; i++) {
+      await expect(page.locator('.progress')).toContainText(base.includes('/cs/') ? `Položka ${i + 1} z ${n}` : `Item ${i + 1} of ${n}`);
+      await expect(page.getByRole('button', { name: humanName })).toBeEnabled();
+      await page.keyboard.press('h');
+      await page.getByRole('button', { name: nextName }).click();
+    }
+    await expect(page.locator('table').last().locator('tbody tr')).toHaveCount(n);
+    await page.unroute(pattern);
+  }
 });
 
 test('quiz: language switch works under the GitHub Pages prefix', async ({ page }) => {
