@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Human or AI? — a quiz</title>
+<meta name="description" content="Can you tell a real poem, passage or picture from an AI imitation? Matched sets: great literature and poetry in English and Czech, everyday writing, images. No tracking.">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23233'/%3E%3Ctext x='16' y='22' font-size='16' text-anchor='middle' fill='%23fff' font-family='sans-serif'%3E%3F%3C/text%3E%3C/svg%3E">
+<link rel="alternate" hreflang="cs" href="cs/">
+<link rel="stylesheet" href="quiz.css">
+</head>
+<body>
+<div class="wrap">
+<header class="top">
+  <a class="home" href="./">Human or AI?</a>
+  <nav aria-label="Site">
+    <a href="../">Catalogue of AI tells</a>
+    <a href="#about">How it works</a>
+    <a class="lang" href="cs/" hreflang="cs" lang="cs">Česky</a>
+    <button type="button" id="theme" class="linkbtn">Theme</button>
+  </nav>
+</header>
+<main id="main" tabindex="-1">
+  <noscript><p class="card">This quiz needs JavaScript (it runs entirely in your browser; nothing is sent anywhere).</p></noscript>
+  <p class="muted">Loading the quiz…</p>
+</main>
+<footer>
+  <p>No tracking, no cookies, no accounts: the quiz runs in your browser and keeps your scores only in this browser's local storage.
+  Human texts and images are public domain or Creative Commons, each credited in the reveal and in <a href="CREDITS.md">CREDITS.md</a>.
+  Most AI items were generated for this quiz (model, date and exact prompt shown with each); the 2022 ChatGPT answers come from the HC3 research corpus and the older AI images from Wikimedia Commons.
+  Compiled by Jaromír Svoboda with AI research assistants. <a href="https://github.com/jaromirsvoboda/ai-tells">Source</a>.</p>
+</footer>
+</div>
+<div id="live" class="sr" aria-live="polite"></div>
+<script src="quiz.js"></script>
+</body>
+</html>
