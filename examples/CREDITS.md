@@ -337,9 +337,21 @@ Every example shown in the catalogue is listed here with its source, author and 
 
 - text: From a December 2024 revision to Jameh Mosque of Ashtarjan, quoted in Wikipedia: Signs of AI writing. [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/). Source: <https://en.wikipedia.org/wiki/Special:Diff/1263234661>
 
+## Eight-second clips (`vid-eight-seconds`)
+
+- examples/vid-eight-seconds-1-1.webp, examples/vid-eight-seconds-1-2.webp: Veo 2 (Google), via Gemini. May 2025. Veo 2; prompted by FallingGravity, Wikimedia Commons. Public domain. Source: <https://commons.wikimedia.org/wiki/File%3AClock_by_Veo_2.webm>
+
+## Characters change between shots (`vid-identity-shots`)
+
+- examples/vid-identity-shots-1-1.webp, examples/vid-identity-shots-1-2.webp, examples/vid-identity-shots-1-3.webp: Stable Diffusion 1.4 (frame-by-frame animation script). October 2022. Benlisquare, Wikimedia Commons. [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/). Source: <https://commons.wikimedia.org/wiki/File%3AAlgorithmically-generated_animation_of_young_woman_in_park.webm>
+
 ## Faces and bodies that morph (`vid-morphing`)
 
 - examples/vid-morphing-1-1.webp, examples/vid-morphing-1-2.webp, examples/vid-morphing-1-3.webp: Sora preview (OpenAI). February 2024. Sora/OpenAI, Wikimedia Commons. Public domain. Source: <https://commons.wikimedia.org/wiki/File%3ACat-on-bed.webm>
+
+## Silent video (`vid-silent`)
+
+- examples/vid-silent-1-1.webp: CogVideoX (Zhipu AI / Tsinghua, open model). December 2024. VulcanSphere, Wikimedia Commons. Public domain. Source: <https://commons.wikimedia.org/wiki/File%3ALate_Afternoon_Swans_%28CogVideoX%29.webm>
 
 ## The Sora watermark (`vid-sora-watermark`)
 
