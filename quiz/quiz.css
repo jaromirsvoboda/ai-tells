@@ -13,7 +13,7 @@
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
 body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 var(--sans)}
-a{color:var(--accent)}
+a{color:var(--accent);overflow-wrap:anywhere}
 :focus-visible{outline:3px solid var(--focus);outline-offset:2px}
 .wrap{max-width:46rem;margin:0 auto;padding:0 16px 4rem}
 header.top{display:flex;align-items:center;justify-content:space-between;gap:.5rem 1rem;flex-wrap:wrap;padding:.8rem 0 .5rem;border-bottom:1px solid var(--line);margin-bottom:1.25rem}

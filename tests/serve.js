@@ -16,7 +16,8 @@ const types = {
 
 const server = http.createServer(async (req, res) => {
   try {
-    const pathname = decodeURIComponent(new URL(req.url, 'http://localhost').pathname);
+    // Exercise the same /ai-tells/ prefix used by GitHub Pages as well as root.
+    const pathname = decodeURIComponent(new URL(req.url, 'http://localhost').pathname).replace(/^\/ai-tells(?=\/)/, '');
     let file = path.resolve(root, '.' + pathname);
     if (file !== root && !file.startsWith(root + path.sep)) {
       res.writeHead(403).end('Forbidden');

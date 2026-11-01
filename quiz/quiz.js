@@ -8,9 +8,9 @@
   const T = {
     en: {
       title: 'Human or AI?', doc: 'Human or AI? — a quiz', loadErr: 'Could not load the quiz items', start: 'Start: a mixed round',
-      lede: 'Each item is either the real thing — a poem or a passage by a great writer, a Wikipedia paragraph, a forum answer, a photograph or a painting — or an imitation that an AI model wrote or drew for the same slot. Decide which. Then see who or what made it, and why it is hard or what gives it away.',
+      lede: 'Each item is either the real thing — a poem or a passage by a great writer, a Wikipedia paragraph, a forum answer, a photograph — or an imitation that an AI model wrote or drew for the same slot. Decide which. Then see who or what made it, and why it is hard or what gives it away.',
       choose: 'Or choose a round', items: n => `${n} items`, recent: 'Your recent rounds', round: 'Round', date: 'Date', score: 'Score', forget: 'Forget my history in this browser',
-      poolNote: (ni, n) => `${ni} items in ${n} matched sets. A round draws one item from each of several sets; a coin flip decides whether you see the original or an AI imitation, so the split is rarely even and counting will not help. New rounds show sets you have not seen first.`,
+      poolNote: (ni, n) => `${ni} items in ${n} matched sets. A round draws one item from each of several sets; a coin flip decides whether you see the original or an AI imitation. The split need not be even, so counting will not help. New rounds show sets you have not seen first.`,
       howLink: 'How the items were made and checked', exhausted: 'You have seen every set in this round at least once. Items from sets whose original you have already seen will not count towards your score.',
       progress: (i, n) => `Item ${i} of ${n}`, sure: 'How sure are you?', conf: { guess: 'Guessing', fair: 'Fairly sure', sure: 'Certain' },
       human: 'Human', ai: 'AI', known: k => `I already know this ${k} (it will not count towards your score)`, kText: 'text', kPic: 'picture',
@@ -35,19 +35,19 @@
     },
     cs: {
       title: 'Člověk, nebo AI?', doc: 'Člověk, nebo AI? — kvíz', loadErr: 'Nepodařilo se načíst položky kvízu', start: 'Začít: smíšené kolo',
-      lede: 'Každá položka je buď pravá (báseň nebo úryvek od velkého autora, heslo z Wikipedie, zpráva, fotka, obraz), anebo napodobenina, kterou na totéž místo napsal nebo nakreslil model umělé inteligence. Poznáte, co je co? Hned potom uvidíte, kdo nebo co položku vytvořilo a čím se prozradí, případně proč je těžké to poznat.',
+      lede: 'Každá položka je buď pravá (báseň nebo úryvek od velkého autora, heslo z Wikipedie, zpráva, fotka), anebo napodobenina, kterou pro stejný námět vytvořila umělá inteligence. Poznáte, co je co? Hned potom uvidíte, kdo nebo co položku vytvořilo a čím se prozradí, případně proč je těžké to poznat.',
       choose: 'Nebo si vyberte kolo', items: n => `${n} položek`, recent: 'Vaše poslední kola', round: 'Kolo', date: 'Datum', score: 'Skóre', forget: 'Smazat moji historii v tomto prohlížeči',
-      poolNote: (ni, n) => `${ni} položek v ${n} sadách. Kolo vybere po jedné položce z několika sad a o tom, jestli uvidíte originál, nebo napodobeninu, rozhodne hod mincí. Poměr proto skoro nikdy nevyjde půl na půl a počítat se nevyplatí. Nová kola dávají přednost sadám, které jste ještě neviděli.`,
+      poolNote: (ni, n) => `${ni} položek v ${n} sadách. Kolo vybere po jedné položce z několika sad a o tom, jestli uvidíte originál, nebo napodobeninu, rozhodne hod mincí. Poměr nemusí vyjít půl na půl a počítat se nevyplatí. Nová kola dávají přednost sadám, které jste ještě neviděli.`,
       howLink: 'Jak jsme položky vybírali a ověřovali', exhausted: 'Všechny sady tohoto kola už jste aspoň jednou viděli. Položky ze sad, jejichž originál už znáte, se do skóre nepočítají.',
       progress: (i, n) => `Položka ${i} z ${n}`, sure: 'Jak moc si jste jistí?', conf: { guess: 'Hádám', fair: 'Docela jistě', sure: 'Určitě' },
       human: 'Člověk', ai: 'AI', known: k => `Tenhle ${k} už znám (do skóre se nezapočítá)`, kText: 'text', kPic: 'obrázek',
       keys: 'Klávesy, když je položka aktivní: <span class="kbd">H</span> člověk, <span class="kbd">A</span> AI, <span class="kbd">1</span>–<span class="kbd">3</span> jistota, <span class="kbd">K</span> už znám.',
-      question: 'Přečíst si původní dotaz', right: 'Správně', wrong: 'Vedle', madeH: 'napsal to člověk', madeA: 'vytvořila to AI',
+      question: 'Přečíst si původní dotaz', right: 'Správně', wrong: 'Vedle', madeH: 'vytvořil to člověk', madeA: 'vytvořila to AI',
       notScoredKnown: '(znali jste to, nepočítá se)', notScoredSeen: '(originál z této sady už jste viděli, nepočítá se)',
       badgeH: 'ČLOVĚK', badgeA: 'AI', promptSum: 'Přesné zadání a jak jsme tenhle výstup vybrali',
       cmpOrig: 'Porovnat s originálem', cmpAI: n => n > 1 ? `Porovnat s napodobeninami od AI (${n})` : 'Porovnat s napodobeninou od AI', otherAI: n => `Další napodobeniny téhož originálu (${n})`,
       spoil: 'Když tohle otevřete, prozradíte si odpověď pro celou sadu. Další položky z ní se pak do skóre nepočítají.',
-      next: 'Další položka', finish: 'Dokončit a ukázat výsledek', said: (ok, h) => `${ok ? 'Správně' : 'Vedle'}. ${h ? 'Napsal to člověk' : 'Vytvořila to AI'}.`,
+      next: 'Další položka', finish: 'Dokončit a ukázat výsledek', said: (ok, h) => `${ok ? 'Správně' : 'Vedle'}. ${h ? 'Vytvořil to člověk' : 'Vytvořila to AI'}.`,
       result: 'Váš výsledek', allKnown: 'Všechny položky jste znali, takže se nic nepočítalo.',
       better: (lo, hi, n) => `To je víc, než by se dalo čekat od náhody: 95 % lidí, kteří jen hází mincí, má mezi ${lo} a ${hi} z ${n}.`,
       worse: (lo, hi, n) => `To je méně, než by dala náhoda. Napodobeniny vás oklamaly častěji než hod mincí (95 % hádajících má ${lo}–${hi} z ${n}).`,
@@ -111,6 +111,8 @@
     return [lo, hi];
   }
   const pct = (a, b) => b ? Math.round(100 * a / b) : 0;
+  const displayDate = date => /^\d{4}-\d{2}-\d{2}$/.test(date)
+    ? new Intl.DateTimeFormat(LANG === 'cs' ? 'cs-CZ' : 'en-GB').format(new Date(date + 'T12:00:00')) : date;
   function say(t) { live.textContent = ''; setTimeout(() => { live.textContent = t; }, 30); }
   function focusMain() { main.focus({ preventScroll: true }); window.scrollTo({ top: 0 }); }
 
@@ -152,7 +154,7 @@
         <button class="round" type="button" data-round="${r.id}"><b>${esc(r.title)}</b><span>${esc(r.blurb)}</span><br><span class="tag">${esc(T.items(r.n))} · ${esc(r.tag)}</span></button>`).join('')}
       </div>
       <p class="small muted">${esc(T.poolNote(DATA.items.length, DATA.sets.length))} <a href="#about">${esc(T.howLink)}</a>.</p>
-      ${hist.length ? `<h2>${esc(T.recent)}</h2><div class="tablewrap"><table class="res"><thead><tr><th>${esc(T.round)}</th><th>${esc(T.date)}</th><th class="num">${esc(T.score)}</th></tr></thead><tbody>${hist.map(h => `<tr><td>${esc(h.title)}</td><td>${esc(h.date)}</td><td class="num">${h.ok} / ${h.n}</td></tr>`).join('')}</tbody></table></div>
+      ${hist.length ? `<h2>${esc(T.recent)}</h2><div class="tablewrap"><table class="res"><thead><tr><th>${esc(T.round)}</th><th>${esc(T.date)}</th><th class="num">${esc(T.score)}</th></tr></thead><tbody>${hist.map(h => `<tr><td>${esc(h.title)}</td><td>${esc(displayDate(h.date))}</td><td class="num">${h.ok} / ${h.n}</td></tr>`).join('')}</tbody></table></div>
       <p class="small"><button type="button" class="linkbtn" id="forget">${esc(T.forget)}</button></p>` : ''}`;
     main.querySelectorAll('[data-round]').forEach(b => b.addEventListener('click', () => { location.hash = 'play-' + b.dataset.round; }));
     $('#startMixed').addEventListener('click', () => { const r = DATA.rounds.find(x => x.id === 'mixed') || DATA.rounds[0]; location.hash = 'play-' + r.id; });
