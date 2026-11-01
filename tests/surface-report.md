@@ -1,5 +1,7 @@
 # Quiz continuation: surface-feature evidence
 
+> **Update 2026-11-01, later:** seven AI images posted on Commons were removed because they looked generated at a glance (Ideogram, Stable Diffusion 3.5, Reve, FLUX, three DALL-E 2). A re-run of `surface_audit.py` on the result: every text row is unchanged; the image rows (EN/CS images, Mixed image) are now fit 66.7 % (bytes/pixel), CV 50.0 % (width), logistic 25.0 % with one human and one AI picture in each of the six sets. The tables below are the earlier AFTER state.
+
 The lead accepted the quiz for publication. English everyday writing reaches 62.7% single-feature LOSO for sentence-length variance and 73.1% logistic LOSO across 11 sets; the lead accepts sentence rhythm as a stylistic cue. The public explanation is in [quiz/fairness.md](../quiz/fairness.md). A fresh audit reproduced every AFTER value below. One correction to the publication brief: punctuation-only features are at most 58% LOSO in every text round except English literature, where single-quote or apostrophe presence reaches 59.6%. The numeric evidence is unchanged. Scores below 50% also need care: reversing the image model’s predictions gives 62.5%, and six image sets are a small sample.
 
 ## Procedure

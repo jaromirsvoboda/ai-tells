@@ -1,6 +1,6 @@
 # Člověk, nebo AI? — zdroje a postup
 
-Tato verze: 185 položek v 41 sadách (41 od lidí, 144 od AI). Při tomto dokončování jsme žádný model nevolali.
+Kvíz má 178 položek ve 41 sadách (41 od lidí, 137 od AI).
 
 Co zatím nevíme
 Požadavek na férovost zatím není splněný. V anglickém kole běžných textů dosáhl logistický model 73,1 % jen podle interpunkce, délky, členění a velkých písmen. Při ověřování jsme vždy vynechali celou jednu sadu, na ostatních model naučili a na vynechané sadě ho vyzkoušeli. Také některá jednoduchá pravidla nastavená na všech datech přesahují v obou jazycích 60 %. Jsou to varovné výsledky z malého, opakovaně prohlíženého souboru, nikoli důkaz, že kvíz měří jen rozpoznání autorství. Všechna měření před úpravou a po ní i použitý postup najdete v protokolu měření (anglicky).
@@ -653,19 +653,11 @@ Lidské texty si ponechávají uvedené licence nebo status volného díla. U v�
 
   Zadání napsal autor kvízu podle námětu, kompozice a techniky lidského obrázku.
 
-- `dd0cd252` — **DALL-E 2 — AI**. zveřejněno na Wikimedia Commons v roce 2023: „Milan photo ai generated“
-  Obrázek: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Milan_photo_ai_generated.png), Volné dílo (public domain). Autor/nahrál: ashoppio. Oříznuto, zmenšeno a znovu uloženo pro kvíz.
-  Soubor: `../media/b9303f02e59c.jpg`.
-
 ### s44c840 — Ulice v Penangu v Malajsii: fotka, nebo obrázek od AI?
 
 - `94dcf28a` — ***angys***. Jalan Machang Bubok (south) (241226) (26. prosince 2024, 17:35)
   Obrázek: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Jalan_Machang_Bubok_(south)_(241226).jpg), [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/). Autor/nahrál: *angys*. Oříznuto, zmenšeno a znovu uloženo pro kvíz.
   Soubor: `../media/f6c39ea6183d.jpg`.
-
-- `2093e83d` — **DALL-E 2 — AI**. zveřejněno na Wikimedia Commons v roce 2022: „DALL-E Generated images of a empty street in Penang“
-  Obrázek: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:DALL-E_Generated_images_of_a_empty_street_in_Penang.jpg), [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/). Autor/nahrál: Dall-E. Oříznuto, zmenšeno a znovu uloženo pro kvíz.
-  Soubor: `../media/fc63de19aa6b.jpg`.
 
 - `6a4ee661` — **Generátor obrázků OpenAI — AI**. Generátor obrázků OpenAI (přes Codex CLI), vytvořeno 2026-11-01 pro tento kvíz
   Vytvořeno pro tento kvíz 2026-11-01 podle slovního popisu lidského obrázku (model ho neviděl); použili jsme první vygenerovaný obrázek. CC0.
@@ -683,10 +675,6 @@ Lidské texty si ponechávají uvedené licence nebo status volného díla. U v�
   Obrázek: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Val_Mora_-_panoramio.jpg), [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/). Autor/nahrál: Rolenc. Oříznuto, zmenšeno a znovu uloženo pro kvíz.
   Soubor: `../media/6873f7bee40c.jpg`.
 
-- `2099a02d` — **Ideogram — AI**. zveřejněno na Wikimedia Commons v roce 2024: „Scenic Valley in the Afternoon (Ideogram 2.0)“
-  Obrázek: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Scenic_Valley_in_the_Afternoon_(Ideogram_2.0).webp), Volné dílo (public domain). Autor/nahrál: VulcanSphere. Oříznuto, zmenšeno a znovu uloženo pro kvíz.
-  Soubor: `../media/d08fb16398ef.jpg`.
-
 - `524d9da6` — **Generátor obrázků OpenAI — AI**. Generátor obrázků OpenAI (přes Codex CLI), vytvořeno 2026-11-01 pro tento kvíz
   Vytvořeno pro tento kvíz 2026-11-01 podle slovního popisu lidského obrázku (model ho neviděl); použili jsme první vygenerovaný obrázek. CC0.
   Soubor: `../media/9cabbc8f465f.jpg`.
@@ -696,18 +684,6 @@ Lidské texty si ponechávají uvedené licence nebo status volného díla. U v�
   > A photograph of a wide alpine valley in summer: a broad pale gravel riverbed winding through green meadow in the foreground, dense dark-green conifer forest on the slopes, grey rocky mountains with a few snow patches under a hazy sky; taken with an ordinary digital camera, landscape orientation.
 
   Zadání napsal autor kvízu podle námětu, kompozice a techniky lidského obrázku.
-
-- `6b535a33` — **Reve Image — AI**. zveřejněno na Wikimedia Commons v roce 2025: „Scenic Valley in the Afternoon (Reve Image)“
-  Obrázek: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Scenic_Valley_in_the_Afternoon_(Reve_Image).webp), Volné dílo (public domain). Autor/nahrál: VulcanSphere. Oříznuto, zmenšeno a znovu uloženo pro kvíz.
-  Soubor: `../media/772cab8912f8.jpg`.
-
-- `7a1ac2d1` — **FLUX — AI**. zveřejněno na Wikimedia Commons v roce 2024: „Sunset Valley (FLUX 1.1 Pro Raw)“
-  Obrázek: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Sunset_Valley_(FLUX_1.1_Pro_Raw).webp), Volné dílo (public domain). Autor/nahrál: VulcanSphere. Oříznuto, zmenšeno a znovu uloženo pro kvíz.
-  Soubor: `../media/713e1acfda4e.jpg`.
-
-- `99648670` — **Stable Diffusion — AI**. zveřejněno na Wikimedia Commons v roce 2024: „Late Afternoon Cloudy Valley (SD3.5)“
-  Obrázek: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Late_Afternoon_Cloudy_Valley_(SD3.5).webp), Volné dílo (public domain). Autor/nahrál: VulcanSphere. Oříznuto, zmenšeno a znovu uloženo pro kvíz.
-  Soubor: `../media/d8b4a2482a01.jpg`.
 
 ### s9d17e9 — Talíř s grilovanou rybou a salátem: fotka, nebo obrázek od AI?
 
@@ -740,10 +716,6 @@ Lidské texty si ponechávají uvedené licence nebo status volného díla. U v�
   > A macro photograph of a single clear water drop sitting on a pink tulip petal, soft pale grey-green background, shallow depth of field.
 
   Zadání napsal autor kvízu podle námětu, kompozice a techniky lidského obrázku.
-
-- `e6395680` — **DALL-E 2 — AI**. zveřejněno na Wikimedia Commons v roce 2022: „DALL·E 2022-07-29 15.49.15 - macro photograph of a water drop on a flower“
-  Obrázek: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:DALL%C2%B7E_2022-07-29_15.49.15_-_macro_photograph_of_a_water_drop_on_a_flower.png), [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/). Autor/nahrál: Madelgarius. Oříznuto, zmenšeno a znovu uloženo pro kvíz.
-  Soubor: `../media/d6ad0a8d3180.jpg`.
 
 ### s0037f8 — Karel Toman (1877–1946): pravá báseň, nebo napodobenina od AI?
 

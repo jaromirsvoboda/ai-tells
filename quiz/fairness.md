@@ -9,18 +9,18 @@ We measured simple surface features of the quiz items, including punctuation and
 | EN literature (text) | 13 | line character variance | 69.2% | words | 61.5% | 56.7% |
 | EN cestina (text) | 35 | sentence length variance | 63.3% | diacritics ratio | 58.3% | 58.8% |
 | EN everyday (text) | 11 | sentence length variance | 74.5% | sentence length variance | 62.7% | 73.1% |
-| EN images (image) | 6 | bytes/pixel | 66.7% | width | 50.0% | 37.5% |
+| EN images (image) | 6 | bytes/pixel | 66.7% | width | 50.0% | 25.0% |
 | EN mixed (text) | 59 | sentence length variance | 64.3% | sentence length variance | 63.6% | 60.6% |
-| EN mixed (image) | 6 | bytes/pixel | 66.7% | width | 50.0% | 37.5% |
+| EN mixed (image) | 6 | bytes/pixel | 66.7% | width | 50.0% | 25.0% |
 | EN mixed (all) | 65 | text: sentence length variance | 59.6% | text: sentence length variance | 59.1% | 54.3% |
 | CS literatura (text) | 20 | sentence length variance | 69.2% | sentence length variance | 60.2% | 58.7% |
 | CS bezne (text) | 15 | mean word length | 64.4% | digits/100w | 58.9% | 58.6% |
-| CS obrazky (image) | 6 | bytes/pixel | 66.7% | width | 50.0% | 37.5% |
+| CS obrazky (image) | 6 | bytes/pixel | 66.7% | width | 50.0% | 25.0% |
 | CS mixed (text) | 35 | sentence length variance | 63.3% | diacritics ratio | 58.3% | 58.8% |
-| CS mixed (image) | 6 | bytes/pixel | 66.7% | width | 50.0% | 37.5% |
+| CS mixed (image) | 6 | bytes/pixel | 66.7% | width | 50.0% | 25.0% |
 | CS mixed (all) | 41 | text: sentence length variance | 58.8% | text: diacritics ratio | 55.6% | 54.3% |
 
-Punctuation-only features scored at most 58% in every text round except English literature, where single-quote or apostrophe presence reached 59.6%. In English everyday writing, sentence rhythm carries a stylistic signal: human passages vary more in sentence length, while AI passages are more even (62.7% for sentence-length variance; 73.1% for the combined model). That round has only 11 sets. The six-set image score is also uncertain: the logistic model’s 37.5% would become 62.5% if its predictions were reversed.
+Punctuation-only features scored at most 58% in every text round except English literature, where single-quote or apostrophe presence reached 59.6%. In English everyday writing, sentence rhythm carries a stylistic signal: human passages vary more in sentence length, while AI passages are more even (62.7% for sentence-length variance; 73.1% for the combined model). That round has only 11 sets. The six-set image score is also uncertain: with one human and one AI picture per set, the logistic model’s 25.0% would become 75.0% if its predictions were reversed, so it says little either way.
 
 ## Sets removed
 

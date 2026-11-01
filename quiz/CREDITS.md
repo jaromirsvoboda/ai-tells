@@ -1,6 +1,6 @@
 # Human or AI? — sources and methods
 
-This build: 307 items in 65 sets (65 human, 242 AI). No new model calls in this continuation.
+This quiz: 300 items in 65 sets (65 human, 235 AI).
 
 What this build still cannot establish
 The surface-feature fairness target is not met. In the offline audit, English everyday writing still reached 73.1 % with a logistic classifier using punctuation, length, layout and capitalisation alone, cross-validated by holding out whole sets. Some fitted one-feature rules also exceed 60 % in both languages. These are diagnostic results on a small, repeatedly inspected collection, not evidence that this quiz isolates authorship. Full BEFORE/AFTER measurements and methods: surface audit.
@@ -1289,10 +1289,6 @@ Human texts keep their stated public-domain or CC licences. Quiz-generated AI ou
 
   Prompt written by the quiz lead to describe the human picture’s subject, composition and medium.
 
-- `c7a42ecb` — **DALL-E 2 — AI**. posted on Wikimedia Commons in 2023: “Milan photo ai generated”
-  Image: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Milan_photo_ai_generated.png), Public domain. Author/uploader: ashoppio. Cropped, resized and re-encoded for the quiz.
-  File: `media/b9303f02e59c.jpg`.
-
 ### s44c840 — A street in Penang, Malaysia: a photograph, or an AI image?
 
 - `bfae756d` — ***angys***. Jalan Machang Bubok (south) (241226) (2024-12-26 17:35:19)
@@ -1309,19 +1305,11 @@ Human texts keep their stated public-domain or CC licences. Quiz-generated AI ou
 
   Prompt written by the quiz lead to describe the human picture’s subject, composition and medium.
 
-- `a5748c66` — **DALL-E 2 — AI**. posted on Wikimedia Commons in 2022: “DALL-E Generated images of a empty street in Penang”
-  Image: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:DALL-E_Generated_images_of_a_empty_street_in_Penang.jpg), [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/). Author/uploader: Dall-E. Cropped, resized and re-encoded for the quiz.
-  File: `media/fc63de19aa6b.jpg`.
-
 ### s753366 — A mountain valley in the afternoon: a photograph, or an AI image?
 
 - `a10599e7` — **Rolenc**. Val Mora - panoramio (Taken on 23 June 2009)
   Image: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Val_Mora_-_panoramio.jpg), [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/). Author/uploader: Rolenc. Cropped, resized and re-encoded for the quiz.
   File: `media/6873f7bee40c.jpg`.
-
-- `027c4c25` — **Ideogram 2.0 — AI**. posted on Wikimedia Commons in 2024: “Scenic Valley in the Afternoon (Ideogram 2.0)”
-  Image: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Scenic_Valley_in_the_Afternoon_(Ideogram_2.0).webp), Public domain. Author/uploader: VulcanSphere. Cropped, resized and re-encoded for the quiz.
-  File: `media/d08fb16398ef.jpg`.
 
 - `1da2ba68` — **OpenAI image generation — AI**. OpenAI image generation (the image_gen tool in Codex CLI; model version not reported), generated 2026-11-01 for this quiz
   Generated for this quiz on 2026-11-01 from a written description of the human picture (the model never saw it); the first image produced was used. CC0.
@@ -1332,18 +1320,6 @@ Human texts keep their stated public-domain or CC licences. Quiz-generated AI ou
   > A photograph of a wide alpine valley in summer: a broad pale gravel riverbed winding through green meadow in the foreground, dense dark-green conifer forest on the slopes, grey rocky mountains with a few snow patches under a hazy sky; taken with an ordinary digital camera, landscape orientation.
 
   Prompt written by the quiz lead to describe the human picture’s subject, composition and medium.
-
-- `929d8367` — **Stable Diffusion 3.5 Large — AI**. posted on Wikimedia Commons in 2024: “Late Afternoon Cloudy Valley (SD3.5)”
-  Image: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Late_Afternoon_Cloudy_Valley_(SD3.5).webp), Public domain. Author/uploader: VulcanSphere. Cropped, resized and re-encoded for the quiz.
-  File: `media/d8b4a2482a01.jpg`.
-
-- `b9a4763a` — **Reve Image — AI**. posted on Wikimedia Commons in 2025: “Scenic Valley in the Afternoon (Reve Image)”
-  Image: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Scenic_Valley_in_the_Afternoon_(Reve_Image).webp), Public domain. Author/uploader: VulcanSphere. Cropped, resized and re-encoded for the quiz.
-  File: `media/772cab8912f8.jpg`.
-
-- `edc6306e` — **FLUX 1.1 Pro — AI**. posted on Wikimedia Commons in 2024: “Sunset Valley (FLUX 1.1 Pro Raw)”
-  Image: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Sunset_Valley_(FLUX_1.1_Pro_Raw).webp), Public domain. Author/uploader: VulcanSphere. Cropped, resized and re-encoded for the quiz.
-  File: `media/713e1acfda4e.jpg`.
 
 ### s9d17e9 — A plate of grilled fish and salad: a photograph, or an AI image?
 
@@ -1376,10 +1352,6 @@ Human texts keep their stated public-domain or CC licences. Quiz-generated AI ou
   > A macro photograph of a single clear water drop sitting on a pink tulip petal, soft pale grey-green background, shallow depth of field.
 
   Prompt written by the quiz lead to describe the human picture’s subject, composition and medium.
-
-- `80f55b48` — **DALL-E 2 — AI**. posted on Wikimedia Commons in 2022: “DALL·E 2022-07-29 15.49.15 - macro photograph of a water drop on a flower”
-  Image: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:DALL%C2%B7E_2022-07-29_15.49.15_-_macro_photograph_of_a_water_drop_on_a_flower.png), [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/). Author/uploader: Madelgarius. Cropped, resized and re-encoded for the quiz.
-  File: `media/d6ad0a8d3180.jpg`.
 
 ### s0037f8 — A poem by Karel Toman (1877–1946) — or an AI imitation?
 
