@@ -124,6 +124,7 @@ def audit(rows, proportions):
     singles = []
     cv = np.zeros_like(X, dtype=bool)
     logpred = np.zeros(len(rows), dtype=bool)
+    fold_coefficients = []
     for held in sorted({r['set'] for r in rows}):
         tr = np.array([r['set'] != held for r in rows])
         train_rows = [r for r, keep in zip(rows, tr) if keep]
@@ -142,14 +143,21 @@ def audit(rows, proportions):
             w -= .5 * (Z[tr].T @ err + .05 * w)
             b -= .5 * err.sum()
         logpred[~tr] = (Z[~tr] @ w + b) > 0
+        fold_coefficients.append(w.copy())
     for j, name in enumerate(names):
         fit, cut, above = best_rule(X[:, j], y, wt)
         singles.append({'feature': name, 'human_mean': float(np.average(X[y, j], weights=wt[y])),
                         'AI_mean': float(np.average(X[~y, j], weights=wt[~y])), 'fit': fit,
                         'cut': cut if np.isfinite(cut) else str(cut), 'human_above': bool(above),
                         'cv': float(wt @ (cv[:, j] == y))})
+    coefficients = np.array(fold_coefficients)
     return {'sets': len({r['set'] for r in rows}), 'items': len(rows),
-            'single': singles, 'logistic': float(wt @ (logpred == y))}
+            'single': singles, 'logistic': float(wt @ (logpred == y)),
+            'logistic_features': sorted([
+                {'feature': name, 'mean_coefficient': float(coefficients[:, j].mean()),
+                 'mean_absolute_coefficient': float(np.abs(coefficients[:, j]).mean())}
+                for j, name in enumerate(names)
+            ], key=lambda f: -f['mean_absolute_coefficient'])}
 
 
 def main():
@@ -196,6 +204,11 @@ def main():
         bf, bc = max(a['single'], key=lambda f: f['fit']), max(a['single'], key=lambda f: f['cv'])
         lines.append(f"| {key} | {a['sets']} | {bf['feature']} | {bf['fit']:.1%} | {bc['feature']} | {bc['cv']:.1%} | {a['logistic']:.1%} |")
     for key, a in out.items():
+        lines.extend(['', '## ' + key + ': logistic coefficients', '',
+                      'Largest mean absolute coefficients across held-out-set folds, after train-only standardisation. Positive predicts human. Correlated features can share weight; these are associations, not causal effects.', '',
+                      '| Feature | Mean coefficient | Mean absolute coefficient |', '|---|---:|---:|'])
+        for f in a['logistic_features'][:8]:
+            lines.append(f"| {f['feature']} | {f['mean_coefficient']:.6g} | {f['mean_absolute_coefficient']:.6g} |")
         lines.extend(['', '## ' + key, '', '| Feature | Human mean | AI mean | Human rule | Fit | LOSO |', '|---|---:|---:|---|---:|---:|'])
         for f in a['single']:
             cut = f['cut'] if isinstance(f['cut'], str) else f"{f['cut']:.6g}"
