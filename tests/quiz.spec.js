@@ -20,6 +20,39 @@ test('quiz: exact binomial upper-tail probabilities', () => {
   }
 });
 
+test('quiz: pooled guessing probabilities stay finite beyond 1000 answers', () => {
+  const source = readFileSync(join(__dirname, '../quiz/quiz.js'), 'utf8');
+  const helpers = ['binomialTail', 'binomialDistribution'].map(name => {
+    const helper = source.match(new RegExp(`  function ${name}\\([^]*?\\n  \\}`));
+    expect(helper, `${name} must exist`).not.toBeNull();
+    return helper[0];
+  }).join('\n');
+  const { tail, distribution } = runInNewContext(`${helpers}; ({ tail: binomialTail, distribution: binomialDistribution })`);
+  for (const n of [1001, 1021, 1024, 2400]) {
+    const probabilities = distribution(n);
+    expect(probabilities).toHaveLength(n + 1);
+    expect(probabilities.reduce((sum, p) => sum + p, 0)).toBeCloseTo(1, 12);
+    expect(tail(0, n)).toBeCloseTo(1, 12);
+    if (n % 2) expect(tail((n + 1) / 2, n)).toBeCloseTo(0.5, 12);
+    else expect(tail(n / 2, n)).toBeCloseTo(0.5 + probabilities[n / 2] / 2, 12);
+  }
+});
+
+test('quiz: extreme pooled odds retain finite reciprocals and nonzero percentages', () => {
+  const source = readFileSync(join(__dirname, '../quiz/quiz.js'), 'utf8');
+  const helper = source.match(/  function exactChanceValues\(k, n\) \{[\s\S]*?\n  \}/);
+  expect(helper).not.toBeNull();
+  const exactChanceValues = runInNewContext(`(${helper[0]})`);
+  for (const n of [1024, 2400]) {
+    const perfect = exactChanceValues(n, n);
+    expect(perfect.oneIn).toBe(2n ** BigInt(n));
+    expect(perfect.percent).toMatch(/^0\.0+[1-9]\d*$/);
+    // Adding one allowed error makes the exact tail (n + 1) times larger.
+    const oneError = exactChanceValues(n - 1, n);
+    expect(oneError.oneIn).toBe((2n ** BigInt(n) + BigInt(n + 1) / 2n) / BigInt(n + 1));
+  }
+});
+
 async function quizItems(request, base = '/quiz/') {
   const response = await request.get(`${base}items.json`);
   expect(response.status()).toBe(200);
@@ -264,6 +297,8 @@ test(`quiz: end early after ${count} answers${pending ? ' with the next item una
   await keyboardActivate(page, end);
   await expect(page.getByRole('heading', { name: /^(Your result|Váš výsledek)$/ })).toBeVisible();
   await expect(page.locator('.score')).toHaveText(`0 / ${count}`);
+  await expect(page.locator('.chance-graph .chance-bar')).toHaveCount(count + 1);
+  await expect(page.locator('.chance-graph .player-bar')).toHaveAttribute('data-score', '0');
   for (const name of (base.includes('/cs/') ? ['Podle původu', 'Podle kategorie', 'Napodobeniny podle modelu', 'Podle doby vzniku']
     : ['By what it was', 'By category', 'AI imitations by model', 'By era of the item'])) {
     await expect(page.getByRole('heading', { name, exact: true })).toBeVisible();
@@ -297,6 +332,7 @@ test('quiz: early finish with only known items keeps the review and an unscored 
   await page.keyboard.press('h');
   await keyboardActivate(page, page.getByRole('button', { name: endName }));
   await expect(page.locator('.score')).toHaveText('0 / 0');
+  await expect(page.locator('.chance-graph')).toHaveCount(0);
   await expect(page.locator('main')).toContainText(base.includes('/cs/') ? 'Všechny položky jste znali, takže se nic nepočítalo.' : 'You knew every item, so nothing was scored.');
   await expect(page.locator('table tbody tr')).toHaveCount(1);
   const history = await page.evaluate(lang => JSON.parse(localStorage.getItem(`human-or-ai/v2/${lang}`)).history, base.includes('/cs/') ? 'cs' : 'en');
@@ -338,10 +374,121 @@ test('quiz: exact guessing message for each score, including a perfect small rou
     const message = cs ? `${k} a víc ${[2, 3, 4, 6, 7, 12, 13, 14, 17].includes(n) ? 'ze' : 'z'} ${n} čistým hádáním: ${oddsCS}. Více položek dá přesnější představu.`
       : `${k} or more of ${n} by pure guessing: ${oddsEN}. More items give a clearer picture.`;
     await expect(page.locator('.score + p')).toHaveText(message);
+    const graph = page.locator('figure.chance-graph');
+    await expect(graph).toBeVisible();
+    await expect(graph.locator('figcaption')).toContainText(message);
+    await expect(graph.locator('.chance-bar')).toHaveCount(n + 1);
+    await expect(graph.locator('.chance-tail')).toHaveCount(n - k + 1);
+    await expect(graph.locator('.player-bar')).toHaveCount(1);
+    await expect(graph.locator('.player-bar')).toHaveAttribute('data-score', String(k));
+    await expect(graph.locator('.chart-player-label')).toHaveText(cs ? `Vaše skóre: ${k}` : `Your score: ${k}`);
+    const svg = graph.getByRole('img');
+    await expect(svg).toBeVisible();
+    const accessible = (await svg.getAttribute('aria-label')).replace(/\u00a0/g, ' ');
+    expect(accessible).toContain(`${k} / ${n}`);
+    expect(accessible).toContain(message);
+    await assertNoOverflow(page);
     await page.unroute(pattern);
     // Each score is an independent round; seen originals must not affect it.
     await page.evaluate(() => localStorage.clear());
   }
+});
+
+test('quiz: chance graph excludes known answers from its distribution', async ({ page, request }) => {
+  const { document } = await quizItems(request, base);
+  await page.route(`**${base}items.json`, route => route.fulfill({ json: sameOriginFixture(document, 6, 'human') }));
+  await load(page, `${base}#play-mixed`);
+  for (let i = 0; i < 6; i++) {
+    await expect(page.locator('#known')).toBeEnabled();
+    if (i === 0) await page.keyboard.press('k');
+    await page.keyboard.press(i < 5 ? 'h' : 'a');
+    await page.getByRole('button', { name: nextName }).click();
+  }
+  await expect(page.locator('.score')).toHaveText('4 / 5');
+  await expect(page.locator('.chance-graph .chance-bar')).toHaveCount(6);
+  await expect(page.locator('.chance-graph .player-bar')).toHaveAttribute('data-score', '4');
+  await expect(page.locator('.chance-graph svg')).toHaveAttribute('aria-label', /4 \/ 5/);
+  await page.setViewportSize({ width: 360, height: 740 });
+  await assertNoOverflow(page);
+});
+
+test('quiz: home history graph appears after two rounds and clears with history', async ({ page, request }) => {
+  const { document } = await quizItems(request, base);
+  const cs = base.includes('/cs/');
+  await page.route(`**${base}items.json`, route => route.fulfill({ json: sameOriginFixture(document, 2, 'ai') }));
+  await load(page, base);
+  await expect(page.locator('.history-graph')).toHaveCount(0);
+  for (let r = 0; r < 2; r++) {
+    await start(page);
+    for (let i = 0; i < 2; i++) {
+      await expect(page.getByRole('button', { name: humanName })).toBeEnabled();
+      await page.keyboard.press(r === 0 && i === 1 ? 'h' : 'a');
+      await page.getByRole('button', { name: nextName }).click();
+    }
+    await keyboardActivate(page, page.getByRole('button', { name: /^(Choose another round|Vybrat jiné kolo)$/ }));
+    await expect(page.locator('table tbody tr')).toHaveCount(r + 1);
+    await expect(page.locator('.history-graph')).toHaveCount(r === 0 ? 0 : 1);
+  }
+  const graph = page.locator('figure.history-graph');
+  await expect(graph.locator('.history-point')).toHaveCount(2);
+  await expect(graph.locator('.chart-chance-label')).toHaveText(cs ? 'Hádání: 50 %' : 'Guessing: 50 %');
+  const message = cs ? '3 a víc ze 4 čistým hádáním: zhruba 1 z 3 (31 %). Více položek dá přesnější představu.'
+    : '3 or more of 4 by pure guessing: about 1 in 3 (31 %). More items give a clearer picture.';
+  await expect(graph.locator('figcaption')).toContainText(cs ? '3 správně z 4 (75 %)' : '3 right out of 4 (75 %)');
+  await expect(graph.locator('.pooled-chance')).toHaveText(message);
+  const accessible = (await graph.getByRole('img').getAttribute('aria-label')).replace(/\u00a0/g, ' ');
+  expect(accessible).toContain('1 / 2 (50 %)');
+  expect(accessible).toContain('2 / 2 (100 %)');
+  expect(accessible).toContain(message);
+  await assertNoOverflow(page);
+  // The same graph must fit the required narrow width in every project.
+  await page.setViewportSize({ width: 360, height: 740 });
+  await assertNoOverflow(page);
+  await page.locator('#forget').click();
+  await expect(page.locator('.history-graph')).toHaveCount(0);
+  await expect(page.locator('table')).toHaveCount(0);
+});
+
+test('quiz: history pools all retained rounds and leaves gaps for unscored rounds', async ({ page, request }) => {
+  const { document } = await quizItems(request, base);
+  const lang = base.includes('/cs/') ? 'cs' : 'en';
+  await page.route(`**${base}items.json`, route => route.fulfill({ json: sameOriginFixture(document, 2, 'ai') }));
+  await page.addInitScript(lang => {
+    const history = Array.from({ length: 200 }, (_, i) => ({ title: `Round ${i + 1}`, date: '2026-11-01',
+      ok: i === 1 ? 0 : 6, n: i === 1 ? 0 : 12,
+      answers: [{ id: 'removed-item', ok: true, known: false }] }));
+    localStorage.setItem(`human-or-ai/v2/${lang}`, JSON.stringify({ history }));
+  }, lang);
+  await load(page, base);
+  const graph = page.locator('figure.history-graph');
+  await expect(graph).toBeVisible();
+  await expect(page.locator('table tbody tr')).toHaveCount(5);
+  await expect(graph.locator('.history-point')).toHaveCount(199);
+  await expect(graph.locator('.history-trend')).toHaveAttribute('d', /^M [^M]+M /);
+  await expect(graph.locator('figcaption')).toContainText(lang === 'cs' ? '1194 správně z 2388 (50 %)' : '1194 right out of 2388 (50 %)');
+  const message = lang === 'cs' ? '1194 a víc z 2388 čistým hádáním: 51 %. Více položek dá přesnější představu.'
+    : '1194 or more of 2388 by pure guessing: 51 %. More items give a clearer picture.';
+  await expect(graph.locator('.pooled-chance')).toHaveText(message);
+  await expect(graph.getByRole('img')).toHaveAttribute('aria-label', new RegExp(lang === 'cs' ? 'Kolo 2, .*nepočítá se' : 'Round 2, .*not scored'));
+  await expect(graph).toContainText(lang === 'cs' ? 'Kola bez skóre přerušují čáru v grafu.' : 'Unscored rounds leave gaps in the line.');
+  await assertNoOverflow(page);
+});
+
+test('quiz: all-unscored history has no accuracy points or pooled probability', async ({ page, request }) => {
+  const { document } = await quizItems(request, base);
+  const lang = base.includes('/cs/') ? 'cs' : 'en';
+  await page.route(`**${base}items.json`, route => route.fulfill({ json: sameOriginFixture(document, 2, 'ai') }));
+  await page.addInitScript(lang => localStorage.setItem(`human-or-ai/v2/${lang}`, JSON.stringify({ history: [
+    { title: 'Round 1', date: '2026-10-31', ok: 0, n: 0 },
+    { title: 'Round 2', date: '2026-11-01', ok: 0, n: 0 },
+  ] })), lang);
+  await load(page, base);
+  const graph = page.locator('figure.history-graph');
+  await expect(graph).toBeVisible();
+  await expect(graph.locator('.history-point')).toHaveCount(0);
+  await expect(graph.locator('.pooled-chance')).toHaveCount(0);
+  await expect(graph.locator('figcaption')).toContainText(lang === 'cs' ? 'Zatím žádné započítané odpovědi.' : 'No scored answers yet.');
+  await assertNoOverflow(page);
 });
 
 test('quiz: image menu and draw follow available sets up to 12', async ({ page, request }) => {
