@@ -111,3 +111,6 @@ footer{border-top:1px solid var(--line);margin-top:2.5rem;padding-top:1rem;font-
 .verification-items{padding-left:1.5rem}
 .verification-items li{margin:1rem 0}
 .verification-items p{margin:.3rem 0}
+
+/* Long tokens in credits (dataset paths, model ids, URLs) must wrap on narrow screens. */
+.reveal, .reveal .truth, .reveal .why, .reveal .small, .res td { overflow-wrap: anywhere; }
