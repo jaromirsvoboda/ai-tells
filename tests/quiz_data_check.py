@@ -37,7 +37,7 @@ def note_quote_misses(item, record):
 
 def check(root=ROOT):
     errors, misses, summaries = [], {}, []
-    global_ids, media_by_lang, sets_by_lang = set(), {}, {}
+    global_ids, media_by_lang, sets_by_lang, image_sets_by_lang = set(), {}, {}, {}
 
     def need(condition, message):
         if not condition:
@@ -57,6 +57,7 @@ def check(root=ROOT):
         member_ids = [id for s in d['sets'] for id in s['members']]
         need(collections.Counter(member_ids) == collections.Counter(items.keys()), f'{lang}: members do not partition items')
         media_by_lang[lang] = set()
+        image_sets_by_lang[lang] = {}
         for i in d['items']:
             id = i['id']
             need(bool(re.fullmatch('[0-9a-f]{8}', id)), f'{lang}/{id}: invalid item ID')
@@ -111,7 +112,8 @@ def check(root=ROOT):
         need(expected_credits in credits, f'{lang}: CREDITS counts disagree')
         if lang == 'cs':
             need('—' not in about, 'cs: About contains em dash')
-        need('CDLA-Permissive-2.0.txt' in credits, f'{lang}: CREDITS missing licence link')
+        if any('Rapidata' in r['source'] for r in records.values()):
+            need('CDLA-Permissive-2.0.txt' in credits, f'{lang}: CREDITS missing licence link')
         for s in d['sets']:
             need(bool(re.fullmatch('s[0-9a-f]{6}', s['id'])), f'{lang}/{s["id"]}: invalid set ID')
             members = [items[id] for id in s['members']]
@@ -119,6 +121,9 @@ def check(root=ROOT):
             need(any(records[i['id']]['kind'] == 'ai' for i in members), f'{lang}/{s["id"]}: no AI item')
             if s['cat'] == 'images':
                 need(len({(i['w'], i['h']) for i in members}) == 1, f'{lang}/{s["id"]}: dimensions vary within set')
+                image_sets_by_lang[lang][s['id']] = {
+                    (Path(i['img']).name, records[i['id']]['kind']) for i in members
+                }
             else:
                 human = next(i for i in members if records[i['id']]['kind'] == 'human')
                 if human['form'] == 'poem':
@@ -131,6 +136,9 @@ def check(root=ROOT):
                 need(r['n'] == min(12, len(eligible)), f'{lang}/{r["id"]}: wrong image count')
         summaries.append(f'{lang.upper()}: {len(sets)} sets, {len(items)} items ({humans} human, {ai} AI); {next(iter(lengths))} decoded bytes per record; {len(media_by_lang[lang])} images')
     need(media_by_lang['en'] == media_by_lang['cs'], 'translated image sets differ')
+    need(image_sets_by_lang['en'] == image_sets_by_lang['cs'], 'translated image membership differs')
+    need({p.name for p in (root / 'quiz/media').iterdir() if p.is_file()} == media_by_lang['en'],
+         'media directory contains unreferenced files')
     need(set(sets_by_lang['cs']) <= set(sets_by_lang['en']), 'Czech set missing from English quiz')
     licence = root / 'quiz/licences/CDLA-Permissive-2.0.txt'
     need(licence.is_file() and licence.stat().st_size > 1000, 'CDLA licence missing or truncated')

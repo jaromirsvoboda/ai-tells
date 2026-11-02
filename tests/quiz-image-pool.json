@@ -1,0 +1,1285 @@
+[
+  {
+    "pool": "photo",
+    "name": "photo-eggs",
+    "id": "sfe562b",
+    "pictures": [
+      {
+        "pool_file": "9c33aeee676d.jpg",
+        "file": "9c33aeee676d.jpg",
+        "kind": "human",
+        "sha256": "df68ccd0150ed0ca94f41602520af0fcf2874fc3ae19f9376cecc37247082435",
+        "ids": {
+          "en": "a41ba0bf",
+          "cs": "04eab3d7"
+        }
+      },
+      {
+        "pool_file": "af2e33b19434.jpg",
+        "file": "af2e33b19434.jpg",
+        "kind": "ai",
+        "sha256": "a198a5bb3abfeca899d5427975ba2d9a5183bba68d74b2a1f16e4fe1f7908a46",
+        "ids": {
+          "en": "25295302",
+          "cs": "4b7eb1b9"
+        }
+      }
+    ],
+    "context": {
+      "en": "A basket of eggs photographed outdoors.",
+      "cs": "Košík s vejci vyfotografovaný venku."
+    }
+  },
+  {
+    "pool": "photo",
+    "name": "photo-foam",
+    "id": "sda6e05",
+    "pictures": [
+      {
+        "pool_file": "23fd5488d0be.jpg",
+        "file": "23fd5488d0be.jpg",
+        "kind": "human",
+        "sha256": "284790fad529f765eb0bdb48b398c5b2adeafd5e9481e602820296518de06a92",
+        "ids": {
+          "en": "40e48eaf",
+          "cs": "811578d9"
+        }
+      },
+      {
+        "pool_file": "5b96cb68b465.jpg",
+        "file": "5b96cb68b465.jpg",
+        "kind": "ai",
+        "sha256": "5e4199354a748b118ad0858890a6044788f7f3bb2c619264aad65819502406d1",
+        "ids": {
+          "en": "203781d9",
+          "cs": "26d64bcb"
+        }
+      }
+    ],
+    "context": {
+      "en": "A black-and-white close-up of soap foam.",
+      "cs": "Černobílý detail mýdlové pěny."
+    }
+  },
+  {
+    "pool": "photo",
+    "name": "photo-frozen",
+    "id": "s90188e",
+    "pictures": [
+      {
+        "pool_file": "b1a0dc3d4961.jpg",
+        "file": "b1a0dc3d4961.jpg",
+        "kind": "human",
+        "sha256": "00e56391e3d247cf320a48cac9bc07bce27b6494084efad5f4c4d3450ec05f4e",
+        "ids": {
+          "en": "f79c64ed",
+          "cs": "4937c5d2"
+        }
+      },
+      {
+        "pool_file": "a2ff94f9cea2.jpg",
+        "file": "a2ff94f9cea2.jpg",
+        "kind": "ai",
+        "sha256": "587057e1c3003a60300de53f2862895a8a2c798c8314413928073cb95ca56a4b",
+        "ids": {
+          "en": "0ebb0508",
+          "cs": "96d7558a"
+        }
+      }
+    ],
+    "context": {
+      "en": "A frozen soap bubble on fir twigs.",
+      "cs": "Zmrzlá mýdlová bublina na jedlových větvičkách."
+    }
+  },
+  {
+    "pool": "photo",
+    "name": "photo-fruit",
+    "id": "sd3821a",
+    "pictures": [
+      {
+        "pool_file": "0827444efa2f.jpg",
+        "file": "0827444efa2f.jpg",
+        "kind": "human",
+        "sha256": "e50bffed7ac1408bcff50bf34889422f57e30ec28f36584ee3dee01e541a4396",
+        "ids": {
+          "en": "6f58c590",
+          "cs": "59cb46ee"
+        }
+      },
+      {
+        "pool_file": "67eb4daffe0f.jpg",
+        "file": "67eb4daffe0f.jpg",
+        "kind": "ai",
+        "sha256": "7f69ca2bf3fd1dfe4b3d1e4a6cb200b378ac8cf7765f809db697b459cdcc5b51",
+        "ids": {
+          "en": "6fc66c70",
+          "cs": "e4984943"
+        }
+      }
+    ],
+    "context": {
+      "en": "A catalogue photograph of a pile of fruit.",
+      "cs": "Katalogová fotografie hromady ovoce."
+    }
+  },
+  {
+    "pool": "photo",
+    "name": "photo-kitchen",
+    "id": "s9adc37",
+    "pictures": [
+      {
+        "pool_file": "5ff378d64374.jpg",
+        "file": "5ff378d64374.jpg",
+        "kind": "human",
+        "sha256": "f772add2fab2ff95881edc4ab8837570fa6efe939f6f1f8d6beaccb2eaf116cd",
+        "ids": {
+          "en": "1f85b617",
+          "cs": "ec8ea6af"
+        }
+      },
+      {
+        "pool_file": "651dd5d6bc06.jpg",
+        "file": "651dd5d6bc06.jpg",
+        "kind": "ai",
+        "sha256": "f75ee747e63a46cd11080b863f6d52faff2113df735d839a830d7c0b4eb3358b",
+        "ids": {
+          "en": "8722ecca",
+          "cs": "5b0fd3e8"
+        }
+      }
+    ],
+    "context": {
+      "en": "Afternoon light on a kitchen still life.",
+      "cs": "Odpolední světlo v kuchyňském zátiší."
+    }
+  },
+  {
+    "pool": "photo",
+    "name": "photo-lensball",
+    "id": "s249244",
+    "pictures": [
+      {
+        "pool_file": "f749528fbf3b.jpg",
+        "file": "58a75f2b3a89.jpg",
+        "kind": "human",
+        "sha256": "b82e788bc88f4d34eb9c20796c2286037b311f832aa5b1aaf49350346ac6a5ae",
+        "ids": {
+          "en": "eb7b3bb1",
+          "cs": "04ba8757"
+        }
+      },
+      {
+        "pool_file": "7c5db518fad4.jpg",
+        "file": "9c33ce48be4e.jpg",
+        "kind": "ai",
+        "sha256": "31b343dae9c99629ee64c13b1c882850ea8d8e3ae66a36668ad3b1dfba3157e4",
+        "ids": {
+          "en": "86aa5268",
+          "cs": "934e32ec"
+        }
+      }
+    ],
+    "context": {
+      "en": "A glass ball in front of a landscape.",
+      "cs": "Skleněná koule před krajinou."
+    }
+  },
+  {
+    "pool": "photo",
+    "name": "photo-pastry",
+    "id": "sc22839",
+    "pictures": [
+      {
+        "pool_file": "919fe1e0a5c7.jpg",
+        "file": "919fe1e0a5c7.jpg",
+        "kind": "human",
+        "sha256": "d20067f0a4bd3c7d6a5dbea9215c6f6575da644b47b8e7380946373929da6a2a",
+        "ids": {
+          "en": "9fc81a10",
+          "cs": "640ba4e3"
+        }
+      },
+      {
+        "pool_file": "c1c131aa8a7c.jpg",
+        "file": "c1c131aa8a7c.jpg",
+        "kind": "ai",
+        "sha256": "899018c21680f6221b92cc147a53dbfc3139ae3b61aec85da1dbd743a959e3f5",
+        "ids": {
+          "en": "0377f152",
+          "cs": "4e816e58"
+        }
+      }
+    ],
+    "context": {
+      "en": "Two cream-filled pastries on a dark surface.",
+      "cs": "Dvě trubičky plněné krémem na tmavém podkladu."
+    }
+  },
+  {
+    "pool": "photo",
+    "name": "photo-rose",
+    "id": "sa93bfb",
+    "pictures": [
+      {
+        "pool_file": "7a7d66411b92.jpg",
+        "file": "7a7d66411b92.jpg",
+        "kind": "human",
+        "sha256": "d52db91bbda6e9b837e1b36647c3b5b1322ee996e84c0e84f6bdd95e3caab5af",
+        "ids": {
+          "en": "609bb35d",
+          "cs": "d3aacf3f"
+        }
+      },
+      {
+        "pool_file": "7a72ddb21f16.jpg",
+        "file": "7a72ddb21f16.jpg",
+        "kind": "ai",
+        "sha256": "fa16d7485302ffccba9c7d20a3f16020fdc313645d392211bcba8367820cfad4",
+        "ids": {
+          "en": "edbebb25",
+          "cs": "256e903b"
+        }
+      }
+    ],
+    "context": {
+      "en": "A dried rose photographed against black.",
+      "cs": "Sušená růže vyfotografovaná na černém pozadí."
+    }
+  },
+  {
+    "pool": "photo",
+    "name": "photo-shell",
+    "id": "s9e12aa",
+    "pictures": [
+      {
+        "pool_file": "498916d15b07.jpg",
+        "file": "498916d15b07.jpg",
+        "kind": "human",
+        "sha256": "b699aa0fd228f9b4297ee62d770e51b95103c5be72774f01e8f9c0cb7166351f",
+        "ids": {
+          "en": "f1d14556",
+          "cs": "4be14138"
+        }
+      },
+      {
+        "pool_file": "09027c6456f1.jpg",
+        "file": "09027c6456f1.jpg",
+        "kind": "ai",
+        "sha256": "3a551dd756057990b88066a6aec8a93b40ce18270e6cd7f821738648881aab69",
+        "ids": {
+          "en": "1a1e10a0",
+          "cs": "8f28c0ad"
+        }
+      }
+    ],
+    "context": {
+      "en": "A pale still-life photograph of a shell, glass and wire.",
+      "cs": "Světlá fotografie zátiší s ulitou, sklem a drátem."
+    }
+  },
+  {
+    "pool": "photo",
+    "name": "photo-valley",
+    "id": "s753366",
+    "pictures": [
+      {
+        "pool_file": "7f004f639fe1.jpg",
+        "file": "6873f7bee40c.jpg",
+        "kind": "human",
+        "sha256": "1c2db9f033f79672f4d1034c7ada53f3e6ced183b91acaf74ac9a66af43a0901",
+        "ids": {
+          "en": "a10599e7",
+          "cs": "4434234a"
+        }
+      },
+      {
+        "pool_file": "22913d625ebb.jpg",
+        "file": "9cabbc8f465f.jpg",
+        "kind": "ai",
+        "sha256": "3eca0da7eef46d3f45928c0e7e884abe4a8d809b414fbab446198938970ba447",
+        "ids": {
+          "en": "1da2ba68",
+          "cs": "524d9da6"
+        }
+      }
+    ],
+    "context": {
+      "en": "An ordinary photograph of an alpine valley.",
+      "cs": "Obyčejná fotografie alpského údolí."
+    }
+  },
+  {
+    "pool": "photo2",
+    "name": "photo2-child",
+    "id": "s61975f",
+    "pictures": [
+      {
+        "pool_file": "7566af64d688.jpg",
+        "file": "7566af64d688.jpg",
+        "kind": "human",
+        "sha256": "f8e337e3142c224b051dc82fb3dfd801b2bcca61fd392a045b76d18cd9d2c69a",
+        "ids": {
+          "en": "247580dc",
+          "cs": "729acf23"
+        }
+      },
+      {
+        "pool_file": "175de4f3f4cb.jpg",
+        "file": "175de4f3f4cb.jpg",
+        "kind": "ai",
+        "sha256": "d903d89f395dd3cfa3c963e9bca031dc3ad4095d37e18ff5a22b78d983d1293d",
+        "ids": {
+          "en": "b93bec0f",
+          "cs": "23900dfd"
+        }
+      }
+    ],
+    "context": {
+      "en": "A child in shallow sea water at sunset.",
+      "cs": "Dítě v mělkém moři při západu slunce."
+    }
+  },
+  {
+    "pool": "photo2",
+    "name": "photo2-crowd",
+    "id": "s94c5c9",
+    "pictures": [
+      {
+        "pool_file": "f8946a0a512b.jpg",
+        "file": "f8946a0a512b.jpg",
+        "kind": "human",
+        "sha256": "008a9f5fac675d279582ab70a1e905e41c077fdc6316e2f4b0e3b3427ddac77a",
+        "ids": {
+          "en": "fd27aaab",
+          "cs": "3e02fc15"
+        }
+      },
+      {
+        "pool_file": "dccd3b79dd99.jpg",
+        "file": "dccd3b79dd99.jpg",
+        "kind": "ai",
+        "sha256": "d9ebb7991dd8ae78fa4b134b41d9145f2706c956eee32d9db68d3bc6e23ac7b9",
+        "ids": {
+          "en": "f4500990",
+          "cs": "c8622a85"
+        }
+      }
+    ],
+    "context": {
+      "en": "A crowd at an outdoor music event.",
+      "cs": "Dav na venkovní hudební akci."
+    }
+  },
+  {
+    "pool": "photo2",
+    "name": "photo2-fox",
+    "id": "s7009ba",
+    "pictures": [
+      {
+        "pool_file": "34a20f9a8798.jpg",
+        "file": "34a20f9a8798.jpg",
+        "kind": "human",
+        "sha256": "69cc4074dac97601474e26ea86b47cddac54454d18a5670a0134003418b0bc6d",
+        "ids": {
+          "en": "a635d868",
+          "cs": "44c7ada5"
+        }
+      },
+      {
+        "pool_file": "60750e91a335.jpg",
+        "file": "60750e91a335.jpg",
+        "kind": "ai",
+        "sha256": "3361aaee77730fbce758fc87052023100b4d241aa79ad9f5752799be83c78d55",
+        "ids": {
+          "en": "956e7b26",
+          "cs": "c250ffee"
+        }
+      }
+    ],
+    "context": {
+      "en": "A dark-coated arctic fox in snow.",
+      "cs": "Tmavě zbarvená liška polární ve sněhu."
+    }
+  },
+  {
+    "pool": "photo2",
+    "name": "photo2-lounge",
+    "id": "s660db6",
+    "pictures": [
+      {
+        "pool_file": "aec7b11fbe0b.jpg",
+        "file": "aec7b11fbe0b.jpg",
+        "kind": "human",
+        "sha256": "ffc2c71c229e2408d4ccf9e1a687d517e8be5065c1481395be476bc34fb9c487",
+        "ids": {
+          "en": "745707e6",
+          "cs": "4be9d517"
+        }
+      },
+      {
+        "pool_file": "f1229dbe1477.jpg",
+        "file": "f1229dbe1477.jpg",
+        "kind": "ai",
+        "sha256": "f2ac1faa3acb7e50ad639f3859236deac95f55660df3549772bad12b7ce0e6d5",
+        "ids": {
+          "en": "0f994d7a",
+          "cs": "d9e9267f"
+        }
+      }
+    ],
+    "context": {
+      "en": "An office break room.",
+      "cs": "Odpočinková místnost v kanceláři."
+    }
+  },
+  {
+    "pool": "photo2",
+    "name": "photo2-market",
+    "id": "s2caa34",
+    "pictures": [
+      {
+        "pool_file": "51eae9a0ca69.jpg",
+        "file": "51eae9a0ca69.jpg",
+        "kind": "human",
+        "sha256": "2fa98db452e73c421a77362c14bd34b779bd1a7fb43a55ae80a540955baa62ac",
+        "ids": {
+          "en": "b4950d41",
+          "cs": "728c26c7"
+        }
+      },
+      {
+        "pool_file": "9cbf1ddb4ad9.jpg",
+        "file": "9cbf1ddb4ad9.jpg",
+        "kind": "ai",
+        "sha256": "597e2d427cd55a0e171e9493068c92af54bfdcea8167d3201d1f2fd538fb1cc7",
+        "ids": {
+          "en": "b30edb20",
+          "cs": "1644b22b"
+        }
+      }
+    ],
+    "context": {
+      "en": "Shoppers in a narrow covered market.",
+      "cs": "Nakupující v úzké kryté tržnici."
+    }
+  },
+  {
+    "pool": "photo2",
+    "name": "photo2-night",
+    "id": "s207bd5",
+    "pictures": [
+      {
+        "pool_file": "27682d9ae61f.jpg",
+        "file": "27682d9ae61f.jpg",
+        "kind": "human",
+        "sha256": "3b71ec5df0afff438fa6bf8a480b612ebf20503252fdb7bb5263c3dd152541c8",
+        "ids": {
+          "en": "b35d8b43",
+          "cs": "1ae444f5"
+        }
+      },
+      {
+        "pool_file": "b44210912517.jpg",
+        "file": "b44210912517.jpg",
+        "kind": "ai",
+        "sha256": "9af6235b53f9c38c7d4699fad4eb985708f1838681f96e4fedeaa9ff728bca1a",
+        "ids": {
+          "en": "96b31480",
+          "cs": "d939fef8"
+        }
+      }
+    ],
+    "context": {
+      "en": "City traffic after dark.",
+      "cs": "Městský provoz po setmění."
+    }
+  },
+  {
+    "pool": "photo2",
+    "name": "photo2-older",
+    "id": "sce7904",
+    "pictures": [
+      {
+        "pool_file": "d184d0de4549.jpg",
+        "file": "d184d0de4549.jpg",
+        "kind": "human",
+        "sha256": "1faae02cc78ba88d1916bf1b4a702563eb11722dd06abb55aa0dbaa779b8a1d6",
+        "ids": {
+          "en": "0dc65ae8",
+          "cs": "d333dd2f"
+        }
+      },
+      {
+        "pool_file": "04a52763e8a2.jpg",
+        "file": "04a52763e8a2.jpg",
+        "kind": "ai",
+        "sha256": "2bbb344eb4b140304be3da448532bf346a4aeb3d67788d710c4cef27bf3cd272",
+        "ids": {
+          "en": "a1da88f3",
+          "cs": "97ae8c1c"
+        }
+      }
+    ],
+    "context": {
+      "en": "An older man resting beside the sea.",
+      "cs": "Starší muž odpočívá u moře."
+    }
+  },
+  {
+    "pool": "photo2",
+    "name": "photo2-pet",
+    "id": "s467929",
+    "pictures": [
+      {
+        "pool_file": "35576aa6e210.jpg",
+        "file": "35576aa6e210.jpg",
+        "kind": "human",
+        "sha256": "d499dd24cb20b242206021207d2817453bd9c2fc25a1a4003badea9b06f10315",
+        "ids": {
+          "en": "0b6fa0c3",
+          "cs": "eafceb9c"
+        }
+      },
+      {
+        "pool_file": "93772df6d2d3.jpg",
+        "file": "93772df6d2d3.jpg",
+        "kind": "ai",
+        "sha256": "87438fde851e73f604f76b8bfb7277451214c00e3168f29d65a3dea024a0a46e",
+        "ids": {
+          "en": "6af4a1d6",
+          "cs": "3961a60f"
+        }
+      }
+    ],
+    "context": {
+      "en": "A dog walking across a snowy field.",
+      "cs": "Pes kráčí po zasněženém poli."
+    }
+  },
+  {
+    "pool": "photo2",
+    "name": "photo2-portrait",
+    "id": "s2a9dc6",
+    "pictures": [
+      {
+        "pool_file": "1c63035fbfb2.jpg",
+        "file": "1c63035fbfb2.jpg",
+        "kind": "human",
+        "sha256": "7aa5caf25bdb405139460318690d8dd1d5385300dadd15ab7480b7fa1df8a5e7",
+        "ids": {
+          "en": "43f3d52b",
+          "cs": "23fec388"
+        }
+      },
+      {
+        "pool_file": "421e22583514.jpg",
+        "file": "421e22583514.jpg",
+        "kind": "ai",
+        "sha256": "930038dc424772c704cc6bd31084e33b788f7825de829da4b19437a1c3a23a77",
+        "ids": {
+          "en": "6574e1ac",
+          "cs": "52464509"
+        }
+      }
+    ],
+    "context": {
+      "en": "An outdoor portrait beside a hedge.",
+      "cs": "Venkovní portrét před živým plotem."
+    }
+  },
+  {
+    "pool": "photo2",
+    "name": "photo2-rain",
+    "id": "sfd2bb2",
+    "pictures": [
+      {
+        "pool_file": "9827d4012b8c.jpg",
+        "file": "9827d4012b8c.jpg",
+        "kind": "human",
+        "sha256": "85db09c0f261a233369a6f52df340c080faf1d6c1260a5c60c69a9799205d801",
+        "ids": {
+          "en": "a8bf53c8",
+          "cs": "8492b8de"
+        }
+      },
+      {
+        "pool_file": "fc9214829078.jpg",
+        "file": "fc9214829078.jpg",
+        "kind": "ai",
+        "sha256": "39e81705747e9f6fe2b24f987c9d0dfb3b27b630cd4cf565dc93b9ef2bcff135",
+        "ids": {
+          "en": "e5577926",
+          "cs": "2bfc02cf"
+        }
+      }
+    ],
+    "context": {
+      "en": "Walking along a pavement in the rain.",
+      "cs": "Chůze po chodníku v dešti."
+    }
+  },
+  {
+    "pool": "photo2",
+    "name": "photo2-roadtrip",
+    "id": "s2bd470",
+    "pictures": [
+      {
+        "pool_file": "d61e78157ae5.jpg",
+        "file": "d61e78157ae5.jpg",
+        "kind": "human",
+        "sha256": "045b8002c4138905e25b0123186172e3446a0508287d1932047b543451f6954b",
+        "ids": {
+          "en": "af67f0b0",
+          "cs": "10b9c18a"
+        }
+      },
+      {
+        "pool_file": "b80261e157e4.jpg",
+        "file": "b80261e157e4.jpg",
+        "kind": "ai",
+        "sha256": "3d6b201f302170f1960bc29823214e52fa870193fa7aad03f5a0b733e42cd6b2",
+        "ids": {
+          "en": "b6dc94c7",
+          "cs": "cae26c86"
+        }
+      }
+    ],
+    "context": {
+      "en": "A road trip seen from the back seat.",
+      "cs": "Cesta autem ze zadního sedadla."
+    }
+  },
+  {
+    "pool": "photo2",
+    "name": "photo2-shop",
+    "id": "scb0ad1",
+    "pictures": [
+      {
+        "pool_file": "c3fcc83d5445.jpg",
+        "file": "c3fcc83d5445.jpg",
+        "kind": "human",
+        "sha256": "c80f22741bcaef190e655db5f670246a0908932ef793cfac5c7e505e16196696",
+        "ids": {
+          "en": "813e4af4",
+          "cs": "3835383a"
+        }
+      },
+      {
+        "pool_file": "edda32868a18.jpg",
+        "file": "edda32868a18.jpg",
+        "kind": "ai",
+        "sha256": "2bf8e56dacaa3d5f9f5a548ef2f35d15bf774913cc9fafa22f43d90ab521c4bc",
+        "ids": {
+          "en": "e69fce21",
+          "cs": "cd8c1e97"
+        }
+      }
+    ],
+    "context": {
+      "en": "Inside a vintage furnishings shop.",
+      "cs": "Uvnitř obchodu se starým nábytkem a doplňky."
+    }
+  },
+  {
+    "pool": "photo2",
+    "name": "photo2-worker",
+    "id": "sc21571",
+    "pictures": [
+      {
+        "pool_file": "a12f006387cd.jpg",
+        "file": "a12f006387cd.jpg",
+        "kind": "human",
+        "sha256": "c375442db888e46e187a8eed41e22a73c079c813961e26f4501ae998402b66f4",
+        "ids": {
+          "en": "0fc32774",
+          "cs": "2cacc510"
+        }
+      },
+      {
+        "pool_file": "0690de78d49f.jpg",
+        "file": "0690de78d49f.jpg",
+        "kind": "ai",
+        "sha256": "5a5e44e5c6e4682455b45d212ade99a865652392e30172497b6921bbe5fc0ba9",
+        "ids": {
+          "en": "fbd3f5ad",
+          "cs": "14dbb0dd"
+        }
+      }
+    ],
+    "context": {
+      "en": "A seated worker photographed from behind.",
+      "cs": "Sedící člověk při práci, vyfotografovaný zezadu."
+    }
+  },
+  {
+    "pool": "art",
+    "name": "art-cat-watercolour",
+    "id": "s7bf1af",
+    "pictures": [
+      {
+        "pool_file": "ce229f191a77.jpg",
+        "file": "ce229f191a77.jpg",
+        "kind": "human",
+        "sha256": "d38e3b6ac2398467df5fa000788828304d06326116d99b37b66964cb022a359e",
+        "ids": {
+          "en": "39ac3836",
+          "cs": "4c40fdf7"
+        }
+      },
+      {
+        "pool_file": "29dba3ed38d1.jpg",
+        "file": "29dba3ed38d1.jpg",
+        "kind": "ai",
+        "sha256": "806ea71a1e1711814faf8b8695518732182d2a56077fba1d2ccb76d9c90a529a",
+        "ids": {
+          "en": "b967ede7",
+          "cs": "d62a7bda"
+        }
+      }
+    ],
+    "context": {
+      "en": "A watercolour of a reclining calico cat.",
+      "cs": "Akvarel ležící tříbarevné kočky."
+    }
+  },
+  {
+    "pool": "art",
+    "name": "art-cgi-evening-lake",
+    "id": "sf78403",
+    "pictures": [
+      {
+        "pool_file": "4bba16977df7.jpg",
+        "file": "4bba16977df7.jpg",
+        "kind": "human",
+        "sha256": "5b72681cda2f7b7d4dec493febdcee6a0389c256cb573c40102350a1ab1e9a16",
+        "ids": {
+          "en": "df757e3e",
+          "cs": "ed159c64"
+        }
+      },
+      {
+        "pool_file": "b5807c4c56a8.jpg",
+        "file": "b5807c4c56a8.jpg",
+        "kind": "ai",
+        "sha256": "96401bc2a5c0f520f845234b6e52e51f6dacd04464300f3e77575684977c8aca",
+        "ids": {
+          "en": "c2da8a6a",
+          "cs": "4ed8ad4e"
+        }
+      }
+    ],
+    "context": {
+      "en": "A computer-rendered mountain lake in evening light.",
+      "cs": "Počítačově vykreslené horské jezero ve večerním světle."
+    }
+  },
+  {
+    "pool": "art",
+    "name": "art-cgi-green-sea",
+    "id": "s259dae",
+    "pictures": [
+      {
+        "pool_file": "81ba0e515742.jpg",
+        "file": "81ba0e515742.jpg",
+        "kind": "human",
+        "sha256": "41cb3097cf2069d5b98b19bfb86c55b41f2e0284751e69df8d409e9be5810e6b",
+        "ids": {
+          "en": "774c9b81",
+          "cs": "20a9ddaf"
+        }
+      },
+      {
+        "pool_file": "efdc15a7625a.jpg",
+        "file": "efdc15a7625a.jpg",
+        "kind": "ai",
+        "sha256": "f1d415516097c65a87f8d342dab9fd2add39f745c601387df54535d129b72cbd",
+        "ids": {
+          "en": "510eac67",
+          "cs": "7e2a76ca"
+        }
+      }
+    ],
+    "context": {
+      "en": "A computer-rendered sea beneath green-grey clouds.",
+      "cs": "Počítačově vykreslené moře pod zelenošedými mraky."
+    }
+  },
+  {
+    "pool": "art",
+    "name": "art-cgi-inlet",
+    "id": "s5650ca",
+    "pictures": [
+      {
+        "pool_file": "4ba3595d7148.jpg",
+        "file": "4ba3595d7148.jpg",
+        "kind": "human",
+        "sha256": "495a7b3e864d2454421dcbf7bc821503af83f59ffa7bf877dfaa3c4fa44a5b17",
+        "ids": {
+          "en": "07f47852",
+          "cs": "effc2dd6"
+        }
+      },
+      {
+        "pool_file": "436bdc5bfe0a.jpg",
+        "file": "436bdc5bfe0a.jpg",
+        "kind": "ai",
+        "sha256": "1f28abc437453325578ad808ac98585c4299f9fb9a801af0cdf8fd30e60b4c33",
+        "ids": {
+          "en": "b4732319",
+          "cs": "64eb2111"
+        }
+      }
+    ],
+    "context": {
+      "en": "A computer-rendered inlet between bare mountains.",
+      "cs": "Počítačově vykreslený záliv mezi holými horami."
+    }
+  },
+  {
+    "pool": "art",
+    "name": "art-cgi-ocean-planet",
+    "id": "sd212c9",
+    "pictures": [
+      {
+        "pool_file": "e0cd89d39cce.jpg",
+        "file": "e0cd89d39cce.jpg",
+        "kind": "human",
+        "sha256": "23a7f2fc56906b5b755ea2d1ba8fd7c7dacc64a9508222366784fb619ca475e9",
+        "ids": {
+          "en": "034c3a05",
+          "cs": "989438d8"
+        }
+      },
+      {
+        "pool_file": "7f67f4cdbc50.jpg",
+        "file": "7f67f4cdbc50.jpg",
+        "kind": "ai",
+        "sha256": "fe262bfc8f6b35f6fb6ac2822a3ca416d7ff696a3c6f6348f8a7c33f2f4849d5",
+        "ids": {
+          "en": "d3310a88",
+          "cs": "3c3ef8e1"
+        }
+      }
+    ],
+    "context": {
+      "en": "A computer illustration of an imaginary ocean planet.",
+      "cs": "Počítačová ilustrace smyšlené oceánské planety."
+    }
+  },
+  {
+    "pool": "art",
+    "name": "art-mountain-oil",
+    "id": "s86425a",
+    "pictures": [
+      {
+        "pool_file": "4a740150aaf3.jpg",
+        "file": "4a740150aaf3.jpg",
+        "kind": "human",
+        "sha256": "1c5e563a93ae2771f4feba1ca3ac7135df7e33b035e94e45e4f2b2754be1ac48",
+        "ids": {
+          "en": "13b02104",
+          "cs": "2653cda7"
+        }
+      },
+      {
+        "pool_file": "4dfd6b1f0e8b.jpg",
+        "file": "4dfd6b1f0e8b.jpg",
+        "kind": "ai",
+        "sha256": "3a29d6ca1f491f98c7aea1df0bda48305744d76d4c73862125c1efbea40a84b8",
+        "ids": {
+          "en": "a9fd7934",
+          "cs": "949836c3"
+        }
+      }
+    ],
+    "context": {
+      "en": "An oil-style painting of a broad mountain valley.",
+      "cs": "Malba širokého horského údolí v olejomalířském podání."
+    }
+  },
+  {
+    "pool": "art",
+    "name": "art-raven-engraving",
+    "id": "s7250dc",
+    "pictures": [
+      {
+        "pool_file": "7046802babe9.jpg",
+        "file": "7046802babe9.jpg",
+        "kind": "human",
+        "sha256": "107c4a9837a06b9675269d2b20bf9665f3387a93ad3d34fcd441dd86c210a2d6",
+        "ids": {
+          "en": "2f2ae3ea",
+          "cs": "3c1fbb31"
+        }
+      },
+      {
+        "pool_file": "179a10aaa4a3.jpg",
+        "file": "179a10aaa4a3.jpg",
+        "kind": "ai",
+        "sha256": "26627315ddd5103bf25a8e44b05e09dd527924d7b9f67a5b71409f464380924f",
+        "ids": {
+          "en": "2612a59e",
+          "cs": "b84c2630"
+        }
+      },
+      {
+        "pool_file": "b68889125667.jpg",
+        "file": "b68889125667.jpg",
+        "kind": "ai",
+        "sha256": "87ef1ded6a58cc77bc2380596f9d8f339c1285a71ba90e5a178a264c7452ccb0",
+        "ids": {
+          "en": "c298081d",
+          "cs": "5a493699"
+        }
+      }
+    ],
+    "context": {
+      "en": "An engraved book illustration with a raven and a heavy curtain.",
+      "cs": "Knižní rytina s havranem a těžkým závěsem."
+    }
+  },
+  {
+    "pool": "art2",
+    "name": "art2-autumn-park",
+    "id": "sb35b38",
+    "pictures": [
+      {
+        "pool_file": "c9230dd189ad.jpg",
+        "file": "c9230dd189ad.jpg",
+        "kind": "human",
+        "sha256": "1d4309a866e808ba98def3787f98fd7401e0b1cf8b32103ccb12151eea8e2b1b",
+        "ids": {
+          "en": "4ed52b1e",
+          "cs": "7dc3e25c"
+        }
+      },
+      {
+        "pool_file": "29ea1d862151.jpg",
+        "file": "29ea1d862151.jpg",
+        "kind": "ai",
+        "sha256": "d41b7134a8c854a570a27a7eae1be15384bfa48228387e06d8496eeed9dd094b",
+        "ids": {
+          "en": "079e0570",
+          "cs": "0a93d0fa"
+        }
+      }
+    ],
+    "crop": {
+      "inset": 0.02,
+      "reason": "border edge",
+      "source_boxes": {
+        "c9230dd189ad.jpg": [
+          26,
+          17,
+          1253,
+          855
+        ],
+        "29ea1d862151.jpg": [
+          30,
+          44,
+          1454,
+          1016
+        ]
+      },
+      "bytes_per_member": 214873
+    },
+    "context": {
+      "en": "A painted autumn path with an empty wheelbarrow.",
+      "cs": "Malba podzimní cesty s prázdným kolečkem."
+    }
+  },
+  {
+    "pool": "art2",
+    "name": "art2-boulevard-night",
+    "id": "s36b5a9",
+    "pictures": [
+      {
+        "pool_file": "323a9a89e9c9.jpg",
+        "file": "323a9a89e9c9.jpg",
+        "kind": "human",
+        "sha256": "b5971f51bdb253f820133b677e49910ca603e172563cb62396c0c75cee6064fe",
+        "ids": {
+          "en": "af5b0e8e",
+          "cs": "21d62826"
+        }
+      },
+      {
+        "pool_file": "72695798d769.jpg",
+        "file": "72695798d769.jpg",
+        "kind": "ai",
+        "sha256": "70e16bd70d19fc25fe2c4411eaf486c746a1bb2d08daa621ea87ff922db42f6d",
+        "ids": {
+          "en": "fca0c6d2",
+          "cs": "188ef34e"
+        }
+      }
+    ],
+    "crop": {
+      "inset": 0.06,
+      "reason": "signature",
+      "source_boxes": {
+        "323a9a89e9c9.jpg": [
+          77,
+          53,
+          1203,
+          827
+        ],
+        "72695798d769.jpg": [
+          91,
+          64,
+          1419,
+          978
+        ]
+      },
+      "bytes_per_member": 357474
+    },
+    "context": {
+      "en": "A painted night boulevard with a café and early motorcars.",
+      "cs": "Malba nočního bulváru s kavárnou a starými automobily."
+    }
+  },
+  {
+    "pool": "art2",
+    "name": "art2-cathedral-market",
+    "id": "s6d183b",
+    "pictures": [
+      {
+        "pool_file": "27201b2cffd0.jpg",
+        "file": "27201b2cffd0.jpg",
+        "kind": "human",
+        "sha256": "91b18b9d69377b6c6240f61fa9e493b91bf13cb592db5d8d0538ead339d3b758",
+        "ids": {
+          "en": "bc047f2f",
+          "cs": "facef4b8"
+        }
+      },
+      {
+        "pool_file": "9e1da17c3005.jpg",
+        "file": "9e1da17c3005.jpg",
+        "kind": "ai",
+        "sha256": "d6e8c75e8d19610579b677ad55aea38ceb961c830a06ffb118d555a837c77e3f",
+        "ids": {
+          "en": "7f5e541f",
+          "cs": "823b665f"
+        }
+      }
+    ],
+    "crop": {
+      "inset": 0.09,
+      "reason": "signature",
+      "source_boxes": {
+        "27201b2cffd0.jpg": [
+          46,
+          31,
+          466,
+          318
+        ],
+        "9e1da17c3005.jpg": [
+          139,
+          93,
+          1382,
+          941
+        ]
+      },
+      "bytes_per_member": 55940
+    },
+    "context": {
+      "en": "A painted snowy market square beside Notre-Dame.",
+      "cs": "Malba zasněženého tržiště u pařížské katedrály Notre-Dame."
+    }
+  },
+  {
+    "pool": "art2",
+    "name": "art2-dusk-fields",
+    "id": "s2a4a3f",
+    "pictures": [
+      {
+        "pool_file": "e36e656f2d0a.jpg",
+        "file": "e36e656f2d0a.jpg",
+        "kind": "human",
+        "sha256": "2ed3984ff93abc3a59bd136216460142571d6b3aa5abd00f8a9e73bca1cc6b2e",
+        "ids": {
+          "en": "30a4b325",
+          "cs": "268f9647"
+        }
+      },
+      {
+        "pool_file": "e81caafa241e.jpg",
+        "file": "e81caafa241e.jpg",
+        "kind": "ai",
+        "sha256": "6abd53615be1089a5992614bc94959b7d484d956fd07ae5e1b9ffba502d67101",
+        "ids": {
+          "en": "2c349fa3",
+          "cs": "978a1d32"
+        }
+      }
+    ],
+    "crop": {
+      "inset": 0.04,
+      "reason": "gallery-photo border",
+      "source_boxes": {
+        "e36e656f2d0a.jpg": [
+          20,
+          18,
+          476,
+          430
+        ],
+        "e81caafa241e.jpg": [
+          50,
+          105,
+          1204,
+          1148
+        ]
+      },
+      "bytes_per_member": 27229
+    },
+    "context": {
+      "en": "A small painted view across dark fields and a village.",
+      "cs": "Drobná malba tmavých polí s vesnicí v dálce."
+    }
+  },
+  {
+    "pool": "art2",
+    "name": "art2-forest-digital",
+    "id": "sc75b37",
+    "pictures": [
+      {
+        "pool_file": "fa042e544ad4.jpg",
+        "file": "fa042e544ad4.jpg",
+        "kind": "human",
+        "sha256": "1b46af0e2633aae3d76ff89562cf0e7eef5df39322fbba1cfaf399c8fd001731",
+        "ids": {
+          "en": "098a5d75",
+          "cs": "7d4e54ab"
+        }
+      },
+      {
+        "pool_file": "a21ec2fa2de8.jpg",
+        "file": "a21ec2fa2de8.jpg",
+        "kind": "ai",
+        "sha256": "463cde4b734364016726cba77dc291824dfffe6403f21f19ace1d11957cf2977",
+        "ids": {
+          "en": "845afedd",
+          "cs": "32dfd36f"
+        }
+      }
+    ],
+    "context": {
+      "en": "A digital-style illustration of a blue woodland stream at night.",
+      "cs": "Ilustrace nočního lesního potoka v modrých tónech a digitálním podání."
+    }
+  },
+  {
+    "pool": "art2",
+    "name": "art2-forest-oil",
+    "id": "sa026f1",
+    "pictures": [
+      {
+        "pool_file": "90388ae4d71a.jpg",
+        "file": "90388ae4d71a.jpg",
+        "kind": "human",
+        "sha256": "fa3afa5350bcf53dad77777af05a96218599e07c4a0b75552f6e93bf0df729c3",
+        "ids": {
+          "en": "b3097486",
+          "cs": "8c3d1bb3"
+        }
+      },
+      {
+        "pool_file": "abb84740e5a1.jpg",
+        "file": "abb84740e5a1.jpg",
+        "kind": "ai",
+        "sha256": "ca561a73df64037bc80b4ed568abbdf11a8f007f9a92cc975890db76ec845dd8",
+        "ids": {
+          "en": "07745080",
+          "cs": "dbf0082d"
+        }
+      }
+    ],
+    "context": {
+      "en": "A painted woodland interior with rocks and tall trunks.",
+      "cs": "Malba lesního zákoutí s kameny a vysokými kmeny."
+    }
+  },
+  {
+    "pool": "art2",
+    "name": "art2-school-drawing",
+    "id": "s98866a",
+    "pictures": [
+      {
+        "pool_file": "64d895bcf8f2.jpg",
+        "file": "64d895bcf8f2.jpg",
+        "kind": "human",
+        "sha256": "bae423a4ccfaaa6cd2b78e0c60025a05967aa8e2d28996d856e303b78b617898",
+        "ids": {
+          "en": "191aa902",
+          "cs": "bbe60278"
+        }
+      },
+      {
+        "pool_file": "e3961d28dc54.jpg",
+        "file": "e3961d28dc54.jpg",
+        "kind": "ai",
+        "sha256": "fc081afce12c1be8f0c78025d26494dc6a00c5ccf9b8bac6c1e713042a76546b",
+        "ids": {
+          "en": "fb4eacb0",
+          "cs": "6baa2b8f"
+        }
+      }
+    ],
+    "context": {
+      "en": "A book drawing of an empty school quadrangle.",
+      "cs": "Knižní kresba prázdného školního nádvoří."
+    }
+  },
+  {
+    "pool": "art2",
+    "name": "art2-snow-square",
+    "id": "s17e2e7",
+    "pictures": [
+      {
+        "pool_file": "45113f383ef6.jpg",
+        "file": "45113f383ef6.jpg",
+        "kind": "human",
+        "sha256": "af6ad5761da21756bcab66a0f4d7f0f8db547018d9f34b29226874ec80e19415",
+        "ids": {
+          "en": "1d262898",
+          "cs": "fd3dfa93"
+        }
+      },
+      {
+        "pool_file": "9b6c99529acc.jpg",
+        "file": "9b6c99529acc.jpg",
+        "kind": "ai",
+        "sha256": "550c0b568355049b4f09538a9ebcdc954a1633ab6ce92429d117ab6f577e43c8",
+        "ids": {
+          "en": "c8a85635",
+          "cs": "1fd152b8"
+        }
+      }
+    ],
+    "crop": {
+      "inset": 0.1,
+      "reason": "signature",
+      "source_boxes": {
+        "45113f383ef6.jpg": [
+          51,
+          39,
+          461,
+          353
+        ],
+        "9b6c99529acc.jpg": [
+          141,
+          124,
+          1271,
+          989
+        ]
+      },
+      "bytes_per_member": 41534
+    },
+    "context": {
+      "en": "A painted Paris square with snow and an advertising kiosk.",
+      "cs": "Malba zasněženého pařížského náměstí s reklamním kioskem."
+    }
+  }
+]
