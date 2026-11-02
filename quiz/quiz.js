@@ -45,7 +45,7 @@
       recording: 'Odpovědi a časy se zaznamenávají pro veřejné ověření výsledků. Jméno je nepovinné.',
       localResult: 'Tento výsledek je uložený jen u vás, veřejné ověření není dostupné.', pendingResult: 'Ověření se zobrazí, až se aktivitu podaří odeslat na server.',
       resultId: 'Kód výsledku', verify: 'Ověřit tento výsledek',
-      title: 'Člověk, nebo AI?', doc: 'Člověk, nebo AI? — kvíz', loadErr: 'Nepodařilo se načíst položky kvízu', start: 'Začít: smíšené kolo',
+      title: 'Člověk, nebo AI?', doc: 'Člověk, nebo AI? – kvíz', loadErr: 'Nepodařilo se načíst položky kvízu', start: 'Začít: smíšené kolo',
       lede: 'Každá položka je buď pravá (báseň nebo úryvek od velkého autora, heslo z Wikipedie, zpráva, fotka), anebo napodobenina, kterou pro stejný námět vytvořila umělá inteligence. Poznáte, co je co? Hned potom uvidíte, kdo nebo co položku vytvořilo a čím se prozradí, případně proč je těžké to poznat.',
       choose: 'Nebo si vyberte kolo', items: n => `${n} položek`, recent: 'Vaše poslední kola', round: 'Kolo', date: 'Datum', score: 'Skóre', forget: 'Smazat moji historii v tomto prohlížeči',
       poolNote: (ni, n) => `${ni} položek v ${n} sadách. Kolo vybere po jedné položce z několika sad a o tom, jestli uvidíte originál, nebo napodobeninu, rozhodne hod mincí. Poměr nemusí vyjít půl na půl a počítat se nevyplatí. Nová kola dávají přednost sadám, které jste ještě neviděli.`,
@@ -376,7 +376,7 @@
     game = { round, ids: d.ids, exhausted: d.exhausted, i: 0, answers: [], run: randomUUID(), ended: false, recorded: !!recording.url && !recording.optedOut };
     recording.setRun(game.run);
     recording.event('round_start', { round_id: round.id, round_title: round.title, item_ids: d.ids, size: d.ids.length });
-    document.title = round.title + ' — ' + T.title;
+    document.title = round.title + (LANG === 'cs' ? ' – ' : ' — ') + T.title;
     showItem();
   }
   function endActiveRound() {
@@ -433,8 +433,8 @@
     const last = g.i === g.ids.length - 1;
     const why = knownTick ? T.notScoredKnown : prevOrig ? T.notScoredSeen : '';
     $('#rev').innerHTML = `<section class="reveal" aria-labelledby="verdict">
-      <p class="verdict ${ok ? 'ok' : 'bad'}" id="verdict" tabindex="-1">${esc(ok ? T.right : T.wrong)} — ${esc(it.h ? T.madeH : T.madeA)}.${why ? ` <span class="small muted">${esc(why)}</span>` : ''}</p>
-      <p class="truth"><span class="badge ${it.h ? 'human' : 'ai'}">${esc(it.h ? T.badgeH : T.badgeA)}</span><span class="who">${md(x.who)}</span>${x.what ? ' — ' + md(x.what) : ''}</p>
+      <p class="verdict ${ok ? 'ok' : 'bad'}" id="verdict" tabindex="-1">${esc(ok ? T.right : T.wrong)}${LANG === 'cs' ? ' – ' : ' — '}${esc(it.h ? T.madeH : T.madeA)}.${why ? ` <span class="small muted">${esc(why)}</span>` : ''}</p>
+      <p class="truth"><span class="badge ${it.h ? 'human' : 'ai'}">${esc(it.h ? T.badgeH : T.badgeA)}</span><span class="who">${md(x.who)}</span>${x.what ? (LANG === 'cs' ? ' – ' : ' — ') + md(x.what) : ''}</p>
       ${x.why && x.why.length ? `<ul class="why">${x.why.map(w => `<li>${md(w)}</li>`).join('')}</ul>` : ''}
       ${x.source ? `<p class="small muted">${md(x.source)}</p>` : ''}
       ${x.prompt ? `<details><summary>${esc(T.promptSum)}</summary><div class="prompt">${esc(x.prompt)}</div><p class="small">${md(x.selection || '')}</p></details>` : ''}

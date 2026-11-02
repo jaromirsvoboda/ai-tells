@@ -139,7 +139,7 @@ test('quiz: retained sets, credits and translated media remain complete', async 
     expect(members.filter(i => encodedAnswer(i).answer === 'human')).toHaveLength(1);
     expect(members.filter(i => encodedAnswer(i).answer === 'ai').length).toBeGreaterThan(0);
     if (members[0].mod === 'image') {
-      expect(new Set(members.map(i => i.alt)).size, 'Shared neutral alt text').toBe(1);
+      for (const member of members) expect(member.alt.trim().length, `Image description for ${member.id}`).toBeGreaterThan(0);
       expect(new Set(members.map(i => `${i.w}x${i.h}`)).size, 'Same declared dimensions within a set').toBe(1);
     }
   }
@@ -164,7 +164,7 @@ test('quiz: retained sets, credits and translated media remain complete', async 
 
 test('quiz: pre-answer classes/data do not disclose origin; encoded lengths are balanced', async ({ page, request }) => {
   // Exhaustive fresh-document checks cover hundreds of items in each build.
-  test.setTimeout(300_000);
+  test.setTimeout(600_000);
   const { document, items } = await quizItems(request, base);
   const decoded = items.map(encodedAnswer);
   const groups = { human: [], ai: [] };

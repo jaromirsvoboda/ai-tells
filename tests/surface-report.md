@@ -1,3 +1,27 @@
+> **Update 2026-11-02:** the quiz includes the round-2 text replacements, 20 additional Czech literature sets and 28 additional image sets. EN: 474 items / 113 sets (113 human, 361 AI). CS: 352 items / 89 sets (89 human, 263 AI). The nine empty text slots were omitted. All 307 chosen text outputs passed the recorded mechanical and cross-family review gates. The table below is the new audit; the older body is preserved after it. Full feature tables and logistic coefficients: [round-2 measurements](surface-round2.md).
+
+| Round/component | Sets | Best fitted feature | Fit | Best CV feature | LOSO | Logistic LOSO |
+|---|---:|---|---:|---|---:|---:|
+| EN literature (text) | 13 | mean word length | 75.0% | mean word length | 63.5% | 54.8% |
+| EN cestina (text) | 55 | mean word length | 60.9% | mean word length | 59.6% | 58.9% |
+| EN everyday (text) | 11 | sentence length variance | 69.3% | title-case words/100w | 61.1% | 63.6% |
+| EN images (image) | 34 | quantization sum | 61.8% | quantization sum | 58.8% | 58.1% |
+| EN mixed (text) | 79 | sentence length variance | 58.1% | mean word length | 58.1% | 59.5% |
+| EN mixed (image) | 34 | quantization sum | 61.8% | quantization sum | 58.8% | 58.1% |
+| EN mixed (all) | 113 | text: sentence length variance | 55.4% | text: mean word length | 55.4% | 51.4% |
+| CS literatura (text) | 40 | mean word length | 63.8% | sentence length variance | 61.3% | 69.6% |
+| CS bezne (text) | 15 | diacritics ratio | 65.8% | title-case words/100w | 61.7% | 50.8% |
+| CS obrazky (image) | 34 | quantization sum | 61.8% | quantization sum | 58.8% | 58.1% |
+| CS mixed (text) | 55 | mean word length | 60.9% | mean word length | 59.6% | 58.9% |
+| CS mixed (image) | 34 | quantization sum | 61.8% | quantization sum | 58.8% | 58.1% |
+| CS mixed (all) | 89 | text: mean word length | 57.3% | text: mean word length | 56.4% | 51.4% |
+
+Three round results exceed 62% LOSO. English literature reaches 63.5% on mean word length: its weighted human mean is 4.279 letters versus 4.121 for AI. English everyday writing reaches 63.6% with the logistic model. Its largest mean absolute standardised coefficients are all-capital words per 100 words (0.653), any parentheses (0.597), capitalised words per 100 words (0.487) and sentence-length variance (0.454). Czech literature reaches 69.6% with the logistic model, with the largest weights on mean word length (0.769), sentence-length variance (0.423), line-character variance (0.370) and word count (0.324). Human Czech literature has longer words on average (4.759 versus 4.476 letters) and more variable sentence lengths (205.357 versus 78.988).
+
+These are associations in correlated features. Coefficient sizes describe the fitted models, not causal contributions. Neither texts nor set membership were changed in response to this audit. Image single-feature LOSO is 58.8% and logistic LOSO is 58.1%; JPEG quantisation sum is the strongest single feature. Per-image JPEG quality was adjusted during preparation to bring compressed sizes closer, so quantisation tables still vary. All image sets have matching dimensions within each set.
+
+---
+
 # Quiz continuation: surface-feature evidence
 
 > **Update 2026-11-01, later:** seven AI images posted on Commons were removed because they looked generated at a glance (Ideogram, Stable Diffusion 3.5, Reve, FLUX, three DALL-E 2). A re-run of `surface_audit.py` on the result: every text row is unchanged; the image rows (EN/CS images, Mixed image) are now fit 66.7 % (bytes/pixel), CV 50.0 % (width), logistic 25.0 % with one human and one AI picture in each of the six sets. The tables below are the earlier AFTER state.

@@ -1,5 +1,15 @@
 # Browser regressions
 
+Offline quiz checks need Python with Pillow and Node.js:
+
+```sh
+python3 tests/quiz_data_check.py
+node tests/quiz-tracking.unit.cjs
+python3 tests/quiz_data_check.py --quotes
+```
+
+The first command checks both JSON files, padded records, global item IDs, set membership, stanza layout, every JPEG, translated alt text, reveal notes and credit counts. The strict quote check also compares phrases inside English or Czech curly quotes with the item text, allowing whitespace and apostrophe typography changes. It exits 1 for nonliteral quotes; run it with `--quotes` to list the remaining nonliteral quotes (21 on 2026-11-02, mostly capitalisation).
+
 Run from the repository root with Node.js LTS:
 
 ```sh
@@ -34,4 +44,4 @@ Offline surface measurements use the installed Python NumPy and Pillow packages 
 OPENBLAS_NUM_THREADS=1 python3 tests/surface_audit.py --output /path/to/report
 ```
 
-The audit decodes the actual padded base64 JSON. It gives equal probability to human and AI within a set, with uniform AI selection for a fresh browser, and follows the quiz's category allocation. It reports feature means, the best fitted threshold/direction, leave-one-set-out thresholds and logistic predictions. Image metadata is measured separately; Mixed text results condition on text. See [surface-report.md](surface-report.md) for the saved BEFORE/AFTER tables, definitions, image checks and measurement limits. Maximum single-feature CV values still involve feature selection on these data; they are not an independent test of a preselected feature. The lead accepted publication with the measured sentence-rhythm signal disclosed; the public explanation is in [quiz/fairness.md](../quiz/fairness.md).
+The audit decodes the actual padded base64 JSON. It gives equal probability to human and AI within a set, with uniform AI selection for a fresh browser, and follows the quiz's category allocation. It reports feature means, the best fitted threshold/direction, leave-one-set-out thresholds and logistic predictions, plus mean standardised coefficients across folds. Image metadata is measured separately; Mixed text results condition on text. See [surface-round2.md](surface-round2.md) for current measurements and [surface-report.md](surface-report.md) for the preserved BEFORE/AFTER evidence and limits. Maximum single-feature CV values still involve feature selection on these data; they are not an independent test of a preselected feature. The public explanation is in [quiz/fairness.md](../quiz/fairness.md).
