@@ -1198,6 +1198,287 @@
     "context": {
       "en": "A national-park poster: screen-printed in the 1930s, or made by AI?",
       "cs": "Plakát národního parku: vytištěný ve 30. letech, nebo od AI?"
-    }
+    },
+    "sub": "poster"
+  },
+  {
+    "pool": "posters2",
+    "name": "poster-10382731",
+    "id": "sb372f6",
+    "sub": "poster",
+    "source_manifest": "sets/poster-10382731/set.json",
+    "pictures": [
+      {
+        "pool_file": "472fb2ba4592.jpg",
+        "file": "472fb2ba4592.jpg",
+        "kind": "human",
+        "sha256": "5817bcf7bce6041ec3a6ac6c8f3c6483b6ccb6394192f7228e53e8008935d95b",
+        "ids": {
+          "en": "2e27e3bf",
+          "cs": "91e0ca45"
+        }
+      },
+      {
+        "pool_file": "ca63bd70b923.jpg",
+        "file": "ca63bd70b923.jpg",
+        "kind": "ai",
+        "sha256": "87c4a35636d1fe68dbff65364c66e6e8cc53d0c55475280508d7f8f5e949d0a3",
+        "ids": {
+          "en": "ce707f79",
+          "cs": "45f9fb9f"
+        }
+      }
+    ],
+    "context": {
+      "en": "A historical pneumonia-warning poster.",
+      "cs": "Historický plakát varující před zápalem plic."
+    },
+    "generation_record": "sources/extra-10382731-paired-generation.json",
+    "selected_attempt": 1
+  },
+  {
+    "pool": "posters2",
+    "name": "poster-143486690",
+    "id": "s9304ef",
+    "sub": "poster",
+    "source_manifest": "sets/poster-143486690/set.json",
+    "pictures": [
+      {
+        "pool_file": "6b170808313d.jpg",
+        "file": "6b170808313d.jpg",
+        "kind": "human",
+        "sha256": "f661c95952f5247b52b5f67c9f8f989afad90a7b0f29bfaafa1fd7cffad3af2a",
+        "ids": {
+          "en": "00d0cac0",
+          "cs": "4bd90bdf"
+        }
+      },
+      {
+        "pool_file": "198f185debe3.jpg",
+        "file": "198f185debe3.jpg",
+        "kind": "ai",
+        "sha256": "993185602fdbdfe3158e934aaa6738c42574bc009e898c8869fab4ea1e1e5e11",
+        "ids": {
+          "en": "a8348b70",
+          "cs": "1f3651e0"
+        }
+      }
+    ],
+    "context": {
+      "en": "An illustrated 1920s citrus advertisement.",
+      "cs": "Ilustrovaná reklama na citrusy z dvacátých let."
+    },
+    "generation_record": "sources/design-143486690-paired-generation.json",
+    "selected_attempt": 1
+  },
+  {
+    "pool": "posters2",
+    "name": "poster-31837542",
+    "id": "s7e474d",
+    "sub": "poster",
+    "source_manifest": "sets/poster-31837542/set.json",
+    "pictures": [
+      {
+        "pool_file": "6562e5ca68a1.jpg",
+        "file": "6562e5ca68a1.jpg",
+        "kind": "human",
+        "sha256": "dc07a23e100c2de14513eccde6f16322a70f479f17d5c5a7ab0fae5c2edb98a9",
+        "ids": {
+          "en": "de2092eb",
+          "cs": "8e4152da"
+        }
+      },
+      {
+        "pool_file": "a007cbf1917c.jpg",
+        "file": "a007cbf1917c.jpg",
+        "kind": "ai",
+        "sha256": "7e04b5c025c868156c727c3fa5045999ebc1498395a9d2f4523707fc472756c5",
+        "ids": {
+          "en": "852dd84e",
+          "cs": "f7cea0d4"
+        }
+      }
+    ],
+    "context": {
+      "en": "A poster advertising an exhibition of textile designs.",
+      "cs": "Plakát k výstavě textilních vzorů."
+    },
+    "generation_record": "sources/extra-31837542-paired-generation.json",
+    "selected_attempt": 2
+  },
+  {
+    "pool": "posters2",
+    "name": "poster-87274577",
+    "id": "s2e90c0",
+    "sub": "poster",
+    "source_manifest": "sets/poster-87274577/set.json",
+    "pictures": [
+      {
+        "pool_file": "3f5a31b845e3.jpg",
+        "file": "3f5a31b845e3.jpg",
+        "kind": "human",
+        "sha256": "78e08832847dc66141f829e8e1503b7ea8f3cc17e411abf0f848dea1301252fc",
+        "ids": {
+          "en": "2f65c631",
+          "cs": "b8a682bf"
+        }
+      },
+      {
+        "pool_file": "aeccac505b3a.jpg",
+        "file": "aeccac505b3a.jpg",
+        "kind": "ai",
+        "sha256": "0948767638bec4ff80eb074ff53cdd25c4c4b3a52c9630ddd9b8f0009b1eef1c",
+        "ids": {
+          "en": "636a6b15",
+          "cs": "a32a4be7"
+        }
+      }
+    ],
+    "context": {
+      "en": "A geometric poster celebrating a recreation site.",
+      "cs": "Geometrický plakát k výročí rekreačního areálu."
+    },
+    "generation_record": "sources/design-87274577-paired-generation.json",
+    "selected_attempt": 5
+  },
+  {
+    "pool": "posters2",
+    "name": "poster-exhibition",
+    "id": "se25136",
+    "sub": "poster",
+    "source_manifest": "sets/poster-exhibition/set.json",
+    "pictures": [
+      {
+        "pool_file": "02f98e324d00.jpg",
+        "file": "02f98e324d00.jpg",
+        "kind": "human",
+        "sha256": "562bc6606c1f8298d81c80e0c961d3f9ed3f863ed7e31d89294d86b913b72b32",
+        "ids": {
+          "en": "9fe88352",
+          "cs": "a1760313"
+        }
+      },
+      {
+        "pool_file": "408ffe4fbb33.jpg",
+        "file": "408ffe4fbb33.jpg",
+        "kind": "ai",
+        "sha256": "581d83340b254b7b182f3612b5e338455fd6140244c59a6610eb07d855e9c5ae",
+        "ids": {
+          "en": "ef34befa",
+          "cs": "a915a6df"
+        }
+      }
+    ],
+    "context": {
+      "en": "A geometric art-exhibition poster.",
+      "cs": "Geometrický plakát k výstavě umění."
+    },
+    "generation_record": "sources/exhibition-paired-generation.json",
+    "selected_attempt": 2
+  },
+  {
+    "pool": "posters2",
+    "name": "poster-31840775",
+    "id": "sc821d2",
+    "sub": "poster",
+    "source_manifest": "held/poster-31840775/set.json",
+    "pictures": [
+      {
+        "pool_file": "9499734331f8.jpg",
+        "file": "9499734331f8.jpg",
+        "kind": "human",
+        "sha256": "3a1fcefb7bd3c965a5dace16f86cb63252ef44032acb3433c34503262e790b2d",
+        "ids": {
+          "en": "e38d3d66",
+          "cs": "fcdcfd99"
+        }
+      },
+      {
+        "pool_file": "31ac7b15ef95.jpg",
+        "file": "31ac7b15ef95.jpg",
+        "kind": "ai",
+        "sha256": "2646ca4c3927fc769df5e14aaf67f6b24cff1dcfaa5ca4c9ecad32eee3d97f64",
+        "ids": {
+          "en": "bb2b6b7b",
+          "cs": "dfd5d411"
+        }
+      }
+    ],
+    "context": {
+      "en": "A historical community-health poster.",
+      "cs": "Historický plakát o veřejném zdraví."
+    },
+    "generation_record": "sources/extra-31840775-paired-generation.json",
+    "selected_attempt": 2
+  },
+  {
+    "pool": "posters2",
+    "name": "poster-31968704",
+    "id": "sb706a7",
+    "sub": "poster",
+    "source_manifest": "held/poster-31968704/set.json",
+    "pictures": [
+      {
+        "pool_file": "43cd9671676e.jpg",
+        "file": "43cd9671676e.jpg",
+        "kind": "human",
+        "sha256": "705ed3c162e4ed07537a1547a325f3672ea554afbea8ba977d3ca820a5bc8929",
+        "ids": {
+          "en": "da285254",
+          "cs": "82e1565d"
+        }
+      },
+      {
+        "pool_file": "be9215e399dd.jpg",
+        "file": "be9215e399dd.jpg",
+        "kind": "ai",
+        "sha256": "2140fed86e7645020942f1d255fd0375449a94157cfc8937fd49b0daf73191b8",
+        "ids": {
+          "en": "a2d5e038",
+          "cs": "78d9d382"
+        }
+      }
+    ],
+    "context": {
+      "en": "A small group-exhibition poster.",
+      "cs": "Plakát ke skupinové výstavě."
+    },
+    "generation_record": "sources/extra-31968704-paired-generation.json",
+    "selected_attempt": 1
+  },
+  {
+    "pool": "posters2",
+    "name": "poster-swimming",
+    "id": "s03dd34",
+    "sub": "poster",
+    "source_manifest": "held/poster-swimming/set.json",
+    "pictures": [
+      {
+        "pool_file": "a150598d39a9.jpg",
+        "file": "a150598d39a9.jpg",
+        "kind": "human",
+        "sha256": "0b9106db9e43a5e11ffc041c30a2cf25f8656c20f0d78342485a02ff26dc2479",
+        "ids": {
+          "en": "9fbf3154",
+          "cs": "a72fd655"
+        }
+      },
+      {
+        "pool_file": "fb1f9539e4d8.jpg",
+        "file": "fb1f9539e4d8.jpg",
+        "kind": "ai",
+        "sha256": "00887f987fa7771f228e0210cc94b2304aeb7198dd6ba10d9b7bddbccfc8b22d",
+        "ids": {
+          "en": "d5cb26f6",
+          "cs": "e8bab097"
+        }
+      }
+    ],
+    "context": {
+      "en": "A recreational swimming campaign poster.",
+      "cs": "Plakát propagující rekreační plavání."
+    },
+    "generation_record": "sources/swimming-paired-generation.json",
+    "selected_attempt": 1
   }
 ]

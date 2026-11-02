@@ -45,8 +45,8 @@ for (const lang of ['en', 'cs']) {
       await activate(page, page.getByRole('button').filter({ has: page.locator('b', { hasText: round.title }) }));
       const human = page.getByRole('button', { name: lang === 'cs' ? 'Člověk' : 'Human', exact: true });
       const next = page.getByRole('button', { name: /^(Next item|Finish and see the results|Další položka|Dokončit a ukázat výsledek)$/ });
-      const limit = round.cats.length === 1 && round.cats[0] === 'images' ? 12 : round.n;
-      const n = Math.min(limit, data.sets.filter(s => round.cats.includes(s.cat) && (!round.lang || s.lang === round.lang)).length);
+      const limit = !round.sub && round.cats.length === 1 && round.cats[0] === 'images' ? 12 : round.n;
+      const n = Math.min(limit, data.sets.filter(s => round.cats.includes(s.cat) && (!round.lang || s.lang === round.lang) && (!round.sub || s.sub === round.sub)).length);
       for (let i = 0; i < n; i++) {
         await expect(human).toBeEnabled();
         await assertNoOverflow(page);
