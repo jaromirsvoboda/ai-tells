@@ -4,7 +4,6 @@ Offline quiz checks need Python with Pillow and Node.js:
 
 ```sh
 python3 tests/quiz_data_check.py
-node tests/quiz-tracking.unit.cjs
 python3 tests/quiz_data_check.py --quotes
 ```
 
