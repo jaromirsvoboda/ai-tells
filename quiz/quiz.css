@@ -1,15 +1,16 @@
 :root{
   --bg:#f7f5f0; --panel:#fffdf8; --ink:#1d1d1b; --muted:#5f5b53; --line:#d9d3c7; --accent:#2b5c8a; --accent-ink:#fff;
   --human:#2f6b3a; --ai:#8a3b2b; --ok:#2f6b3a; --bad:#9b2c1f; --focus:#9a6200; --chip:#ece6da;
+  --chart-bar:#928c80;
   --serif:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,"Times New Roman",serif;
   --sans:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
 }
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
   --bg:#141412; --panel:#1d1c19; --ink:#ece8df; --muted:#a8a296; --line:#3a3731; --accent:#7fb0e0; --accent-ink:#0d1a26;
-  --human:#86c48f; --ai:#e39a86; --ok:#86c48f; --bad:#f08c7c; --focus:#f2b84b; --chip:#2a2824;}}
+  --human:#86c48f; --ai:#e39a86; --ok:#86c48f; --bad:#f08c7c; --focus:#f2b84b; --chip:#2a2824; --chart-bar:#898276;}}
 :root[data-theme="dark"]{
   --bg:#141412; --panel:#1d1c19; --ink:#ece8df; --muted:#a8a296; --line:#3a3731; --accent:#7fb0e0; --accent-ink:#0d1a26;
-  --human:#86c48f; --ai:#e39a86; --ok:#86c48f; --bad:#f08c7c; --focus:#f2b84b; --chip:#2a2824;}
+  --human:#86c48f; --ai:#e39a86; --ok:#86c48f; --bad:#f08c7c; --focus:#f2b84b; --chip:#2a2824; --chart-bar:#898276;}
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
 body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 var(--sans)}
@@ -81,6 +82,25 @@ details.question .text{font:.95rem/1.5 var(--sans)}
 .sib{border-top:1px dashed var(--line);padding-top:.6rem;margin-top:.6rem}
 .next{margin-top:1rem;display:flex;justify-content:flex-end}
 .score{font:700 clamp(2.4rem,10vw,3.6rem)/1 var(--serif);margin:.4rem 0}
+.chart{margin:1rem 0;padding:1rem .75rem;background:var(--panel);border:1px solid var(--line);border-radius:14px;overflow-wrap:anywhere}
+.chance-graph{border:2px solid var(--accent)}
+.chart h2{margin:0 0 .75rem}
+.chance-message{font-size:1.12rem;font-weight:600;margin:.75rem 0 0}
+.chart-heading{font-weight:700;margin:0 0 .5rem}
+.history-summary,.pooled-chance{margin:.5rem 0}
+.pooled-chance{font-weight:600}
+.chart svg{display:block;width:100%;max-width:32rem;height:auto;margin:.75rem auto 0;font:13px var(--sans);fill:var(--muted)}
+.chart-axis{fill:none;stroke:var(--muted);stroke-width:1}
+.chance-bar{fill:var(--chart-bar)}
+.chance-tail{fill:var(--accent)}
+.player-bar{stroke:var(--ink);stroke-width:2;vector-effect:non-scaling-stroke}
+.chart-player-label{fill:var(--ink);font-weight:700}
+.chart-player-line{fill:none;stroke:var(--ink);stroke-width:1.5}
+.chart-tail-bracket{fill:none;stroke:var(--accent);stroke-width:1.5}
+.chart-tail-label{fill:var(--accent);font-weight:600}
+.chart-chance-line{fill:none;stroke:var(--muted);stroke-width:1;stroke-dasharray:4 3}
+.history-trend{fill:none;stroke:var(--accent);stroke-width:2}
+.history-point{fill:var(--accent);stroke:var(--panel);stroke-width:1}
 .tablewrap{overflow-x:auto}
 table.res{border-collapse:collapse;width:100%;font-size:.92rem;margin:.5rem 0}
 table.res th,table.res td{text-align:left;padding:.4rem .4rem;border-bottom:1px solid var(--line);vertical-align:top}

@@ -23,7 +23,13 @@
       next: 'Next item', finish: 'Finish and see the results', said: (ok, h) => `${ok ? 'Right' : 'Wrong'}. This was made by ${h ? 'a human' : 'AI'}.`,
       result: 'Your result', allKnown: 'You knew every item, so nothing was scored.',
       chance: (k, n, odds) => `${k} or more of ${n} by pure guessing: ${odds}. More items give a clearer picture.`,
-      odds: (oneIn, percent) => `about 1 in ${oneIn} (${percent} %)`,
+      odds: (oneIn, percent) => `about 1 in ${oneIn} (${percent}\u00a0%)`,
+      chanceTitle: 'Could this be pure guessing?', yourScore: k => `Your score: ${k}`, tailLabel: k => `${k} or more`, correctAnswers: 'Correct answers',
+      chanceLabel: (k, n, message) => `Results under pure guessing. Your score: ${k} / ${n}. Shaded bars: ${k} or more. ${message}`,
+      historyTitle: 'Accuracy by round', chanceLine: 'Guessing: 50\u00a0%',
+      historyLabel: (rounds, summary) => `Accuracy by round. Guessing: 50 %. ${rounds} ${summary}`,
+      historyPoint: (i, date, k, n, p) => `Round ${i}, ${date}: ${n ? `${k} / ${n} (${p} %)` : 'not scored'}.`,
+      historyUnscored: 'Unscored rounds leave gaps in the line.', historyNoScores: 'No scored answers yet.',
       byKind: 'By what it was', kind: 'Kind', origH: 'Human originals', origA: 'AI imitations', byCat: 'By category', cat: 'Category', cats: { literature: 'Literature & poetry', everyday: 'Everyday writing', images: 'Images' },
       byModel: 'AI imitations by model', model: 'Model', byEra: 'By era of the item', era: 'Era',
       rightCol: 'Right', meterSr: 'Share right; the line marks 50 %', allRounds: (a, b, p) => `All your rounds in this browser so far: ${a} right out of ${b} (${p} %).`,
@@ -49,7 +55,13 @@
       next: 'Další položka', finish: 'Dokončit a ukázat výsledek', said: (ok, h) => `${ok ? 'Správně' : 'Vedle'}. ${h ? 'Vytvořil to člověk' : 'Vytvořila to AI'}.`,
       result: 'Váš výsledek', allKnown: 'Všechny položky jste znali, takže se nic nepočítalo.',
       chance: (k, n, odds) => `${k} a víc ${[2, 3, 4, 6, 7, 12, 13, 14, 17].includes(n) ? 'ze' : 'z'} ${n} čistým hádáním: ${odds}. Více položek dá přesnější představu.`,
-      odds: (oneIn, percent) => `zhruba 1 z ${oneIn} (${percent} %)`,
+      odds: (oneIn, percent) => `zhruba 1 z ${oneIn} (${percent}\u00a0%)`,
+      chanceTitle: 'Mohlo to být pouhé hádání?', yourScore: k => `Vaše skóre: ${k}`, tailLabel: k => `${k} a víc`, correctAnswers: 'Správné odpovědi',
+      chanceLabel: (k, n, message) => `Výsledky při čistém hádání. Vaše skóre: ${k} / ${n}. Vybarvené sloupce: ${k} a víc. ${message}`,
+      historyTitle: 'Úspěšnost v jednotlivých kolech', chanceLine: 'Hádání: 50\u00a0%',
+      historyLabel: (rounds, summary) => `Úspěšnost v jednotlivých kolech. Hádání: 50 %. ${rounds} ${summary}`,
+      historyPoint: (i, date, k, n, p) => `Kolo ${i}, ${date}: ${n ? `${k} / ${n} (${p} %)` : 'nepočítá se'}.`,
+      historyUnscored: 'Kola bez skóre přerušují čáru v grafu.', historyNoScores: 'Zatím žádné započítané odpovědi.',
       byKind: 'Podle původu', kind: 'Původ', origH: 'Lidské originály', origA: 'Napodobeniny od AI', byCat: 'Podle kategorie', cat: 'Kategorie', cats: { literature: 'Literatura a poezie', everyday: 'Běžné texty', images: 'Obrázky' },
       byModel: 'Napodobeniny podle modelu', model: 'Model', byEra: 'Podle doby vzniku', era: 'Doba',
       rightCol: 'Správně', meterSr: 'Podíl správných odpovědí; čára značí 50 %', allRounds: (a, b, p) => `Všechna vaše kola v tomto prohlížeči: ${a} správně z ${b} (${p} %).`,
@@ -102,6 +114,8 @@
     return textHTML(it);
   }
   function binomialTail(k, n) {
+    // Pooled histories can exceed the range of unscaled binomial coefficients.
+    if (n > 1000) return binomialDistribution(n).slice(k).reduce((sum, p) => sum + p, 0);
     let combinations = 1, tail = 0;
     for (let j = 0; j <= n; j++) {
       if (j >= k) tail += combinations;
@@ -111,11 +125,93 @@
   }
   function chanceMessage(k, n) {
     const probability = binomialTail(k, n), locale = LANG === 'cs' ? 'cs-CZ' : 'en-GB';
-    const percent = new Intl.NumberFormat(locale, { maximumSignificantDigits: 2 }).format(100 * probability);
+    const extreme = Number.isFinite(1 / probability) ? null : exactChanceValues(k, n);
+    const percent = new Intl.NumberFormat(locale, { maximumSignificantDigits: 2 }).format(extreme ? extreme.percent : 100 * probability);
     // Common outcomes read more clearly as a percentage than as "1 in 1".
-    const odds = probability > 0.5 ? `${percent} %`
-      : T.odds(new Intl.NumberFormat(locale).format(Math.round(1 / probability)), percent);
+    const odds = probability > 0.5 ? `${percent}\u00a0%`
+      : T.odds(new Intl.NumberFormat(locale).format(extreme ? extreme.oneIn : Math.round(1 / probability)), percent);
     return T.chance(k, n, odds);
+  }
+  function exactChanceValues(k, n) {
+    // Only extreme pooled tails need BigInt. Keep the existing number formats,
+    // including a nonzero decimal percentage when Number would underflow.
+    let combinations = 1n, tail = 0n;
+    for (let j = n; j >= k; j--) {
+      tail += combinations;
+      combinations = combinations * BigInt(j) / BigInt(n - j + 1);
+    }
+    const outcomes = 2n ** BigInt(n);
+    const digits = (100n * tail * 5n ** BigInt(n)).toString().padStart(n + 1, '0');
+    return { oneIn: (outcomes + tail / 2n) / tail, percent: `${digits.slice(0, -n)}.${digits.slice(-n)}` };
+  }
+  function binomialDistribution(n) {
+    // Start at the mode, then normalise. This is the same exact binomial
+    // recurrence, without overflowing 2 ** n for long histories.
+    const weights = Array(n + 1).fill(0), mode = Math.floor(n / 2);
+    weights[mode] = 1;
+    for (let j = mode; j > 0; j--) weights[j - 1] = weights[j] * j / (n - j + 1);
+    for (let j = mode; j < n; j++) weights[j + 1] = weights[j] * (n - j) / (j + 1);
+    const total = weights.reduce((sum, weight) => sum + weight, 0);
+    return weights.map(weight => weight / total);
+  }
+  function chartTicks(n) {
+    const step = Math.max(1, Math.ceil(n / 4));
+    const ticks = [0];
+    for (let j = step; j < n; j += step) if (n - j >= step / 2) ticks.push(j);
+    ticks.push(n);
+    return ticks;
+  }
+  function chanceGraphHTML(k, n, message) {
+    const probabilities = binomialDistribution(n), peak = Math.max(...probabilities);
+    const left = 12, width = 296, base = 160, height = 108, step = width / (n + 1);
+    const x = j => left + (j + 0.5) * step;
+    const barTop = j => base - height * probabilities[j] / peak;
+    const labelX = Math.max(68, Math.min(252, x(k)));
+    const tailX = left + k * step;
+    return `<figure class="chart chance-graph">
+      <figcaption><h2>${esc(T.chanceTitle)}</h2><p class="score">${k} / ${n}</p><p class="chance-message">${esc(message)}</p></figcaption>
+      <svg viewBox="0 0 320 242" role="img" aria-label="${esc(T.chanceLabel(k, n, message))}">
+        <text class="chart-player-label" x="${labelX}" y="18" text-anchor="middle">${esc(T.yourScore(k))}</text>
+        <path class="chart-player-line" d="M ${labelX} 25 L ${x(k)} 40 V ${base}"/>
+        ${probabilities.map((p, j) => `<rect class="chance-bar${j >= k ? ' chance-tail' : ''}${j === k ? ' player-bar' : ''}" data-score="${j}" x="${left + j * step + step * 0.1}" y="${barTop(j)}" width="${step * 0.8}" height="${height * p / peak}"/>`).join('')}
+        <path class="chart-axis" d="M ${left} ${base} H ${left + width}"/>
+        ${chartTicks(n).map(j => `<text x="${x(j)}" y="179" text-anchor="${j === 0 ? 'start' : j === n ? 'end' : 'middle'}">${j}</text>`).join('')}
+        <path class="chart-tail-bracket" d="M ${tailX} 188 V 194 H ${left + width} V 188"/>
+        <text class="chart-tail-label" x="${Math.min(264, (tailX + left + width) / 2)}" y="211" text-anchor="middle">${esc(T.tailLabel(k))}</text>
+        <text class="chart-axis-label" x="160" y="235" text-anchor="middle">${esc(T.correctAnswers)}</text>
+      </svg>
+    </figure>`;
+  }
+  function historyGraphHTML() {
+    const history = store.history;
+    if (history.length < 2) return '';
+    const pooled = history.reduce((sum, h) => ({ ok: sum.ok + h.ok, n: sum.n + h.n }), { ok: 0, n: 0 });
+    const summary = pooled.n ? T.allRounds(pooled.ok, pooled.n, pct(pooled.ok, pooled.n)) : T.historyNoScores;
+    const chance = pooled.n ? chanceMessage(pooled.ok, pooled.n) : '';
+    const labels = history.map((h, i) => T.historyPoint(i + 1, displayDate(h.date), h.ok, h.n, pct(h.ok, h.n)));
+    const x = i => 38 + i * 264 / (history.length - 1), y = h => 162 - 116 * h.ok / h.n;
+    let drawing = false;
+    const path = history.map((h, i) => {
+      if (!h.n) { drawing = false; return ''; }
+      const point = `${drawing ? 'L' : 'M'} ${x(i)} ${y(h)}`;
+      drawing = true;
+      return point;
+    }).join(' ');
+    return `<figure class="chart history-graph">
+      <figcaption><p class="chart-heading">${esc(T.historyTitle)}</p><p class="history-summary">${esc(summary)}</p>${chance ? `<p class="pooled-chance">${esc(chance)}</p>` : ''}</figcaption>
+      <svg viewBox="0 0 320 211" role="img" aria-label="${esc(T.historyLabel(labels.join(' '), `${summary} ${chance}`.trim()))}">
+        <path class="chart-axis" d="M 38 46 V 162 H 302"/>
+        ${[0, 50, 100].map(p => `<text x="30" y="${166 - 116 * p / 100}" text-anchor="end">${p}</text>`).join('')}
+        <path class="chart-chance-line" d="M 38 104 H 302"/>
+        <text class="chart-chance-label" x="302" y="24" text-anchor="end">${esc(T.chanceLine)}</text>
+        <path class="chart-chance-line" d="M 294 29 V 104"/>
+        <path class="history-trend" d="${path}"/>
+        ${history.map((h, i) => h.n ? `<circle class="history-point" cx="${x(i)}" cy="${y(h)}" r="3"><title>${esc(labels[i])}</title></circle>` : '').join('')}
+        ${chartTicks(history.length - 1).map(i => `<text x="${x(i)}" y="182" text-anchor="middle">${i + 1}</text>`).join('')}
+        <text class="chart-axis-label" x="170" y="205" text-anchor="middle">${esc(T.round)}</text>
+      </svg>
+      ${history.some(h => !h.n) ? `<p class="small muted">${esc(T.historyUnscored)}</p>` : ''}
+    </figure>`;
   }
   const pct = (a, b) => b ? Math.round(100 * a / b) : 0;
   const displayDate = date => /^\d{4}-\d{2}-\d{2}$/.test(date)
@@ -161,7 +257,7 @@
         <button class="round" type="button" data-round="${r.id}"><b>${esc(r.title)}</b><span>${esc(r.blurb)}</span><br><span class="tag">${esc(T.items(roundSize(r)))} · ${esc(r.tag)}</span></button>`).join('')}
       </div>
       <p class="small muted">${esc(T.poolNote(DATA.items.length, DATA.sets.length))} <a href="#about">${esc(T.howLink)}</a>.</p>
-      ${hist.length ? `<h2>${esc(T.recent)}</h2><div class="tablewrap"><table class="res"><thead><tr><th>${esc(T.round)}</th><th>${esc(T.date)}</th><th class="num">${esc(T.score)}</th></tr></thead><tbody>${hist.map(h => `<tr><td>${esc(h.title)}</td><td>${esc(displayDate(h.date))}</td><td class="num">${h.ok} / ${h.n}</td></tr>`).join('')}</tbody></table></div>
+      ${hist.length ? `<h2>${esc(T.recent)}</h2>${historyGraphHTML()}<div class="tablewrap"><table class="res"><thead><tr><th>${esc(T.round)}</th><th>${esc(T.date)}</th><th class="num">${esc(T.score)}</th></tr></thead><tbody>${hist.map(h => `<tr><td>${esc(h.title)}</td><td>${esc(displayDate(h.date))}</td><td class="num">${h.ok} / ${h.n}</td></tr>`).join('')}</tbody></table></div>
       <p class="small"><button type="button" class="linkbtn" id="forget">${esc(T.forget)}</button></p>` : ''}`;
     main.querySelectorAll('[data-round]').forEach(b => b.addEventListener('click', () => { location.hash = 'play-' + b.dataset.round; }));
     $('#startMixed').addEventListener('click', () => { const r = DATA.rounds.find(x => x.id === 'mixed') || DATA.rounds[0]; location.hash = 'play-' + r.id; });
@@ -300,8 +396,7 @@
     main.innerHTML = `
       <h1>${esc(T.result)}</h1>
       <p class="muted">${esc(g.round.title)}</p>
-      <p class="score">${ok} / ${n}</p>
-      <p>${esc(verdict)}</p>
+      ${n ? chanceGraphHTML(ok, n, verdict) : `<p class="score">${ok} / ${n}</p><p>${esc(verdict)}</p>`}
       ${tableHTML(T.byKind, tally(scored, a => a.h ? T.origH : T.origA), T.kind)}
       ${tableHTML(T.byCat, tally(scored, a => T.cats[a.cat]), T.cat)}
       ${tableHTML(T.byModel, tally(scored.filter(a => !a.h), a => a.family), T.model)}
