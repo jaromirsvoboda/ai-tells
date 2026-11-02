@@ -745,130 +745,6 @@
   },
   {
     "pool": "art",
-    "name": "art-cgi-evening-lake",
-    "id": "sf78403",
-    "pictures": [
-      {
-        "pool_file": "4bba16977df7.jpg",
-        "file": "4bba16977df7.jpg",
-        "kind": "human",
-        "sha256": "5b72681cda2f7b7d4dec493febdcee6a0389c256cb573c40102350a1ab1e9a16",
-        "ids": {
-          "en": "df757e3e",
-          "cs": "ed159c64"
-        }
-      },
-      {
-        "pool_file": "b5807c4c56a8.jpg",
-        "file": "b5807c4c56a8.jpg",
-        "kind": "ai",
-        "sha256": "96401bc2a5c0f520f845234b6e52e51f6dacd04464300f3e77575684977c8aca",
-        "ids": {
-          "en": "c2da8a6a",
-          "cs": "4ed8ad4e"
-        }
-      }
-    ],
-    "context": {
-      "en": "A computer-rendered mountain lake in evening light.",
-      "cs": "Počítačově vykreslené horské jezero ve večerním světle."
-    }
-  },
-  {
-    "pool": "art",
-    "name": "art-cgi-green-sea",
-    "id": "s259dae",
-    "pictures": [
-      {
-        "pool_file": "81ba0e515742.jpg",
-        "file": "81ba0e515742.jpg",
-        "kind": "human",
-        "sha256": "41cb3097cf2069d5b98b19bfb86c55b41f2e0284751e69df8d409e9be5810e6b",
-        "ids": {
-          "en": "774c9b81",
-          "cs": "20a9ddaf"
-        }
-      },
-      {
-        "pool_file": "efdc15a7625a.jpg",
-        "file": "efdc15a7625a.jpg",
-        "kind": "ai",
-        "sha256": "f1d415516097c65a87f8d342dab9fd2add39f745c601387df54535d129b72cbd",
-        "ids": {
-          "en": "510eac67",
-          "cs": "7e2a76ca"
-        }
-      }
-    ],
-    "context": {
-      "en": "A computer-rendered sea beneath green-grey clouds.",
-      "cs": "Počítačově vykreslené moře pod zelenošedými mraky."
-    }
-  },
-  {
-    "pool": "art",
-    "name": "art-cgi-inlet",
-    "id": "s5650ca",
-    "pictures": [
-      {
-        "pool_file": "4ba3595d7148.jpg",
-        "file": "4ba3595d7148.jpg",
-        "kind": "human",
-        "sha256": "495a7b3e864d2454421dcbf7bc821503af83f59ffa7bf877dfaa3c4fa44a5b17",
-        "ids": {
-          "en": "07f47852",
-          "cs": "effc2dd6"
-        }
-      },
-      {
-        "pool_file": "436bdc5bfe0a.jpg",
-        "file": "436bdc5bfe0a.jpg",
-        "kind": "ai",
-        "sha256": "1f28abc437453325578ad808ac98585c4299f9fb9a801af0cdf8fd30e60b4c33",
-        "ids": {
-          "en": "b4732319",
-          "cs": "64eb2111"
-        }
-      }
-    ],
-    "context": {
-      "en": "A computer-rendered inlet between bare mountains.",
-      "cs": "Počítačově vykreslený záliv mezi holými horami."
-    }
-  },
-  {
-    "pool": "art",
-    "name": "art-cgi-ocean-planet",
-    "id": "sd212c9",
-    "pictures": [
-      {
-        "pool_file": "e0cd89d39cce.jpg",
-        "file": "e0cd89d39cce.jpg",
-        "kind": "human",
-        "sha256": "23a7f2fc56906b5b755ea2d1ba8fd7c7dacc64a9508222366784fb619ca475e9",
-        "ids": {
-          "en": "034c3a05",
-          "cs": "989438d8"
-        }
-      },
-      {
-        "pool_file": "7f67f4cdbc50.jpg",
-        "file": "7f67f4cdbc50.jpg",
-        "kind": "ai",
-        "sha256": "fe262bfc8f6b35f6fb6ac2822a3ca416d7ff696a3c6f6348f8a7c33f2f4849d5",
-        "ids": {
-          "en": "d3310a88",
-          "cs": "3c3ef8e1"
-        }
-      }
-    ],
-    "context": {
-      "en": "A computer illustration of an imaginary ocean planet.",
-      "cs": "Počítačová ilustrace smyšlené oceánské planety."
-    }
-  },
-  {
-    "pool": "art",
     "name": "art-mountain-oil",
     "id": "s86425a",
     "pictures": [
@@ -1280,6 +1156,48 @@
     "context": {
       "en": "A painted Paris square with snow and an advertising kiosk.",
       "cs": "Malba zasněženého pařížského náměstí s reklamním kioskem."
+    }
+  },
+  {
+    "pool": "restored",
+    "name": "wpa-yellowstone-poster",
+    "id": "s34d252",
+    "source_commit": "3db025f",
+    "pictures": [
+      {
+        "pool_file": "b88324c9b42b.jpg",
+        "file": "b88324c9b42b.jpg",
+        "kind": "ai",
+        "sha256": "29dec3a4116afdc6199d818a9dba4c441494e2b50a54f4e72eb6468e5c6e14c6",
+        "ids": {
+          "en": "2fba669d",
+          "cs": "85fb7f3b"
+        }
+      },
+      {
+        "pool_file": "8f451deeda09.jpg",
+        "file": "8f451deeda09.jpg",
+        "kind": "human",
+        "sha256": "aa903069cf79824c0d16cb7f862848d2f9b4ce737a6abe0edf0d3c8dd9e0d526",
+        "ids": {
+          "en": "5e2ea2ec",
+          "cs": "53f35153"
+        }
+      },
+      {
+        "pool_file": "9a1bbf97f3a9.jpg",
+        "file": "9a1bbf97f3a9.jpg",
+        "kind": "ai",
+        "sha256": "46e1788453d02f542e908a86ca60a4a9d7d9219d4c0695586a7f1f9ec2d12534",
+        "ids": {
+          "en": "fb1bf674",
+          "cs": "39e884f5"
+        }
+      }
+    ],
+    "context": {
+      "en": "A national-park poster: screen-printed in the 1930s, or made by AI?",
+      "cs": "Plakát národního parku: vytištěný ve 30. letech, nebo od AI?"
     }
   }
 ]
