@@ -95,3 +95,19 @@ footer{border-top:1px solid var(--line);margin-top:2.5rem;padding-top:1rem;font-
 .kbd{font:.8rem ui-monospace,monospace;border:1px solid var(--line);border-bottom-width:2px;border-radius:4px;padding:0 .3rem}
 @media (max-width:30rem){.text{font-size:1.02rem}.poem{font-size:1rem}.card{padding:.9rem .85rem 1rem}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+
+/* Optional names, recording controls and public verification. */
+.name-control{margin:.5rem 0 1rem}
+.name-form label{display:block;font-weight:600}
+.name-form .row{margin-top:.4rem;align-items:center}
+.name-form input,.verify-form input{font:inherit;color:var(--ink);background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:.6rem;max-width:100%;min-width:0;flex:1 1 12rem}
+.name-form .btn{font-size:.9rem}
+.name-form p{margin:.3rem 0}
+.recording-controls{margin:1rem 0}
+.recording-controls p{margin:.3rem 0}
+#result-id{font-family:ui-monospace,monospace;white-space:nowrap}
+.verify-form{display:flex;gap:.6rem;flex-wrap:wrap;align-items:center}
+.verify-form label{flex:1 0 100%}
+.verification-items{padding-left:1.5rem}
+.verification-items li{margin:1rem 0}
+.verification-items p{margin:.3rem 0}

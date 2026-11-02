@@ -1,5 +1,5 @@
 /* Human or AI? / Člověk, nebo AI? — static quiz shared by quiz/ (English) and quiz/cs/ (Czech).
-   No network calls except this folder's items.json and media. Answers and history stay in this browser's localStorage. */
+   Recording is optional and disabled until config.js supplies an endpoint. */
 (function () {
   'use strict';
   const $ = (s, el = document) => el.querySelector(s);
@@ -7,6 +7,12 @@
   const LANG = document.documentElement.lang === 'cs' ? 'cs' : 'en';
   const T = {
     en: {
+      yourName: 'Your name', saveName: 'Save name', nameLabel: 'Optional name (up to 60 characters)', addName: 'Add your name to this result',
+      optOut: "Don't record my answers", inactive: 'Recording is not active yet. Activity stays in this browser.',
+      recordingOff: 'Recording is off. Local scores still work.',
+      recording: 'Answers and timings are recorded for public result verification. Your name is optional.',
+      localResult: 'This result is local only; public verification is unavailable.', pendingResult: 'Verification appears after the queued activity reaches the server.',
+      resultId: 'Result ID', verify: 'Verify this result',
       title: 'Human or AI?', doc: 'Human or AI? — a quiz', loadErr: 'Could not load the quiz items', start: 'Start: a mixed round',
       lede: 'Each item is either the real thing — a poem or a passage by a great writer, a Wikipedia paragraph, a forum answer, a photograph — or an imitation that an AI model wrote or drew for the same slot. Decide which. Then see who or what made it, and why it is hard or what gives it away.',
       choose: 'Or choose a round', items: n => `${n} items`, recent: 'Your recent rounds', round: 'Round', date: 'Date', score: 'Score', forget: 'Forget my history in this browser',
@@ -33,6 +39,12 @@
       learn: 'Want to learn the tells? The <a href="../">catalogue of AI tells</a> lists them by medium and by when they appeared.', back: 'Back to the rounds',
     },
     cs: {
+      yourName: 'Vaše jméno', saveName: 'Uložit jméno', nameLabel: 'Nepovinné jméno (nejvýš 60 znaků)', addName: 'Přidat jméno k tomuto výsledku',
+      optOut: 'Nezaznamenávat moje odpovědi', inactive: 'Zaznamenávání zatím není aktivní. Aktivita zůstává v tomto prohlížeči.',
+      recordingOff: 'Zaznamenávání je vypnuté. Místní výsledky fungují dál.',
+      recording: 'Odpovědi a časy se zaznamenávají pro veřejné ověření výsledků. Jméno je nepovinné.',
+      localResult: 'Tento výsledek je uložený jen u vás, veřejné ověření není dostupné.', pendingResult: 'Ověření se zobrazí, až se aktivitu podaří odeslat na server.',
+      resultId: 'Kód výsledku', verify: 'Ověřit tento výsledek',
       title: 'Člověk, nebo AI?', doc: 'Člověk, nebo AI? — kvíz', loadErr: 'Nepodařilo se načíst položky kvízu', start: 'Začít: smíšené kolo',
       lede: 'Každá položka je buď pravá (báseň nebo úryvek od velkého autora, heslo z Wikipedie, zpráva, fotka), anebo napodobenina, kterou pro stejný námět vytvořila umělá inteligence. Poznáte, co je co? Hned potom uvidíte, kdo nebo co položku vytvořilo a čím se prozradí, případně proč je těžké to poznat.',
       choose: 'Nebo si vyberte kolo', items: n => `${n} položek`, recent: 'Vaše poslední kola', round: 'Kolo', date: 'Datum', score: 'Skóre', forget: 'Smazat moji historii v tomto prohlížeči',
@@ -69,6 +81,129 @@
     new MutationObserver(ms => ms.forEach(m => m.addedNodes.forEach(n => { if (n.nodeType === 1) nb(n); else if (n.nodeType === 3 && n.parentElement) nb(n.parentElement); }))).observe(main, { childList: true, subtree: true });
     nb(document.body);
   }
+
+  /* ---------- optional event recording ---------- */
+  const PAGE_VERSION = 'quiz-tracking-1';
+  function randomUUID() {
+    if (globalThis.crypto && typeof crypto.randomUUID === 'function') return crypto.randomUUID();
+    const bytes = new Uint8Array(16);
+    if (globalThis.crypto && crypto.getRandomValues) crypto.getRandomValues(bytes);
+    else bytes.forEach((_, i) => { bytes[i] = Math.floor(Math.random() * 256); });
+    bytes[6] = (bytes[6] & 15) | 64; bytes[8] = (bytes[8] & 63) | 128;
+    const hex = [...bytes].map(b => b.toString(16).padStart(2, '0')).join('');
+    return `${hex.slice(0, 8)}-${hex.slice(8, 12)}-${hex.slice(12, 16)}-${hex.slice(16, 20)}-${hex.slice(20)}`;
+  }
+  function resultId() {
+    const bytes = new Uint8Array(8), alphabet = '0123456789ABCDEFGHJKMNPQRSTVWXYZ';
+    if (globalThis.crypto && crypto.getRandomValues) crypto.getRandomValues(bytes);
+    else bytes.forEach((_, i) => { bytes[i] = Math.floor(Math.random() * 256); });
+    const id = [...bytes].map(b => alphabet[b & 31]).join('');
+    return id.slice(0, 4) + '-' + id.slice(4);
+  }
+  const recording = (() => {
+    const prefix = 'human-or-ai/tracking/', cap = 500;
+    const url = typeof window.QUIZ_LOG_URL === 'string' ? window.QUIZ_LOG_URL.trim() : '';
+    const read = (key, fallback) => { try { const value = JSON.parse(localStorage.getItem(prefix + key)); return value == null ? fallback : value; } catch (_) { return fallback; } };
+    const write = (key, value) => { try { localStorage.setItem(prefix + key, JSON.stringify(value)); return true; } catch (_) { return false; } };
+    let session = read('session', '');
+    if (!/^[0-9a-f-]{36}$/.test(session)) session = randomUUID();
+    // A denied write cannot leave us reusing an inaccessible persisted identity.
+    try { localStorage.setItem(prefix + 'session', JSON.stringify(session)); } catch (_) { session = randomUUID(); }
+    let seq = Number(read('seq', 0)) || 0, run = null;
+    let name = cleanName(read('name', '')), optedOut = read('optOut', false) === true;
+    let queue = read('queue', []), log = read('log', []);
+    queue = Array.isArray(queue) ? queue.filter(e => e && e.event_id).slice(-cap) : [];
+    log = Array.isArray(log) ? log.slice(-cap) : [];
+    let timer = null, busy = false, failures = 0, retryAt = 0, controller = null, generation = 0;
+    let queueWritable = true;
+    function saveQueue() { if (!write('queue', queue)) queueWritable = false; }
+    function cleanName(value) { return String(value || '').replace(/<[^>]*>/g, '').replace(/[<>]/g, '').trim().slice(0, 60).trim(); }
+    function currentQueue() {
+      if (!queueWritable) return queue;
+      const stored = read('queue', queue);
+      return Array.isArray(stored) ? stored.filter(e => e && e.event_id).slice(-cap) : queue;
+    }
+    function schedule(delay = 300) {
+      if (!url || optedOut || timer) return;
+      timer = setTimeout(() => { timer = null; flush(); }, Math.max(delay, retryAt - Date.now()));
+    }
+    function event(type, fields = {}) {
+      if (optedOut) return;
+      seq = Math.max(seq, Number(read('seq', 0)) || 0) + 1; write('seq', seq);
+      const entry = { ...fields, event: type, ts: new Date().toISOString(), seq, session_id: session,
+        event_id: randomUUID(), round_run_id: run, lang: LANG, page_version: PAGE_VERSION, name };
+      log.push(entry); log = log.slice(-cap); write('log', log);
+      if (url) { queue = currentQueue(); queue.push(entry); queue = queue.slice(-cap); saveQueue(); schedule(); }
+    }
+    function batch() {
+      queue = currentQueue();
+      const events = [];
+      for (const entry of queue.slice(0, 50)) {
+        if (new TextEncoder().encode(JSON.stringify({ events: [...events, entry] })).length > 18000) break;
+        events.push(entry);
+      }
+      return events;
+    }
+    async function flush() {
+      if (!url || optedOut || busy || navigator.onLine === false) return;
+      const events = batch(); if (!events.length) return;
+      if (Date.now() < retryAt) { schedule(); return; }
+      const started = generation;
+      busy = true;
+      controller = new AbortController();
+      const timeout = setTimeout(() => controller && controller.abort(), 12000);
+      try {
+        const response = await fetch(url, { method: 'POST', headers: { 'Content-Type': 'text/plain;charset=UTF-8' },
+          body: JSON.stringify({ events }), keepalive: true, credentials: 'omit', signal: controller.signal });
+        const ack = response.ok && await response.json();
+        if (!ack || ack.ok !== true) throw new Error('No acknowledgement');
+        if (started === generation) {
+          const ids = new Set(events.map(e => e.event_id));
+          queue = currentQueue().filter(e => !ids.has(e.event_id)); saveQueue();
+          failures = 0; retryAt = 0;
+        }
+      } catch (_) {
+        if (started === generation && !optedOut) {
+          failures++; retryAt = Date.now() + Math.min(60000, 1000 * 2 ** Math.min(failures, 6));
+        }
+      } finally {
+        clearTimeout(timeout); controller = null; busy = false;
+        if (currentQueue().length) schedule();
+      }
+    }
+    function optOut(value) {
+      if (value === optedOut) return;
+      optedOut = value; write('optOut', optedOut);
+      if (optedOut) {
+        generation++; if (controller) controller.abort();
+        clearTimeout(timer); timer = null; queue = []; log = [];
+        saveQueue(); write('log', log);
+        // Keep the preference change locally; opting out itself sends nothing.
+        seq = Math.max(seq, Number(read('seq', 0)) || 0) + 1;
+        log.push({ event: 'opt_out_changed', ts: new Date().toISOString(), seq,
+          session_id: session, event_id: randomUUID(), round_run_id: run, lang: LANG,
+          page_version: PAGE_VERSION, name, opted_out: true });
+        write('seq', seq); write('log', log);
+      } else { failures = 0; retryAt = 0; event('opt_out_changed', { opted_out: false }); }
+    }
+    window.addEventListener('online', () => { retryAt = 0; clearTimeout(timer); timer = null; schedule(0); });
+    window.addEventListener('storage', e => {
+      if (e.key === prefix + 'optOut') { optOut(e.newValue === 'true'); syncRecordingControls(); }
+      if (e.key === prefix + 'name') { name = cleanName(read('name', '')); syncNameControls(); }
+    });
+    window.addEventListener('pagehide', e => {
+      if (!e.persisted && typeof endActiveRound === 'function') endActiveRound();
+      if (!url || optedOut || navigator.onLine === false || !navigator.sendBeacon) return;
+      const events = batch(); if (!events.length) return;
+      // A queued beacon is not an acknowledgement. Retain it for an idempotent retry.
+      try { navigator.sendBeacon(url, new Blob([JSON.stringify({ events })], { type: 'text/plain;charset=UTF-8' })); } catch (_) { /* retry on next visit */ }
+    });
+    if (optedOut || !url) { queue = []; saveQueue(); }
+    schedule(); event('page_open');
+    return { event, url, get optedOut() { return optedOut; }, get name() { return name; },
+      setRun(value) { run = value; }, optOut,
+      setName(value) { name = cleanName(value); write('name', name); event('name_set'); } };
+  })();
 
   /* ---------- storage (optional: everything works without it) ---------- */
   const KEY = 'human-or-ai/v2/' + LANG;
@@ -123,6 +258,35 @@
   function say(t) { live.textContent = ''; setTimeout(() => { live.textContent = t; }, 30); }
   function focusMain() { main.focus({ preventScroll: true }); window.scrollTo({ top: 0 }); }
 
+  /* ---------- recording and name controls ---------- */
+  function nameForm(id, label) {
+    return `<form class="name-form" data-name-form><label for="${id}">${esc(label)}</label>
+      <div class="row"><input id="${id}" name="player-name" type="text" maxlength="60" value="${esc(recording.name)}" autocomplete="nickname" aria-describedby="${id}-hint">
+      <button class="btn" type="submit">${esc(T.saveName)}</button></div><p class="small muted" id="${id}-hint">${esc(T.nameLabel)}</p></form>`;
+  }
+  function syncNameControls() {
+    document.querySelectorAll('[name="player-name"]').forEach(input => { input.value = recording.name; });
+  }
+  document.addEventListener('submit', e => {
+    if (!e.target.matches('[data-name-form]')) return;
+    e.preventDefault(); recording.setName(e.target.elements['player-name'].value); syncNameControls(); say(T.saveName);
+  });
+  const nameControl = document.createElement('details'); nameControl.className = 'name-control';
+  nameControl.innerHTML = `<summary>${esc(T.yourName)}</summary>${nameForm('playerName', T.yourName)}`;
+  document.querySelector('header.top').after(nameControl);
+  function recordingControls() {
+    return `<div class="recording-controls"><label class="known"><input type="checkbox" data-opt-out${recording.optedOut ? ' checked' : ''}> <span>${esc(T.optOut)}</span></label>
+      <p class="small muted" data-recording-note>${esc(!recording.url ? T.inactive : recording.optedOut ? T.recordingOff : T.recording)}</p></div>`;
+  }
+  function syncRecordingControls() {
+    document.querySelectorAll('[data-opt-out]').forEach(input => { input.checked = recording.optedOut; });
+    document.querySelectorAll('[data-recording-note]').forEach(note => { note.textContent = !recording.url ? T.inactive : recording.optedOut ? T.recordingOff : T.recording; });
+    if (typeof game !== 'undefined' && game && recording.optedOut) game.recorded = false;
+  }
+  document.addEventListener('change', e => {
+    if (e.target.matches('[data-opt-out]')) { recording.optOut(e.target.checked); syncRecordingControls(); }
+  });
+
   /* ---------- data ---------- */
   let DATA, ITEMS = {}, SETS = {};
   fetch('items.json', { cache: 'no-cache' }).then(r => r.json()).then(d => {
@@ -150,11 +314,12 @@
 
   /* ---------- home ---------- */
   function home() {
-    game = null;
+    endActiveRound(); game = null; recording.setRun(null);
     const hist = store.history.slice(-5).reverse();
     main.innerHTML = `
       <h1>${esc(T.title)}</h1>
       <p class="lede">${esc(T.lede)}</p>
+      ${recordingControls()}
       <p class="row"><button class="btn primary" type="button" id="startMixed">${esc(T.start)}</button></p>
       <h2>${esc(T.choose)}</h2>
       <div class="rounds">${DATA.rounds.map(r => `
@@ -165,12 +330,14 @@
       <p class="small"><button type="button" class="linkbtn" id="forget">${esc(T.forget)}</button></p>` : ''}`;
     main.querySelectorAll('[data-round]').forEach(b => b.addEventListener('click', () => { location.hash = 'play-' + b.dataset.round; }));
     $('#startMixed').addEventListener('click', () => { const r = DATA.rounds.find(x => x.id === 'mixed') || DATA.rounds[0]; location.hash = 'play-' + r.id; });
-    const f = $('#forget'); if (f) f.addEventListener('click', () => { store = { seen: {}, history: [], setsShown: {}, origSeen: {} }; save(store); home(); });
+    const f = $('#forget'); if (f) f.addEventListener('click', () => { recording.event('history_cleared'); store = { seen: {}, history: [], setsShown: {}, origSeen: {} }; save(store); home(); });
     document.title = T.doc;
   }
 
   function about() {
+    endActiveRound(); game = null; recording.setRun(null);
     main.innerHTML = DATA.about_html.replace('<h1>', '<h1 id="about">') + `<p class="row"><button class="btn primary" type="button" data-go="home">${esc(T.back)}</button></p>`;
+    const privacy = $('#privacy-controls'); if (privacy) privacy.innerHTML = recordingControls();
     focusMain();
   }
 
@@ -204,10 +371,20 @@
     return { ids, exhausted };
   }
   function start(round) {
+    endActiveRound();
     const d = draw(round);
-    game = { round, ids: d.ids, exhausted: d.exhausted, i: 0, answers: [] };
+    game = { round, ids: d.ids, exhausted: d.exhausted, i: 0, answers: [], run: randomUUID(), ended: false, recorded: !!recording.url && !recording.optedOut };
+    recording.setRun(game.run);
+    recording.event('round_start', { round_id: round.id, round_title: round.title, item_ids: d.ids, size: d.ids.length });
     document.title = round.title + ' — ' + T.title;
     showItem();
+  }
+  function endActiveRound() {
+    if (!game || game.ended) return;
+    game.ended = true;
+    const scored = game.answers.filter(a => !a.known);
+    recording.event('round_end', { early: game.answers.length < game.ids.length, answered: game.answers.length,
+      scored: scored.length, right: scored.filter(a => a.ok).length });
   }
   function showItem() {
     const g = game, it = ITEMS[g.ids[g.i]], set = SETS[it.set];
@@ -230,8 +407,11 @@
         </div>
         <div id="rev"></div>
       </article>`;
+    g.shownAt = performance.now();
+    recording.event('item_shown', { item_id: it.id, position: g.i + 1, context: plain(set.context).slice(0, 800) });
+    $('#known').addEventListener('change', () => recording.event('known_toggled', { item_id: it.id, position: g.i + 1, known: $('#known').checked }));
     main.querySelectorAll('[data-ans]').forEach(b => b.addEventListener('click', () => answer(b.dataset.ans)));
-    $('#endRound').addEventListener('click', results);
+    $('#endRound').addEventListener('click', () => results());
     focusMain();
     say(`${T.progress(g.i + 1, g.ids.length)}. ${plain(set.context)}`);
   }
@@ -242,6 +422,8 @@
     const known = knownTick || prevOrig;  // a player who has seen the set's original can compare from memory
     const ok = (choice === 'human') === !!it.h;
     g.answers[g.i] = { id: it.id, choice, known, ok, h: !!it.h, cat: set.cat, family: x.family || null, era: x.era || null };
+    recording.event('answer', { item_id: it.id, position: g.i + 1, answer: choice, correct: ok,
+      ms: Math.max(0, Math.round(performance.now() - g.shownAt)), known, context: plain(set.context).slice(0, 800) });
     $('#endRound').disabled = false;
     store.seen[it.id] = seenCount(it.id) + 1; store.setsShown[set.id] = (store.setsShown[set.id] || 0) + 1;
     if (it.h) store.origSeen[set.id] = 1;
@@ -259,7 +441,7 @@
       ${siblingsHTML(it)}
       <div class="next"><button class="btn primary" type="button" id="next">${esc(last ? T.finish : T.next)}</button></div>
     </section>`;
-    main.querySelectorAll('details.spoil').forEach(d => d.addEventListener('toggle', () => { if (d.open) { store.origSeen[set.id] = 1; save(store); } }));
+    main.querySelectorAll('details.spoil').forEach(d => d.addEventListener('toggle', () => { if (d.open) { recording.event('compare_opened', { item_id: it.id, set_id: set.id, position: g.i + 1 }); store.origSeen[set.id] = 1; save(store); } }));
     $('#next').addEventListener('click', next);
     $('#verdict').focus({ preventScroll: false });
     say(T.said(ok, it.h));
@@ -290,10 +472,13 @@
   function results() {
     const g = game;
     if (!g || !g.answers.length) return;
-    game = null;
+    endActiveRound(); game = null;
+    const id = resultId();
     const scored = g.answers.filter(a => !a.known), ok = scored.filter(a => a.ok).length, n = scored.length;
+    recording.event('result_shown', { result_id: id, score: ok, n });
+    const verifyURL = new URL('verify.html#' + id, location.href).href;
     const date = new Date().toISOString().slice(0, 10);
-    store.history.push({ round: g.round.id, title: g.round.title, date, ok, n, answers: g.answers.map(a => ({ id: a.id, ok: a.ok, known: a.known })) });
+    store.history.push({ result_id: id, round: g.round.id, title: g.round.title, date, ok, n, answers: g.answers.map(a => ({ id: a.id, ok: a.ok, known: a.known })) });
     store.history = store.history.slice(-200); save(store);
     const verdict = !n ? T.allKnown : chanceMessage(ok, n);
     const allRows = store.history.flatMap(h => h.answers || []).filter(a => !a.known && ITEMS[a.id]);
@@ -302,6 +487,9 @@
       <p class="muted">${esc(g.round.title)}</p>
       <p class="score">${ok} / ${n}</p>
       <p>${esc(verdict)}</p>
+      <p>${esc(T.resultId)}: <strong id="result-id">${id}</strong> · <a id="verify-result" href="${esc(verifyURL)}">${esc(T.verify)}</a></p>
+      <p class="small muted" id="verification-status">${esc(g.recorded ? T.pendingResult : T.localResult)}</p>
+      ${nameForm('resultName', T.addName)}
       ${tableHTML(T.byKind, tally(scored, a => a.h ? T.origH : T.origA), T.kind)}
       ${tableHTML(T.byCat, tally(scored, a => T.cats[a.cat]), T.cat)}
       ${tableHTML(T.byModel, tally(scored.filter(a => !a.h), a => a.family), T.model)}
@@ -320,7 +508,7 @@
       <p class="small muted">${T.learn}</p>`;
     $('#again').addEventListener('click', () => start(g.round));
     $('#copy').addEventListener('click', e => {
-      const t = `${T.share(g.round.title, ok, n)} ${verdict} ${location.href.split('#')[0]}`;
+      const t = `${T.share(g.round.title, ok, n)} ${recording.name ? recording.name + '. ' : ''}${verdict} ${T.resultId}: ${id}. ${verifyURL}`;
       (navigator.clipboard ? navigator.clipboard.writeText(t) : Promise.reject()).then(() => { e.target.textContent = T.copied; }, () => { e.target.textContent = t; });
     });
     focusMain(); say(`${T.result}: ${ok} / ${n}.`);
@@ -333,6 +521,6 @@
     if ((tag === 'input' && e.target.type !== 'checkbox') || tag === 'textarea' || tag === 'select') return;
     const k = e.key.toLowerCase(), asking = $('#ask') && !game.answers[game.i];
     if (asking && (k === 'h' || k === 'a')) { e.preventDefault(); answer(k === 'h' ? 'human' : 'ai'); }
-    else if (asking && k === 'k') { const c = $('#known'); c.checked = !c.checked; }
+    else if (asking && k === 'k') { const c = $('#known'); c.checked = !c.checked; c.dispatchEvent(new Event('change', { bubbles: true })); }
   });
 })();
