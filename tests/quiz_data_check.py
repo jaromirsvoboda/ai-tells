@@ -130,13 +130,18 @@ def check(root=ROOT):
                     pattern = lambda text: [len(stanza.splitlines()) for stanza in text.split('\n\n')]
                     need(all(pattern(i['text']) == pattern(human['text']) for i in members), f'{lang}/{s["id"]}: stanza mismatch')
         for r in d['rounds']:
-            eligible = [s for s in d['sets'] if s['cat'] in r['cats'] and (not r.get('lang') or s['lang'] == r['lang'])]
+            eligible = [s for s in d['sets'] if s['cat'] in r['cats'] and (not r.get('lang') or s['lang'] == r['lang'])
+                        and (not r.get('sub') or s.get('sub') == r['sub'])]
             need(len(eligible) >= r['n'], f'{lang}/{r["id"]}: too few sets')
-            if r['cats'] == ['images']:
+            if r.get('sub') == 'poster':
+                need(r['cats'] == ['images'] and r['n'] == len(eligible), f'{lang}/{r["id"]}: wrong poster count')
+            elif r['cats'] == ['images']:
                 need(r['n'] == min(12, len(eligible)), f'{lang}/{r["id"]}: wrong image count')
         summaries.append(f'{lang.upper()}: {len(sets)} sets, {len(items)} items ({humans} human, {ai} AI); {next(iter(lengths))} decoded bytes per record; {len(media_by_lang[lang])} images')
     need(media_by_lang['en'] == media_by_lang['cs'], 'translated image sets differ')
     need(image_sets_by_lang['en'] == image_sets_by_lang['cs'], 'translated image membership differs')
+    need({id for id, s in sets_by_lang['en'].items() if s.get('sub') == 'poster'} ==
+         {id for id, s in sets_by_lang['cs'].items() if s.get('sub') == 'poster'}, 'translated poster membership differs')
     need({p.name for p in (root / 'quiz/media').iterdir() if p.is_file()} == media_by_lang['en'],
          'media directory contains unreferenced files')
     need(set(sets_by_lang['cs']) <= set(sets_by_lang['en']), 'Czech set missing from English quiz')

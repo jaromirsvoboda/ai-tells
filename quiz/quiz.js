@@ -273,10 +273,10 @@
   /* ---------- a round ---------- */
   let game = null;
   const seenCount = id => store.seen[id] || 0;
-  const eligibleSets = round => DATA.sets.filter(s => round.cats.includes(s.cat) && (!round.lang || s.lang === round.lang));
+  const eligibleSets = round => DATA.sets.filter(s => round.cats.includes(s.cat) && (!round.lang || s.lang === round.lang) && (!round.sub || s.sub === round.sub));
   function roundSize(round) {
     const available = eligibleSets(round).length;
-    return Math.min(available, round.cats.length === 1 && round.cats[0] === 'images' ? 12 : round.n);
+    return Math.min(available, !round.sub && round.cats.length === 1 && round.cats[0] === 'images' ? 12 : round.n);
   }
   function draw(round) {
     let sets = eligibleSets(round);

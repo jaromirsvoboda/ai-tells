@@ -491,6 +491,42 @@ test('quiz: all-unscored history has no accuracy points or pooled probability', 
   await assertNoOverflow(page);
 });
 
+test('quiz: poster round counts and draws only poster sets', async ({ page, request }) => {
+  const { document } = await quizItems(request, base);
+  const czech = base.includes('/cs/');
+  const posters = document.sets.filter(s => s.sub === 'poster');
+  const posterRound = document.rounds.find(r => r.sub === 'poster');
+  expect(posterRound, 'Both languages must offer a poster round').toBeDefined();
+  expect(posterRound.title).toBe(czech ? 'Plakáty a tiskoviny' : 'Posters and print');
+  expect(posterRound.cats).toEqual(['images']);
+  expect(posters).toHaveLength(9);
+  expect(posters.some(s => s.id === 's34d252'), 'Include the restored Yellowstone set').toBe(true);
+  expect(posterRound.n).toBe(posters.length);
+  expect(document.sets.some(s => s.cat === 'images' && !s.sub)).toBe(true);
+  const members = new Map(document.items.map(item => [item.id, item]));
+  const images = new Map(posters.flatMap(s => s.members.map(id => [
+    new URL(members.get(id).img, 'https://quiz.example' + base).pathname, s.id,
+  ])));
+  await load(page, base);
+  const card = page.getByRole('button').filter({ has: page.locator('b', { hasText: posterRound.title }) });
+  await expect(card).toBeVisible();
+  await expect(card.locator('.tag')).toContainText(`${posters.length} ${czech ? 'položek' : 'items'}`);
+  await keyboardActivate(page, card);
+  const drawn = new Set();
+  for (let i = 0; i < posters.length; i++) {
+    await expect(page.locator('.progress')).toContainText(czech ? `Položka ${i + 1} z ${posters.length}` : `Item ${i + 1} of ${posters.length}`);
+    const src = await page.locator('article.card figure.img img').getAttribute('src');
+    const set = images.get(new URL(src, 'https://quiz.example' + base).pathname);
+    expect(set, `Drawn image ${src} must belong to a poster set`).toBeDefined();
+    expect(drawn.has(set), 'Draw one item per poster set').toBe(false);
+    drawn.add(set);
+    await page.getByRole('button', { name: humanName }).click();
+    await page.getByRole('button', { name: nextName }).click();
+  }
+  expect([...drawn].sort()).toEqual(posters.map(s => s.id).sort());
+  await expect(page.getByRole('heading', { name: /^(your result|váš výsledek)$/i })).toBeVisible();
+});
+
 test('quiz: image menu and draw follow available sets up to 12', async ({ page, request }) => {
   const { document } = await quizItems(request, base);
   const imageRound = document.rounds.find(r => r.cats.length === 1 && r.cats[0] === 'images');

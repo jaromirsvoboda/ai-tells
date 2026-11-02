@@ -176,7 +176,8 @@ def main():
                          'human': decode(i)['kind'] == 'human', 'mod': i['mod'],
                          'f': features(i['text'], i['form']) if i['mod'] == 'text' else image_features(i, path.parent)})
         for r in d['rounds']:
-            eligible = [s for s in d['sets'] if s['cat'] in r['cats'] and (not r.get('lang') or s['lang'] == r['lang'])]
+            eligible = [s for s in d['sets'] if s['cat'] in r['cats'] and (not r.get('lang') or s['lang'] == r['lang'])
+                        and (not r.get('sub') or s.get('sub') == r['sub'])]
             chosen = {s['id'] for s in eligible}
             proportions = allocation(r, eligible)
             for mod in ['text', 'image', 'all']:
