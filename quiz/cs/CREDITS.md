@@ -1,14 +1,14 @@
 # Člověk, nebo AI? Zdroje a postup
 
-Kvíz má 352 položek v 89 sadách (89 od lidí, 263 od AI).
+Kvíz má 348 položek v 93 sadách (93 od lidí, 255 od AI).
 
 Napodobeniny z roku 2026 vytvořily modely Claude Opus 5.5, GPT-6.1 sol a GPT-6 astra s nejvyšším úsilím uvažování (xhigh), bez nástrojů a přístupu na web. Každý text prošel kontrolami a posouzením modelu jiné rodiny, které popisujeme u zadání. Neúspěšné výstupy jsme generovali znovu, nejvýš třikrát; všechny pokusy jsou zaznamenané. Níže uvádíme přesná zadání a nastavení generátorů. Všechny české texty mají stejnou sazbu; básně od AI mají sloky podle lidské předlohy.
 
-Lidské texty si ponechávají uvedené licence nebo status volného díla. Výstupy vytvořené pro kvíz jsou uvolněné pod CC0. Převzaté obrázky od AI si ponechávají původní licence. Obrázky v sadě mají stejné rozměry a jednotný postup ořezu; kvalitu JPEG jsme upravili tak, aby si velikosti souborů byly bližší, a odstranili jsme metadata. U některých výtvarných sad jsme barvy vygenerovaných obrázků přizpůsobili papíru nebo paletě lidské předlohy. Druhý pokus byl povolen jen tehdy, když první vypadal na první pohled jako výtvor AI. Použité i vyřazené pokusy uvádíme níže.
+Lidské texty a obrázky si ponechávají uvedené licence nebo status volného díla. Výstupy vytvořené pro kvíz jsou uvolněné pod CC0. Každá lidská fotografie má doloženou verzi souboru z doby před rokem 2022. Obrázky v sadě mají stejné rozměry, pravidlo ořezu a nastavení JPEG; metadata jsme odstranili a soubory doplnili na stejný počet bajtů. U některých obrázků od AI jsme barvu přizpůsobili papíru lidské předlohy. Podpisy a vyfotografované okraje rámů jsme ořízli, stejný ořez dostal i protějšek od AI. U každého obrázku uvádíme zpracování i postup výběru včetně kontrol, které proběhly před pozdějším ořezem.
 
-Údaje o zdrojích a licencích přebíráme z uložených podkladů. U některých textů není ověřené první vydání. Malý počet sad, znalost originálů a opakované vybírání omezují, co lze ze skóre vyvozovat. Aktuální výsledky včetně tří výsledků nad 62 % při vynechávání celých sad uvádí [zpráva o férovosti](../fairness.md).
+Obrázky od AI vznikly generátorem obrázků OpenAI přes Codex CLI podle slovních popisů, bez obrazových předloh. U děl žijících výtvarníků jsme zadávali žánr. Verzi obrazového modelu nástroj neuvedl. Dvojice prošly místní kontrolou modelem Qwen a výběrem po slepém posouzení dvěma špičkovými modely. Ze všech 81 kandidátních obrázků Codex gpt-6.1-sol rozpoznal 9 ze 41 výtvorů AI a mylně označil za AI 12 ze 40 lidských obrázků; Gemini 3.8 Flash rozpoznal 2 ze 41 a mylně označil 14 ze 40.
 
-Obrázky z preferenčních datových souborů Rapidata mají licenci [CDLA-Permissive-2.0, přiložený text](../licences/CDLA-Permissive-2.0.txt). Výzkumné obrázky pod CC BY 4.0 pocházejí ze studie Casu, Guarnera, Zangara, Caponnetto a Battiato (2025), *A (Mid)journey Through Reality: Assessing Accuracy, Impostor Bias, and Automation Bias in Human Detection of AI-Generated Images*, *Human Behavior and Emerging Technologies*, [doi:10.1155/hbe2/9977058](https://doi.org/10.1155/hbe2/9977058). Datum vydání studie rozlišujeme od neznámého data vzniku obrázku.
+Údaje o zdrojích a licencích přebíráme z uložených podkladů. U některých textů není ověřené první vydání. Malý počet sad, znalost originálů a opakované vybírání omezují, co lze ze skóre vyvozovat. Aktuální výsledky včetně tří textových výsledků nad 62 % při vynechávání celých sad uvádí [zpráva o férovosti](../fairness.md).
 
 Anglický kvíz obsahuje také původní odpovědi ChatGPT z prosince 2022: Guo a kol. (2023), [korpus HC3](https://huggingface.co/datasets/Hello-SimpleAI/HC3), [arXiv:2301.07597](https://arxiv.org/abs/2301.07597), CC BY-SA 4.0.
 
@@ -178,21 +178,21 @@ Anglický kvíz obsahuje také původní odpovědi ChatGPT z prosince 2022: Guo 
 
   Výběr: Pravidlo: první výstup, který prošel předem stanovenou kontrolou (u básní přesný počet veršů; délka nejvýš o 25 % odlišná od originálu; žádný shodný úsek osmi slov) a kontrolou modelem jiné rodiny. Ten hledal zjevné jazykové chyby, anachronismy, porušení formy, citace a nápadné znaky psaní AI. Použili jsme pokus č. 1; kontroloval ho gpt-6.1-sol via codex exec, reasoning effort high, no web; výsledek: prošel (pass). Text jsme neupravovali, jen vysázeli stejně jako ostatní. Neúspěšné výstupy jsme generovali znovu, nejvýš třikrát; všechny pokusy jsou zaznamenané.
 
-### s180524 – Fotka kočky v krabici nebo tašce: skutečná, nebo od AI?
+### s17e2e7 – Malba zasněženého pařížského náměstí s reklamním kioskem.
 
-- `cb347ab3` – **CelloPics**. File:Cat in a big box.jpg; 2013-09-15 11:04:57.
-  [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Cat_in_a_big_box.jpg). Licence: [CC BY 2.0](https://creativecommons.org/licenses/by/2.0/). Autorství: CelloPics. Pro kvíz oříznuto, zmenšeno a znovu uloženo; metadata odstraněna.
-
-  Výběr: Vybráno do sady se stejným námětem a technikou. Obrázky v sadě mají stejné rozměry, jednotný postup ořezu a formát JPEG; kvalita komprese byla upravena tak, aby si velikosti souborů byly bližší. Metadata byla odstraněna.
-
-- `cf46714b` – **FLUX.2 Pro (source label flux-2-pro-25-11-25) – AI**. Rapidata/Flux-2-pro_t2i_human_preference train row 5000 column image1; datum vzniku neuvedeno.
-  [Rapidata preference dataset (CDLA-Permissive-2.0)](https://huggingface.co/datasets/Rapidata/Flux-2-pro_t2i_human_preference/viewer/default/train?row=5000). Licence: [CDLA-Permissive-2.0](https://cdla.dev/permissive-2-0/). Autorství: Rapidata (dataset publisher); generated by FLUX.2 Pro. [CDLA-Permissive-2.0: text licence](../licences/CDLA-Permissive-2.0.txt). Pro kvíz oříznuto, zmenšeno a znovu uloženo; metadata odstraněna.
+- `1fd152b8` – **OpenAI image_gen built-in tool; underlying image-model version not reported**. Generated for this quiz on 2026-11-02
+  Made for this quiz; released under CC0: [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/). No reference image supplied. Public-domain work by an artist dead for at least 70 years; text description may follow its composition.
 
   Přesné původní zadání:
 
-  > A grey cat sitting in a large black bag.
+  > Use case: historical-scene. A small ordinary oil painting on board of a Paris square in winter around 1900, landscape aspect 1.27:1. At the left of centre in the middle distance stands a slim tall stone column with a tiny statue on top, not sharply detailed. A low round advertising kiosk is in front of it. Behind, a row of pale cream and grey multi-storey buildings recedes across the right side under a flat dirty light-grey sky. Leafless trees frame the sides, a scattering of small bundled pedestrians and one simple carriage in the square. The snowy street fills the foreground, with broken grey slushy marks and scattered dark short footprints. Faces are unpainted specks, windows loosely suggested with small uneven dabs, trunks off balance. Loose late Impressionist brushwork with broad rough pale planes, uneven scraped strokes and soft unresolved outlines. Quiet grey, faded beige, muddy mauve and a few dull reddish accents. Modest old painting, somewhat washed-out photographic reproduction. Avoid detailed architectural drafting, excessive contrast, perfect perspective, glamour, magical snow, glitter, cinematic lighting, uniform brush filter, text, signature or border.
 
-  Výběr: Vybráno do sady se stejným námětem a technikou. Obrázky v sadě mají stejné rozměry, jednotný postup ořezu a formát JPEG; kvalita komprese byla upravena tak, aby si velikosti souborů byly bližší. Metadata byla odstraněna.
+  Výběr: First of at most two successful image generations whose processed JPEG passes all three fixed Qwen phrasings and the visual review at 600 px. Candidate human images were screened before generation. Failed candidates and attempts are retained. Public-domain work by an artist dead for at least 70 years; text description may follow its composition.  Oba obrázky prošly místní kontrolou modelem Qwen se třemi slepými zadáními a vizuální kontrolou při 600 px. Při slepé kontrole ho ani jeden ze dvou modelů neoznačil za výtvor AI. Both sources were centre-cropped to the shared aspect, then inset 10% on every side and resized to 512x392; RGB baseline JPEG quality 82, 4:2:0, 72dpi; metadata removed; zero padding after EOI to 41534 bytes per member. The same crop and encoding were applied to the generated partner. The blind checks above preceded this crop; the cropped versions were visually checked, without another model screen.
+
+- `fd3dfa93` – **Eugène Galien-Laloue**. Place de la Bastille with Snow (Boulevard with Snow); by 1941
+  Eugène Galien-Laloue. Place de la Bastille with Snow (Boulevard with Snow). [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Eug%C3%A8ne_Galien-Laloue_Paris_Place_de_la_Bastille_with_Snow.jpg). Licence: Public domain ([Status volného díla](https://creativecommons.org/publicdomain/mark/1.0/)). Cropped, resized and recompressed; source attribution retained. Oříznuto kvůli odstranění podpisu.
+
+  Výběr: Selected from the documented candidate pool after a blind origin screen.   Oba obrázky prošly místní kontrolou modelem Qwen se třemi slepými zadáními a vizuální kontrolou při 600 px. Both sources were centre-cropped to the shared aspect, then inset 10% on every side and resized to 512x392; RGB baseline JPEG quality 82, 4:2:0, 72dpi; metadata removed; zero padding after EOI to 41534 bytes per member. Cropped to remove the signature. The blind checks above preceded this crop; the cropped versions were visually checked, without another model screen.
 
 ### s19d423 – **Julius Zeyer** (1841–1901): pravá báseň, nebo napodobenina od AI?
 
@@ -276,17 +276,21 @@ Anglický kvíz obsahuje také původní odpovědi ChatGPT z prosince 2022: Guo 
 
   Výběr: Pravidlo: první výstup, který prošel předem stanovenou kontrolou (u básní přesný počet veršů; délka nejvýš o 25 % odlišná od originálu; žádný shodný úsek osmi slov) a kontrolou modelem jiné rodiny. Ten hledal zjevné jazykové chyby, anachronismy, porušení formy, citace a nápadné znaky psaní AI. Použili jsme pokus č. 1; kontroloval ho claude-opus-5-5 via claude -p, effort high, no tools; výsledek: prošel (pass). Text jsme neupravovali, jen vysázeli stejně jako ostatní. Neúspěšné výstupy jsme generovali znovu, nejvýš třikrát; všechny pokusy jsou zaznamenané.
 
-### s20cbb4 – Krejčí při práci v malé dílně otevřené do ulice: skutečný, nebo od AI?
+### s207bd5 – Městský provoz po setmění.
 
-- `2997c34c` – **Jorge Royan**. File:India - Varanasi tailor sewing machine - 1096.jpg; 2005.
-  [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:India_-_Varanasi_tailor_sewing_machine_-_1096.jpg). Licence: [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/). Autorství: Jorge Royan. Pro kvíz oříznuto, zmenšeno a znovu uloženo; metadata odstraněna.
+- `1ae444f5` – **Israel Sundseth kappuru**. File:Dim urban street (Unsplash).jpg; 2014-10-14
+  [File:Dim urban street (Unsplash).jpg](https://commons.wikimedia.org/wiki/File:Dim_urban_street_(Unsplash).jpg). Author: Israel Sundseth kappuru. Licence: [CC0](http://creativecommons.org/publicdomain/zero/1.0/deed.en). Cropped, resized and recompressed, metadata removed. The adaptation retains the source licence.
 
-  Výběr: Vybráno do sady se stejným námětem a technikou. Obrázky v sadě mají stejné rozměry, jednotný postup ořezu a formát JPEG; kvalita komprese byla upravena tak, aby si velikosti souborů byly bližší. Metadata byla odstraněna.
+  Výběr: Selected from the saved Commons candidate pool for matching subject and difficulty after screening the final q82 processing. Pre-2022 file history and the saved source metadata establish provenance. Keep only if the pair passes the three-phrasing Qwen gate and visual review at 600 px. Processing: crop box [0, 0, 1, 1]; centre crop to aspect 1.5023474178403755; resize 960x639 Lanczos; common RGB colour conversion; EXIF/ICC/comments removed; baseline JPEG q82, 4:2:0, 72 dpi; zero padding after EOI to equalise byte length Oba obrázky prošly místní kontrolou modelem Qwen se třemi slepými zadáními a vizuální kontrolou při 600 px.
 
-- `b53ade62` – **Flux using ComfyUI – AI**. File:FLUX P2-3.png; uploaded 2024-08-14 (creation date not stated).
-  [Wikimedia Commons (AI-generated upload)](https://commons.wikimedia.org/wiki/File:FLUX_P2-3.png). Licence: [Public domain (PD-algorithm); additional CC BY 4.0 release (https://creativecommons.org/licenses/by/4.0/)](https://commons.wikimedia.org/wiki/File:FLUX_P2-3.png). Autorství: MrAlanKoh (credited as Flux using ComfyUI). Pro kvíz oříznuto, zmenšeno a znovu uloženo; metadata odstraněna.
+- `d939fef8` – **OpenAI image_gen (image model version not reported)**. Text-only image generated for this quiz on 2026-11-02T08:40:50.697537+00:00
+  Generated for the Human or AI quiz with the built-in OpenAI image_gen tool in Codex. The image-model version was not reported. CC0 1.0 dedication: [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/). The exact prompt is recorded below.
 
-  Výběr: Vybráno do sady se stejným námětem a technikou. Obrázky v sadě mají stejné rozměry, jednotný postup ořezu a formát JPEG; kvalita komprese byla upravena tak, aby si velikosti souborů byly bližší. Metadata byla odstraněna. Přesné zadání generátoru není ve zdroji uvedené.
+  Přesné původní zadání:
+
+  > Use case: photorealistic-natural. A very ordinary missed-focus colour photo of urban traffic at night, landscape 3:2. Taken from a pedestrian bridge looking down a long straight city street between dark mid-rise buildings. Several lanes of small cars, paired warm headlights coming toward the camera and red tail lights going away, mundane shop lights along the sides. The whole photo is moderately out of focus because the small compact camera focused on the near railing outside the frame. Headlights become small uneven soft circles, signs are just unreadable patches of light, outlines of car roofs and buildings still apparent. Dark blue-black shadows, yellowish street lighting, ISO 1600 noise, slight camera shake, low contrast, no neon fantasy colours, no distinct landmark, no legible writing, no watermark. It should look like an accidental 2010 consumer-camera snapshot.
+
+  Výběr: First and only generation from this prompt; selected for difficulty after the blind and visual gates. The model received only a written scene description, without the source photograph. Every attempt and rejected version is retained. Processing: crop box [0, 0, 1, 1]; centre crop to aspect 1.5023474178403755; resize 960x639 Lanczos; common RGB colour conversion; EXIF/ICC/comments removed; baseline JPEG q82, 4:2:0, 72 dpi; zero padding after EOI to equalise byte length Oba obrázky prošly místní kontrolou modelem Qwen se třemi slepými zadáními a vizuální kontrolou při 600 px. Při slepé kontrole ho ani jeden ze dvou modelů neoznačil za výtvor AI.
 
 ### s225a26 – **Karel Poláček**, *Povídky pana Kočkodana / Špatný příklad kazí dobré mravy*: pravý úryvek, nebo napodobenina od AI?
 
@@ -370,87 +374,103 @@ Anglický kvíz obsahuje také původní odpovědi ChatGPT z prosince 2022: Guo 
 
   Výběr: Pravidlo: první výstup, který prošel předem stanovenou kontrolou (u básní přesný počet veršů; délka nejvýš o 25 % odlišná od originálu; žádný shodný úsek dvanácti slov) a kontrolou modelem jiné rodiny. Ten hledal zjevné jazykové chyby, anachronismy, porušení formy, citace a nápadné znaky psaní AI. Použili jsme pokus č. 1; kontroloval ho gpt-6.1-sol via codex exec, reasoning effort high, no web; výsledek: prošel (pass). Text jsme neupravovali, jen vysázeli stejně jako ostatní. Neúspěšné výstupy jsme generovali znovu, nejvýš třikrát; všechny pokusy jsou zaznamenané.
 
-### s249244 – Skleněná koule, ve které se odráží krajina: fotka, nebo obrázek od AI?
+### s249244 – Skleněná koule před krajinou.
 
 - `04ba8757` – **Mixel23**. Flussaue Oderberg Lebus lensball (19. května 2019)
   Obrázek: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Flussaue_Oderberg_Lebus_lensball.jpg), [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/). Autor/nahrál: Mixel23. Oříznuto, zmenšeno a znovu uloženo pro kvíz.
 
+  Výběr:  Oba obrázky prošly místní kontrolou modelem Qwen se třemi slepými zadáními a vizuální kontrolou při 600 px. Původní ořez, rozměry a progresivní JPEG v kvalitě 82 zůstaly zachovány; doplnění nul za konec JPEG sjednocuje počet bajtů v sadě.
+
 - `934e32ec` – **Generátor obrázků OpenAI – AI**. Generátor obrázků OpenAI (přes Codex CLI), vytvořeno 2026-11-01 pro tento kvíz
-  Vytvořeno pro tento kvíz 2026-11-01 podle slovního popisu lidského obrázku (model ho neviděl); použili jsme první vygenerovaný obrázek. CC0.
+  Vytvořeno pro tento kvíz 2026-11-01 podle slovního popisu lidského obrázku (model ho neviděl); použili jsme první vygenerovaný obrázek. CC0. [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/).
 
   Přesné původní zadání:
 
   > A photograph of a clear glass lensball held in front of a green countryside landscape, the ball showing a sharp upside-down reflection of fields, trees and blue sky; the background out of focus; bright daylight.
 
-  Výběr: Zadání napsal autor kvízu podle námětu, kompozice a techniky lidského obrázku.
+  Výběr: Zadání napsal autor kvízu podle námětu, kompozice a techniky lidského obrázku. Oba obrázky prošly místní kontrolou modelem Qwen se třemi slepými zadáními a vizuální kontrolou při 600 px. Původní ořez, rozměry a progresivní JPEG v kvalitě 82 zůstaly zachovány; doplnění nul za konec JPEG sjednocuje počet bajtů v sadě. Při slepé kontrole ho jeden ze dvou modelů označil za výtvor AI.
 
-### s259dae – Olejový portrét vousatého muže v límci: namalovaný v 17. století, nebo od AI?
+### s259dae – Počítačově vykreslené moře pod zelenošedými mraky.
 
-- `ba6db88e` – **Frans Hals**. Portrait of a Man; c. 1620s.
-  [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Frans_Hals_-_Portrait_of_a_Man_-_Google_Art_Project.jpg). Licence: Public domain. Autorství: Frans Hals. Pro kvíz oříznuto, zmenšeno a znovu uloženo; metadata odstraněna.
+- `20a9ddaf` – **FlankerFF**. Terragen (sample1).jpg; 2009-04-26.
+  FlankerFF. Terragen (sample1).jpg. [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Terragen_(sample1).jpg). Licence: CC BY-SA 3.0 ([CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0)). Attribution retained; centre-cropped, resized and recompressed. This adaptation retains the stated ShareAlike licence.
 
-  Výběr: Vybráno do sady se stejným námětem a technikou. Obrázky v sadě mají stejné rozměry, jednotný postup ořezu a formát JPEG; kvalita komprese byla upravena tak, aby si velikosti souborů byly bližší. Metadata byla odstraněna. Záznam zpracování: crop box [0.03, 0.03, 0.97, 0.97], centre-crop to aspect 0.88, resize 1056x1200, RGB, metadata stripped, baseline JPEG 4:2:0 72dpi.
+  Výběr: Selected from a disclosed candidate pool for an ambiguous human-made picture, then paired by subject and medium. No image editing beyond the documented common processing. Final preparation processing: Centre crop with full source box [0,0,1,1] to aspect 1.3333333333333333; common intermediate long side 900px; resize 1200x900; RGB; baseline JPEG quality 82, 4:2:0, 72dpi; no EXIF, XMP or comments; neutral zero padding after EOI to 129660 bytes for every member. Oba obrázky prošly místní kontrolou modelem Qwen se třemi slepými zadáními a vizuální kontrolou při 600 px.
 
-- `a733f3aa` – **OpenAI image tool (image_gen) via Codex CLI – AI**. Vytvořeno pro tento kvíz 2026-11-01 generátorem obrázků OpenAI přes Codex CLI podle slovního popisu lidského obrázku (model ho neviděl).
-  Vytvořeno pro tento kvíz 2026-11-01; uvolněno pod [CC0](https://creativecommons.org/publicdomain/zero/1.0/).
-
-  Přesné původní zadání:
-
-  > A Dutch seventeenth-century oil portrait painted quickly and directly on a coarse canvas, rough thick brushwork visible everywhere, matte surface, muted palette of browns, blacks and creamy white, a little dull and unidealised. A half-length bearded man of about forty-five, tousled brown hair, ruddy lined face, tired direct eyes, wearing a wide white lace-edged millstone ruff painted in flicks of white and a black doublet with slashed, patterned sleeves; one hand holds a small round hand-mirror or medallion while the other hand steadies it. He sits within a painted oval in an ochre-brown surround. Behind him at upper right a small coat of arms with a lion and a dark hat. Slightly cracked varnish, no signature.
-
-  Výběr: Pravidlo: nejvýš dva pokusy na obrázek, druhý jen tehdy, když první vypadal na první pohled jako výtvor AI. Použili jsme pokus č. 2 (b1). Vybráno do sady se stejným námětem a technikou. Obrázky v sadě mají stejné rozměry, jednotný postup ořezu a formát JPEG; kvalita komprese byla upravena tak, aby si velikosti souborů byly bližší. Metadata byla odstraněna. Vyřazený první pokus: a1, 2026-11-01T23:30:56+01:00; rejected: obvious - glossy, smooth satin-like finish in a Rubens/Van Dyck manner, unlike loose Dutch brushwork. Záznam zpracování: crop box [0.03, 0.03, 0.97, 0.97], centre-crop to aspect 0.88, resize 1056x1200, RGB, metadata stripped, baseline JPEG 4:2:0 72dpi.
-
-  vyřazený: a1, 2026-11-01T23:30:56+01:00; OpenAI image_gen via codex exec -m gpt-6.1-sol (reasoning low). rejected: obvious - glossy, smooth satin-like finish in a Rubens/Van Dyck manner, unlike loose Dutch brushwork
+- `7e2a76ca` – **OpenAI image_gen via codex exec -m gpt-6.1-sol (reasoning low); image-model name not reported**. Generated for this quiz on 2026-11-02.
+  Made for this quiz; released under CC0: [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/). No input image supplied to the model. Paired human reference: FlankerFF. Terragen (sample1).jpg. [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Terragen_(sample1).jpg). Licence: CC BY-SA 3.0 ([CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0)). Attribution retained; centre-cropped, resized and recompressed.
 
   Přesné původní zadání:
 
-  > A seventeenth-century Dutch oil portrait on canvas, portrait format, painted with loose, visible, confident brushstrokes and a warm dark palette. A half-length bearded man of about forty with tousled auburn-brown curls and ruddy cheeks, turned three-quarters to the viewer and looking out with a direct calm gaze, wearing a wide white lace-edged millstone ruff and a black silk doublet with slashed sleeves patterned in dark leaf-like brocade. His right hand holds a small round object like a pocket mirror or watch while the other hand rests across it. The figure is enclosed in a feigned oval in a dark brown-orange painted frame; in the dark upper-right background a coat of arms with a heraldic lion and a black hat hang. Fine craquelure across the surface. No signature.
+  > An ordinary early CGI seascape rendered by a hobbyist in Terragen Classic around 2009. Horizontal 4:3. A completely empty gently rippled dark grey-green ocean occupies the bottom half. The horizon is a perfectly straight line just above the centre. Above it a low pale green-white sun shines through a thick flat layered mass of dark greenish-grey clouds. Its reflection is a narrow bright vertical streak in the middle of the water and a few regular pale horizontal ripples below it. The large cloud in the upper right has a long soft wing-like curved edge reaching toward the upper left. A small pale blue gap in the sky at far upper left, otherwise deep blue-green grey sky. Dull desaturated green monochrome, a faint unnatural cyan-green tint like a learner's old computer render. Simple repetitive ripples on a flat water plane, rather coarse cloud forms, low-detail early procedural materials. No land, islands, boats, people or stars. Moderate contrast, no spectacular glowing sunset, no photographic long-exposure water or modern ocean simulation. No text, interface, border or signature.
 
-  použitý: b1, 2026-11-01T23:38:43+01:00; OpenAI image_gen via codex exec -m gpt-6.1-sol (reasoning low).
+  Exact submitted prompt given to codex exec with an instruction to use image_gen once, verbatim. Image-model name and internal tool rewriting were not exposed.
 
-- `fa8340b1` – **OpenAI image tool (image_gen) via Codex CLI – AI**. Vytvořeno pro tento kvíz 2026-11-01 generátorem obrázků OpenAI přes Codex CLI podle slovního popisu lidského obrázku (model ho neviděl).
-  Vytvořeno pro tento kvíz 2026-11-01; uvolněno pod [CC0](https://creativecommons.org/publicdomain/zero/1.0/).
+  Výběr: Up to two successful image generations per slot. Keep the first that passes three blind Qwen phrasings and the visual review at 600 px. Text prompt describes the paired human medium and subject. All attempted prompts, including failed infrastructure calls, are preserved. Final preparation processing: Centre crop with full source box [0,0,1,1] to aspect 1.3333333333333333; common intermediate long side 900px; resize 1200x900; RGB; baseline JPEG quality 82, 4:2:0, 72dpi; no EXIF, XMP or comments; neutral zero padding after EOI to 129660 bytes for every member. Oba obrázky prošly místní kontrolou modelem Qwen se třemi slepými zadáními a vizuální kontrolou při 600 px. Při slepé kontrole ho ani jeden ze dvou modelů neoznačil za výtvor AI.
+
+### s2a4a3f – Drobná malba tmavých polí s vesnicí v dálce.
+
+- `978a1d32` – **OpenAI image_gen built-in tool; underlying image-model version not reported**. Generated for this quiz on 2026-11-02
+  Made for this quiz; released under CC0: [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/). No reference image supplied. Public-domain work by an artist dead for at least 70 years; text description may follow its composition.
 
   Přesné původní zadání:
 
-  > A Dutch Golden Age oil painting on a finely woven canvas, vertical format, with spontaneous alla-prima brushwork and subtle glazes in earthy browns, blacks and creamy whites. Half-length portrait of a middle-aged gentleman with a reddish pointed beard and thick wavy hair, shown in three-quarter view, glancing straight at the viewer with slightly tired, calm eyes; he wears a large starched white ruff that is painted with thick impasto strokes and a black doublet with shimmering textured sleeves. In his raised hands he turns a small round medallion. His figure sits inside a trompe-l'oeil oval opening with a thick orange-brown moulded surround; behind him in the shadow a small painted shield with a heraldic crest and a dark hat hang. Aged varnish, faint cracks.
+  > Use case: historical-scene. One small late nineteenth-century Bohemian oil sketch on wood, nearly square landscape ratio 1.1:1. A dull ochre-brown rural valley under a heavy greenish grey clouded sky. Sky fills the top third. In the lower half, a thin pale stream or lane snakes across dark low fields; a few tiny cream farm buildings and a little church spire stand right of centre in the middle distance. Near the bottom edge a few dark bushy conifers partly obscure the fields. Very modest rolling hills, no mountains. Murky olive and ochre palette, irregular scumbling, soft broad muddy brush marks, small pale scrape marks. Low contrast, quite dark and poorly resolved, little pockets of unfinished paint, a slightly awkward cropped tree at the lower right. A plain flat photographic reproduction, no frame, no writing, no signature, no border. No detailed foliage, no crisp houses, no glowing sunset, no polished digital concept art or uniform oil filter. The painting should be mundane and a little clumsy.
 
-  Výběr: Pravidlo: nejvýš dva pokusy na obrázek, druhý jen tehdy, když první vypadal na první pohled jako výtvor AI. Použili jsme pokus č. 1 (a2). Vybráno do sady se stejným námětem a technikou. Obrázky v sadě mají stejné rozměry, jednotný postup ořezu a formát JPEG; kvalita komprese byla upravena tak, aby si velikosti souborů byly bližší. Metadata byla odstraněna. Záznam zpracování: crop box [0.03, 0.03, 0.97, 0.97], centre-crop to aspect 0.88, resize 1056x1200, RGB, metadata stripped, baseline JPEG 4:2:0 72dpi.
+  Výběr: First of at most two successful image generations whose processed JPEG passes all three fixed Qwen phrasings and the visual review at 600 px. Candidate human images were screened before generation. Failed candidates and attempts are retained. Public-domain work by an artist dead for at least 70 years; text description may follow its composition.  Oba obrázky prošly místní kontrolou modelem Qwen se třemi slepými zadáními a vizuální kontrolou při 600 px. Při slepé kontrole ho ani jeden ze dvou modelů neoznačil za výtvor AI. Both sources were centre-cropped to the shared aspect, then inset 4% on every side and resized to 496x448; RGB baseline JPEG quality 82, 4:2:0, 72dpi; metadata removed; zero padding after EOI to 27229 bytes per member. The same crop and encoding were applied to the generated partner. The blind checks above preceded this crop; the cropped versions were visually checked, without another model screen.
 
-  použitý: a2, 2026-11-01T23:31:16+01:00; OpenAI image_gen via codex exec -m gpt-6.1-sol (reasoning low).
+- `268f9647` – **Otakar Lebeda**. Landscape; before 1902 (exact year not recorded)
+  Otakar Lebeda. Landscape. [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Otakar_Lebeda_-_Landscape.jpg). Licence: Public domain ([Status volného díla](https://creativecommons.org/publicdomain/mark/1.0/)). Cropped, resized and recompressed; source attribution retained. Oříznuto kvůli odstranění vyfotografovaného okraje rámu.
 
-### s25d1cb – Stará černobílá fotografie dvou žen: skutečná, nebo od AI?
+  Výběr: Selected from the documented candidate pool after a blind origin screen. Creator and oil-on-wood medium recorded on Commons; the 2008 metadata date is the upload, not the painting date.  Oba obrázky prošly místní kontrolou modelem Qwen se třemi slepými zadáními a vizuální kontrolou při 600 px. Both sources were centre-cropped to the shared aspect, then inset 4% on every side and resized to 496x448; RGB baseline JPEG quality 82, 4:2:0, 72dpi; metadata removed; zero padding after EOI to 27229 bytes per member. Cropped to remove the gallery-photo border. The blind checks above preceded this crop; the cropped versions were visually checked, without another model screen.
 
-- `63905394` – **FOTO:Fortepan – ID 19046: Adományozó/Donor: Mészöly Leonóra.**. File:Women, portrait, studio, smile Fortepan 19046.jpg; 1915 (Fortepan).
-  [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Women,_portrait,_studio,_smile_Fortepan_19046.jpg). Licence: [Public domain](https://commons.wikimedia.org/wiki/File:Women,_portrait,_studio,_smile_Fortepan_19046.jpg). Autorství: FOTO:Fortepan – ID 19046: Adományozó/Donor: Mészöly Leonóra.. Pro kvíz oříznuto, zmenšeno a znovu uloženo; metadata odstraněna.
+### s2a9dc6 – Venkovní portrét před živým plotem.
 
-  Výběr: Vybráno do sady se stejným námětem a technikou. Obrázky v sadě mají stejné rozměry, jednotný postup ořezu a formát JPEG; kvalita komprese byla upravena tak, aby si velikosti souborů byly bližší. Metadata byla odstraněna.
+- `23fec388` – **Christopher Campbell chrisjoelcampbell**. File:Brunette woman portrait (Unsplash).jpg; 2015-10-21
+  [File:Brunette woman portrait (Unsplash).jpg](https://commons.wikimedia.org/wiki/File:Brunette_woman_portrait_(Unsplash).jpg). Author: Christopher Campbell chrisjoelcampbell. Licence: [CC0](http://creativecommons.org/publicdomain/zero/1.0/deed.en). Cropped, resized and recompressed, metadata removed. The adaptation retains the source licence.
 
-- `50041447` – **AI image generators (not specified further by the author); series PSEUDOMNESIA: Fake Memories; won the Creative category of the 2023 Sony World Photography Awards (declined by the artist) – AI**. File:EldagsenElectrician.jpg; 2022-2023.
-  [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:EldagsenElectrician.jpg). Licence: [Public domain (algorithm-generated, per Commons)](https://commons.wikimedia.org/wiki/File:EldagsenElectrician.jpg). Autorství: Boris Eldagsen (co-produced by means of AI image generators). Pro kvíz oříznuto, zmenšeno a znovu uloženo; metadata odstraněna.
+  Výběr: Selected from the saved Commons candidate pool for matching subject and difficulty after screening the final q82 processing. Pre-2022 file history and the saved source metadata establish provenance. Keep only if the pair passes the three-phrasing Qwen gate and visual review at 600 px. Processing: crop box [0, 0, 1, 1]; centre crop to aspect 1.5; resize 960x640 Lanczos; common RGB colour conversion; EXIF/ICC/comments removed; baseline JPEG q82, 4:2:0, 72 dpi; zero padding after EOI to equalise byte length Oba obrázky prošly místní kontrolou modelem Qwen se třemi slepými zadáními a vizuální kontrolou při 600 px.
 
-  Výběr: Vybráno do sady se stejným námětem a technikou. Obrázky v sadě mají stejné rozměry, jednotný postup ořezu a formát JPEG; kvalita komprese byla upravena tak, aby si velikosti souborů byly bližší. Metadata byla odstraněna. Přesné zadání generátoru není ve zdroji uvedené.
+- `52464509` – **OpenAI image_gen (image model version not reported)**. Text-only image generated for this quiz on 2026-11-02T08:36:03.057457+00:00
+  Generated for the Human or AI quiz with the built-in OpenAI image_gen tool in Codex. The image-model version was not reported. CC0 1.0 dedication: [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/). The exact prompt is recorded below.
 
-### s28db17 – Černobílý portrét: skutečný, nebo od AI?
+  Přesné původní zadání:
 
-- `235ceb9c` – **Chämleten**. File:Thomas Leuthard 2021.jpg; 2021-05-03.
-  [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Thomas_Leuthard_2021.jpg). Licence: [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/). Autorství: Chämleten. Pro kvíz oříznuto, zmenšeno a znovu uloženo; metadata odstraněna.
+  > Use case: photorealistic-natural. Generate one unremarkable colour photograph, landscape 3:2. A fictional young adult woman with long straight chestnut-brown hair, wearing a plain black sleeveless top, sits in front of a dense suburban hedge with small dark green leaves. She occupies the middle of the frame from waist upward, her head tipped slightly up and to one side, mouth closed, an absent-minded neutral expression. One arm rests low out of the bottom crop. Eye-level amateur outdoor portrait, flat overcast daylight, a little green colour cast, ordinary Canon EOS 60D and 50 mm lens look at f/3.5, mild sensor grain, imperfect focus, moderate rather than extreme background blur, no beauty retouching. Keep natural skin pores, stray hairs and small facial asymmetries. She must be a new fictional person with a different individual face, not a likeness of any real person. No studio light, no dramatic contrast, no cinematic colour grading, no text, no logo or watermark.
 
-  Výběr: Vybráno do sady se stejným námětem a technikou. Obrázky v sadě mají stejné rozměry, jednotný postup ořezu a formát JPEG; kvalita komprese byla upravena tak, aby si velikosti souborů byly bližší. Metadata byla odstraněna.
+  Výběr: First and only generation from this prompt; selected for difficulty after the blind and visual gates. The model received only a written scene description, without the source photograph. Every attempt and rejected version is retained. Processing: crop box [0, 0, 1, 1]; centre crop to aspect 1.5; resize 960x640 Lanczos; common RGB colour conversion; EXIF/ICC/comments removed; baseline JPEG q82, 4:2:0, 72 dpi; zero padding after EOI to equalise byte length Oba obrázky prošly místní kontrolou modelem Qwen se třemi slepými zadáními a vizuální kontrolou při 600 px. Při slepé kontrole ho ani jeden ze dvou modelů neoznačil za výtvor AI.
 
-- `44e9dd3e` – **Midjourney v6 – AI**. stimuli/gamma/15_m.jpg (image_id gamma_15); 2025 (study release; individual date not given).
-  [Casu et al. 2025 stimulus set (CC BY 4.0)](https://github.com/mirkocasu/a-mid-journey-through-reality/blob/597f90bbe5dcf5dc75f41dc27e4eae424595ae21/stimuli/gamma/15_m.jpg). Licence: [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Autorství: Casu, Guarnera, Zangara, Caponnetto, Battiato (generated for the study). Casu, Guarnera, Zangara, Caponnetto, Battiato (2025), A (Mid)journey Through Reality: Assessing Accuracy, Impostor Bias, and Automation Bias in Human Detection of AI-Generated Images, Human Behavior and Emerging Technologies, https://doi.org/10.1155/hbe2/9977058. Pro kvíz oříznuto, zmenšeno a znovu uloženo; metadata odstraněna.
+### s2bd470 – Cesta autem ze zadního sedadla.
 
-  Ve studii Casu a kol. (2025) správně určilo původ tohoto obrázku 48,6 % z 142 účastníků.
+- `10b9c18a` – **kaluci kaluci**. File:Road trip interior (Unsplash).jpg; 2016-10-06
+  [File:Road trip interior (Unsplash).jpg](https://commons.wikimedia.org/wiki/File:Road_trip_interior_(Unsplash).jpg). Author: kaluci kaluci. Licence: [CC0](http://creativecommons.org/publicdomain/zero/1.0/deed.en). Cropped, resized and recompressed, metadata removed. The adaptation retains the source licence.
 
-  Výběr: Vybráno do sady se stejným námětem a technikou. Obrázky v sadě mají stejné rozměry, jednotný postup ořezu a formát JPEG; kvalita komprese byla upravena tak, aby si velikosti souborů byly bližší. Metadata byla odstraněna. Přesné zadání generátoru není ve zdroji uvedené.
+  Výběr: Selected from the saved Commons candidate pool for matching subject and difficulty after screening the final q82 processing. Pre-2022 file history and the saved source metadata establish provenance. Keep only if the pair passes the three-phrasing Qwen gate and visual review at 600 px. Processing: crop box [0, 0, 1, 1]; centre crop to aspect 1.5; resize 960x640 Lanczos; common RGB colour conversion; EXIF/ICC/comments removed; baseline JPEG q82, 4:2:0, 72 dpi; zero padding after EOI to equalise byte length Oba obrázky prošly místní kontrolou modelem Qwen se třemi slepými zadáními a vizuální kontrolou při 600 px.
 
-- `4b07b871` – **Midjourney v6 + Magnific upscaler – AI**. stimuli/beta/06_mm.jpg (image_id beta_06); 2025 (study release; individual date not given).
-  [Casu et al. 2025 stimulus set (CC BY 4.0)](https://github.com/mirkocasu/a-mid-journey-through-reality/blob/597f90bbe5dcf5dc75f41dc27e4eae424595ae21/stimuli/beta/06_mm.jpg). Licence: [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Autorství: Casu, Guarnera, Zangara, Caponnetto, Battiato (generated for the study). Casu, Guarnera, Zangara, Caponnetto, Battiato (2025), A (Mid)journey Through Reality: Assessing Accuracy, Impostor Bias, and Automation Bias in Human Detection of AI-Generated Images, Human Behavior and Emerging Technologies, https://doi.org/10.1155/hbe2/9977058. Pro kvíz oříznuto, zmenšeno a znovu uloženo; metadata odstraněna.
+- `cae26c86` – **OpenAI image_gen (image model version not reported)**. Text-only image generated for this quiz on 2026-11-02T08:40:50.697739+00:00
+  Generated for the Human or AI quiz with the built-in OpenAI image_gen tool in Codex. The image-model version was not reported. CC0 1.0 dedication: [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/). The exact prompt is recorded below.
 
-  Ve studii Casu a kol. (2025) správně určilo původ tohoto obrázku 30,7 % z 150 účastníků.
+  Přesné původní zadání:
 
-  Výběr: Vybráno do sady se stejným námětem a technikou. Obrázky v sadě mají stejné rozměry, jednotný postup ořezu a formát JPEG; kvalita komprese byla upravena tak, aby si velikosti souborů byly bližší. Metadata byla odstraněna. Přesné zadání generátoru není ve zdroji uvedené.
+  > Use case: photorealistic-natural. An ordinary landscape 3:2 colour road-trip snapshot taken from the back seat of an older left-hand-drive car. Two fictional adult travellers are visible only as dark silhouettes from behind, the driver at the left and a passenger at the right edge, faces completely hidden. One of the driver's hands rests on the upper-left steering-wheel rim, most fingers obscured by its grip. A plain black dashboard, centre rear-view mirror, broad windshield with a subtle blue tint along its top. Through the windshield a small white car travels ahead on a dry two-lane road toward pale rocky hills and scattered scrub under an overcast blue-white sky. Car interior underexposed with brownish shadows; view outside normally exposed, mild reflections on glass, slightly crooked framing, slight grain and cheap compact-camera softness. New fictional people without resemblance to real persons. No readable text or logos, no cinematic lighting, no HDR, no watermark.
+
+  Výběr: First and only generation from this prompt; selected for difficulty after the blind and visual gates. The model received only a written scene description, without the source photograph. Every attempt and rejected version is retained. Processing: crop box [0, 0, 1, 1]; centre crop to aspect 1.5; resize 960x640 Lanczos; common RGB colour conversion; EXIF/ICC/comments removed; baseline JPEG q82, 4:2:0, 72 dpi; zero padding after EOI to equalise byte length Oba obrázky prošly místní kontrolou modelem Qwen se třemi slepými zadáními a vizuální kontrolou při 600 px. Při slepé kontrole ho ani jeden ze dvou modelů neoznačil za výtvor AI.
+
+### s2caa34 – Nakupující v úzké kryté tržnici.
+
+- `728c26c7` – **Anh Nguyen pwign**. File:Busy street market (Unsplash).jpg; 2017-04-06
+  [File:Busy street market (Unsplash).jpg](https://commons.wikimedia.org/wiki/File:Busy_street_market_(Unsplash).jpg). Author: Anh Nguyen pwign. Licence: [CC0](http://creativecommons.org/publicdomain/zero/1.0/deed.en). Cropped, resized and recompressed, metadata removed. The adaptation retains the source licence.
+
+  Výběr: Selected from the saved Commons candidate pool for matching subject and difficulty after screening the final q82 processing. Pre-2022 file history and the saved source metadata establish provenance. Keep only if the pair passes the three-phrasing Qwen gate and visual review at 600 px. Processing: crop box [0, 0, 1, 1]; centre crop to aspect 1.509433962264151; resize 960x636 Lanczos; common RGB colour conversion; EXIF/ICC/comments removed; baseline JPEG q82, 4:2:0, 72 dpi; zero padding after EOI to equalise byte length Oba obrázky prošly místní kontrolou modelem Qwen se třemi slepými zadáními a vizuální kontrolou při 600 px.
+
+- `1644b22b` – **OpenAI image_gen (image model version not reported)**. Text-only image generated for this quiz on 2026-11-02T08:57:45.760509+00:00
+  Generated for the Human or AI quiz with the built-in OpenAI image_gen tool in Codex. The image-model version was not reported. CC0 1.0 dedication: [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/). The exact prompt is recorded below.
+
+  Přesné původní zadání:
+
+  > Use case: photorealistic-natural. One ordinary landscape 3:2 colour travel snapshot inside a crowded narrow covered street market. Eye-level camera stands in the aisle among a dozen fictional adult shoppers and workers under a low patched corrugated-metal roof and uneven wooden rafters. Dark roof fills the upper third, with daylight coming from a narrow opening far down the aisle. At right foreground an adult man is seen from behind in a loose pale grey checked shirt, his head and shoulders cropped near the right side, hands below the frame. At left foreground a woman in a black scarf with small pale dots looks downward, partly cut off by the lower-left edge. Near the middle a woman wearing a simple beige broad-brimmed hat glances sideways past another shopper. Behind them a few varied adults in plain shirts stand among dull wooden counters and rough sacks; faces partly occluded by other people. No conspicuous smiles or perfect model faces. Dim mixed daylight with a slight green-blue shadow cast and warm beige highlights, mild underexposure, modest Canon 550D snapshot softness and ISO 1600 grain, little depth of field but not extreme blur. The metal panels, rafters and wires should have ordinary construction logic and the people ordinary anatomy, separate fingers when visible, different individual faces and hairstyles. All people are new fictional individuals without resemblance to any real person. No clear lettering, no logos, no watermark, no HDR, no dramatic commercial lighting.
+
+  Výběr: First and only generation from this prompt; selected for difficulty after the blind and visual gates. The model received only a written scene description, without the source photograph. Every attempt and rejected version is retained. Processing: crop box [0, 0, 1, 1]; centre crop to aspect 1.509433962264151; resize 960x636 Lanczos; common RGB colour conversion; EXIF/ICC/comments removed; baseline JPEG q82, 4:2:0, 72 dpi; zero padding after EOI to equalise byte length Oba obrázky prošly místní kontrolou modelem Qwen se třemi slepými zadáními a vizuální kontrolou při 600 px. Při slepé kontrole ho ani jeden ze dvou modelů neoznačil za výtvor AI.
 
 ### s2cee25 – **Jan Neruda**, *Povídky malostranské*: pravý úryvek, nebo napodobenina od AI?
 
@@ -493,89 +513,21 @@ Anglický kvíz obsahuje také původní odpovědi ChatGPT z prosince 2022: Guo 
 
   Výběr: Pravidlo: první výstup, který prošel předem stanovenou kontrolou (u básní přesný počet veršů; délka nejvýš o 25 % odlišná od originálu; žádný shodný úsek osmi slov) a kontrolou modelem jiné rodiny. Ten hledal zjevné jazykové chyby, anachronismy, porušení formy, citace a nápadné znaky psaní AI. Použili jsme pokus č. 1; kontroloval ho claude-opus-5-5 via claude -p, effort high, no tools; výsledek: prošel (pass). Text jsme neupravovali, jen vysázeli stejně jako ostatní. Neúspěšné výstupy jsme generovali znovu, nejvýš třikrát; všechny pokusy jsou zaznamenané.
 
-### s2ef863 – Křídová kresba slona: nakreslená roku 1637, nebo od AI?
+### s36b5a9 – Malba nočního bulváru s kavárnou a starými automobily.
 
-- `568db674` – **Rembrandt van Rijn**. An Elephant (Hansken), 1637; 1637.
-  [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Rembrandt_Harmenszoon_van_Rijn_-_An_Elephant,_1637_-_Google_Art_Project.jpg). Licence: Public domain. Autorství: Rembrandt van Rijn. Pro kvíz oříznuto, zmenšeno a znovu uloženo; metadata odstraněna.
+- `21d62826` – **Konstantin Korovin**. A Boulevard in Paris; before 1940 (exact year not recorded)
+  Konstantin Korovin. A Boulevard in Paris. [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Korovin_A_Boulevard_in_Paris.jpg). Licence: Public domain ([Status volného díla](https://creativecommons.org/publicdomain/mark/1.0/)). Cropped, resized and recompressed; source attribution retained. Oříznuto kvůli odstranění podpisu.
 
-  Výběr: Vybráno do sady se stejným námětem a technikou. Obrázky v sadě mají stejné rozměry, jednotný postup ořezu a formát JPEG; kvalita komprese byla upravena tak, aby si velikosti souborů byly bližší. Metadata byla odstraněna. Záznam zpracování: crop box [0.015, 0.018, 0.985, 0.982], centre-crop to aspect 1.5, resize 1200x800, RGB, metadata stripped, baseline JPEG 4:2:0 72dpi.
+  Výběr: Selected from the documented candidate pool after a blind origin screen.   Oba obrázky prošly místní kontrolou modelem Qwen se třemi slepými zadáními a vizuální kontrolou při 600 px. Both sources were centre-cropped to the shared aspect, then inset 6% on every side and resized to 1200x825; RGB baseline JPEG quality 82, 4:2:0, 72dpi; metadata removed; zero padding after EOI to 357474 bytes per member. Cropped to remove the signature. The blind checks above preceded this crop; the cropped versions were visually checked, without another model screen.
 
-- `8521d00a` – **OpenAI image tool (image_gen) via Codex CLI – AI**. Vytvořeno pro tento kvíz 2026-11-01 generátorem obrázků OpenAI přes Codex CLI podle slovního popisu lidského obrázku (model ho neviděl).
-  Vytvořeno pro tento kvíz 2026-11-01; uvolněno pod [CC0](https://creativecommons.org/publicdomain/zero/1.0/).
-
-  Přesné původní zadání:
-
-  > A sketchy old-master drawing in black chalk on aged cream paper with a slightly mottled tone, scanned flat. An Asian elephant walking right in profile, drawn quickly with coarse, broken hatching and rubbed areas of tone, anatomy slightly awkward, the hide a mass of wrinkles suggested by short crossing strokes, the head large with a small eye and a wrinkled trunk reaching forward and curling at its tip, a skinny tail at left, pillar legs, a scribbled shadow beneath. Lower right: an illegible fast scrawl of a signature and "1637". A thin double ruled border near the edge. Looks hand-made, imperfect, matte, with no soft airbrushed shading.
-
-  Výběr: Pravidlo: nejvýš dva pokusy na obrázek, druhý jen tehdy, když první vypadal na první pohled jako výtvor AI. Použili jsme pokus č. 2 (b2). Vybráno do sady se stejným námětem a technikou. Obrázky v sadě mají stejné rozměry, jednotný postup ořezu a formát JPEG; kvalita komprese byla upravena tak, aby si velikosti souborů byly bližší. Metadata byla odstraněna. Vyřazený první pokus: a2, 2026-11-01T23:29:49+01:00; rejected: obvious - smooth, airbrushed, cute and glossy; invented signature "J. van der Velde 1637". Barvy vygenerovaného obrázku jsme přizpůsobili papíru nebo paletě lidské předlohy. Záznam zpracování: colour matched to human (paper); crop box [0.03, 0.03, 0.97, 0.97], centre-crop to aspect 1.5, resize 1200x800, RGB, metadata stripped, baseline JPEG 4:2:0 72dpi.
-
-  vyřazený: a2, 2026-11-01T23:29:49+01:00; OpenAI image_gen via codex exec -m gpt-6.1-sol (reasoning low). rejected: obvious - smooth, airbrushed, cute and glossy; invented signature "J. van der Velde 1637"
+- `188ef34e` – **OpenAI image_gen built-in tool; underlying image-model version not reported**. Generated for this quiz on 2026-11-02
+  Made for this quiz; released under CC0: [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/). No reference image supplied. Public-domain work by an artist dead for at least 70 years; text description may follow its composition.
 
   Přesné původní zadání:
 
-  > An old-master chalk study on aged cream paper: a juvenile Indian elephant seen from the side, walking toward the right, drawn in soft black chalk with dense directional hatching for the wrinkled skin, strong dark accents between the legs and under the chest, with paper left bare for highlights. Head lifted slightly, small eye, large ear, trunk reaching forward and curling at its tip, a skinny tail trailing behind to the left, heavy columnar legs with toenails, and quick horizontal strokes for a cast shadow on the ground. At the bottom right a fluent cursive artist's signature in thin brown ink with the year 1637. Fine double ruled frame line around the sheet; paper slightly toned and speckled.
+  > Use case: historical-scene. A flat reproduction of a small, very loose late Impressionist oil sketch of a Paris boulevard at night around 1920. Wide landscape ratio 1.45:1. Trees and rough leafy masses cover the top; a cafe behind a bright red striped awning near the right centre; a green early motorcar at left and a small red motorcar near the centre. Several long thin slashed silhouettes of pedestrians in the near foreground. Wet paving occupies the bottom half, entirely broken into quick looping strokes and angular dabs of moss green, yellow ochre, lemon yellow, dull red and rose. Predominantly yellow-green light, with dark nearly black olive shadows between. Thin transparent green swipes, rough loaded pale dabs and ragged black contours, inconsistent paint thickness and deliberately unresolved perspective. Awning, cars, trees and figures are all just coarse suggestive strokes with no finished faces or wheels. It should be quite colourful and slightly garish, restless, clumsy and uneven, like an unimportant outdoor study, NOT a carefully painted cafe picture. No photographic finish or precise light, no muddy brown monochrome, no sepia patina, no smooth digital blending, no uniform canvas texture filter, no signature, border, frame or lettering. Make the green-yellow and red palette carry the whole scene.
 
-  použitý: b2, 2026-11-01T23:37:40+01:00; OpenAI image_gen via codex exec -m gpt-6.1-sol (reasoning low).
-
-- `8c5485a5` – **OpenAI image tool (image_gen) via Codex CLI – AI**. Vytvořeno pro tento kvíz 2026-11-01 generátorem obrázků OpenAI přes Codex CLI podle slovního popisu lidského obrázku (model ho neviděl).
-  Vytvořeno pro tento kvíz 2026-11-01; uvolněno pod [CC0](https://creativecommons.org/publicdomain/zero/1.0/).
-
-  Přesné původní zadání:
-
-  > A rapid seventeenth-century black chalk drawing on warm toned paper: rough, scratchy, energetic hatching in parallel diagonal strokes, uneven pressure, smudges and corrections, no polish. An elephant seen from the side facing right, heavy slumped body outlined in several tentative lines, deep dark strokes in the creases, paper left bare for the highlights, big sagging skin folds, trunk curling forward at the right edge with its tip bent, the thin tail with a tuft at left, thick legs with indistinct feet, loose horizontal scribbles for shadow on the ground. At lower right a hurried scrawled signature and the date 1637 in brown ink. A thin ink ruled line round the sheet edge. Matte, no sheen, no digital smoothness.
-
-  Výběr: Pravidlo: nejvýš dva pokusy na obrázek, druhý jen tehdy, když první vypadal na první pohled jako výtvor AI. Použili jsme pokus č. 2 (b1). Vybráno do sady se stejným námětem a technikou. Obrázky v sadě mají stejné rozměry, jednotný postup ořezu a formát JPEG; kvalita komprese byla upravena tak, aby si velikosti souborů byly bližší. Metadata byla odstraněna. Vyřazený první pokus: a1, 2026-11-01T23:29:25+01:00; rejected: obvious - smooth, airbrushed, cute and glossy; signature the model invented read "Rembrandt f. 1637". Barvy vygenerovaného obrázku jsme přizpůsobili papíru nebo paletě lidské předlohy. Záznam zpracování: colour matched to human (paper); crop box [0.03, 0.03, 0.97, 0.97], centre-crop to aspect 1.5, resize 1200x800, RGB, metadata stripped, baseline JPEG 4:2:0 72dpi.
-
-  vyřazený: a1, 2026-11-01T23:29:25+01:00; OpenAI image_gen via codex exec -m gpt-6.1-sol (reasoning low). rejected: obvious - smooth, airbrushed, cute and glossy; signature the model invented read "Rembrandt f. 1637"
-
-  Přesné původní zadání:
-
-  > A seventeenth-century study drawing in black chalk on warm cream laid paper with visible fibres and a few small brown foxing spots. A young Asian elephant stands in profile facing right, drawn with confident hatching and cross-hatching that models the folds and wrinkles of its hide, darker strokes in the creases and under the belly, lighter paper left bare on the back. The trunk curls forward at the right edge with its tip raised, the thin tail with a tufted end hangs at the left, the legs end in rounded feet, and a loose smudge of cast shadow lies on the ground beneath. In the lower right, a looping cursive signature in dark brown ink followed by the date 1637. A thin ruled ink border line runs near the edge of the sheet.
-
-  použitý: b1, 2026-11-01T23:37:36+01:00; OpenAI image_gen via codex exec -m gpt-6.1-sol (reasoning low).
-
-### s34d252 – Plakát národního parku: vytištěný ve 30. letech, nebo od AI?
-
-- `53f35153` – **Work Projects Administration Poster Collection (Library of Congress)**. Yellowstone National Park, Ranger Naturalist Service (poster); c. 1938.
-  [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Yellowstone_National_Park,_Ranger_Naturalist_Service_LCCN2007676133.jpg). Licence: Public domain. Autorství: Work Projects Administration Poster Collection (Library of Congress). Pro kvíz oříznuto, zmenšeno a znovu uloženo; metadata odstraněna.
-
-  Výběr: Vybráno do sady se stejným námětem a technikou. Obrázky v sadě mají stejné rozměry, jednotný postup ořezu a formát JPEG; kvalita komprese byla upravena tak, aby si velikosti souborů byly bližší. Metadata byla odstraněna. Záznam zpracování: crop box [0.03, 0.025, 0.968, 0.978], centre-crop to aspect 0.667, resize 800x1200, RGB, metadata stripped, baseline JPEG 4:2:0 72dpi.
-
-- `39e884f5` – **OpenAI image tool (image_gen) via Codex CLI – AI**. Vytvořeno pro tento kvíz 2026-11-01 generátorem obrázků OpenAI přes Codex CLI podle slovního popisu lidského obrázku (model ho neviděl).
-  Vytvořeno pro tento kvíz 2026-11-01; uvolněno pod [CC0](https://creativecommons.org/publicdomain/zero/1.0/).
-
-  Přesné původní zadání:
-
-  > A vintage American national-park information poster, portrait format, printed in the 1930s by hand-cut silkscreen in a handful of flat inks on slightly toned cream board. A tall white column of erupting geyser water and billowing steam rises at left of centre from a dark rippled pool at the bottom, its clouds shaded in cream, pale aqua and thin teal contour lines. Behind it a deep cerulean sky with long sweeping aqua streaks of cloud, a low band of dark green pine forest on the right horizon. Bold condensed sans-serif capitals in pale aqua: at top "RANGER NATURALIST SERVICE"; upper right, stacked in four lines, "NATURE WALKS / FIELD TRIPS / CAMP FIRE PROGRAMS / NATURE TALKS"; across the navy foreground band "YELLOWSTONE" large, then "NATIONAL PARK", with a small round bison emblem at the centre bottom, "U.S. DEPARTMENT OF THE INTERIOR" at lower left and "NATIONAL PARK SERVICE" at lower right.
-
-  Výběr: Pravidlo: nejvýš dva pokusy na obrázek, druhý jen tehdy, když první vypadal na první pohled jako výtvor AI. Použili jsme pokus č. 1 (a1). Vybráno do sady se stejným námětem a technikou. Obrázky v sadě mají stejné rozměry, jednotný postup ořezu a formát JPEG; kvalita komprese byla upravena tak, aby si velikosti souborů byly bližší. Metadata byla odstraněna. Barvy vygenerovaného obrázku jsme přizpůsobili papíru nebo paletě lidské předlohy. Záznam zpracování: colour matched to human (stats); crop box [0.012, 0.012, 0.988, 0.988], centre-crop to aspect 0.667, resize 800x1200, RGB, metadata stripped, baseline JPEG 4:2:0 72dpi.
-
-  použitý: a1, 2026-11-01T23:27:53+01:00; OpenAI image_gen via codex exec -m gpt-6.1-sol (reasoning low).
-
-- `85fb7f3b` – **OpenAI image tool (image_gen) via Codex CLI – AI**. Vytvořeno pro tento kvíz 2026-11-01 generátorem obrázků OpenAI přes Codex CLI podle slovního popisu lidského obrázku (model ho neviděl).
-  Vytvořeno pro tento kvíz 2026-11-01; uvolněno pod [CC0](https://creativecommons.org/publicdomain/zero/1.0/).
-
-  Přesné původní zadání:
-
-  > A 1930s Works Progress Administration style silkscreen poster for a national park ranger programme, portrait orientation, flat opaque inks with slight misregistration and fine paper grain, limited palette of cream, pale aqua, mid blue, navy and dark green. Composition: a towering pale cream geyser plume with scalloped cloud-like billows and thin vertical teal streak lines rises from a dark navy pool of stylised wavelets, left of centre; a big blue sky with long curved wind streaks sweeps to the right; a strip of dark spruce forest on the horizon. Hand-lettered geometric sans-serif capitals in pale aqua. Title at top: "RANGER NATURALIST SERVICE". Upper right, four short lines: "NATURE WALKS", "FIELD TRIPS", "CAMP FIRE PROGRAMS", "NATURE TALKS". Bottom navy panel: "YELLOWSTONE NATIONAL PARK" in large capitals, a small circular bison seal between "U.S. DEPARTMENT OF THE INTERIOR" and "NATIONAL PARK SERVICE".
-
-  Výběr: Pravidlo: nejvýš dva pokusy na obrázek, druhý jen tehdy, když první vypadal na první pohled jako výtvor AI. Použili jsme pokus č. 1 (a2). Vybráno do sady se stejným námětem a technikou. Obrázky v sadě mají stejné rozměry, jednotný postup ořezu a formát JPEG; kvalita komprese byla upravena tak, aby si velikosti souborů byly bližší. Metadata byla odstraněna. Barvy vygenerovaného obrázku jsme přizpůsobili papíru nebo paletě lidské předlohy. Záznam zpracování: colour matched to human (stats); crop box [0.012, 0.012, 0.988, 0.988], centre-crop to aspect 0.667, resize 800x1200, RGB, metadata stripped, baseline JPEG 4:2:0 72dpi.
-
-  použitý: a2, 2026-11-01T23:28:42+01:00; OpenAI image_gen via codex exec -m gpt-6.1-sol (reasoning low).
-
-### s362e2a – Stará černobílá fotka z Milána: skutečná, nebo od AI?
-
-- `d14ec272` – **Zygmunt Szczotkowski**. Mediolan14-1 (květen 1931)
-  Obrázek: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Mediolan14-1.jpg), [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/). Autor/nahrál: Zygmunt Szczotkowski. Oříznuto, zmenšeno a znovu uloženo pro kvíz.
-
-- `bc2c9813` – **Generátor obrázků OpenAI – AI**. Generátor obrázků OpenAI (přes Codex CLI), vytvořeno 2026-11-01 pro tento kvíz
-  Vytvořeno pro tento kvíz 2026-11-01 podle slovního popisu lidského obrázku (model ho neviděl); použili jsme první vygenerovaný obrázek. CC0.
-
-  Přesné původní zadání:
-
-  > A black-and-white photograph taken in Milan in 1931: the Piazza del Duomo with the gothic cathedral in the background, pedestrians in 1930s coats and hats walking across the square, some blurred by motion, a building corner on the right; grainy film, slight vignetting.
-
-  Výběr: Zadání napsal autor kvízu podle námětu, kompozice a techniky lidského obrázku.
+  Výběr: First of at most two successful image generations whose processed JPEG passes all three fixed Qwen phrasings and the visual review at 600 px. Candidate human images were screened before generation. Failed candidates and attempts are retained. Public-domain work by an artist dead for at least 70 years; text description may follow its composition.  Oba obrázky prošly místní kontrolou modelem Qwen se třemi slepými zadáními a vizuální kontrolou při 600 px. Při slepé kontrole ho ani jeden ze dvou modelů neoznačil za výtvor AI. Both sources were centre-cropped to the shared aspect, then inset 6% on every side and resized to 1200x825; RGB baseline JPEG quality 82, 4:2:0, 72dpi; metadata removed; zero padding after EOI to 357474 bytes per member. The same crop and encoding were applied to the generated partner. The blind checks above preceded this crop; the cropped versions were visually checked, without another model screen.
 
 ### s38584f – **Karel Klostermann**, *Ze světa lesních samot*: pravý úryvek, nebo napodobenina od AI?
 
@@ -618,35 +570,21 @@ Anglický kvíz obsahuje také původní odpovědi ChatGPT z prosince 2022: Guo 
 
   Výběr: Pravidlo: první výstup, který prošel předem stanovenou kontrolou (u básní přesný počet veršů; délka nejvýš o 25 % odlišná od originálu; žádný shodný úsek osmi slov) a kontrolou modelem jiné rodiny. Ten hledal zjevné jazykové chyby, anachronismy, porušení formy, citace a nápadné znaky psaní AI. Použili jsme pokus č. 1; kontroloval ho claude-opus-5-5 via claude -p, effort high, no tools; výsledek: prošel (pass). Text jsme neupravovali, jen vysázeli stejně jako ostatní. Neúspěšné výstupy jsme generovali znovu, nejvýš třikrát; všechny pokusy jsou zaznamenané.
 
-### s3918a1 – Rybí kari v misce: skutečné, nebo od AI?
+### s467929 – Pes kráčí po zasněženém poli.
 
-- `6c3703a4` – **Rajeeb Dutta**. File:Bata macher jhol-MB03.jpg; 2020-09-30 13:45:45.
-  [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Bata_macher_jhol-MB03.jpg). Licence: [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/). Autorství: Rajeeb Dutta. Pro kvíz oříznuto, zmenšeno a znovu uloženo; metadata odstraněna.
-
-  Výběr: Vybráno do sady se stejným námětem a technikou. Obrázky v sadě mají stejné rozměry, jednotný postup ořezu a formát JPEG; kvalita komprese byla upravena tak, aby si velikosti souborů byly bližší. Metadata byla odstraněna.
-
-- `e09993be` – **chatgpt – AI**. File:Koi fish curry Bangladesh.png; uploaded 2025-05-13 (creation date not stated).
-  [Wikimedia Commons (AI-generated upload)](https://commons.wikimedia.org/wiki/File:Koi_fish_curry_Bangladesh.png). Licence: [Public domain (PD-algorithm); additional CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/) release](https://commons.wikimedia.org/wiki/File:Koi_fish_curry_Bangladesh.png). Autorství: chatgpt. Pro kvíz oříznuto, zmenšeno a znovu uloženo; metadata odstraněna.
+- `3961a60f` – **OpenAI image_gen (image model version not reported)**. Text-only image generated for this quiz on 2026-11-02T08:40:50.698046+00:00
+  Generated for the Human or AI quiz with the built-in OpenAI image_gen tool in Codex. The image-model version was not reported. CC0 1.0 dedication: [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/). The exact prompt is recorded below.
 
   Přesné původní zadání:
 
-  > Create image Koi fish curry Bangladesh
+  > Use case: photorealistic-natural. An ordinary colour landscape 3:2 photograph of a pet dog in snow on a grey winter day. A medium-sized black-and-white border collie with a black head, white muzzle and white chest walks slowly toward the camera across a flat white field. The dog is fairly small in the frame, in the lower middle-right, leaving a great deal of pale grey sky and empty snow around it. Its front paws sink slightly into uneven snow, tail and rear legs behind, a faint short blue-grey shadow on the snow. A thin far-away line of leafless woods and low snowy hills crosses the horizon. Plain overcast light and washed-out winter colours, ordinary smartphone snapshot with slight softness and sensor grain, mild sharpening, uneven unposed dog fur, no perfect eye sparkle, no bokeh, no dramatic lighting or HDR. No lettering, collar tag text or watermark.
 
-  Výběr: Vybráno do sady se stejným námětem a technikou. Obrázky v sadě mají stejné rozměry, jednotný postup ořezu a formát JPEG; kvalita komprese byla upravena tak, aby si velikosti souborů byly bližší. Metadata byla odstraněna.
+  Výběr: First and only generation from this prompt; selected for difficulty after the blind and visual gates. The model received only a written scene description, without the source photograph. Every attempt and rejected version is retained. Processing: crop box [0, 0, 1, 1]; centre crop to aspect 1.2990527740189446; resize 960x739 Lanczos; common RGB colour conversion; EXIF/ICC/comments removed; baseline JPEG q82, 4:2:0, 72 dpi; zero padding after EOI to equalise byte length Oba obrázky prošly místní kontrolou modelem Qwen se třemi slepými zadáními a vizuální kontrolou při 600 px. Při slepé kontrole ho ani jeden ze dvou modelů neoznačil za výtvor AI.
 
-### s44c840 – Ulice v Penangu v Malajsii: fotka, nebo obrázek od AI?
+- `eafceb9c` – **Patrick Tomasso impatrickt**. File:Dog on a snowy plain (Unsplash).jpg; 2017-04-01
+  [File:Dog on a snowy plain (Unsplash).jpg](https://commons.wikimedia.org/wiki/File:Dog_on_a_snowy_plain_(Unsplash).jpg). Author: Patrick Tomasso impatrickt. Licence: [CC0](http://creativecommons.org/publicdomain/zero/1.0/deed.en). Cropped, resized and recompressed, metadata removed. The adaptation retains the source licence.
 
-- `94dcf28a` – ***angys***. Jalan Machang Bubok (south) (241226) (26. prosince 2024, 17:35)
-  Obrázek: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Jalan_Machang_Bubok_(south)_(241226).jpg), [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/). Autor/nahrál: *angys*. Oříznuto, zmenšeno a znovu uloženo pro kvíz.
-
-- `6a4ee661` – **Generátor obrázků OpenAI – AI**. Generátor obrázků OpenAI (přes Codex CLI), vytvořeno 2026-11-01 pro tento kvíz
-  Vytvořeno pro tento kvíz 2026-11-01 podle slovního popisu lidského obrázku (model ho neviděl); použili jsme první vygenerovaný obrázek. CC0.
-
-  Přesné původní zadání:
-
-  > A photograph of a wide, almost empty street in George Town, Penang, Malaysia, on a bright afternoon: tall palm trees along the right side, low shophouses and a yellow-painted building on the left, a few parked cars, wispy clouds in a blue sky; taken from the pavement at eye level.
-
-  Výběr: Zadání napsal autor kvízu podle námětu, kompozice a techniky lidského obrázku.
+  Výběr: Selected from the saved Commons candidate pool for matching subject and difficulty after screening the final q82 processing. Pre-2022 file history and the saved source metadata establish provenance. Keep only if the pair passes the three-phrasing Qwen gate and visual review at 600 px. Processing: crop box [0, 0, 1, 1]; centre crop to aspect 1.2990527740189446; resize 960x739 Lanczos; common RGB colour conversion; EXIF/ICC/comments removed; baseline JPEG q82, 4:2:0, 72 dpi; zero padding after EOI to equalise byte length Oba obrázky prošly místní kontrolou modelem Qwen se třemi slepými zadáními a vizuální kontrolou při 600 px.
 
 ### s4689c9 – **Josef Holeček**, *Jak u nás žijou i umírají*: pravý úryvek, nebo napodobenina od AI?
 
@@ -730,29 +668,6 @@ Anglický kvíz obsahuje také původní odpovědi ChatGPT z prosince 2022: Guo 
 
   Výběr: Pravidlo: první výstup, který prošel předem stanovenou kontrolou (u básní přesný počet veršů; délka nejvýš o 25 % odlišná od originálu; žádný shodný úsek osmi slov) a kontrolou modelem jiné rodiny. Ten hledal zjevné jazykové chyby, anachronismy, porušení formy, citace a nápadné znaky psaní AI. Použili jsme pokus č. 3; kontroloval ho gpt-6.1-sol via codex exec, reasoning effort high, no web; výsledek: prošel (pass). Text jsme neupravovali, jen vysázeli stejně jako ostatní. Neúspěšné výstupy jsme generovali znovu, nejvýš třikrát; všechny pokusy jsou zaznamenané.
 
-### s48c987 – Akvarel saní tažených koňmi ve sněhu: namalovaný v 19. století, nebo od AI?
-
-- `42fedc93` – **Rudolf Ferdinandovich Frentz**. A Russian troika in the snow; 1869.
-  [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Rudolf_Ferdinandovich_Frentz_-_A_Russian_troika_in_the_snow.jpg). Licence: Public domain. Autorství: Rudolf Ferdinandovich Frentz. Pro kvíz oříznuto, zmenšeno a znovu uloženo; metadata odstraněna.
-
-  Výběr: Vybráno do sady se stejným námětem a technikou. Obrázky v sadě mají stejné rozměry, jednotný postup ořezu a formát JPEG; kvalita komprese byla upravena tak, aby si velikosti souborů byly bližší. Metadata byla odstraněna. Záznam zpracování: crop box [0.03, 0.03, 0.97, 0.9], centre-crop to aspect 1.6, resize 1200x750, RGB, metadata stripped, baseline JPEG 4:2:0 72dpi.
-
-- `c1d0b519` – **Midjourney v4 – AI**. Midjourney - Sleigh Ride Watercolor; 2023-02-15.
-  [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Midjourney_-_Sleigh_Ride_Watercolor.png). Licence: [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/). Autorství: Chikorita. Pro kvíz oříznuto, zmenšeno a znovu uloženo; metadata odstraněna.
-
-  Výběr: Vybráno do sady se stejným námětem a technikou. Obrázky v sadě mají stejné rozměry, jednotný postup ořezu a formát JPEG; kvalita komprese byla upravena tak, aby si velikosti souborů byly bližší. Metadata byla odstraněna. Přesné zadání generátoru není ve zdroji uvedené. Záznam zpracování: crop box [0.03, 0.03, 0.97, 0.9], centre-crop to aspect 1.6, resize 1200x750, RGB, metadata stripped, baseline JPEG 4:2:0 72dpi.
-
-- `f7a5fa02` – **OpenAI image tool (image_gen) via Codex CLI – AI**. Vytvořeno pro tento kvíz 2026-11-01 generátorem obrázků OpenAI přes Codex CLI podle slovního popisu lidského obrázku (model ho neviděl).
-  Vytvořeno pro tento kvíz 2026-11-01; uvolněno pod [CC0](https://creativecommons.org/publicdomain/zero/1.0/).
-
-  Přesné původní zadání:
-
-  > A nineteenth-century watercolour with some gouache and fine pencil on warm cream paper, horizontal format. A three-horse Russian sleigh team gallops toward the left through a blowing snowstorm on a wide white plain: a dark bay horse in the middle under a tall orange-brown wooden arch, a chestnut horse on the right with head lowered, another bay horse at the left. Behind them a bearded driver in a fur cap and long coat, reins in both hands, half lost in the swirl of snow, the sleigh body hidden in a cloud of powder. Pale ochre-grey sky merging into the snowy ground, translucent washes, stippled white gouache for flying snow, soft ghostly forms with sharp details only in the horses' heads and harness. A tiny cursive signature at the lower right.
-
-  Výběr: Pravidlo: nejvýš dva pokusy na obrázek, druhý jen tehdy, když první vypadal na první pohled jako výtvor AI. Použili jsme pokus č. 1 (a1). Vybráno do sady se stejným námětem a technikou. Obrázky v sadě mají stejné rozměry, jednotný postup ořezu a formát JPEG; kvalita komprese byla upravena tak, aby si velikosti souborů byly bližší. Metadata byla odstraněna. Barvy vygenerovaného obrázku jsme přizpůsobili papíru nebo paletě lidské předlohy. Záznam zpracování: colour matched to human (stats); crop box [0.03, 0.03, 0.97, 0.9], centre-crop to aspect 1.6, resize 1200x750, RGB, metadata stripped, baseline JPEG 4:2:0 72dpi.
-
-  použitý: a1, 2026-11-01T23:35:56+01:00; OpenAI image_gen via codex exec -m gpt-6.1-sol (reasoning low).
-
 ### s4ab343 – **Teréza Nováková**, *Za Karolinou Světlou*: pravý úryvek, nebo napodobenina od AI?
 
 - `8c71c579` – **Teréza Nováková (1853–1912)**. Za Karolinou Světlou; Za Karolinou Světlou (úryvek); rok prvního vydání neověřen. Zdroj: Květy, ročník XXI. (1899), kniha XLIII, sešit říjnový. S. 501–505.
@@ -835,119 +750,23 @@ Anglický kvíz obsahuje také původní odpovědi ChatGPT z prosince 2022: Guo 
 
   Výběr: Pravidlo: první výstup, který prošel předem stanovenou kontrolou (u básní přesný počet veršů; délka nejvýš o 25 % odlišná od originálu; žádný shodný úsek dvanácti slov) a kontrolou modelem jiné rodiny. Ten hledal zjevné jazykové chyby, anachronismy, porušení formy, citace a nápadné znaky psaní AI. Použili jsme pokus č. 1; kontroloval ho claude-opus-5-5 via claude -p, effort high, no tools; výsledek: prošel (pass). Text jsme neupravovali, jen vysázeli stejně jako ostatní. Neúspěšné výstupy jsme generovali znovu, nejvýš třikrát; všechny pokusy jsou zaznamenané.
 
-### s4e7986 – Ručně zabalený dárek: skutečný, nebo od AI?
+### s5650ca – Počítačově vykreslený záliv mezi holými horami.
 
-- `4fc65e0e` – **Loneshieling**. File:Wrapped gift.jpg; 2018-03-16 20:22:28.
-  [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Wrapped_gift.jpg). Licence: [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/). Autorství: Loneshieling. Pro kvíz oříznuto, zmenšeno a znovu uloženo; metadata odstraněna.
+- `effc2dd6` – **Lissen**. BaiaTerragen.jpg; 2007-09-23.
+  Lissen. BaiaTerragen.jpg. [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:BaiaTerragen.jpg). Licence: Public domain ([Status volného díla](https://creativecommons.org/publicdomain/mark/1.0/)). Attribution retained; centre-cropped, resized and recompressed.
 
-  Výběr: Vybráno do sady se stejným námětem a technikou. Obrázky v sadě mají stejné rozměry, jednotný postup ořezu a formát JPEG; kvalita komprese byla upravena tak, aby si velikosti souborů byly bližší. Metadata byla odstraněna.
+  Výběr: Selected from a disclosed candidate pool for an ambiguous human-made picture, then paired by subject and medium. No image editing beyond the documented common processing. Final preparation processing: Centre crop with full source box [0,0,1,1] to aspect 1.3333333333333333; common intermediate long side 962px; resize 1200x900; RGB; baseline JPEG quality 82, 4:2:0, 72dpi; no EXIF, XMP or comments; neutral zero padding after EOI to 275105 bytes for every member. Oba obrázky prošly místní kontrolou modelem Qwen se třemi slepými zadáními a vizuální kontrolou při 600 px.
 
-- `3c31ffe6` – **chatgpt – AI**. File:Badly wrapped gift.jpg; uploaded 2025-11-21 (creation date not stated).
-  [Wikimedia Commons (AI-generated upload)](https://commons.wikimedia.org/wiki/File:Badly_wrapped_gift.jpg). Licence: [Public domain (PD-algorithm); additional CC0 1.0 (https://creativecommons.org/publicdomain/zero/1.0/) release](https://commons.wikimedia.org/wiki/File:Badly_wrapped_gift.jpg). Autorství: chatgpt. Pro kvíz oříznuto, zmenšeno a znovu uloženo; metadata odstraněna.
-
-  Přesné původní zadání:
-
-  > Create an image of a badly wrapped gift
-
-  Výběr: Vybráno do sady se stejným námětem a technikou. Obrázky v sadě mají stejné rozměry, jednotný postup ořezu a formát JPEG; kvalita komprese byla upravena tak, aby si velikosti souborů byly bližší. Metadata byla odstraněna.
-
-### s52a43e – Fotka účinkujícího na jevišti: skutečná, nebo od AI?
-
-- `720ee95d` – **Unknown stock photographer; redistributed by the study authors (Casu, Guarnera, Zangara, Caponnetto, Battiato)**. stimuli/epsilon/10_real.jpg (image_id epsilon_10); 2025 (study release; individual date not given).
-  [Casu et al. 2025 stimulus set (CC BY 4.0)](https://github.com/mirkocasu/a-mid-journey-through-reality/blob/597f90bbe5dcf5dc75f41dc27e4eae424595ae21/stimuli/epsilon/10_real.jpg). Licence: [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Autorství: Unknown stock photographer; redistributed by the study authors (Casu, Guarnera, Zangara, Caponnetto, Battiato). Casu, Guarnera, Zangara, Caponnetto, Battiato (2025), A (Mid)journey Through Reality: Assessing Accuracy, Impostor Bias, and Automation Bias in Human Detection of AI-Generated Images, Human Behavior and Emerging Technologies, https://doi.org/10.1155/hbe2/9977058. Pro kvíz oříznuto, zmenšeno a znovu uloženo; metadata odstraněna.
-
-  Ve studii Casu a kol. (2025) správně určilo původ tohoto obrázku 82,6 % z 92 účastníků.
-
-  Výběr: Vybráno do sady se stejným námětem a technikou. Obrázky v sadě mají stejné rozměry, jednotný postup ořezu a formát JPEG; kvalita komprese byla upravena tak, aby si velikosti souborů byly bližší. Metadata byla odstraněna.
-
-- `f8e8444d` – **Midjourney v6 – AI**. stimuli/epsilon/12_m.jpg (image_id epsilon_12); 2025 (study release; individual date not given).
-  [Casu et al. 2025 stimulus set (CC BY 4.0)](https://github.com/mirkocasu/a-mid-journey-through-reality/blob/597f90bbe5dcf5dc75f41dc27e4eae424595ae21/stimuli/epsilon/12_m.jpg). Licence: [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Autorství: Casu, Guarnera, Zangara, Caponnetto, Battiato (generated for the study). Casu, Guarnera, Zangara, Caponnetto, Battiato (2025), A (Mid)journey Through Reality: Assessing Accuracy, Impostor Bias, and Automation Bias in Human Detection of AI-Generated Images, Human Behavior and Emerging Technologies, https://doi.org/10.1155/hbe2/9977058. Pro kvíz oříznuto, zmenšeno a znovu uloženo; metadata odstraněna.
-
-  Ve studii Casu a kol. (2025) správně určilo původ tohoto obrázku 22,8 % z 92 účastníků.
-
-  Výběr: Vybráno do sady se stejným námětem a technikou. Obrázky v sadě mají stejné rozměry, jednotný postup ořezu a formát JPEG; kvalita komprese byla upravena tak, aby si velikosti souborů byly bližší. Metadata byla odstraněna. Přesné zadání generátoru není ve zdroji uvedené.
-
-### s5650ca – Kresba tuší a akvarelem: dívka, nakreslená roku 1907, nebo od AI?
-
-- `61ea6f09` – **Arthur Rackham**. Alice (frontispiece sketch), Alice in Wonderland; 1907.
-  [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Alice_in_Wonderland_by_Arthur_Rackham_-_01_-_Alice_(frontispiece).jpg). Licence: Public domain. Autorství: Arthur Rackham. Pro kvíz oříznuto, zmenšeno a znovu uloženo; metadata odstraněna.
-
-  Výběr: Vybráno do sady se stejným námětem a technikou. Obrázky v sadě mají stejné rozměry, jednotný postup ořezu a formát JPEG; kvalita komprese byla upravena tak, aby si velikosti souborů byly bližší. Metadata byla odstraněna. Záznam zpracování: crop box [0.035, 0.095, 0.965, 0.945], centre-crop to aspect 0.56, resize 672x1200, RGB, metadata stripped, baseline JPEG 4:2:0 72dpi.
-
-- `096b3a18` – **OpenAI image tool (image_gen) via Codex CLI – AI**. Vytvořeno pro tento kvíz 2026-11-01 generátorem obrázků OpenAI přes Codex CLI podle slovního popisu lidského obrázku (model ho neviděl).
-  Vytvořeno pro tento kvíz 2026-11-01; uvolněno pod [CC0](https://creativecommons.org/publicdomain/zero/1.0/).
+- `64eb2111` – **OpenAI image_gen via codex exec -m gpt-6.1-sol (reasoning low); image-model name not reported**. Generated for this quiz on 2026-11-02.
+  Made for this quiz; released under CC0: [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/). No input image supplied to the model. Paired human reference: Lissen. BaiaTerragen.jpg. [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:BaiaTerragen.jpg). Licence: Public domain ([Status volného díla](https://creativecommons.org/publicdomain/mark/1.0/)). Attribution retained; centre-cropped, resized and recompressed.
 
   Přesné původní zadání:
 
-  > A tall vertical pen-and-ink sketch on yellowed cream paper, loose and spare: thin scratchy sepia line, quick and slightly tentative, the face drawn with only a few small strokes and a faint pink flush, no smooth shading. A girl of about eight stands full length facing front with her body turned a little, hands behind her back, long straight-ish hair falling past her shoulders, a short pale dress with puffed sleeves and a belted waist with sketchy fold lines, tinted only with a pale pink wash and a few faint pink flower scribbles, dark horizontally striped stockings drawn with parallel lines, and plain shoes. Behind her a streaky vertical wash of pale grey-brown. A loose, wobbly hand-ruled rectangular frame around her. No text.
+  > Create an ordinary hobbyist landscape render in the look of Terragen Classic from about 2007, horizontal 4:3. The camera looks from a low rounded green-grey rocky hill across a blue inlet toward two barren rounded mountains. The taller broad mountain wall fills the right half; a separate smaller conical mountain is across the water at left. A thin white pale shore traces the base of the mountains. The inlet widens in the lower centre, with small uniform bright white ripples covering a deep blue water plane. Sparse mottled green and light grey procedural terrain material, rather crude and repetitive. Pale blue sky with a horizontal white streak of cloud near the horizon and mostly empty sky above. Flat cold daylight with pale exposed slopes and little dramatic shadow, a slightly hazy washed-out appearance. This should look like an unremarkable low-budget 2007 desktop CGI landscape demo, with simple terrain geometry and limited material realism, no trees, no buildings, no people, no photographic detail or modern path-traced polish, no mountains turning into elaborate fantasy spires. No lettering, no interface, no border.
 
-  Výběr: Pravidlo: nejvýš dva pokusy na obrázek, druhý jen tehdy, když první vypadal na první pohled jako výtvor AI. Použili jsme pokus č. 2 (b1). Vybráno do sady se stejným námětem a technikou. Obrázky v sadě mají stejné rozměry, jednotný postup ořezu a formát JPEG; kvalita komprese byla upravena tak, aby si velikosti souborů byly bližší. Metadata byla odstraněna. Vyřazený první pokus: a1, 2026-11-01T23:29:51+01:00; rejected: obvious - polished digital rendering, smooth plastic-looking face and clean painterly background. Barvy vygenerovaného obrázku jsme přizpůsobili papíru nebo paletě lidské předlohy. Záznam zpracování: colour matched to human (paper); crop box [0.03, 0.03, 0.97, 0.97], centre-crop to aspect 0.56, resize 672x1200, RGB, metadata stripped, baseline JPEG 4:2:0 72dpi.
+  Exact submitted prompt given to codex exec with an instruction to use image_gen once, verbatim. Image-model name and internal tool rewriting were not exposed.
 
-  vyřazený: a1, 2026-11-01T23:29:51+01:00; OpenAI image_gen via codex exec -m gpt-6.1-sol (reasoning low). rejected: obvious - polished digital rendering, smooth plastic-looking face and clean painterly background
-
-  Přesné původní zadání:
-
-  > A tall narrow vertical book illustration in fine brown-black pen and ink with delicate, slightly trembling linework and pale watercolour washes on cream paper. A full-length standing girl of about eight, facing the viewer with her body turned slightly, hands clasped behind her back, long fair hair falling past her shoulders, a serious solemn face with a faint pink flush on the cheeks, wearing a knee-length pale dress with puffed sleeves and a belted waist, scattered with faint rose-pink flower motifs, dark horizontally striped stockings, and buckled flat shoes. The background is an unpainted streaky vertical wash of pale grey-brown and ochre, enclosed by a loose hand-ruled rectangular frame of thin double ink lines. No text, no signature.
-
-  použitý: b1, 2026-11-01T23:37:47+01:00; OpenAI image_gen via codex exec -m gpt-6.1-sol (reasoning low).
-
-- `2595c89b` – **OpenAI image tool (image_gen) via Codex CLI – AI**. Vytvořeno pro tento kvíz 2026-11-01 generátorem obrázků OpenAI přes Codex CLI podle slovního popisu lidského obrázku (model ho neviděl).
-  Vytvořeno pro tento kvíz 2026-11-01; uvolněno pod [CC0](https://creativecommons.org/publicdomain/zero/1.0/).
-
-  Přesné původní zadání:
-
-  > A narrow upright illustration for a Victorian children's book, quickly drawn with a dip pen in brown-black ink over faint pencil, on aged paper with uneven yellow stains; coloured with just a few transparent washes of grey, pink and ochre. A solemn young girl standing alone in full length, shoulders slightly turned, arms behind her back, hair long and loose with a centre parting, face pale and plain with minimal pen strokes, short gathered frock with faint pink motifs, dark stripy stockings, flat laced shoes. A vertical streaky wash behind her and a thin irregular pen-drawn frame. Sketchy, unfinished, imperfect lines, no gloss, no text, no signature.
-
-  Výběr: Pravidlo: nejvýš dva pokusy na obrázek, druhý jen tehdy, když první vypadal na první pohled jako výtvor AI. Použili jsme pokus č. 2 (b2). Vybráno do sady se stejným námětem a technikou. Obrázky v sadě mají stejné rozměry, jednotný postup ořezu a formát JPEG; kvalita komprese byla upravena tak, aby si velikosti souborů byly bližší. Metadata byla odstraněna. Vyřazený první pokus: a2, 2026-11-01T23:29:59+01:00; rejected: obvious - polished digital rendering, glossy shaded face. Barvy vygenerovaného obrázku jsme přizpůsobili papíru nebo paletě lidské předlohy. Záznam zpracování: colour matched to human (paper); crop box [0.03, 0.03, 0.97, 0.97], centre-crop to aspect 0.56, resize 672x1200, RGB, metadata stripped, baseline JPEG 4:2:0 72dpi.
-
-  vyřazený: a2, 2026-11-01T23:29:59+01:00; OpenAI image_gen via codex exec -m gpt-6.1-sol (reasoning low). rejected: obvious - polished digital rendering, glossy shaded face
-
-  Přesné původní zadání:
-
-  > An Edwardian children's-book illustration, tall vertical format, drawn with a fine steel dip pen in sepia ink and tinted with transparent watercolour on warm cream paper. A little girl stands full length in the centre, hands held behind her back, shoulders slightly turned, wavy long hair parted in the middle, a pensive pale face with softly blushed cheeks, a short light frock with gathered skirt and faint pink floral sprigs, dark ribbed stockings with stripes, and pointed lace-up shoes. Behind her a soft streaky vertical wash of grey and beige. A thin, slightly wobbly pen-ruled frame surrounds the figure with a wide cream margin. No lettering, no signature.
-
-  použitý: b2, 2026-11-01T23:38:08+01:00; OpenAI image_gen via codex exec -m gpt-6.1-sol (reasoning low).
-
-### s5ed11d – Tušová kresba dinosaura a drobného muže: nakreslená rukou v 10. letech 20. století, nebo od AI?
-
-- `23c38f95` – **Winsor McCay**. Winsor McCay and Gertie the Dinosaur (original art); c. 1914.
-  [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Winsor_McCay_and_Gertie_the_Dinosaur_(original_art).jpg). Licence: Public domain. Autorství: Winsor McCay. Pro kvíz oříznuto, zmenšeno a znovu uloženo; metadata odstraněna.
-
-  Výběr: Vybráno do sady se stejným námětem a technikou. Obrázky v sadě mají stejné rozměry, jednotný postup ořezu a formát JPEG; kvalita komprese byla upravena tak, aby si velikosti souborů byly bližší. Metadata byla odstraněna. Záznam zpracování: crop box [0.05, 0.045, 0.955, 0.955], centre-crop to aspect 1.35, resize 1200x889, RGB, metadata stripped, baseline JPEG 4:2:0 72dpi.
-
-- `4f83eaef` – **OpenAI image tool (image_gen) via Codex CLI – AI**. Vytvořeno pro tento kvíz 2026-11-01 generátorem obrázků OpenAI přes Codex CLI podle slovního popisu lidského obrázku (model ho neviděl).
-  Vytvořeno pro tento kvíz 2026-11-01; uvolněno pod [CC0](https://creativecommons.org/publicdomain/zero/1.0/).
-
-  Přesné původní zadání:
-
-  > A very simple black ink line drawing on cream paper, naive and sparse, drawn with a dip pen with slightly uneven, wobbly lines and no shading at all. A gigantic dinosaur with a huge round smooth body fills the sheet, shown from behind-side, a row of small scallops along its back and neck, its small head hanging low at the far left beside a cliff with a few dripping lines. Rocks and hills around it drawn only as single outline curves, a few boulders at right, simple cross-hatched grid lines on the cliff. At the lower right a tiny man in a solid black suit walks looking up. Small plus-shaped corner marks on the sheet. Flat, undecorated, like a working animation sketch. No text.
-
-  Výběr: Pravidlo: nejvýš dva pokusy na obrázek, druhý jen tehdy, když první vypadal na první pohled jako výtvor AI. Použili jsme pokus č. 2 (b1). Vybráno do sady se stejným námětem a technikou. Obrázky v sadě mají stejné rozměry, jednotný postup ořezu a formát JPEG; kvalita komprese byla upravena tak, aby si velikosti souborů byly bližší. Metadata byla odstraněna. Vyřazený první pokus: a1, 2026-11-01T23:29:16+01:00; rejected: obvious - finely hatched, engraving-like detail far more rendered than the sparse human line drawing; reads as a modern digital pen illustration. Barvy vygenerovaného obrázku jsme přizpůsobili papíru nebo paletě lidské předlohy. Záznam zpracování: colour matched to human (paper); crop box [0.06, 0.06, 0.94, 0.94], centre-crop to aspect 1.35, resize 1200x889, RGB, metadata stripped, baseline JPEG 4:2:0 72dpi.
-
-  vyřazený: a1, 2026-11-01T23:29:16+01:00; OpenAI image_gen via codex exec -m gpt-6.1-sol (reasoning low). rejected: obvious - finely hatched, engraving-like detail far more rendered than the sparse human line drawing; reads as a modern digital pen illustration
-
-  Přesné původní zadání:
-
-  > A black pen-and-ink drawing on cream animation paper, sparse and clean, with thin even outline strokes and almost no shading. A gigantic long-necked sauropod dinosaur fills the middle of the sheet, seen from the side and rear, its back marked by a scalloped ridge of small rounded plates along the spine; its small blunt head hangs low at the far left, nosing a rocky cliff with water dripping from its mouth. Around it are angular rocky hills and boulders drawn with single contour lines and a few hatched strokes, a hatched cliff face at left. At the lower right a tiny man in a solid black suit, drawn small and filled with ink, walks along the ground looking up at the beast. Registration cross marks in the corners of the paper. No text.
-
-  použitý: b1, 2026-11-01T23:37:07+01:00; OpenAI image_gen via codex exec -m gpt-6.1-sol (reasoning low).
-
-- `6054a24e` – **OpenAI image tool (image_gen) via Codex CLI – AI**. Vytvořeno pro tento kvíz 2026-11-01 generátorem obrázků OpenAI přes Codex CLI podle slovního popisu lidského obrázku (model ho neviděl).
-  Vytvořeno pro tento kvíz 2026-11-01; uvolněno pod [CC0](https://creativecommons.org/publicdomain/zero/1.0/).
-
-  Přesné původní zadání:
-
-  > A rough black pen-and-ink animation drawing on slightly yellowed paper: thick-and-thin uneven outlines, large empty areas of blank paper, almost no hatching. A colossal long-necked dinosaur dominates, seen side-on with a barrel-shaped body, a scalloped ridge along its spine, a small head lowered at the left toward a rock face where water drips. A background of simple angular ledges and round boulders described with one line each. A small figure of a man in a black suit, filled in solid ink, walks at lower right and looks up at the dinosaur. Crosses at the paper corners. No colour, no text.
-
-  Výběr: Pravidlo: nejvýš dva pokusy na obrázek, druhý jen tehdy, když první vypadal na první pohled jako výtvor AI. Použili jsme pokus č. 2 (b2). Vybráno do sady se stejným námětem a technikou. Obrázky v sadě mají stejné rozměry, jednotný postup ořezu a formát JPEG; kvalita komprese byla upravena tak, aby si velikosti souborů byly bližší. Metadata byla odstraněna. Vyřazený první pokus: a2, 2026-11-01T23:29:18+01:00; rejected: obvious - finely hatched, engraving-like detail far more rendered than the sparse human line drawing; reads as a modern digital pen illustration. Barvy vygenerovaného obrázku jsme přizpůsobili papíru nebo paletě lidské předlohy. Záznam zpracování: colour matched to human (paper); crop box [0.06, 0.06, 0.94, 0.94], centre-crop to aspect 1.35, resize 1200x889, RGB, metadata stripped, baseline JPEG 4:2:0 72dpi.
-
-  vyřazený: a2, 2026-11-01T23:29:18+01:00; OpenAI image_gen via codex exec -m gpt-6.1-sol (reasoning low). rejected: obvious - finely hatched, engraving-like detail far more rendered than the sparse human line drawing; reads as a modern digital pen illustration
-
-  Přesné původní zadání:
-
-  > A sparse black india-ink line drawing on warm ivory paper, such as an early animator would draw as a background and character sheet. In the centre an enormous sauropod dinosaur with a smooth barrel body, a row of scalloped plates running down its neck and back, and a tiny head lowered to the left beside a steep rock wall where water trickles. Surrounding landscape of jagged ledges, large rounded boulders and slabs of stone outlined with single wobbly lines, with fine hatching on a few rock faces. A very small man wearing a black suit, filled in solid black ink, strolls at lower right and tilts his head back to look up at it. Small plus-shaped registration marks at the corners. No lettering, no colour.
-
-  použitý: b2, 2026-11-01T23:37:07+01:00; OpenAI image_gen via codex exec -m gpt-6.1-sol (reasoning low).
+  Výběr: Up to two successful image generations per slot. Keep the first that passes three blind Qwen phrasings and the visual review at 600 px. Text prompt describes the paired human medium and subject. All attempted prompts, including failed infrastructure calls, are preserved. Final preparation processing: Centre crop with full source box [0,0,1,1] to aspect 1.3333333333333333; common intermediate long side 962px; resize 1200x900; RGB; baseline JPEG quality 82, 4:2:0, 72dpi; no EXIF, XMP or comments; neutral zero padding after EOI to 275105 bytes for every member. Oba obrázky prošly místní kontrolou modelem Qwen se třemi slepými zadáními a vizuální kontrolou při 600 px. Při slepé kontrole ho ani jeden ze dvou modelů neoznačil za výtvor AI.
 
 ### s606703 – **Otakar Theer** (1880–1917): pravá báseň, nebo napodobenina od AI?
 
@@ -1022,6 +841,22 @@ Anglický kvíz obsahuje také původní odpovědi ChatGPT z prosince 2022: Guo 
 
   Výběr: Pravidlo: první výstup, který prošel předem stanovenou kontrolou (u básní přesný počet veršů; délka nejvýš o 25 % odlišná od originálu; žádný shodný úsek dvanácti slov) a kontrolou modelem jiné rodiny. Ten hledal zjevné jazykové chyby, anachronismy, porušení formy, citace a nápadné znaky psaní AI. Použili jsme pokus č. 1; kontroloval ho claude-opus-5-5 via claude -p, effort high, no tools; výsledek: prošel (pass). Text jsme neupravovali, jen vysázeli stejně jako ostatní. Neúspěšné výstupy jsme generovali znovu, nejvýš třikrát; všechny pokusy jsou zaznamenané.
 
+### s61975f – Dítě v mělkém moři při západu slunce.
+
+- `729acf23` – **Viktor Jakovlev apviktor**. File:Child entering the ocean (Unsplash).jpg; 2015-09-30
+  [File:Child entering the ocean (Unsplash).jpg](https://commons.wikimedia.org/wiki/File:Child_entering_the_ocean_(Unsplash).jpg). Author: Viktor Jakovlev apviktor. Licence: [CC0](http://creativecommons.org/publicdomain/zero/1.0/deed.en). Cropped, resized and recompressed, metadata removed. The adaptation retains the source licence.
+
+  Výběr: Selected from the saved Commons candidate pool for matching subject and difficulty after screening the final q82 processing. Pre-2022 file history and the saved source metadata establish provenance. Keep only if the pair passes the three-phrasing Qwen gate and visual review at 600 px. Processing: crop box [0, 0, 1, 1]; centre crop to aspect 1.497659906396256; resize 960x641 Lanczos; common RGB colour conversion; EXIF/ICC/comments removed; baseline JPEG q82, 4:2:0, 72 dpi; zero padding after EOI to equalise byte length Oba obrázky prošly místní kontrolou modelem Qwen se třemi slepými zadáními a vizuální kontrolou při 600 px.
+
+- `23900dfd` – **OpenAI image_gen (image model version not reported)**. Text-only image generated for this quiz on 2026-11-02T08:40:50.697956+00:00
+  Generated for the Human or AI quiz with the built-in OpenAI image_gen tool in Codex. The image-model version was not reported. CC0 1.0 dedication: [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/). The exact prompt is recorded below.
+
+  Přesné původní zadání:
+
+  > Use case: photorealistic-natural. One ordinary beach holiday colour snapshot, landscape 3:2, photographed at water level. A fictional child about seven years old stands sideways waist-deep in gently rippling sea water, seen as a dark backlit silhouette with no recognisable facial features. Short untidy hair, plain dark swimming trunks, one arm lowered toward the water at the left and the other lowered behind. The horizon is low, distant rounded coastal hills sit at the far right and middle. A low hazy sun slightly above the child's shoulder reflects in a narrow broken stripe across the little waves toward the camera. Warm grey sky with subdued pink colour near the horizon, dark soft foreground ripples. Ordinary unplanned 2015 compact-camera holiday photograph, slight grain and imperfect focus, no cinematic teal-orange grade, no dramatic clouds, no extra people close by, no text or watermark. The person is entirely fictional, not based on a real individual.
+
+  Výběr: First and only generation from this prompt; selected for difficulty after the blind and visual gates. The model received only a written scene description, without the source photograph. Every attempt and rejected version is retained. Processing: crop box [0, 0, 1, 1]; centre crop to aspect 1.497659906396256; resize 960x641 Lanczos; common RGB colour conversion; EXIF/ICC/comments removed; baseline JPEG q82, 4:2:0, 72 dpi; zero padding after EOI to equalise byte length Oba obrázky prošly místní kontrolou modelem Qwen se třemi slepými zadáními a vizuální kontrolou při 600 px. Při slepé kontrole ho ani jeden ze dvou modelů neoznačil za výtvor AI.
+
 ### s635a65 – **Viktor Dyk** (1877–1931): pravá báseň, nebo napodobenina od AI?
 
 - `06e359a4` – **Viktor Dyk (1877–1931)**. Devátá vlna, „Sestřička Starost“ (1930); znění podle Wikizdrojů. Podrobnosti vydání nebyly v podkladech úplné.
@@ -1085,6 +920,22 @@ Anglický kvíz obsahuje také původní odpovědi ChatGPT z prosince 2022: Guo 
   > Napiš původní báseň ve stylu, jakým psal Otokar Březina (1868–1929), jako by šlo o méně známou báseň tohoto autora. Forma: přesně 12 veršů ve třech čtyřverších, dlouhé jambické verše o 12–14 slabikách, střídavý rým ABAB. Téma: zimní krajina v poledním klidu, světlo a stíny na sněhu a duchovní myšlenka nad ní. Symbolistní slovník Otokara Březiny. Současný český pravopis, jak ho používají dnešní vydání. Rozsah: zhruba 89 slov, 5–9 slov na verš. Interpunkce jako v originále tohoto druhu, zhruba: 10 čárek, 0 pomlček (–), 0 závorek, 0 výpustek (…), 2 středníků, 0 dvojteček, 0 vykřičníků, 0 otazníků, 0 uvozovek (párů). Velké písmeno na začátku verše jen tam, kde začíná věta (v originále 2 z 12 veršů). Kvalita: piš tak, aby ani znalec české literatury nepoznal, že nejde o skutečný text tohoto autora. Drž se jeho slovníku, obraznosti, rytmu, větné stavby i dobových tvarů, které používal; dávej přednost konkrétním věcem a obrazům před obecnými slovy. Nepřidávej závěrečné ponaučení ani shrnutí, pokud by je autor nenapsal, a nepoužívej slova a reálie, které v jeho době neexistovaly. Vyhni se znakům textu psaného umělou inteligencí: konstrukcím „nejde o X, ale o Y“ a „ne proto, že…, ale protože…“, otázkám, na které hned odpovídáš („Výsledek? Klid.“), trojicím a řetězcům stejně dlouhých krátkých vět pro rytmus, umělé rovnováze („přínosné, ale zároveň riskantní“), závěrečnému shrnutí či ponaučení, frázím „ať už jde o“, „co se týče“, „v dnešní době“, „hraje klíčovou roli“, „v neposlední řadě“, kalkům z angličtiny („ponořit se do“, „na konci dne“, „je svědectvím toho“) a obecnosti: kde by je skutečný text uvedl, uveď konkrétní jména, místa, čísla a data. Česká typografie: uvozovky „…“, pomlčka s mezerami ( – ), mezera před % a jednotkami. Necituj ani neparafrázuj žádnou existující báseň. Vypiš pouze text básně: bez názvu, bez komentáře, bez markdownu.
 
   Výběr: Pravidlo: první výstup, který prošel předem stanovenou kontrolou (u básní přesný počet veršů; délka nejvýš o 25 % odlišná od originálu; žádný shodný úsek osmi slov) a kontrolou modelem jiné rodiny. Ten hledal zjevné jazykové chyby, anachronismy, porušení formy, citace a nápadné znaky psaní AI. Použili jsme pokus č. 1; kontroloval ho gpt-6.1-sol via codex exec, reasoning effort high, no web; výsledek: prošel (pass). Text jsme neupravovali, jen vysázeli stejně jako ostatní. Neúspěšné výstupy jsme generovali znovu, nejvýš třikrát; všechny pokusy jsou zaznamenané.
+
+### s660db6 – Odpočinková místnost v kanceláři.
+
+- `d9e9267f` – **OpenAI image_gen (image model version not reported)**. Text-only image generated for this quiz on 2026-11-02T08:37:21.904170+00:00
+  Generated for the Human or AI quiz with the built-in OpenAI image_gen tool in Codex. The image-model version was not reported. CC0 1.0 dedication: [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/). The exact prompt is recorded below.
+
+  Přesné původní zadání:
+
+  > Use case: photorealistic-natural. One landscape 3:2 colour photograph taken casually inside a small office break room. From a low chair-level viewpoint, a pale bent-plywood lounge chair with a white seat is partly cut off at the left foreground; a dark charcoal upholstered two-seat sofa with one faded blue cushion is along the right wall. A small round wooden coffee table sits in between on a dark blue-grey rug. Behind is a pale dining table with four white plastic chairs, a small potted plant, white walls and a plain white hanging dome lamp. A tall window at left supplies cool flat daylight. A few simple small unlettered geometric decorations on the back wall. Off-centre composition and slightly leaning verticals from an ordinary wide-angle phone photograph; low to medium contrast, a little softness and grain, natural worn surfaces, no architectural-render polish, no immaculate perfect symmetry, no text or logos.
+
+  Výběr: First and only generation from this prompt; selected for difficulty after the blind and visual gates. The model received only a written scene description, without the source photograph. Every attempt and rejected version is retained. Processing: crop box [0, 0, 1, 1]; centre crop to aspect 1.497659906396256; resize 960x641 Lanczos; common RGB colour conversion; EXIF/ICC/comments removed; baseline JPEG q82, 4:2:0, 72 dpi; zero padding after EOI to equalise byte length Oba obrázky prošly místní kontrolou modelem Qwen se třemi slepými zadáními a vizuální kontrolou při 600 px. Při slepé kontrole ho jeden ze dvou modelů označil za výtvor AI.
+
+- `4be9d517` – **Breather breather**. File:Office rest area (Unsplash).jpg; 2015-01-28
+  [File:Office rest area (Unsplash).jpg](https://commons.wikimedia.org/wiki/File:Office_rest_area_(Unsplash).jpg). Author: Breather breather. Licence: [CC0](http://creativecommons.org/publicdomain/zero/1.0/deed.en). Cropped, resized and recompressed, metadata removed. The adaptation retains the source licence.
+
+  Výběr: Selected from the saved Commons candidate pool for matching subject and difficulty after screening the final q82 processing. Pre-2022 file history and the saved source metadata establish provenance. Keep only if the pair passes the three-phrasing Qwen gate and visual review at 600 px. Processing: crop box [0, 0, 1, 1]; centre crop to aspect 1.497659906396256; resize 960x641 Lanczos; common RGB colour conversion; EXIF/ICC/comments removed; baseline JPEG q82, 4:2:0, 72 dpi; zero padding after EOI to equalise byte length Oba obrázky prošly místní kontrolou modelem Qwen se třemi slepými zadáními a vizuální kontrolou při 600 px.
 
 ### s68e531 – **Karel Hynek Mácha** (1810–1836): pravá báseň, nebo napodobenina od AI?
 
@@ -1209,17 +1060,37 @@ Anglický kvíz obsahuje také původní odpovědi ChatGPT z prosince 2022: Guo 
 
   Výběr: Pravidlo: první výstup, který prošel předem stanovenou kontrolou (u básní přesný počet veršů; délka nejvýš o 25 % odlišná od originálu; žádný shodný úsek osmi slov) a kontrolou modelem jiné rodiny. Ten hledal zjevné jazykové chyby, anachronismy, porušení formy, citace a nápadné znaky psaní AI. Použili jsme pokus č. 1; kontroloval ho claude-opus-5-5 via claude -p, effort high, no tools; výsledek: prošel (pass). Text jsme neupravovali, jen vysázeli stejně jako ostatní. Neúspěšné výstupy jsme generovali znovu, nejvýš třikrát; všechny pokusy jsou zaznamenané.
 
-### s6e5972 – Červené víno nalévané do sklenice: skutečné, nebo od AI?
+### s6d183b – Malba zasněženého tržiště u pařížské katedrály Notre-Dame.
 
-- `787de44e` – **Dave Gough**. File:Pouring red wine into a glass.jpg; 2007-12-29 16:03:59.
-  [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Pouring_red_wine_into_a_glass.jpg). Licence: [CC BY 2.0](https://creativecommons.org/licenses/by/2.0/). Autorství: Dave Gough. Pro kvíz oříznuto, zmenšeno a znovu uloženo; metadata odstraněna.
+- `facef4b8` – **Eugène Galien-Laloue**. Paris, Notre-Dame; by 1941
+  Eugène Galien-Laloue. Paris, Notre-Dame. [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Eug%C3%A8ne_Galien-Laloue_Paris_Notre-Dame.jpg). Licence: Public domain ([Status volného díla](https://creativecommons.org/publicdomain/mark/1.0/)). Cropped, resized and recompressed; source attribution retained. Oříznuto kvůli odstranění podpisu.
 
-  Výběr: Vybráno do sady se stejným námětem a technikou. Obrázky v sadě mají stejné rozměry, jednotný postup ořezu a formát JPEG; kvalita komprese byla upravena tak, aby si velikosti souborů byly bližší. Metadata byla odstraněna.
+  Výběr: Selected from the documented candidate pool after a blind origin screen.   Oba obrázky prošly místní kontrolou modelem Qwen se třemi slepými zadáními a vizuální kontrolou při 600 px. Both sources were centre-cropped to the shared aspect, then inset 9% on every side and resized to 512x349; RGB baseline JPEG quality 82, 4:2:0, 72dpi; metadata removed; zero padding after EOI to 55940 bytes per member. Cropped to remove the signature. The blind checks above preceded this crop; the cropped versions were visually checked, without another model screen.
 
-- `22ebafbf` – **ChatGPT – AI**. File:Cortagotas2.png; uploaded 2025-09-01 (creation date not stated).
-  [Wikimedia Commons (AI-generated upload)](https://commons.wikimedia.org/wiki/File:Cortagotas2.png). Licence: [Public domain (PD-algorithm); additional CC0 1.0 (https://creativecommons.org/publicdomain/zero/1.0/) release](https://commons.wikimedia.org/wiki/File:Cortagotas2.png). Autorství: ChatGPT. Pro kvíz oříznuto, zmenšeno a znovu uloženo; metadata odstraněna.
+- `823b665f` – **OpenAI image_gen built-in tool; underlying image-model version not reported**. Generated for this quiz on 2026-11-02
+  Made for this quiz; released under CC0: [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/). No reference image supplied. Public-domain work by an artist dead for at least 70 years; text description may follow its composition.
 
-  Výběr: Vybráno do sady se stejným námětem a technikou. Obrázky v sadě mají stejné rozměry, jednotný postup ořezu a formát JPEG; kvalita komprese byla upravena tak, aby si velikosti souborů byly bližší. Metadata byla odstraněna. Přesné zadání generátoru není ve zdroji uvedené.
+  Přesné původní zadání:
+
+  > Use case: historical-scene. An ordinary early twentieth-century Paris winter street illustration in watercolour with opaque bodycolour, landscape aspect 1.47:1. A snowy open square directly in front of Notre-Dame, with the front façade and its two square towers seen almost face-on in the upper right background; pale stone houses at far left, another low building at right. A network of thin bare trees crosses the pale yellow-grey sky and partly hides the cathedral. Near the lower centre a modest green-brown wooden flower handcart with bunches of dull green leaves and a few small faded flowers, beside a woman in a long dark blue skirt and plain brown shawl. Small scattered dark-coated pedestrians on the snowy pavement, a little advertising kiosk left of centre. Broad pale snow, scuffed grey and ochre marks underfoot, pale yellow-beige sky, dull brown buildings and grey stone, muted blue clothing. Fairly thin, washed-out colours and a few opaque strokes, scratchy uneven twigs and sketchy small faces; ordinary minor commercial painter's study with imperfect perspective. No river in view, no bookstalls, no water reflections, no market umbrellas, no bright flowers, no crowd spectacle, no crisp photo detail, no dense oil impasto or uniform brush filter, no signature or lettering, no frame or decorative border. The slightly worn painted illustration fills the image.
+
+  Výběr: First of at most two successful image generations whose processed JPEG passes all three fixed Qwen phrasings and the visual review at 600 px. Candidate human images were screened before generation. Failed candidates and attempts are retained. Public-domain work by an artist dead for at least 70 years; text description may follow its composition.  Oba obrázky prošly místní kontrolou modelem Qwen se třemi slepými zadáními a vizuální kontrolou při 600 px. Při slepé kontrole ho jeden ze dvou modelů označil za výtvor AI. Both sources were centre-cropped to the shared aspect, then inset 9% on every side and resized to 512x349; RGB baseline JPEG quality 82, 4:2:0, 72dpi; metadata removed; zero padding after EOI to 55940 bytes per member. The same crop and encoding were applied to the generated partner. The blind checks above preceded this crop; the cropped versions were visually checked, without another model screen.
+
+### s7009ba – Tmavě zbarvená liška polární ve sněhu.
+
+- `44c7ada5` – **Jonatan Pie**. File:Posing for a portrait (Unsplash).jpg; Taken on 31 December 2016, 16:13:13 (according to Exif data)
+  [File:Posing for a portrait (Unsplash).jpg](https://commons.wikimedia.org/wiki/File:Posing_for_a_portrait_(Unsplash).jpg). Author: Jonatan Pie. Licence: [CC0](http://creativecommons.org/publicdomain/zero/1.0/deed.en). Cropped, resized and recompressed, metadata removed. The adaptation retains the source licence.
+
+  Výběr: Selected from the saved Commons candidate pool for matching subject and difficulty after screening the final q82 processing. Pre-2022 file history and the saved source metadata establish provenance. Keep only if the pair passes the three-phrasing Qwen gate and visual review at 600 px. Processing: crop box [0, 0, 1, 1]; centre crop to aspect 1.497659906396256; resize 960x641 Lanczos; common RGB colour conversion; EXIF/ICC/comments removed; baseline JPEG q82, 4:2:0, 72 dpi; zero padding after EOI to equalise byte length Oba obrázky prošly místní kontrolou modelem Qwen se třemi slepými zadáními a vizuální kontrolou při 600 px.
+
+- `c250ffee` – **OpenAI image_gen (image model version not reported)**. Text-only image generated for this quiz on 2026-11-02T08:37:21.903884+00:00
+  Generated for the Human or AI quiz with the built-in OpenAI image_gen tool in Codex. The image-model version was not reported. CC0 1.0 dedication: [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/). The exact prompt is recorded below.
+
+  Přesné původní zadání:
+
+  > Use case: photorealistic-natural. One ordinary colour wildlife photograph, landscape 3:2. A small dark slate-grey arctic fox sits on packed white snow, viewed at its eye level. Full fluffy head, thick shoulders, short chest and front paws filling the lower middle of the frame. It looks slightly to one side rather than straight into the camera. Its winter fur has uneven dark grey and brown strands, small rounded ears, pale amber eyes and a short black nose. Flat overcast winter light, snow slightly blue-grey, subtle shadows beneath the animal. Casual Nikon D7000 telephoto photograph at 135 mm, f/5.6, ISO 800, moderate softness and slight sensor noise. The snow behind is softly out of focus without a dramatic bokeh pattern. Natural uneven fur and small asymmetries, ordinary exposure, no sparkling eyes or excessive sharpness, no rim light, no HDR, no lettering or watermark.
+
+  Výběr: First and only generation from this prompt; selected for difficulty after the blind and visual gates. The model received only a written scene description, without the source photograph. Every attempt and rejected version is retained. Processing: crop box [0.1, 0.0, 0.8, 0.7]; centre crop to aspect 1.497659906396256; resize 960x641 Lanczos; common RGB colour conversion; EXIF/ICC/comments removed; baseline JPEG q82, 4:2:0, 72 dpi; zero padding after EOI to equalise byte length Oba obrázky prošly místní kontrolou modelem Qwen se třemi slepými zadáními a vizuální kontrolou při 600 px. Při slepé kontrole ho ani jeden ze dvou modelů neoznačil za výtvor AI.
 
 ### s722e34 – **Vítězslav Hálek** (1835–1874): pravá báseň, nebo napodobenina od AI?
 
@@ -1262,46 +1133,34 @@ Anglický kvíz obsahuje také původní odpovědi ChatGPT z prosince 2022: Guo 
 
   Výběr: Pravidlo: první výstup, který prošel předem stanovenou kontrolou (u básní přesný počet veršů; délka nejvýš o 25 % odlišná od originálu; žádný shodný úsek osmi slov) a kontrolou modelem jiné rodiny. Ten hledal zjevné jazykové chyby, anachronismy, porušení formy, citace a nápadné znaky psaní AI. Použili jsme pokus č. 1; kontroloval ho gpt-6.1-sol via codex exec, reasoning effort high, no web; výsledek: prošel (pass). Text jsme neupravovali, jen vysázeli stejně jako ostatní. Neúspěšné výstupy jsme generovali znovu, nejvýš třikrát; všechny pokusy jsou zaznamenané.
 
-### s7250dc – Temná knižní ilustrace s havranem a oponou: vyrytá roku 1884, nebo od AI?
+### s7250dc – Knižní rytina s havranem a těžkým závěsem.
 
-- `3c1fbb31` – **Gustave Doré**. The Raven (illustration), 1884 edition; 1884 edition.
-  [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Dore_The_Raven_1884-01.jpg). Licence: Public domain. Autorství: Gustave Doré. Pro kvíz oříznuto, zmenšeno a znovu uloženo; metadata odstraněna.
-
-  Výběr: Vybráno do sady se stejným námětem a technikou. Obrázky v sadě mají stejné rozměry, jednotný postup ořezu a formát JPEG; kvalita komprese byla upravena tak, aby si velikosti souborů byly bližší. Metadata byla odstraněna. Záznam zpracování: crop box [0.01, 0.025, 0.99, 0.95], centre-crop to aspect 0.7, resize 840x1200, RGB, metadata stripped, baseline JPEG 4:2:0 72dpi.
-
-- `5a493699` – **OpenAI image tool (image_gen) via Codex CLI – AI**. Vytvořeno pro tento kvíz 2026-11-01 generátorem obrázků OpenAI přes Codex CLI podle slovního popisu lidského obrázku (model ho neviděl).
-  Vytvořeno pro tento kvíz 2026-11-01; uvolněno pod [CC0](https://creativecommons.org/publicdomain/zero/1.0/).
-
-  Přesné původní zadání:
-
-  > A steel engraving from a Victorian illustrated poem, monochrome, portrait format, printed on slightly toned paper: tonal areas built from fine ruled lines that are a little coarse and uneven, with the look of a photographic reproduction of an old print, flatter and greyer, not glossy. A great velvet curtain in heavy folds fills the scene; a hooded cloaked man seen from behind lifts the curtain's edge and peers in. A raven flies at the right, wings spread. A curled scroll at the top left carries "NEVERMORE" in italic capitals; a faint skeleton hovers near the top right edge. Plank floor at the bottom. No signature, no frame.
-
-  Výběr: Pravidlo: nejvýš dva pokusy na obrázek, druhý jen tehdy, když první vypadal na první pohled jako výtvor AI. Použili jsme pokus č. 2 (b2). Vybráno do sady se stejným námětem a technikou. Obrázky v sadě mají stejné rozměry, jednotný postup ořezu a formát JPEG; kvalita komprese byla upravena tak, aby si velikosti souborů byly bližší. Metadata byla odstraněna. Vyřazený první pokus: a2, 2026-11-01T23:30:54+01:00; rejected: obvious - glossy digital glow, over-sharp uniform line texture and too-perfect lettering. Barvy vygenerovaného obrázku jsme přizpůsobili papíru nebo paletě lidské předlohy. Záznam zpracování: colour matched to human (paper); crop box [0.04, 0.03, 0.96, 0.97], centre-crop to aspect 0.7, resize 840x1200, RGB, metadata stripped, baseline JPEG 4:2:0 72dpi.
-
-  vyřazený: a2, 2026-11-01T23:30:54+01:00; OpenAI image_gen via codex exec -m gpt-6.1-sol (reasoning low). rejected: obvious - glossy digital glow, over-sharp uniform line texture and too-perfect lettering
-
-  Přesné původní zadání:
-
-  > A Victorian steel-engraving style illustration for a gothic poem, portrait orientation, monochrome, made of thousands of fine engraved lines with tonal gradations from silvery grey to deep black. Enormous swathes of heavy velvet drapery hang in folds, parted in the middle where a hooded and cloaked man, shown from the back, reaches up to hold the cloth aside while peering into a dark gap; wooden floorboards run in perspective at the bottom. A black raven with outstretched wings flies at upper right. A twisting scroll banner at upper left carries the word "NEVERMORE" in slanted capitals, and a pale ghostly skeleton fades into the folds at the top right corner. Pure black ink on white paper, no frame, no signature.
-
-  použitý: b2, 2026-11-01T23:38:17+01:00; OpenAI image_gen via codex exec -m gpt-6.1-sol (reasoning low).
-
-- `b84c2630` – **OpenAI image tool (image_gen) via Codex CLI – AI**. Vytvořeno pro tento kvíz 2026-11-01 generátorem obrázků OpenAI přes Codex CLI podle slovního popisu lidského obrázku (model ho neviděl).
-  Vytvořeno pro tento kvíz 2026-11-01; uvolněno pod [CC0](https://creativecommons.org/publicdomain/zero/1.0/).
+- `b84c2630` – **OpenAI image_gen via codex exec -m gpt-6.1-sol (reasoning low); image-model name not reported**. Generated for this quiz on 2026-11-01 with OpenAI image generation through the Codex CLI from a written description of the human picture (the model never saw it).
+  Made for this quiz on 2026-11-01; released under [CC0](https://creativecommons.org/publicdomain/zero/1.0/).
 
   Přesné původní zadání:
 
   > A nineteenth-century wood-engraved book illustration as printed in an old volume, slightly uneven inking, soft mid-grey tonality and fine parallel hatching lines, no glow and no digital sharpness. Portrait format. A huge theatrical curtain of heavy drapery hangs in deep folds; a robed figure, seen from behind, kneels slightly and parts the cloth with both hands, entering a dark gap; the floor is of wide wooden boards at the bottom. A black raven in flight at upper right, wings spread. At upper left a broad curling banner bearing "NEVERMORE" in slanted capital letters, and at top right the pale ghostly shape of a skeleton fading into the folds. Everything engraved with vertical and curved line work, monochrome.
 
-  Výběr: Pravidlo: nejvýš dva pokusy na obrázek, druhý jen tehdy, když první vypadal na první pohled jako výtvor AI. Použili jsme pokus č. 2 (b1). Vybráno do sady se stejným námětem a technikou. Obrázky v sadě mají stejné rozměry, jednotný postup ořezu a formát JPEG; kvalita komprese byla upravena tak, aby si velikosti souborů byly bližší. Metadata byla odstraněna. Vyřazený první pokus: a1, 2026-11-01T23:30:27+01:00; rejected: obvious - glossy digital glow, over-sharp uniform line texture and too-perfect lettering. Barvy vygenerovaného obrázku jsme přizpůsobili papíru nebo paletě lidské předlohy. Záznam zpracování: colour matched to human (paper); crop box [0.04, 0.03, 0.96, 0.97], centre-crop to aspect 0.7, resize 840x1200, RGB, metadata stripped, baseline JPEG 4:2:0 72dpi.
+  Exact submitted prompt given to codex exec with an instruction to use image_gen once, verbatim. Image-model name and internal tool rewriting were not exposed.
 
-  vyřazený: a1, 2026-11-01T23:30:27+01:00; OpenAI image_gen via codex exec -m gpt-6.1-sol (reasoning low). rejected: obvious - glossy digital glow, over-sharp uniform line texture and too-perfect lettering
+  Výběr: Rule: at most two attempts per picture, with a second only if the first looked obviously generated. This was attempt 2 (b1). Selected for a set with the same subject and medium. Pictures in each set were given the same dimensions, crop convention and JPEG format; compression quality was adjusted to bring file sizes closer. Metadata was removed. Rejected first attempt: a1, 2026-11-01T23:30:27+01:00; rejected: obvious - glossy digital glow, over-sharp uniform line texture and too-perfect lettering. The generated picture was colour-matched to the human picture’s paper or palette. Processing record: colour matched to human (paper); crop box [0.04, 0.03, 0.96, 0.97], centre-crop to aspect 0.7, resize 840x1200, RGB, metadata stripped, baseline JPEG 4:2:0 72dpi. Final preparation processing: Centre crop with full source box [0,0,1,1] to aspect 0.7; common intermediate long side 1200px; resize 840x1200; RGB; baseline JPEG quality 82, 4:2:0, 72dpi; no EXIF, XMP or comments; neutral zero padding after EOI to 382716 bytes for every member. Existing round-2 crop and colour treatment is retained in the source JPEG; its original record is preserved. Oba obrázky prošly místní kontrolou modelem Qwen se třemi slepými zadáními a vizuální kontrolou při 600 px. Při slepé kontrole ho ani jeden ze dvou modelů neoznačil za výtvor AI.
+
+- `5a493699` – **OpenAI image_gen via codex exec -m gpt-6.1-sol (reasoning low); image-model name not reported**. Generated for this quiz on 2026-11-01 with OpenAI image generation through the Codex CLI from a written description of the human picture (the model never saw it).
+  Made for this quiz on 2026-11-01; released under [CC0](https://creativecommons.org/publicdomain/zero/1.0/).
 
   Přesné původní zadání:
 
-  > A nineteenth-century black-and-white wood engraving for a literary book, vertical format, built entirely from dense fine parallel lines and cross-hatching on white paper. A great heavy theatrical curtain of drapery fills the picture in deep folds; a robed figure seen from behind pushes the curtain aside with both hands, lit from beyond it, standing on a floor of long wooden planks. A large black raven in flight crosses the upper right, wings spread. At the top left a wide curling ribbon banner bearing the single word "NEVERMORE" in italic capital letters, and at the top right a faint ghostly skeletal form dissolving into the shadows. Dramatic contrast of velvety blacks and silver greys. No signature.
+  > A steel engraving from a Victorian illustrated poem, monochrome, portrait format, printed on slightly toned paper: tonal areas built from fine ruled lines that are a little coarse and uneven, with the look of a photographic reproduction of an old print, flatter and greyer, not glossy. A great velvet curtain in heavy folds fills the scene; a hooded cloaked man seen from behind lifts the curtain's edge and peers in. A raven flies at the right, wings spread. A curled scroll at the top left carries "NEVERMORE" in italic capitals; a faint skeleton hovers near the top right edge. Plank floor at the bottom. No signature, no frame.
 
-  použitý: b1, 2026-11-01T23:38:11+01:00; OpenAI image_gen via codex exec -m gpt-6.1-sol (reasoning low).
+  Exact submitted prompt given to codex exec with an instruction to use image_gen once, verbatim. Image-model name and internal tool rewriting were not exposed.
+
+  Výběr: Rule: at most two attempts per picture, with a second only if the first looked obviously generated. This was attempt 2 (b2). Selected for a set with the same subject and medium. Pictures in each set were given the same dimensions, crop convention and JPEG format; compression quality was adjusted to bring file sizes closer. Metadata was removed. Rejected first attempt: a2, 2026-11-01T23:30:54+01:00; rejected: obvious - glossy digital glow, over-sharp uniform line texture and too-perfect lettering. The generated picture was colour-matched to the human picture’s paper or palette. Processing record: colour matched to human (paper); crop box [0.04, 0.03, 0.96, 0.97], centre-crop to aspect 0.7, resize 840x1200, RGB, metadata stripped, baseline JPEG 4:2:0 72dpi. Final preparation processing: Centre crop with full source box [0,0,1,1] to aspect 0.7; common intermediate long side 1200px; resize 840x1200; RGB; baseline JPEG quality 82, 4:2:0, 72dpi; no EXIF, XMP or comments; neutral zero padding after EOI to 382716 bytes for every member. Existing round-2 crop and colour treatment is retained in the source JPEG; its original record is preserved. Oba obrázky prošly místní kontrolou modelem Qwen se třemi slepými zadáními a vizuální kontrolou při 600 px. Při slepé kontrole ho ani jeden ze dvou modelů neoznačil za výtvor AI.
+
+- `3c1fbb31` – **Gustave Doré**. The Raven (illustration), 1884 edition; 1884 edition.
+  [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Dore_The_Raven_1884-01.jpg). Licence: Public domain. Attribution: Gustave Doré. Cropped, resized and recompressed for the quiz; metadata removed. Public-domain status: [Status volného díla](https://creativecommons.org/publicdomain/mark/1.0/).
+
+  Výběr: Selected for a set with the same subject and medium. Pictures in each set were given the same dimensions, crop convention and JPEG format; compression quality was adjusted to bring file sizes closer. Metadata was removed. Processing record: crop box [0.01, 0.025, 0.99, 0.95], centre-crop to aspect 0.7, resize 840x1200, RGB, metadata stripped, baseline JPEG 4:2:0 72dpi. Final preparation processing: Centre crop with full source box [0,0,1,1] to aspect 0.7; common intermediate long side 1200px; resize 840x1200; RGB; baseline JPEG quality 82, 4:2:0, 72dpi; no EXIF, XMP or comments; neutral zero padding after EOI to 382716 bytes for every member. Existing round-2 crop and colour treatment is retained in the source JPEG; its original record is preserved. Oba obrázky prošly místní kontrolou modelem Qwen se třemi slepými zadáními a vizuální kontrolou při 600 px.
 
 ### s7293fb – Heslo české Wikipedie „Vánočka“: napsali ho wikipedisté, nebo AI?
 
@@ -1344,19 +1203,21 @@ Anglický kvíz obsahuje také původní odpovědi ChatGPT z prosince 2022: Guo 
 
   Výběr: Pravidlo: první výstup, který prošel předem stanovenou kontrolou (u básní přesný počet veršů; délka nejvýš o 25 % odlišná od originálu; žádný shodný úsek dvanácti slov) a kontrolou modelem jiné rodiny. Ten hledal zjevné jazykové chyby, anachronismy, porušení formy, citace a nápadné znaky psaní AI. Použili jsme pokus č. 1; kontroloval ho claude-opus-5-5 via claude -p, effort high, no tools; výsledek: prošel (pass). Text jsme neupravovali, jen vysázeli stejně jako ostatní. Neúspěšné výstupy jsme generovali znovu, nejvýš třikrát; všechny pokusy jsou zaznamenané.
 
-### s753366 – Horské údolí odpoledne: fotka, nebo obrázek od AI?
+### s753366 – Obyčejná fotografie alpského údolí.
 
 - `4434234a` – **Rolenc**. Val Mora - panoramio (23. června 2009)
   Obrázek: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Val_Mora_-_panoramio.jpg), [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/). Autor/nahrál: Rolenc. Oříznuto, zmenšeno a znovu uloženo pro kvíz.
 
+  Výběr:  Oba obrázky prošly místní kontrolou modelem Qwen se třemi slepými zadáními a vizuální kontrolou při 600 px. Původní ořez, rozměry a progresivní JPEG v kvalitě 82 zůstaly zachovány; doplnění nul za konec JPEG sjednocuje počet bajtů v sadě.
+
 - `524d9da6` – **Generátor obrázků OpenAI – AI**. Generátor obrázků OpenAI (přes Codex CLI), vytvořeno 2026-11-01 pro tento kvíz
-  Vytvořeno pro tento kvíz 2026-11-01 podle slovního popisu lidského obrázku (model ho neviděl); použili jsme první vygenerovaný obrázek. CC0.
+  Vytvořeno pro tento kvíz 2026-11-01 podle slovního popisu lidského obrázku (model ho neviděl); použili jsme první vygenerovaný obrázek. CC0. [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/).
 
   Přesné původní zadání:
 
   > A photograph of a wide alpine valley in summer: a broad pale gravel riverbed winding through green meadow in the foreground, dense dark-green conifer forest on the slopes, grey rocky mountains with a few snow patches under a hazy sky; taken with an ordinary digital camera, landscape orientation.
 
-  Výběr: Zadání napsal autor kvízu podle námětu, kompozice a techniky lidského obrázku.
+  Výběr: Zadání napsal autor kvízu podle námětu, kompozice a techniky lidského obrázku. Oba obrázky prošly místní kontrolou modelem Qwen se třemi slepými zadáními a vizuální kontrolou při 600 px. Původní ořez, rozměry a progresivní JPEG v kvalitě 82 zůstaly zachovány; doplnění nul za konec JPEG sjednocuje počet bajtů v sadě. Při slepé kontrole ho jeden ze dvou modelů označil za výtvor AI.
 
 ### s76a936 – **Karel Jaromír Erben** (1811–1870): pravá báseň, nebo napodobenina od AI?
 
@@ -1399,39 +1260,23 @@ Anglický kvíz obsahuje také původní odpovědi ChatGPT z prosince 2022: Guo 
 
   Výběr: Pravidlo: první výstup, který prošel předem stanovenou kontrolou (u básní přesný počet veršů; délka nejvýš o 25 % odlišná od originálu; žádný shodný úsek osmi slov) a kontrolou modelem jiné rodiny. Ten hledal zjevné jazykové chyby, anachronismy, porušení formy, citace a nápadné znaky psaní AI. Použili jsme pokus č. 1; kontroloval ho gpt-6.1-sol via codex exec, reasoning effort high, no web; výsledek: prošel (pass). Text jsme neupravovali, jen vysázeli stejně jako ostatní. Neúspěšné výstupy jsme generovali znovu, nejvýš třikrát; všechny pokusy jsou zaznamenané.
 
-### s7a5a81 – Momentka ženy nakupující na trhu: skutečná, nebo od AI?
-
-- `c1ca8161` – **Wilfredor**. File:Woman buying peppers.jpg; 2013-03-16 10:20:00.
-  [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Woman_buying_peppers.jpg). Licence: [CC0](https://creativecommons.org/publicdomain/zero/1.0/). Autorství: Wilfredor. Pro kvíz oříznuto, zmenšeno a znovu uloženo; metadata odstraněna.
-
-  Výběr: Vybráno do sady se stejným námětem a technikou. Obrázky v sadě mají stejné rozměry, jednotný postup ořezu a formát JPEG; kvalita komprese byla upravena tak, aby si velikosti souborů byly bližší. Metadata byla odstraněna.
-
-- `cfa1c129` – **OpenAI 4o (source label 4o-26-3-25) – AI**. Rapidata/Imagen4_t2i_human_preference train row 4000 column image1; datum vzniku neuvedeno.
-  [Rapidata preference dataset (CDLA-Permissive-2.0)](https://huggingface.co/datasets/Rapidata/Imagen4_t2i_human_preference/viewer/default/train?row=4000). Licence: [CDLA-Permissive-2.0](https://cdla.dev/permissive-2-0/). Autorství: Rapidata (dataset publisher); generated by OpenAI 4o. [CDLA-Permissive-2.0: text licence](../licences/CDLA-Permissive-2.0.txt). Pro kvíz oříznuto, zmenšeno a znovu uloženo; metadata odstraněna.
-
-  Přesné původní zadání:
-
-  > A woman is shopping for fresh produce at the farmer's market.
-
-  Výběr: Vybráno do sady se stejným námětem a technikou. Obrázky v sadě mají stejné rozměry, jednotný postup ořezu a formát JPEG; kvalita komprese byla upravena tak, aby si velikosti souborů byly bližší. Metadata byla odstraněna.
-
-### s7bf1af – Akvarel kočky: namalovala ho lidská ruka, nebo AI?
+### s7bf1af – Akvarel ležící tříbarevné kočky.
 
 - `4c40fdf7` – **Viktoria Borodinova**. Cat watercolor; 2020-05-05.
-  [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Cat_watercolor.jpg). Licence: [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/). Autorství: Viktoria Borodinova. Pro kvíz oříznuto, zmenšeno a znovu uloženo; metadata odstraněna.
+  [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Cat_watercolor.jpg). Licence: [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/). Attribution: Viktoria Borodinova. Cropped, resized and recompressed for the quiz; metadata removed. This adaptation retains the stated ShareAlike licence.
 
-  Výběr: Vybráno do sady se stejným námětem a technikou. Obrázky v sadě mají stejné rozměry, jednotný postup ořezu a formát JPEG; kvalita komprese byla upravena tak, aby si velikosti souborů byly bližší. Metadata byla odstraněna. Záznam zpracování: crop box [0.03, 0.03, 0.97, 0.97], centre-crop to aspect 1.3, resize 1200x923, RGB, metadata stripped, baseline JPEG 4:2:0 72dpi.
+  Výběr: Selected for a set with the same subject and medium. Pictures in each set were given the same dimensions, crop convention and JPEG format; compression quality was adjusted to bring file sizes closer. Metadata was removed. Processing record: crop box [0.03, 0.03, 0.97, 0.97], centre-crop to aspect 1.3, resize 1200x923, RGB, metadata stripped, baseline JPEG 4:2:0 72dpi. Final preparation processing: Centre crop with full source box [0,0,1,1] to aspect 1.3; common intermediate long side 1200px; resize 1200x923; RGB; baseline JPEG quality 82, 4:2:0, 72dpi; no EXIF, XMP or comments; neutral zero padding after EOI to 258087 bytes for every member. Existing round-2 crop and colour treatment is retained in the source JPEG; its original record is preserved. Oba obrázky prošly místní kontrolou modelem Qwen se třemi slepými zadáními a vizuální kontrolou při 600 px.
 
-- `1d12009a` – **OpenAI image tool (image_gen) via Codex CLI – AI**. Vytvořeno pro tento kvíz 2026-11-01 generátorem obrázků OpenAI přes Codex CLI podle slovního popisu lidského obrázku (model ho neviděl).
-  Vytvořeno pro tento kvíz 2026-11-01; uvolněno pod [CC0](https://creativecommons.org/publicdomain/zero/1.0/).
+- `d62a7bda` – **OpenAI image_gen via codex exec -m gpt-6.1-sol (reasoning low); image-model name not reported**. Generated for this quiz on 2026-11-02.
+  Made for this quiz; released under CC0: [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/). No input image supplied to the model.
 
   Přesné původní zadání:
 
-  > A contemporary hand-painted watercolour on textured cold-press paper, landscape format. A calico cat lies stretched on its front with its head turned to the viewer, white chest and paws with pink toe-pads showing, patches of orange, ochre, black and grey on its back and a long thin white tail arching up and over behind it. Round face with green eyes, small pink nose, a pink bow tie at its neck, fine ink whisker lines. The background is a loose wet-in-wet wash of pale blue, lilac and white with soft blooms and blooms of granulated pigment, leaving white paper around the cat. Delicate pen outlines over transparent colour. No text, no signature.
+  > A flat scan of an ordinary amateur watercolour painting of a calico housecat lying diagonally on a pale blue and lilac washed ground. Landscape format, roughly 4:3. The cat has a squat broad head, yellow green eyes with rough dark outlines, a small pink nose, a pink ribbon bow below the chin, a mostly white chest, and irregular patches of dull ochre and near-black on its body. All four paws visible, awkwardly splayed with large flat pink pads on one rear paw. A thick white tail loops up behind the cat on the right and curves down toward its rump. Hand-painted on inexpensive cold-pressed paper: uneven diluted washes, small backruns along the blue background, coarse blunt brush marks on fur, patchy brown outlines. The face is drawn rather stiffly; the torso is slightly too long. Casual local art-class level, rather clumsy and underworked, not elegant illustration. Keep edges inconsistent and paint coverage uneven. The white of the chest is unpainted paper with a few dirty grey strokes. No photorealistic fur, no digital airbrush, no glow, no detailed sparkling eyes, no decorative splatter overlay, no text or signature. Show only the painting, no table or frame.
 
-  Výběr: Pravidlo: nejvýš dva pokusy na obrázek, druhý jen tehdy, když první vypadal na první pohled jako výtvor AI. Použili jsme pokus č. 1 (a1). Vybráno do sady se stejným námětem a technikou. Obrázky v sadě mají stejné rozměry, jednotný postup ořezu a formát JPEG; kvalita komprese byla upravena tak, aby si velikosti souborů byly bližší. Metadata byla odstraněna. Záznam zpracování: crop box [0.03, 0.03, 0.97, 0.97], centre-crop to aspect 1.3, resize 1200x923, RGB, metadata stripped, baseline JPEG 4:2:0 72dpi.
+  Exact submitted prompt given to codex exec with an instruction to use image_gen once, verbatim. Image-model name and internal tool rewriting were not exposed.
 
-  použitý: a1, 2026-11-01T23:35:56+01:00; OpenAI image_gen via codex exec -m gpt-6.1-sol (reasoning low).
+  Výběr: Up to two successful image generations per slot. Keep the first that passes three blind Qwen phrasings and the visual review at 600 px. Text prompt describes the paired human medium and subject. All attempted prompts, including failed infrastructure calls, are preserved. Final preparation processing: Centre crop with full source box [0,0,1,1] to aspect 1.3; common intermediate long side 1200px; resize 1200x923; RGB; baseline JPEG quality 82, 4:2:0, 72dpi; no EXIF, XMP or comments; neutral zero padding after EOI to 258087 bytes for every member. Colour matched to the human paper only, using round-2 paper mode (saturation and 85th percentile channel gains). Oba obrázky prošly místní kontrolou modelem Qwen se třemi slepými zadáními a vizuální kontrolou při 600 px. Při slepé kontrole ho ani jeden ze dvou modelů neoznačil za výtvor AI.
 
 ### s7e97a6 – **Stanislav Kostka Neumann** (1875–1947): pravá báseň, nebo napodobenina od AI?
 
@@ -1556,29 +1401,23 @@ Anglický kvíz obsahuje také původní odpovědi ChatGPT z prosince 2022: Guo 
 
   Výběr: Pravidlo: první výstup, který prošel předem stanovenou kontrolou (u básní přesný počet veršů; délka nejvýš o 25 % odlišná od originálu; žádný shodný úsek osmi slov) a kontrolou modelem jiné rodiny. Ten hledal zjevné jazykové chyby, anachronismy, porušení formy, citace a nápadné znaky psaní AI. Použili jsme pokus č. 1; kontroloval ho claude-opus-5-5 via claude -p, effort high, no tools; výsledek: prošel (pass). Text jsme neupravovali, jen vysázeli stejně jako ostatní. Neúspěšné výstupy jsme generovali znovu, nejvýš třikrát; všechny pokusy jsou zaznamenané.
 
-### s86425a – Malba horské krajiny: namalovaná v 60. letech 19. století, nebo od AI?
+### s86425a – Malba širokého horského údolí v olejomalířském podání.
 
 - `2653cda7` – **Albert Bierstadt**. Looking Down Yosemite Valley; 1865.
-  [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Looking_Down_Yosemite-Valley.jpg). Licence: Public domain. Autorství: Albert Bierstadt. Pro kvíz oříznuto, zmenšeno a znovu uloženo; metadata odstraněna.
+  [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Looking_Down_Yosemite-Valley.jpg). Licence: Public domain. Attribution: Albert Bierstadt. Cropped, resized and recompressed for the quiz; metadata removed. Public-domain status: [Status volného díla](https://creativecommons.org/publicdomain/mark/1.0/).
 
-  Výběr: Vybráno do sady se stejným námětem a technikou. Obrázky v sadě mají stejné rozměry, jednotný postup ořezu a formát JPEG; kvalita komprese byla upravena tak, aby si velikosti souborů byly bližší. Metadata byla odstraněna. Záznam zpracování: crop box [0.0, 0.0, 1.0, 1.0], centre-crop to aspect 1.25, resize 1200x960, RGB, metadata stripped, baseline JPEG 4:2:0 72dpi.
+  Výběr: Selected for a set with the same subject and medium. Pictures in each set were given the same dimensions, crop convention and JPEG format; compression quality was adjusted to bring file sizes closer. Metadata was removed. Processing record: crop box [0.0, 0.0, 1.0, 1.0], centre-crop to aspect 1.25, resize 1200x960, RGB, metadata stripped, baseline JPEG 4:2:0 72dpi. Final preparation processing: Centre crop with full source box [0,0,1,1] to aspect 1.5; common intermediate long side 1200px; resize 1200x800; RGB; baseline JPEG quality 82, 4:2:0, 72dpi; no EXIF, XMP or comments; neutral zero padding after EOI to 162025 bytes for every member. Existing round-2 crop and colour treatment is retained in the source JPEG; its original record is preserved. Oba obrázky prošly místní kontrolou modelem Qwen se třemi slepými zadáními a vizuální kontrolou při 600 px.
 
-- `ff53f772` – **OpenAI image tool (image_gen) via Codex CLI – AI**. Vytvořeno pro tento kvíz 2026-11-01 generátorem obrázků OpenAI přes Codex CLI podle slovního popisu lidského obrázku (model ho neviděl).
-  Vytvořeno pro tento kvíz 2026-11-01; uvolněno pod [CC0](https://creativecommons.org/publicdomain/zero/1.0/).
-
-  Přesné původní zadání:
-
-  > A nineteenth-century American Romantic landscape painted in oil on canvas, horizontal format, slightly subdued and natural in colour, not oversaturated. A view from a high slope down into a wide U-shaped glacial valley in late afternoon haze: a tall pale granite tower and sheer cliffs at left in shadow, a long smooth cliff face at right, golden-grey mist filling the far valley and softening distant peaks, a small river with meadows, dark pines and oaks in the foreground. A big cloudy sky of layered grey-violet and amber clouds, with sun hidden behind cloud rays. Visible fine brushwork, aged varnish, subtle craquelure. No lens flare, no glow.
-
-  Výběr: Pravidlo: nejvýš dva pokusy na obrázek, druhý jen tehdy, když první vypadal na první pohled jako výtvor AI. Použili jsme pokus č. 2 (b1). Vybráno do sady se stejným námětem a technikou. Obrázky v sadě mají stejné rozměry, jednotný postup ořezu a formát JPEG; kvalita komprese byla upravena tak, aby si velikosti souborů byly bližší. Metadata byla odstraněna. Vyřazený první pokus: a1, 2026-11-01T23:31:30+01:00; rejected: obvious - oversaturated HDR sunset, postcard gloss. Záznam zpracování: crop box [0.03, 0.03, 0.97, 0.97], centre-crop to aspect 1.25, resize 1200x960, RGB, metadata stripped, baseline JPEG 4:2:0 72dpi.
-
-  vyřazený: a1, 2026-11-01T23:31:30+01:00; OpenAI image_gen via codex exec -m gpt-6.1-sol (reasoning low). rejected: obvious - oversaturated HDR sunset, postcard gloss
+- `949836c3` – **OpenAI image_gen via codex exec -m gpt-6.1-sol (reasoning low); image-model name not reported**. Generated for this quiz on 2026-11-02.
+  Made for this quiz; released under CC0: [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/). No input image supplied to the model.
 
   Přesné původní zadání:
 
-  > A grand nineteenth-century American Romantic landscape, oil on canvas, horizontal format. View from a high grassy slope down into a vast glacial valley at sunset: sheer granite cliffs rise at left, with a tall rounded rock tower, and a smooth monolithic cliff wall on the right, both in warm shadow. The valley floor far below holds a calm river and meadows, scattered pines and oaks in dark green foreground and mid-ground, with golden atmospheric haze glowing towards a distant peak at the vanishing point. Above, a big sky of layered clouds in amber, rose and slate blue, with shafts of light. Finely blended glazes, luminous gold-orange light, visible craquelure texture of canvas. No signature, no frame.
+  > A flat reproduction of an ordinary nineteenth-century oil painting, landscape format 3:2, a very broad flat Yosemite-like valley between enormous dark brown rock walls. A single tall narrow rounded rock tower dominates the left edge and a massive blunt dark cliff projects at right; low layered angular mountains meet in the distant centre. In front a wide flat muted olive and dull ochre meadow runs across the picture, with a thin row of small trees, a few flat grey boulders and three larger leafy trees at the bottom left. The valley floor is mostly open meadow rather than a carpet of fir trees, no prominent winding river. The pale yellow central distance is hazy. The upper quarter has long dull grey-blue horizontal clouds with small pale cream gaps. Rather conventional old landscape painting in restrained yellow ochre, olive, umber, grey-blue. Oil paint built from broad thin flat layers with modest visible directional brush marks; individual distant rocks and trees are blurred into small patches, the foreground grass is a quiet ochre glaze. Slightly dark aged varnish. No sharply detailed pine needles, no crisp rocks, no dramatic orange sunbeams, no sparkling clouds, no photo textures, no global canvas filter, no digital painting polish. Simple broad shapes with limited local contrast, matte and flat when seen as a small reproduction. No signature, text, border or frame.
 
-  použitý: b1, 2026-11-01T23:39:22+01:00; OpenAI image_gen via codex exec -m gpt-6.1-sol (reasoning low).
+  Exact submitted prompt given to codex exec with an instruction to use image_gen once, verbatim. Image-model name and internal tool rewriting were not exposed.
+
+  Výběr: Up to two successful image generations per slot. Keep the first that passes three blind Qwen phrasings and the visual review at 600 px. Text prompt describes the paired human medium and subject. All attempted prompts, including failed infrastructure calls, are preserved. Final preparation processing: Centre crop with full source box [0,0,1,1] to aspect 1.5; common intermediate long side 1200px; resize 1200x800; RGB; baseline JPEG quality 82, 4:2:0, 72dpi; no EXIF, XMP or comments; neutral zero padding after EOI to 162025 bytes for every member. Oba obrázky prošly místní kontrolou modelem Qwen se třemi slepými zadáními a vizuální kontrolou při 600 px. Při slepé kontrole ho ani jeden ze dvou modelů neoznačil za výtvor AI.
 
 ### s867409 – **Karolina Světlá**, *Poslední paní Hlohovská*: pravý úryvek, nebo napodobenina od AI?
 
@@ -1662,41 +1501,6 @@ Anglický kvíz obsahuje také původní odpovědi ChatGPT z prosince 2022: Guo 
 
   Výběr: Pravidlo: první výstup, který prošel předem stanovenou kontrolou (u básní přesný počet veršů; délka nejvýš o 25 % odlišná od originálu; žádný shodný úsek osmi slov) a kontrolou modelem jiné rodiny. Ten hledal zjevné jazykové chyby, anachronismy, porušení formy, citace a nápadné znaky psaní AI. Použili jsme pokus č. 1; kontroloval ho claude-opus-5-5 via claude -p, effort high, no tools; výsledek: prošel (pass). Text jsme neupravovali, jen vysázeli stejně jako ostatní. Neúspěšné výstupy jsme generovali znovu, nejvýš třikrát; všechny pokusy jsou zaznamenané.
 
-### s8a91c7 – Karikaturistova malba pouště v noci: namalovaná rukou v roce 1933, nebo od AI?
-
-- `e7d03c49` – **George Herriman**. Untitled Krazy Kat painting (inscribed to Clay Beaman, 9 Sept 1933), detail; 1933.
-  [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Krazy_Kat,_George_Herriman.jpg). Licence: [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/). Autorství: George Herriman. Pro kvíz oříznuto, zmenšeno a znovu uloženo; metadata odstraněna.
-
-  Výběr: Vybráno do sady se stejným námětem a technikou. Obrázky v sadě mají stejné rozměry, jednotný postup ořezu a formát JPEG; kvalita komprese byla upravena tak, aby si velikosti souborů byly bližší. Metadata byla odstraněna. Záznam zpracování: crop box [0.02, 0.005, 0.795, 0.97], centre-crop to aspect 1.0, resize 1200x1200, RGB, metadata stripped, baseline JPEG 4:2:0 72dpi.
-
-- `af851f5c` – **OpenAI image tool (image_gen) via Codex CLI – AI**. Vytvořeno pro tento kvíz 2026-11-01 generátorem obrázků OpenAI přes Codex CLI podle slovního popisu lidského obrázku (model ho neviděl).
-  Vytvořeno pro tento kvíz 2026-11-01; uvolněno pod [CC0](https://creativecommons.org/publicdomain/zero/1.0/).
-
-  Přesné původní zadání:
-
-  > A square hand-painted cartoon landscape in gouache and watercolour with black india-ink outlines and cross-hatching, on slightly mottled cream paper, early twentieth-century American comic-strip art made as a single large illustration. Night desert: solid black sky, a thin orange crescent moon near the top, a gigantic angular rock formation in streaky orange and violet-brown washes towering right of centre with two tall slim spikes planted in front of it and a thin diagonal rod with a spinning pinwheel-like ornament on top. A pale sandy plain stretches in front, lit by a soft wedge of light. Three tiny comic characters huddle together at the lower centre: a round-faced dog policeman with a star on his chest, a black cat, and a little mouse. A scalloped black border of half-circles along the bottom edge. No lettering, no signature.
-
-  Výběr: Pravidlo: nejvýš dva pokusy na obrázek, druhý jen tehdy, když první vypadal na první pohled jako výtvor AI. Použili jsme pokus č. 1 (a2). Vybráno do sady se stejným námětem a technikou. Obrázky v sadě mají stejné rozměry, jednotný postup ořezu a formát JPEG; kvalita komprese byla upravena tak, aby si velikosti souborů byly bližší. Metadata byla odstraněna. Záznam zpracování: crop box [0.03, 0.03, 0.97, 0.97], centre-crop to aspect 1.0, resize 1200x1200, RGB, metadata stripped, baseline JPEG 4:2:0 72dpi.
-
-  použitý: a2, 2026-11-01T23:28:42+01:00; OpenAI image_gen via codex exec -m gpt-6.1-sol (reasoning low).
-
-- `b69eda20` – **OpenAI image tool (image_gen) via Codex CLI – AI**. Vytvořeno pro tento kvíz 2026-11-01 generátorem obrázků OpenAI přes Codex CLI podle slovního popisu lidského obrázku (model ho neviděl).
-  Vytvořeno pro tento kvíz 2026-11-01; uvolněno pod [CC0](https://creativecommons.org/publicdomain/zero/1.0/).
-
-  Přesné původní zadání:
-
-  > A square watercolour and ink painting on cream paper, scanned from the original, with uneven hand-brushed washes and visible brush strokes, slightly crude and naive rather than polished. A solid black gouache night sky, painted unevenly with faint brush marks, and a small crescent moon in muted orange. A huge blocky rock mass on the right, a flat orange face painted in streaky blotchy wash and a plum-purple shadowed side, with ragged edges. Two thin spires in front and a thin tilted pole with a small ball and a little bird-like pennant. Below, a pale yellowish desert floor with a faint lighter diagonal path. At bottom centre three tiny comic figures in scratchy pen hatching with light colour: a stout dog policeman with cap and star, a black cat, a small mouse. Scalloped black border at the bottom. No text.
-
-  Výběr: Pravidlo: nejvýš dva pokusy na obrázek, druhý jen tehdy, když první vypadal na první pohled jako výtvor AI. Použili jsme pokus č. 2 (b1). Vybráno do sady se stejným námětem a technikou. Obrázky v sadě mají stejné rozměry, jednotný postup ořezu a formát JPEG; kvalita komprese byla upravena tak, aby si velikosti souborů byly bližší. Metadata byla odstraněna. Vyřazený první pokus: a1, 2026-11-01T23:28:42+01:00; rejected: obvious - clean flat vector-like colour fills and polished cartoon finish, unlike the hand-brushed mottled washes of the original. Záznam zpracování: crop box [0.03, 0.03, 0.97, 0.97], centre-crop to aspect 1.0, resize 1200x1200, RGB, metadata stripped, baseline JPEG 4:2:0 72dpi.
-
-  vyřazený: a1, 2026-11-01T23:28:42+01:00; OpenAI image_gen via codex exec -m gpt-6.1-sol (reasoning low). rejected: obvious - clean flat vector-like colour fills and polished cartoon finish, unlike the hand-brushed mottled washes of the original
-
-  Přesné původní zadání:
-
-  > A near-square watercolour and gouache painting with pen-and-ink linework on cream paper, in the manner of a 1930s newspaper cartoonist's surreal desert scene. A matte black night sky fills the upper half, with a small orange crescent moon at top centre. On the horizon rises a huge blocky mesa painted in mottled burnt orange on its lit face and plum purple on its shadowed side, cut by the right edge, with two thin pointed spires and a slender pole with a small ball and a pennant-like bird shape leaning to the left. Below is a flat pale-yellow desert floor with a lighter diagonal path. At the bottom centre stand three small cartoon figures drawn in fine pen hatching with light colour: a stout bulldog policeman in a blue uniform, cap and star badge, a thin black cat with a bow behind him, and a small mouse. A row of black scallops runs along the bottom edge. No text, no signature.
-
-  použitý: b1, 2026-11-01T23:37:07+01:00; OpenAI image_gen via codex exec -m gpt-6.1-sol (reasoning low).
-
 ### s8be5d4 – **Jan Neruda** (1834–1891): pravá báseň, nebo napodobenina od AI?
 
 - `fbffb04c` – **Jan Neruda (1834–1891)**. Prosté motivy, Zimní XI (1883); znění z vydání Mladé fronty z roku 1956 podle Wikizdrojů.
@@ -1737,6 +1541,70 @@ Anglický kvíz obsahuje také původní odpovědi ChatGPT z prosince 2022: Guo 
   > Napiš původní báseň ve stylu, jakým psal Jan Neruda (1834–1891), jako by šlo o méně známou báseň tohoto autora. Forma: přesně 12 veršů ve třech čtyřverších, trochej, střídání osmi- a šestislabičných veršů, rým ve druhém a čtvrtém verši. Téma: starý strom u stavení, který se má porazit, a otázka kdy; přirovnání ke starému člověku. Prostý jazyk Nerudových Prostých motivů. Současný český pravopis, jak ho používají dnešní vydání. Rozsah: zhruba 52 slov, 2–7 slov na verš. Interpunkce jako v originále tohoto druhu, zhruba: 5 čárek, 0 pomlček (–), 0 závorek, 0 výpustek (…), 0 středníků, 0 dvojteček, 1 vykřičníků, 6 otazníků, 0 uvozovek (párů). Velké písmeno na začátku verše jen tam, kde začíná věta (v originále 6 z 12 veršů). Kvalita: piš tak, aby ani znalec české literatury nepoznal, že nejde o skutečný text tohoto autora. Drž se jeho slovníku, obraznosti, rytmu, větné stavby i dobových tvarů, které používal; dávej přednost konkrétním věcem a obrazům před obecnými slovy. Nepřidávej závěrečné ponaučení ani shrnutí, pokud by je autor nenapsal, a nepoužívej slova a reálie, které v jeho době neexistovaly. Vyhni se znakům textu psaného umělou inteligencí: konstrukcím „nejde o X, ale o Y“ a „ne proto, že…, ale protože…“, otázkám, na které hned odpovídáš („Výsledek? Klid.“), trojicím a řetězcům stejně dlouhých krátkých vět pro rytmus, umělé rovnováze („přínosné, ale zároveň riskantní“), závěrečnému shrnutí či ponaučení, frázím „ať už jde o“, „co se týče“, „v dnešní době“, „hraje klíčovou roli“, „v neposlední řadě“, kalkům z angličtiny („ponořit se do“, „na konci dne“, „je svědectvím toho“) a obecnosti: kde by je skutečný text uvedl, uveď konkrétní jména, místa, čísla a data. Česká typografie: uvozovky „…“, pomlčka s mezerami ( – ), mezera před % a jednotkami. Necituj ani neparafrázuj žádnou existující báseň. Vypiš pouze text básně: bez názvu, bez komentáře, bez markdownu.
 
   Výběr: Pravidlo: první výstup, který prošel předem stanovenou kontrolou (u básní přesný počet veršů; délka nejvýš o 25 % odlišná od originálu; žádný shodný úsek osmi slov) a kontrolou modelem jiné rodiny. Ten hledal zjevné jazykové chyby, anachronismy, porušení formy, citace a nápadné znaky psaní AI. Použili jsme pokus č. 1; kontroloval ho claude-opus-5-5 via claude -p, effort high, no tools; výsledek: prošel (pass). Text jsme neupravovali, jen vysázeli stejně jako ostatní. Neúspěšné výstupy jsme generovali znovu, nejvýš třikrát; všechny pokusy jsou zaznamenané.
+
+### s90188e – Zmrzlá mýdlová bublina na jedlových větvičkách.
+
+- `96d7558a` – **OpenAI image_gen (image model version not reported)**. Text-only image generated for this quiz on 2026-11-02T08:07:43.500Z
+  Generated for the Human or AI quiz using the built-in OpenAI image_gen tool in Codex. The image model version was not reported. CC0 1.0 dedication for this quiz asset: [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/). The exact prompt is recorded below.
+
+  Přesné původní zadání:
+
+  > A close-up amateur photograph of a frozen soap bubble balanced on a dark green fir twig on a cold winter morning. Landscape 3:2. One transparent round bubble occupies the lower middle, with a large feathery white ice crystal spreading diagonally upward across its left half and a dark reflection of distant trees in the lower right. Two fir twigs enter from the bottom corners. The background is a completely defocused grey and cream woodland, with a few broad pale discs of light. Nikon D5300, 105 mm macro lens, f/4, ISO 400, flat chilly morning light, very shallow depth of field. Slightly underexposed needles, delicate uneven frost, faint dust on the bubble, ordinary subdued colours. This should look like a hobbyist's experiment at home, not fantasy illustration or glowing CGI. No stars, no sparkles, no text or watermark.
+
+  Výběr: First and only generation from this prompt; later screened against the blind and visual gates. Rejected attempts remain recorded. The model received only a written description of the human photograph, without the photograph itself. Selection for difficulty is deliberate; all source candidates and generation attempts are retained in preparation. Processing: crop box [0, 0, 1, 1]; centre crop to aspect 1.3333333333333333; resize 960x720 Lanczos; common RGB colour conversion; EXIF/ICC/comments removed; baseline JPEG q82, 4:2:0, 72 dpi; zero padding after EOI to equalise byte length Oba obrázky prošly místní kontrolou modelem Qwen se třemi slepými zadáními a vizuální kontrolou při 600 px. Při slepé kontrole ho ani jeden ze dvou modelů neoznačil za výtvor AI.
+
+- `4937c5d2` – **Aaron Burden**. File:Frozen soap bubble behind fir twigs (Unsplash BojuZpqw4zM).jpg; 2017-03-16
+  [File:Frozen soap bubble behind fir twigs (Unsplash BojuZpqw4zM).jpg](https://commons.wikimedia.org/wiki/File:Frozen_soap_bubble_behind_fir_twigs_(Unsplash_BojuZpqw4zM).jpg). Author: Aaron Burden. Licence: [CC0](http://creativecommons.org/publicdomain/zero/1.0/deed.en). Cropped, resized and recompressed; metadata removed. The adaptation retains the source licence.
+
+  Výběr: Selected from the saved Commons candidate pool for subject match and difficulty. A pre-2022 file revision establishes that the photograph predates current text-to-image generators. Every final picture must pass the three-phrasing Qwen gate and a 600 px visual review. Processing: crop box [0, 0, 1, 1]; centre crop to aspect 1.3333333333333333; resize 960x720 Lanczos; common RGB colour conversion; EXIF/ICC/comments removed; baseline JPEG q82, 4:2:0, 72 dpi; zero padding after EOI to equalise byte length Oba obrázky prošly místní kontrolou modelem Qwen se třemi slepými zadáními a vizuální kontrolou při 600 px.
+
+### s94c5c9 – Dav na venkovní hudební akci.
+
+- `3e02fc15` – **Marvin Meyer marvelous**. File:Man standing in a crowd (Unsplash).jpg; 2017-01-15
+  [File:Man standing in a crowd (Unsplash).jpg](https://commons.wikimedia.org/wiki/File:Man_standing_in_a_crowd_(Unsplash).jpg). Author: Marvin Meyer marvelous. Licence: [CC0](http://creativecommons.org/publicdomain/zero/1.0/deed.en). Cropped, resized and recompressed, metadata removed. The adaptation retains the source licence.
+
+  Výběr: Selected from the saved Commons candidate pool for matching subject and difficulty after screening the final q82 processing. Pre-2022 file history and the saved source metadata establish provenance. Keep only if the pair passes the three-phrasing Qwen gate and visual review at 600 px. Processing: crop box [0, 0, 1, 1]; centre crop to aspect 1.3333333333333333; resize 960x720 Lanczos; common RGB colour conversion; EXIF/ICC/comments removed; baseline JPEG q82, 4:2:0, 72 dpi; zero padding after EOI to equalise byte length Oba obrázky prošly místní kontrolou modelem Qwen se třemi slepými zadáními a vizuální kontrolou při 600 px.
+
+- `c8622a85` – **OpenAI image_gen (image model version not reported)**. Text-only image generated for this quiz on 2026-11-02T08:48:54.951532+00:00
+  Generated for the Human or AI quiz with the built-in OpenAI image_gen tool in Codex. The image-model version was not reported. CC0 1.0 dedication: [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/). The exact prompt is recorded below.
+
+  Přesné původní zadání:
+
+  > Use case: photorealistic-natural. One ordinary colour snapshot of a public outdoor music festival crowd, landscape 3:2, made at standing shoulder height in flat cloudy daylight. In the left-centre foreground a fictional adult man wearing a loose white T-shirt is seen from behind, brown hair tied in a small messy bun, sunglasses resting on top of his head. Beyond him a dozen adults mingle in everyday summer clothes. At the right a blonde adult woman in a grey sleeveless top is seen from behind with one arm raised loosely to adjust the back of her hair. Other people have different faces and hairstyles, some partly occluded. Dark wristband on one arm, a few people holding plain cups. Strings of small festoon bulbs stretch diagonally overhead. A distant small tan stage backdrop has a simple red abstract flower shape, no words, and is out of focus. Casual Canon 600D snapshot at 35 mm f/4 ISO 400, ordinary slightly muted colours, mild digital softness, modest depth of field, uneven framing. All people are entirely fictional and must not resemble real individuals. Natural anatomy and fingers, varied faces, ordinary skin texture. No beauty retouching, HDR, dramatic sunlight, clear text or watermark.
+
+  Výběr: First and only generation from this prompt; selected for difficulty after the blind and visual gates. The model received only a written scene description, without the source photograph. Every attempt and rejected version is retained. Processing: crop box [0, 0, 1, 1]; centre crop to aspect 1.3333333333333333; resize 960x720 Lanczos; common RGB colour conversion; EXIF/ICC/comments removed; baseline JPEG q82, 4:2:0, 72 dpi; zero padding after EOI to equalise byte length Oba obrázky prošly místní kontrolou modelem Qwen se třemi slepými zadáními a vizuální kontrolou při 600 px. Při slepé kontrole ho jeden ze dvou modelů označil za výtvor AI.
+
+### s98866a – Knižní kresba prázdného školního nádvoří.
+
+- `6baa2b8f` – **OpenAI image_gen built-in tool; underlying image-model version not reported**. Generated for this quiz on 2026-11-02
+  Made for this quiz; released under CC0: [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/). No reference image supplied. Public-domain work by an artist dead for at least 70 years; text description may follow its composition.
+
+  Přesné původní zadání:
+
+  > Use case: historical-scene. A plain black ink book illustration on slightly worn white paper from an ordinary 1911 school story. Landscape ratio 1.35:1. We look from inside a dark stone gateway into the empty paved quadrangle of an English brick school. Gateway jambs with uneven small rectangular masonry hatching stand at the far left and right edges. Across the court is a modest crenellated school building with rows of small rectangular windows and three low pointed arch doorways to the right. A slightly taller square gate tower stands left of centre and carries a small clock cupola. Loose little cloud squiggles above, open white paving below. Fine uneven pen outlines, short parallel shading strokes, occasional weak or doubled ink lines and slight broken ink, irregular spacing in the bricks. At the bottom is a simple rectangular white label with a thin hand-inked black rule; exactly two centered lines of old black serif capitals: first line LIST OF; second line ILLUSTRATIONS. The label reaches the lower edge. No people, no other words, no signature, no ornate decoration, no digital-perfect drafting, no black modern logo. This is a reproduced minor book drawing, not a contemporary travel sketch.
+
+  Výběr: First of at most two successful image generations whose processed JPEG passes all three fixed Qwen phrasings and the visual review at 600 px. Candidate human images were screened before generation. Failed candidates and attempts are retained. Public-domain work by an artist dead for at least 70 years; text description may follow its composition. Common centre crop to aspect 1.3551724137931034; shared intermediate long side 786px; resize 786x580; RGB baseline JPEG quality 82, 4:2:0, 72dpi. No EXIF, XMP or comments. Neutral zero padding after JPEG EOI to 182947 bytes for both members. Round-2 paper matching: limit saturation to the source paper and adjust 85th-percentile RGB gains. No local contrast adjustment. Oba obrázky prošly místní kontrolou modelem Qwen se třemi slepými zadáními a vizuální kontrolou při 600 px. Při slepé kontrole ho ani jeden ze dvou modelů neoznačil za výtvor AI.
+
+- `bbe60278` – **Louis Rhead**. Tom Brown 6th ed-illustrations.png; 1911
+  Louis Rhead. Tom Brown 6th ed-illustrations.png. [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Tom_Brown_6th_ed-illustrations.png). Licence: Public domain ([Status volného díla](https://creativecommons.org/publicdomain/mark/1.0/)). Cropped, resized and recompressed; source attribution retained.
+
+  Výběr: Selected from the documented candidate pool after a blind origin screen.  Common centre crop to aspect 1.3551724137931034; shared intermediate long side 786px; resize 786x580; RGB baseline JPEG quality 82, 4:2:0, 72dpi. No EXIF, XMP or comments. Neutral zero padding after JPEG EOI to 182947 bytes for both members. No palette or contrast matching. Oba obrázky prošly místní kontrolou modelem Qwen se třemi slepými zadáními a vizuální kontrolou při 600 px.
+
+### s9adc37 – Odpolední světlo v kuchyňském zátiší.
+
+- `5b0fd3e8` – **OpenAI image_gen (image model version not reported)**. Text-only image generated for this quiz on 2026-11-02T08:05:51.187Z
+  Generated for the Human or AI quiz using the built-in OpenAI image_gen tool in Codex. The image model version was not reported. CC0 1.0 dedication for this quiz asset: [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/). The exact prompt is recorded below.
+
+  Přesné původní zadání:
+
+  > An ordinary quiet photograph of a corner of a kitchen in late afternoon, landscape 3:2. A plain dull olive beige wall fills most of the frame. The cream coloured top of a refrigerator is visible along the lower right and bottom edge. An old pale ceramic cup with raised floral moulding sits on its top near the right edge; a few yellow green bananas rest awkwardly in the cup. Late sunlight from an unseen window at left makes a rectangle of pale light on the upper left wall and a long diagonal window-frame shadow across the refrigerator. The wall is mostly empty and dim. Taken with a Nikon D7000, 35 mm lens, f/5.6, ISO 800, exposure slightly too dark, mild shadow noise and dull brown-green colour cast. Casual mundane framing with too much empty wall. No lettering, no watermark, no HDR or high clarity, no picturesque decorations.
+
+  Výběr: First and only generation from this prompt; later screened against the blind and visual gates. Rejected attempts remain recorded. The model received only a written description of the human photograph, without the photograph itself. Selection for difficulty is deliberate; all source candidates and generation attempts are retained in preparation. Processing: crop box [0, 0, 1, 1]; centre crop to aspect 1.4988290398126465; resize 960x640 Lanczos; common RGB colour conversion; EXIF/ICC/comments removed; baseline JPEG q82, 4:2:0, 72 dpi; zero padding after EOI to equalise byte length Oba obrázky prošly místní kontrolou modelem Qwen se třemi slepými zadáními a vizuální kontrolou při 600 px. Při slepé kontrole ho ani jeden ze dvou modelů neoznačil za výtvor AI.
+
+- `ec8ea6af` – **Steve Giovinco**. File:Afternoon Kitchen Still Life Fine Art Photograph, by Steve Giovinco.jpg; 2014-12-30 16:21:48
+  [File:Afternoon Kitchen Still Life Fine Art Photograph, by Steve Giovinco.jpg](https://commons.wikimedia.org/wiki/File:Afternoon_Kitchen_Still_Life_Fine_Art_Photograph,_by_Steve_Giovinco.jpg). Author: Steve Giovinco. Licence: [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0). Cropped, resized and recompressed; metadata removed. The adaptation retains the source licence. This adaptation retains the stated ShareAlike licence.
+
+  Výběr: Selected from the saved Commons candidate pool for subject match and difficulty. A pre-2022 file revision establishes that the photograph predates current text-to-image generators. Every final picture must pass the three-phrasing Qwen gate and a 600 px visual review. Processing: crop box [0, 0, 1, 1]; centre crop to aspect 1.4988290398126465; resize 960x640 Lanczos; common RGB colour conversion; EXIF/ICC/comments removed; baseline JPEG q82, 4:2:0, 72 dpi; zero padding after EOI to equalise byte length Oba obrázky prošly místní kontrolou modelem Qwen se třemi slepými zadáními a vizuální kontrolou při 600 px.
 
 ### s9ae8a9 – **Jaroslav Vrchlický** (1853–1912): pravá báseň, nebo napodobenina od AI?
 
@@ -1820,19 +1688,37 @@ Anglický kvíz obsahuje také původní odpovědi ChatGPT z prosince 2022: Guo 
 
   Výběr: Pravidlo: první výstup, který prošel předem stanovenou kontrolou (u básní přesný počet veršů; délka nejvýš o 25 % odlišná od originálu; žádný shodný úsek osmi slov) a kontrolou modelem jiné rodiny. Ten hledal zjevné jazykové chyby, anachronismy, porušení formy, citace a nápadné znaky psaní AI. Použili jsme pokus č. 1; kontroloval ho claude-opus-5-5 via claude -p, effort high, no tools; výsledek: prošel (pass). Text jsme neupravovali, jen vysázeli stejně jako ostatní. Neúspěšné výstupy jsme generovali znovu, nejvýš třikrát; všechny pokusy jsou zaznamenané.
 
-### s9d17e9 – Talíř s grilovanou rybou a salátem: fotka, nebo obrázek od AI?
+### s9e12aa – Světlá fotografie zátiší s ulitou, sklem a drátem.
 
-- `ab23ed1a` – **Bdieu**. Salad with fish (6. srpna 2008, 10:33)
-  Obrázek: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Salad_with_fish.jpg), [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/). Autor/nahrál: Bdieu. Oříznuto, zmenšeno a znovu uloženo pro kvíz.
+- `4be14138` – **Vasiliy Ryabchenko; released by Art of Odessa (VRT ticket 2017091110019582)**. File:Vasiliy Ryabchenko. "Still life", photo, 1970s.jpg; 1970s
+  [File:Vasiliy Ryabchenko. "Still life", photo, 1970s.jpg](https://commons.wikimedia.org/wiki/File:Vasiliy_Ryabchenko._%22Still_life%22,_photo,_1970s.jpg). Author: Vasiliy Ryabchenko; released by Art of Odessa (VRT ticket 2017091110019582). Licence: [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0). Cropped, resized and recompressed; metadata removed. The adaptation retains the source licence. This adaptation retains the stated ShareAlike licence.
 
-- `7114c6b8` – **Generátor obrázků OpenAI – AI**. Generátor obrázků OpenAI (přes Codex CLI), vytvořeno 2026-11-01 pro tento kvíz
-  Vytvořeno pro tento kvíz 2026-11-01 podle slovního popisu lidského obrázku (model ho neviděl); použili jsme první vygenerovaný obrázek. CC0.
+  Výběr: Selected from the saved Commons candidate pool for subject match and difficulty. A pre-2022 file revision establishes that the photograph predates current text-to-image generators. Every final picture must pass the three-phrasing Qwen gate and a 600 px visual review. Processing: crop box [0, 0, 1, 1]; centre crop to aspect 1.016; resize 960x945 Lanczos; common RGB colour conversion; EXIF/ICC/comments removed; baseline JPEG q82, 4:2:0, 72 dpi; zero padding after EOI to equalise byte length Oba obrázky prošly místní kontrolou modelem Qwen se třemi slepými zadáními a vizuální kontrolou při 600 px.
+
+- `8f28c0ad` – **OpenAI image_gen (image model version not reported)**. Text-only image generated for this quiz on 2026-11-02T08:14:55.638Z
+  Generated for the Human or AI quiz using the built-in OpenAI image_gen tool in Codex. The image model version was not reported. CC0 1.0 dedication for this quiz asset: [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/). The exact prompt is recorded below.
 
   Přesné původní zadání:
 
-  > A snapshot photograph, taken with on-camera flash in a restaurant, of a white plate with a grilled fish fillet and a mixed salad with olives, tomatoes, onion, lettuce, hard-boiled egg and lime wedges, seen from above at an angle; dark background.
+  > A square black and white still-life photograph made as a student darkroom exercise in the 1970s. On a plain white tabletop, a white spiny conch seashell leans slightly to the left, with its pale open mouth toward the camera. A small irregular upright piece of clear glass with cut corners stands in front of the shell. Several loose loops of thin dark wire lean against the glass at the right. A pale flat circular ring lies horizontally beneath the arrangement. The little group occupies only the bottom middle third of the picture; the top half is empty pale grey-white backdrop. Lighting is a single fairly hard lamp from upper right, short soft-edged shadows extend toward lower left and a little bright patch of refracted light falls in front of the glass. Shot on an ordinary 35 mm camera with a 50 mm lens on Ilford FP4 film, slightly overexposed print on matte paper, very low contrast, soft fine grain, faint paper texture. The wire is casually tangled, the shell has rough chips and uneven ribs. Quiet and awkward composition rather than polished product photography. No words, no signatures, no watermark, no black border.
 
-  Výběr: Zadání napsal autor kvízu podle námětu, kompozice a techniky lidského obrázku.
+  Výběr: First and only generation from this prompt; later screened against the blind and visual gates. Rejected attempts remain recorded. The model received only a written description of the human photograph, without the photograph itself. Selection for difficulty is deliberate; all source candidates and generation attempts are retained in preparation. Processing: crop box [0, 0, 1, 1]; centre crop to aspect 1.016; resize 960x945 Lanczos; common RGB colour conversion; EXIF/ICC/comments removed; baseline JPEG q82, 4:2:0, 72 dpi; zero padding after EOI to equalise byte length Oba obrázky prošly místní kontrolou modelem Qwen se třemi slepými zadáními a vizuální kontrolou při 600 px. Při slepé kontrole ho ani jeden ze dvou modelů neoznačil za výtvor AI.
+
+### sa026f1 – Malba lesního zákoutí s kameny a vysokými kmeny.
+
+- `dbf0082d` – **OpenAI image_gen built-in tool; underlying image-model version not reported**. Generated for this quiz on 2026-11-02
+  Made for this quiz; released under CC0: [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/). No reference image supplied. Public-domain work by an artist dead for at least 70 years; text description may follow its composition.
+
+  Přesné původní zadání:
+
+  > Use case: historical-scene. A flat reproduction of an ordinary small central European woodland oil painting around 1895. Landscape ratio 1.30:1. Tall straight thin spruce trunks rise out of the top edge, rows of them receding on the left and dark evergreen branches forming a deep green canopy on the upper right. A brown patch of bare soil winds from the lower centre toward a daylight opening near the right centre. A scatter of angular pale blue-grey rocks, including a small cluster left of centre and one low foreground rock, breaks the mossy forest floor. No people, stream, cottage or magic. Fairly naturalistic nineteenth-century oil study, modest painterly detail: irregular thin pine twigs, fine quick green dabs over broader green masses, rough dark bark lines and clear simple rock facets, uneven attention and a few unfinished bits. Strong deep bottle green and fresh moss green, cool bluish rock highlights, warm reddish brown soil. Saturated woodland greens but ordinary diffuse daylight; shadows nearly black green. Do NOT make it dusty brown, grey-brown, pastel, all-over scumbled or sepia. No dramatic sunbeams, no HDR, no epic forest, no photographic crispness, no digital oil filter or uniform brush texture; no signature, writing or border.
+
+  Výběr: First of at most two successful image generations whose processed JPEG passes all three fixed Qwen phrasings and the visual review at 600 px. Candidate human images were screened before generation. Failed candidates and attempts are retained. Public-domain work by an artist dead for at least 70 years; text description may follow its composition. Common centre crop to aspect 1.3033175355450237; shared intermediate long side 1100px; resize 1100x844; RGB baseline JPEG quality 82, 4:2:0, 72dpi. No EXIF, XMP or comments. Neutral zero padding after JPEG EOI to 231088 bytes for both members. No palette or contrast matching. Oba obrázky prošly místní kontrolou modelem Qwen se třemi slepými zadáními a vizuální kontrolou při 600 px. Při slepé kontrole ho ani jeden ze dvou modelů neoznačil za výtvor AI.
+
+- `8c3d1bb3` – **Bohuslav Dvořák**. Bohuslav Dvořák Lesní interiér 1895.jpg; 1895
+  Bohuslav Dvořák. Bohuslav Dvořák Lesní interiér 1895.jpg. [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Bohuslav_Dvo%C5%99%C3%A1k_Lesn%C3%AD_interi%C3%A9r_1895.jpg). Licence: Public domain ([Status volného díla](https://creativecommons.org/publicdomain/mark/1.0/)). Cropped, resized and recompressed; source attribution retained.
+
+  Výběr: Selected from the documented candidate pool after a blind origin screen.  Common centre crop to aspect 1.3033175355450237; shared intermediate long side 1100px; resize 1100x844; RGB baseline JPEG quality 82, 4:2:0, 72dpi. No EXIF, XMP or comments. Neutral zero padding after JPEG EOI to 231088 bytes for both members. No palette or contrast matching. Oba obrázky prošly místní kontrolou modelem Qwen se třemi slepými zadáními a vizuální kontrolou při 600 px.
 
 ### sa4139e – **Jakub Arbes**, *V pražské krčmě před půl stoletím*: pravý úryvek, nebo napodobenina od AI?
 
@@ -1916,29 +1802,6 @@ Anglický kvíz obsahuje také původní odpovědi ChatGPT z prosince 2022: Guo 
 
   Výběr: Pravidlo: první výstup, který prošel předem stanovenou kontrolou (u básní přesný počet veršů; délka nejvýš o 25 % odlišná od originálu; žádný shodný úsek osmi slov) a kontrolou modelem jiné rodiny. Ten hledal zjevné jazykové chyby, anachronismy, porušení formy, citace a nápadné znaky psaní AI. Použili jsme pokus č. 1; kontroloval ho gpt-6.1-sol via codex exec, reasoning effort high, no web; výsledek: prošel (pass). Text jsme neupravovali, jen vysázeli stejně jako ostatní. Neúspěšné výstupy jsme generovali znovu, nejvýš třikrát; všechny pokusy jsou zaznamenané.
 
-### sa6d44f – Fotka člověka při práci: skutečná, nebo od AI?
-
-- `22a17f9b` – **Unknown stock photographer; redistributed by the study authors (Casu, Guarnera, Zangara, Caponnetto, Battiato)**. stimuli/alpha/03_real.jpg (image_id alpha_03); 2025 (study release; individual date not given).
-  [Casu et al. 2025 stimulus set (CC BY 4.0)](https://github.com/mirkocasu/a-mid-journey-through-reality/blob/597f90bbe5dcf5dc75f41dc27e4eae424595ae21/stimuli/alpha/03_real.jpg). Licence: [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Autorství: Unknown stock photographer; redistributed by the study authors (Casu, Guarnera, Zangara, Caponnetto, Battiato). Casu, Guarnera, Zangara, Caponnetto, Battiato (2025), A (Mid)journey Through Reality: Assessing Accuracy, Impostor Bias, and Automation Bias in Human Detection of AI-Generated Images, Human Behavior and Emerging Technologies, https://doi.org/10.1155/hbe2/9977058. Pro kvíz oříznuto, zmenšeno a znovu uloženo; metadata odstraněna.
-
-  Ve studii Casu a kol. (2025) správně určilo původ tohoto obrázku 25,8 % z 256 účastníků.
-
-  Výběr: Vybráno do sady se stejným námětem a technikou. Obrázky v sadě mají stejné rozměry, jednotný postup ořezu a formát JPEG; kvalita komprese byla upravena tak, aby si velikosti souborů byly bližší. Metadata byla odstraněna.
-
-- `02925238` – **Midjourney v6 + Magnific upscaler – AI**. stimuli/beta/03_mm.jpg (image_id beta_03); 2025 (study release; individual date not given).
-  [Casu et al. 2025 stimulus set (CC BY 4.0)](https://github.com/mirkocasu/a-mid-journey-through-reality/blob/597f90bbe5dcf5dc75f41dc27e4eae424595ae21/stimuli/beta/03_mm.jpg). Licence: [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Autorství: Casu, Guarnera, Zangara, Caponnetto, Battiato (generated for the study). Casu, Guarnera, Zangara, Caponnetto, Battiato (2025), A (Mid)journey Through Reality: Assessing Accuracy, Impostor Bias, and Automation Bias in Human Detection of AI-Generated Images, Human Behavior and Emerging Technologies, https://doi.org/10.1155/hbe2/9977058. Pro kvíz oříznuto, zmenšeno a znovu uloženo; metadata odstraněna.
-
-  Ve studii Casu a kol. (2025) správně určilo původ tohoto obrázku 68,7 % z 150 účastníků.
-
-  Výběr: Vybráno do sady se stejným námětem a technikou. Obrázky v sadě mají stejné rozměry, jednotný postup ořezu a formát JPEG; kvalita komprese byla upravena tak, aby si velikosti souborů byly bližší. Metadata byla odstraněna. Přesné zadání generátoru není ve zdroji uvedené.
-
-- `944e576c` – **Midjourney v6 – AI**. stimuli/alpha/14_m.jpg (image_id alpha_14); 2025 (study release; individual date not given).
-  [Casu et al. 2025 stimulus set (CC BY 4.0)](https://github.com/mirkocasu/a-mid-journey-through-reality/blob/597f90bbe5dcf5dc75f41dc27e4eae424595ae21/stimuli/alpha/14_m.jpg). Licence: [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Autorství: Casu, Guarnera, Zangara, Caponnetto, Battiato (generated for the study). Casu, Guarnera, Zangara, Caponnetto, Battiato (2025), A (Mid)journey Through Reality: Assessing Accuracy, Impostor Bias, and Automation Bias in Human Detection of AI-Generated Images, Human Behavior and Emerging Technologies, https://doi.org/10.1155/hbe2/9977058. Pro kvíz oříznuto, zmenšeno a znovu uloženo; metadata odstraněna.
-
-  Ve studii Casu a kol. (2025) správně určilo původ tohoto obrázku 76,6 % z 252 účastníků.
-
-  Výběr: Vybráno do sady se stejným námětem a technikou. Obrázky v sadě mají stejné rozměry, jednotný postup ořezu a formát JPEG; kvalita komprese byla upravena tak, aby si velikosti souborů byly bližší. Metadata byla odstraněna. Přesné zadání generátoru není ve zdroji uvedené.
-
 ### sa73b2f – Heslo české Wikipedie „Masopust“: napsali ho wikipedisté, nebo AI?
 
 - `63acf072` – **Wikipedisté (autoři české Wikipedie)**. heslo „Masopust“ na české Wikipedii, verze z 2021-05-08
@@ -1980,6 +1843,22 @@ Anglický kvíz obsahuje také původní odpovědi ChatGPT z prosince 2022: Guo 
 
   Výběr: Pravidlo: první výstup, který prošel předem stanovenou kontrolou (u básní přesný počet veršů; délka nejvýš o 25 % odlišná od originálu; žádný shodný úsek dvanácti slov) a kontrolou modelem jiné rodiny. Ten hledal zjevné jazykové chyby, anachronismy, porušení formy, citace a nápadné znaky psaní AI. Použili jsme pokus č. 1; kontroloval ho gpt-6.1-sol via codex exec, reasoning effort high, no web; výsledek: prošel (pass). Text jsme neupravovali, jen vysázeli stejně jako ostatní. Neúspěšné výstupy jsme generovali znovu, nejvýš třikrát; všechny pokusy jsou zaznamenané.
 
+### sa93bfb – Sušená růže vyfotografovaná na černém pozadí.
+
+- `d3aacf3f` – **Jon Sullivan**. File:Roses dried macro photo still life.jpg; Capture date not supplied; published on Commons by 2013-02-28
+  [File:Roses dried macro photo still life.jpg](https://commons.wikimedia.org/wiki/File:Roses_dried_macro_photo_still_life.jpg). Author: Jon Sullivan. Licence: [Public domain](https://creativecommons.org/publicdomain/mark/1.0/). Cropped, resized and recompressed; metadata removed. The adaptation retains the source licence.
+
+  Výběr: Selected from the saved Commons candidate pool for subject match and difficulty. A pre-2022 file revision establishes that the photograph predates current text-to-image generators. Every final picture must pass the three-phrasing Qwen gate and a 600 px visual review. Processing: crop box [0, 0, 1, 1]; centre crop to aspect 0.75; resize 720x960 Lanczos; common RGB colour conversion; EXIF/ICC/comments removed; baseline JPEG q82, 4:2:0, 72 dpi; zero padding after EOI to equalise byte length Oba obrázky prošly místní kontrolou modelem Qwen se třemi slepými zadáními a vizuální kontrolou při 600 px.
+
+- `256e903b` – **OpenAI image_gen (image model version not reported)**. Text-only image generated for this quiz on 2026-11-02T08:05:51.148Z
+  Generated for the Human or AI quiz using the built-in OpenAI image_gen tool in Codex. The image model version was not reported. CC0 1.0 dedication for this quiz asset: [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/). The exact prompt is recorded below.
+
+  Přesné původní zadání:
+
+  > A small amateur still-life photograph from 2013. One dried dark red rose with shrivelled green leaves on a slender stalk, standing vertically against plain almost black cloth. Portrait 3:4 crop; flower head near the upper right, a dry leaf sticking across to the left, curled pale undersides on leaves near the bottom. Shot on an Olympus E-510 with 50 mm macro lens at f/5.6 using a desk lamp from the left and a weak flash bounced off a wall. The flower is tired, dusty, papery and a little ugly. Side light catches irregular leaf veins and the crumpled petals. Slight digital grain in the darkness, muted greens, the lower stalk falls out of focus. Make this a modest home photography exercise, with uneven lighting and no dramatic rim light. No text, no border, no watermark.
+
+  Výběr: First and only generation from this prompt; later screened against the blind and visual gates. Rejected attempts remain recorded. The model received only a written description of the human photograph, without the photograph itself. Selection for difficulty is deliberate; all source candidates and generation attempts are retained in preparation. Processing: crop box [0, 0, 1, 1]; centre crop to aspect 0.75; resize 720x960 Lanczos; common RGB colour conversion; EXIF/ICC/comments removed; baseline JPEG q82, 4:2:0, 72 dpi; zero padding after EOI to equalise byte length Oba obrázky prošly místní kontrolou modelem Qwen se třemi slepými zadáními a vizuální kontrolou při 600 px. Při slepé kontrole ho ani jeden ze dvou modelů neoznačil za výtvor AI.
+
 ### sa9f34f – **Karel Hlaváček** (1874–1898): pravá báseň, nebo napodobenina od AI?
 
 - `808195ed` – **Karel Hlaváček (1874–1898)**. Varhany; Varhany; rok prvního vydání neověřen. Zdroj: Rozpravy Aventina, ročník 7. číslo 15. strana 120 Vydání: 13. 12. 1893
@@ -2012,64 +1891,21 @@ Anglický kvíz obsahuje také původní odpovědi ChatGPT z prosince 2022: Guo 
 
   Výběr: Pravidlo: první výstup, který prošel předem stanovenou kontrolou (u básní přesný počet veršů; délka nejvýš o 25 % odlišná od originálu; žádný shodný úsek osmi slov) a kontrolou modelem jiné rodiny. Ten hledal zjevné jazykové chyby, anachronismy, porušení formy, citace a nápadné znaky psaní AI. Použili jsme pokus č. 1; kontroloval ho claude-opus-5-5 via claude -p, effort high, no tools; výsledek: prošel (pass). Text jsme neupravovali, jen vysázeli stejně jako ostatní. Neúspěšné výstupy jsme generovali znovu, nejvýš třikrát; všechny pokusy jsou zaznamenané.
 
-### saab77f – Kapka vody na okvětním lístku: makrofotka, nebo obrázek od AI?
+### sb35b38 – Malba podzimní cesty s prázdným kolečkem.
 
-- `352b5402` – **cogdogblog**. 2011-365-99 Precious Drop (5604857847) (9. dubna 2011, 13:22)
-  Obrázek: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:2011-365-99_Precious_Drop_(5604857847).jpg), [CC BY 2.0](https://creativecommons.org/licenses/by/2.0/). Autor/nahrál: cogdogblog. Oříznuto, zmenšeno a znovu uloženo pro kvíz.
-
-- `7c07453f` – **Generátor obrázků OpenAI – AI**. Generátor obrázků OpenAI (přes Codex CLI), vytvořeno 2026-11-01 pro tento kvíz
-  Vytvořeno pro tento kvíz 2026-11-01 podle slovního popisu lidského obrázku (model ho neviděl); použili jsme první vygenerovaný obrázek. CC0.
+- `0a93d0fa` – **OpenAI image_gen built-in tool; underlying image-model version not reported**. Generated for this quiz on 2026-11-02
+  Made for this quiz; released under CC0: [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/). No reference image supplied. Public-domain work by an artist dead for at least 70 years; text description may follow its composition.
 
   Přesné původní zadání:
 
-  > A macro photograph of a single clear water drop sitting on a pink tulip petal, soft pale grey-green background, shallow depth of field.
+  > Use case: historical-scene. One ordinary Bohemian Impressionist garden oil sketch from about 1898, landscape ratio 1.4:1. A broad rather empty reddish orange gravel path recedes from the lower foreground toward a dull blue-green hedge and low fence across the upper middle. Slender small tree trunks and twiggy green foliage form an irregular sparse screen along the left and across the top. A plain old wooden wheelbarrow is parked a little right of centre on the path, tipped forward with two handles pointing up, merely a few blunt grey-brown strokes. A thin scatter of yellow leaves over the orange path, no flowers, no people, no dramatic sky. Loose dry patchy dabs, thin scumbled orange and olive underpainting, little unresolved marks and awkward simplified shapes. Modest light, slightly washed-out photographed oil colours, low detail and irregular paint handling rather than a uniform brush filter. Very minor everyday study, no elegant fantasy garden, no crisp outlines, no glossy colour, no title, signature, border or frame. Paint fills the image.
 
-  Výběr: Zadání napsal autor kvízu podle námětu, kompozice a techniky lidského obrázku.
+  Výběr: First of at most two successful image generations whose processed JPEG passes all three fixed Qwen phrasings and the visual review at 600 px. Candidate human images were screened before generation. Failed candidates and attempts are retained. Public-domain work by an artist dead for at least 70 years; text description may follow its composition.  Oba obrázky prošly místní kontrolou modelem Qwen se třemi slepými zadáními a vizuální kontrolou při 600 px. Při slepé kontrole ho ani jeden ze dvou modelů neoznačil za výtvor AI. Both sources were centre-cropped to the shared aspect, then inset 2% on every side and resized to 1200x818; RGB baseline JPEG quality 82, 4:2:0, 72dpi; metadata removed; zero padding after EOI to 214873 bytes per member. The same crop and encoding were applied to the generated partner. The blind checks above preceded this crop; the cropped versions were visually checked, without another model screen.
 
-### saf5c72 – Jedno zelené jablko: skutečné, nebo od AI?
+- `7dc3e25c` – **Otakar Lebeda**. Otakar Lebeda - Autumn.JPG; 1898
+  Otakar Lebeda. Otakar Lebeda - Autumn.JPG. [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Otakar_Lebeda_-_Autumn.JPG). Licence: Public domain ([Status volného díla](https://creativecommons.org/publicdomain/mark/1.0/)). Cropped, resized and recompressed; source attribution retained. Oříznuto kvůli odstranění vyfotografovaného okraje rámu.
 
-- `2c05494a` – **HaJunkiyada**. File:Liat Portal for Foodie Disorder - Green Apple.jpg; 2022-03-18 15:18:07.
-  [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Liat_Portal_for_Foodie_Disorder_-_Green_Apple.jpg). Licence: [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/). Autorství: HaJunkiyada. Pro kvíz oříznuto, zmenšeno a znovu uloženo; metadata odstraněna.
-
-  Výběr: Vybráno do sady se stejným námětem a technikou. Obrázky v sadě mají stejné rozměry, jednotný postup ořezu a formát JPEG; kvalita komprese byla upravena tak, aby si velikosti souborů byly bližší. Metadata byla odstraněna.
-
-- `17bd8514` – **Midjourney version 6 – AI**. File:Green apple gen.png; uploaded 2024-03-10 (creation date not stated).
-  [Wikimedia Commons (AI-generated upload)](https://commons.wikimedia.org/wiki/File:Green_apple_gen.png). Licence: [Public domain (PD-algorithm)](https://commons.wikimedia.org/wiki/File:Green_apple_gen.png). Autorství: Midjourney; prompted by The masketta man. Pro kvíz oříznuto, zmenšeno a znovu uloženo; metadata odstraněna.
-
-  Přesné původní zadání:
-
-  > green granny smith apple on a brown tablecloth, hasselblad still life photograph --v 6.0 --style raw
-
-  Výběr: Vybráno do sady se stejným námětem a technikou. Obrázky v sadě mají stejné rozměry, jednotný postup ořezu a formát JPEG; kvalita komprese byla upravena tak, aby si velikosti souborů byly bližší. Metadata byla odstraněna.
-
-### sb066df – Japonský dřevořez pastviny u moře: vytištěný ve 30. letech 19. století, nebo od AI?
-
-- `58429b79` – **Utagawa Hiroshige**. The Fifty-Three Stations of the Tokaido: Chiryu; c. 1833-34.
-  [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Ando_Hiroshige_-_The_Fifty-Three_Stations_of_the_Tokaido-_Chiryu_-_1985.239_-_Cleveland_Museum_of_Art.jpg). Licence: [CC0](https://creativecommons.org/publicdomain/zero/1.0/). Autorství: Utagawa Hiroshige. Pro kvíz oříznuto, zmenšeno a znovu uloženo; metadata odstraněna.
-
-  Výběr: Vybráno do sady se stejným námětem a technikou. Obrázky v sadě mají stejné rozměry, jednotný postup ořezu a formát JPEG; kvalita komprese byla upravena tak, aby si velikosti souborů byly bližší. Metadata byla odstraněna. Záznam zpracování: crop box [0.035, 0.05, 0.965, 0.96], centre-crop to aspect 1.5, resize 1200x800, RGB, metadata stripped, baseline JPEG 4:2:0 72dpi.
-
-- `0765fff4` – **OpenAI image tool (image_gen) via Codex CLI – AI**. Vytvořeno pro tento kvíz 2026-11-01 generátorem obrázků OpenAI přes Codex CLI podle slovního popisu lidského obrázku (model ho neviděl).
-  Vytvořeno pro tento kvíz 2026-11-01; uvolněno pod [CC0](https://creativecommons.org/publicdomain/zero/1.0/).
-
-  Přesné původní zadání:
-
-  > A nineteenth-century Japanese colour woodblock print, landscape format, on slightly mottled off-white washi paper with soft bokashi gradations. At the top an orange-pink dawn sky fades to pale grey; a band of deep indigo sea lies along the horizon. In the middle a tall slanting pine with flat, tiered crowns of dark green needles. Two sloping meadows of fine green and blue-grey grass strokes cross the foreground, divided by an indigo stream, with thin wooden stakes standing in rows; many grey, black and piebald horses graze among the stakes, and two travellers in round straw hats lead horses on ropes in the lower middle. Tiny village roofs and a willow in the distance at right. Vertical cartouches of Japanese calligraphy in black at upper right with a small red seal, and a signature with a red seal at left. Rounded corners at the print edge.
-
-  Výběr: Pravidlo: nejvýš dva pokusy na obrázek, druhý jen tehdy, když první vypadal na první pohled jako výtvor AI. Použili jsme pokus č. 1 (a1). Vybráno do sady se stejným námětem a technikou. Obrázky v sadě mají stejné rozměry, jednotný postup ořezu a formát JPEG; kvalita komprese byla upravena tak, aby si velikosti souborů byly bližší. Metadata byla odstraněna. Barvy vygenerovaného obrázku jsme přizpůsobili papíru nebo paletě lidské předlohy. Záznam zpracování: colour matched to human (stats); crop box [0.03, 0.03, 0.97, 0.97], centre-crop to aspect 1.5, resize 1200x800, RGB, metadata stripped, baseline JPEG 4:2:0 72dpi.
-
-  použitý: a1, 2026-11-01T23:30:21+01:00; OpenAI image_gen via codex exec -m gpt-6.1-sol (reasoning low).
-
-- `5d94cf07` – **OpenAI image tool (image_gen) via Codex CLI – AI**. Vytvořeno pro tento kvíz 2026-11-01 generátorem obrázků OpenAI přes Codex CLI podle slovního popisu lidského obrázku (model ho neviděl).
-  Vytvořeno pro tento kvíz 2026-11-01; uvolněno pod [CC0](https://creativecommons.org/publicdomain/zero/1.0/).
-
-  Přesné původní zadání:
-
-  > A Japanese ukiyo-e woodblock print from the 1830s, horizontal format, pigments printed with visible wood-grain and paper fibre, muted indigo, sage green, grey and rust-orange. A wide pastoral plain beside the sea at dawn: top sky blushing from salmon to cream, a dark-blue stripe of sea at the horizon, and in the centre a single tall pine with a few broad flat layers of needle foliage. Two green fields with short combed grass marks are separated by a deep blue watercourse; pale grey, dark brown and white-and-black patched horses are tethered to short posts and graze, and two men in conical straw hats lead a horse at lower centre. A small cluster of thatched roofs and a bare willow on the far right. Title cartouches in vertical Japanese script at upper right with a red seal, an artist's signature with a red seal at the left.
-
-  Výběr: Pravidlo: nejvýš dva pokusy na obrázek, druhý jen tehdy, když první vypadal na první pohled jako výtvor AI. Použili jsme pokus č. 1 (a2). Vybráno do sady se stejným námětem a technikou. Obrázky v sadě mají stejné rozměry, jednotný postup ořezu a formát JPEG; kvalita komprese byla upravena tak, aby si velikosti souborů byly bližší. Metadata byla odstraněna. Barvy vygenerovaného obrázku jsme přizpůsobili papíru nebo paletě lidské předlohy. Záznam zpracování: colour matched to human (stats); crop box [0.03, 0.03, 0.97, 0.97], centre-crop to aspect 1.5, resize 1200x800, RGB, metadata stripped, baseline JPEG 4:2:0 72dpi.
-
-  použitý: a2, 2026-11-01T23:30:23+01:00; OpenAI image_gen via codex exec -m gpt-6.1-sol (reasoning low).
+  Výběr: Selected from the documented candidate pool after a blind origin screen.   Oba obrázky prošly místní kontrolou modelem Qwen se třemi slepými zadáními a vizuální kontrolou při 600 px. Both sources were centre-cropped to the shared aspect, then inset 2% on every side and resized to 1200x818; RGB baseline JPEG quality 82, 4:2:0, 72dpi; metadata removed; zero padding after EOI to 214873 bytes per member. Cropped to remove the border edge. The blind checks above preceded this crop; the cropped versions were visually checked, without another model screen.
 
 ### sb4218e – **Karel Čapek**, *Ochrana autorů*: pravý úryvek, nebo napodobenina od AI?
 
@@ -2235,6 +2071,38 @@ Anglický kvíz obsahuje také původní odpovědi ChatGPT z prosince 2022: Guo 
 
   Výběr: Pravidlo: první výstup, který prošel předem stanovenou kontrolou (u básní přesný počet veršů; délka nejvýš o 25 % odlišná od originálu; žádný shodný úsek osmi slov) a kontrolou modelem jiné rodiny. Ten hledal zjevné jazykové chyby, anachronismy, porušení formy, citace a nápadné znaky psaní AI. Použili jsme pokus č. 1; kontroloval ho claude-opus-5-5 via claude -p, effort high, no tools; výsledek: prošel (pass). Text jsme neupravovali, jen vysázeli stejně jako ostatní. Neúspěšné výstupy jsme generovali znovu, nejvýš třikrát; všechny pokusy jsou zaznamenané.
 
+### sc21571 – Sedící člověk při práci, vyfotografovaný zezadu.
+
+- `14dbb0dd` – **OpenAI image_gen (image model version not reported)**. Text-only image generated for this quiz on 2026-11-02T08:37:21.904074+00:00
+  Generated for the Human or AI quiz with the built-in OpenAI image_gen tool in Codex. The image-model version was not reported. CC0 1.0 dedication: [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/). The exact prompt is recorded below.
+
+  Přesné původní zadání:
+
+  > Use case: photorealistic-natural. One ordinary landscape 3:2 colour photograph of a fictional middle-aged office worker from behind, seated at a table facing large rectangular windows in a modest office. His back and short dark hair occupy the lower centre, wearing a loose pale blue button-up shirt. His hands are low and hidden by the table, apparently reading a paper out of view. Several empty orange chairs surround pale tables. Horizontal window mullions, a low glass railing and a bland building outside. Afternoon sunlight through one pane slightly washes out the sky and produces a modest accidental circular lens flare near the side of his head. Amateur Sony compact-camera snapshot, slight softness, faint digital noise in shadows, faded ordinary colours, no dramatic mood or HDR. A new fictional person, no resemblance to any real person. No clear lettering, no watermarks.
+
+  Výběr: First and only generation from this prompt; selected for difficulty after the blind and visual gates. The model received only a written scene description, without the source photograph. Every attempt and rejected version is retained. Processing: crop box [0, 0, 1, 1]; centre crop to aspect 1.5; resize 960x640 Lanczos; common RGB colour conversion; EXIF/ICC/comments removed; baseline JPEG q82, 4:2:0, 72 dpi; zero padding after EOI to equalise byte length Oba obrázky prošly místní kontrolou modelem Qwen se třemi slepými zadáními a vizuální kontrolou při 600 px. Při slepé kontrole ho ani jeden ze dvou modelů neoznačil za výtvor AI.
+
+- `2cacc510` – **Bethany Legg bkotynski**. File:Man reading in office (Unsplash).jpg; 2015-02-18
+  [File:Man reading in office (Unsplash).jpg](https://commons.wikimedia.org/wiki/File:Man_reading_in_office_(Unsplash).jpg). Author: Bethany Legg bkotynski. Licence: [CC0](http://creativecommons.org/publicdomain/zero/1.0/deed.en). Cropped, resized and recompressed, metadata removed. The adaptation retains the source licence.
+
+  Výběr: Selected from the saved Commons candidate pool for matching subject and difficulty after screening the final q82 processing. Pre-2022 file history and the saved source metadata establish provenance. Keep only if the pair passes the three-phrasing Qwen gate and visual review at 600 px. Processing: crop box [0, 0, 1, 1]; centre crop to aspect 1.5; resize 960x640 Lanczos; common RGB colour conversion; EXIF/ICC/comments removed; baseline JPEG q82, 4:2:0, 72 dpi; zero padding after EOI to equalise byte length Oba obrázky prošly místní kontrolou modelem Qwen se třemi slepými zadáními a vizuální kontrolou při 600 px.
+
+### sc22839 – Dvě trubičky plněné krémem na tmavém podkladu.
+
+- `4e816e58` – **OpenAI image_gen (image model version not reported)**. Text-only image generated for this quiz on 2026-11-02T08:08:59.893Z
+  Generated for the Human or AI quiz using the built-in OpenAI image_gen tool in Codex. The image model version was not reported. CC0 1.0 dedication for this quiz asset: [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/). The exact prompt is recorded below.
+
+  Přesné původní zadání:
+
+  > A modest food photograph of two Turkish rolled pastries filled with cream on a dark charcoal slate board, landscape 4:3 frame. Each pastry is a short hollow rolled cylinder, its outside wrapped in a strip of mottled golden brown thin cake with a darker brown spiral band; rough white whipped cream protrudes from both open ends. One lies diagonally in the foreground from lower left to middle right, the second lies behind it at the opposite slight diagonal. Dark grey stone background fading to black at the top. Shot at a shallow angle with a Canon EOS 70D and 60 mm lens, f/8, ISO 400, a window from upper left and a weak room lamp, slight green colour cast in the shadows. Fine crumbs on the slate, lumpy cream, imperfect rolled edges, uneven dusting and slightly dry cake. A competent amateur food photograph from a kitchen around 2018, restrained contrast and ordinary sharpening. No garnish, no glowing steam, no text, no border, no watermark.
+
+  Výběr: First and only generation from this prompt; later screened against the blind and visual gates. Rejected attempts remain recorded. The model received only a written description of the human photograph, without the photograph itself. Selection for difficulty is deliberate; all source candidates and generation attempts are retained in preparation. Processing: crop box [0, 0, 1, 1]; centre crop to aspect 1.5; resize 960x640 Lanczos; common RGB colour conversion; EXIF/ICC/comments removed; baseline JPEG q82, 4:2:0, 72 dpi; zero padding after EOI to equalise byte length Oba obrázky prošly místní kontrolou modelem Qwen se třemi slepými zadáními a vizuální kontrolou při 600 px. Při slepé kontrole ho ani jeden ze dvou modelů neoznačil za výtvor AI.
+
+- `640ba4e3` – **Superbass**. File:2018-12-20-Turkish pastry with cream filling-1253.jpg; 2018-12-20
+  [File:2018-12-20-Turkish pastry with cream filling-1253.jpg](https://commons.wikimedia.org/wiki/File:2018-12-20-Turkish_pastry_with_cream_filling-1253.jpg). Author: Superbass. Licence: [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0). Cropped, resized and recompressed; metadata removed. The adaptation retains the source licence. This adaptation retains the stated ShareAlike licence.
+
+  Výběr: Selected from the saved Commons candidate pool for subject match and difficulty. A pre-2022 file revision establishes that the photograph predates current text-to-image generators. Every final picture must pass the three-phrasing Qwen gate and a 600 px visual review. Processing: crop box [0, 0, 1, 1]; centre crop to aspect 1.5; resize 960x640 Lanczos; common RGB colour conversion; EXIF/ICC/comments removed; baseline JPEG q82, 4:2:0, 72 dpi; zero padding after EOI to equalise byte length Oba obrázky prošly místní kontrolou modelem Qwen se třemi slepými zadáními a vizuální kontrolou při 600 px.
+
 ### sc591fb – **Karel Čapek**, *Zahradníkův rok*: pravý úryvek, nebo napodobenina od AI?
 
 - `a85101be` – **Karel Čapek (1890–1938)**. Zahradníkův rok, „Zahradníkův březen“ (1929); úryvek z prostředku kapitoly.
@@ -2275,22 +2143,6 @@ Anglický kvíz obsahuje také původní odpovědi ChatGPT z prosince 2022: Guo 
   > Napiš původní úryvek o rozsahu zhruba 136 slov ve stylu díla Zahradníkův rok (Karel Čapek), jako by šlo o necitovaný úryvek z této knihy. Obsah: jak se zahradníci poznávají mezi lidmi ve společnosti a o čem spolu hned začnou mluvit. Interpunkce jako v originále tohoto druhu, zhruba: 24 čárek, 0 pomlček (–), 2 závorek, 0 výpustek (…), 3 středníků, 0 dvojteček, 0 vykřičníků, 0 otazníků, 2 uvozovek (párů). Pravopis a slovosled odpovídající době a autorovi. Kvalita: piš tak, aby ani znalec české literatury nepoznal, že nejde o skutečný text tohoto autora. Drž se jeho slovníku, obraznosti, rytmu, větné stavby i dobových tvarů, které používal; dávej přednost konkrétním věcem a obrazům před obecnými slovy. Nepřidávej závěrečné ponaučení ani shrnutí, pokud by je autor nenapsal, a nepoužívej slova a reálie, které v jeho době neexistovaly. Vyhni se znakům textu psaného umělou inteligencí: konstrukcím „nejde o X, ale o Y“ a „ne proto, že…, ale protože…“, otázkám, na které hned odpovídáš („Výsledek? Klid.“), trojicím a řetězcům stejně dlouhých krátkých vět pro rytmus, umělé rovnováze („přínosné, ale zároveň riskantní“), závěrečnému shrnutí či ponaučení, frázím „ať už jde o“, „co se týče“, „v dnešní době“, „hraje klíčovou roli“, „v neposlední řadě“, kalkům z angličtiny („ponořit se do“, „na konci dne“, „je svědectvím toho“) a obecnosti: kde by je skutečný text uvedl, uveď konkrétní jména, místa, čísla a data. Česká typografie: uvozovky „…“, pomlčka s mezerami ( – ), mezera před % a jednotkami. Necituj ani blízce neparafrázuj žádný existující text. Vypiš pouze úryvek jako jeden odstavec: bez názvu, bez komentáře, bez markdownu.
 
   Výběr: Pravidlo: první výstup, který prošel předem stanovenou kontrolou (u básní přesný počet veršů; délka nejvýš o 25 % odlišná od originálu; žádný shodný úsek osmi slov) a kontrolou modelem jiné rodiny. Ten hledal zjevné jazykové chyby, anachronismy, porušení formy, citace a nápadné znaky psaní AI. Použili jsme pokus č. 1; kontroloval ho gpt-6.1-sol via codex exec, reasoning effort high, no web; výsledek: prošel (pass). Text jsme neupravovali, jen vysázeli stejně jako ostatní. Neúspěšné výstupy jsme generovali znovu, nejvýš třikrát; všechny pokusy jsou zaznamenané.
-
-### sc5c1d1 – Fotka domácí kuchyně s jídelním koutem: skutečná, nebo od AI?
-
-- `d5854f0b` – **Bill Wilson from Oklahoma City, USA**. File:Kitchen with island.jpg; 2014-08-10 12:46.
-  [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Kitchen_with_island.jpg). Licence: [CC BY 2.0](https://creativecommons.org/licenses/by/2.0/). Autorství: Bill Wilson from Oklahoma City, USA. Pro kvíz oříznuto, zmenšeno a znovu uloženo; metadata odstraněna.
-
-  Výběr: Vybráno do sady se stejným námětem a technikou. Obrázky v sadě mají stejné rozměry, jednotný postup ořezu a formát JPEG; kvalita komprese byla upravena tak, aby si velikosti souborů byly bližší. Metadata byla odstraněna.
-
-- `016d9432` – **Imagen 4 Ultra (source label imagen-4.0-ultra-generate-exp-05-20) – AI**. Rapidata/Imagen4_t2i_human_preference train row 1000 column image2; datum vzniku neuvedeno.
-  [Rapidata preference dataset (CDLA-Permissive-2.0)](https://huggingface.co/datasets/Rapidata/Imagen4_t2i_human_preference/viewer/default/train?row=1000). Licence: [CDLA-Permissive-2.0](https://cdla.dev/permissive-2-0/). Autorství: Rapidata (dataset publisher); generated by Imagen 4 Ultra. [CDLA-Permissive-2.0: text licence](../licences/CDLA-Permissive-2.0.txt). Pro kvíz oříznuto, zmenšeno a znovu uloženo; metadata odstraněna.
-
-  Přesné původní zadání:
-
-  > A dining area features a wood table and chairs, a silver refrigerator and light brown cabinets.
-
-  Výběr: Vybráno do sady se stejným námětem a technikou. Obrázky v sadě mají stejné rozměry, jednotný postup ořezu a formát JPEG; kvalita komprese byla upravena tak, aby si velikosti souborů byly bližší. Metadata byla odstraněna.
 
 ### sc736cb – **František Halas** (1901–1949): pravá báseň, nebo napodobenina od AI?
 
@@ -2333,21 +2185,37 @@ Anglický kvíz obsahuje také původní odpovědi ChatGPT z prosince 2022: Guo 
 
   Výběr: Pravidlo: první výstup, který prošel předem stanovenou kontrolou (u básní přesný počet veršů; délka nejvýš o 25 % odlišná od originálu; žádný shodný úsek osmi slov) a kontrolou modelem jiné rodiny. Ten hledal zjevné jazykové chyby, anachronismy, porušení formy, citace a nápadné znaky psaní AI. Použili jsme pokus č. 1; kontroloval ho claude-opus-5-5 via claude -p, effort high, no tools; výsledek: prošel (pass). Text jsme neupravovali, jen vysázeli stejně jako ostatní. Neúspěšné výstupy jsme generovali znovu, nejvýš třikrát; všechny pokusy jsou zaznamenané.
 
-### sca9ba6 – Pečená jehněčí kýta s bramborami: skutečná, nebo od AI?
+### sc75b37 – Ilustrace nočního lesního potoka v modrých tónech a digitálním podání.
 
-- `5f4632e4` – **Roger469**. File:Agnello arrosto.03.con patate,verdure e aromi cotto.jpg; 2016-03-14 06:19:01.
-  [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Agnello_arrosto.03.con_patate,verdure_e_aromi_cotto.jpg). Licence: [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/). Autorství: Roger469. Pro kvíz oříznuto, zmenšeno a znovu uloženo; metadata odstraněna.
-
-  Výběr: Vybráno do sady se stejným námětem a technikou. Obrázky v sadě mají stejné rozměry, jednotný postup ořezu a formát JPEG; kvalita komprese byla upravena tak, aby si velikosti souborů byly bližší. Metadata byla odstraněna.
-
-- `a4fa75eb` – **chatgpt – AI**. File:Gigot.png; uploaded 2026-09-16 (creation date not stated).
-  [Wikimedia Commons (AI-generated upload)](https://commons.wikimedia.org/wiki/File:Gigot.png). Licence: [Public domain (PD-algorithm); additional CC0 1.0 (https://creativecommons.org/publicdomain/zero/1.0/) release](https://commons.wikimedia.org/wiki/File:Gigot.png). Autorství: chatgpt. Pro kvíz oříznuto, zmenšeno a znovu uloženo; metadata odstraněna.
+- `32dfd36f` – **OpenAI image_gen built-in tool; underlying image-model version not reported**. Generated for this quiz on 2026-11-02
+  Made for this quiz; released under CC0: [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/). No reference image supplied. Genre-level subject, medium, era and palette only. No artist name, reference image or copied source composition in the generation prompt.
 
   Přesné původní zadání:
 
-  > gigot
+  > Use case: stylized-concept. A new ordinary 2010-era amateur digital matte painting of a nocturnal fantasy woodland and water, landscape ratio 1.57:1. Deep inky midnight-blue shadows and strongly blue-cyan reflected light. A shallow pool occupies the lower left and centre, small mossy dark rocks cross its edge. A narrow uneven muddy footpath winds back along the right side into a thicket of small bare trees. Slender tree trunks cluster to the left; a few branches cross the top. Dim mist catches blue light behind the small trees near the upper centre. Several tiny yellow-green firefly points hang low over the water at left. There is no giant tree, no waterfall, no bridge, no visible moon, no figure. An original genre composition, no named artist or specific source artwork. Ordinary early digital brush and airbrush handling: soft crude mist, blunt uneven rock planes, hard-edged silhouettes next to loosely smudged water reflections, a few fussy twig details, some unfinished patches. More like a slightly overworked amateur desktop wallpaper than a modern polished concept painting. Preserve dark near-black blues, strong blue-cyan water accents and muted green glows; avoid pastel flat cartoon art, bright sky, neat stylized tree shapes, glossy cinematic detail, perfect lighting, uniform texture filters, text or signature.
 
-  Výběr: Vybráno do sady se stejným námětem a technikou. Obrázky v sadě mají stejné rozměry, jednotný postup ořezu a formát JPEG; kvalita komprese byla upravena tak, aby si velikosti souborů byly bližší. Metadata byla odstraněna.
+  Výběr: First of at most two successful image generations whose processed JPEG passes all three fixed Qwen phrasings and the visual review at 600 px. Candidate human images were screened before generation. Failed candidates and attempts are retained. Genre-level subject, medium, era and palette only. No artist name, reference image or copied source composition in the generation prompt. Common centre crop to aspect 1.5744157441574416; shared intermediate long side 1200px; resize 1200x762; RGB baseline JPEG quality 82, 4:2:0, 72dpi. No EXIF, XMP or comments. Neutral zero padding after JPEG EOI to 140164 bytes for both members. No palette or contrast matching. Oba obrázky prošly místní kontrolou modelem Qwen se třemi slepými zadáními a vizuální kontrolou při 600 px. Při slepé kontrole ho jeden ze dvou modelů označil za výtvor AI.
+
+- `7d4e54ab` – **Akshay.Theril**. Dark Forest.png; 2019-12-12
+  Akshay.Theril. Dark Forest.png. [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Dark_Forest.png). Licence: CC BY-SA 4.0 ([CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0)). Cropped, resized and recompressed; source attribution retained. This adaptation retains the stated ShareAlike licence.
+
+  Výběr: Selected from the documented candidate pool after a blind origin screen.  Common centre crop to aspect 1.5744157441574416; shared intermediate long side 1200px; resize 1200x762; RGB baseline JPEG quality 82, 4:2:0, 72dpi. No EXIF, XMP or comments. Neutral zero padding after JPEG EOI to 140164 bytes for both members. No palette or contrast matching. Oba obrázky prošly místní kontrolou modelem Qwen se třemi slepými zadáními a vizuální kontrolou při 600 px.
+
+### scb0ad1 – Uvnitř obchodu se starým nábytkem a doplňky.
+
+- `3835383a` – **Jazmin Quaynor jazminantoinette**. File:Quaint vintage interior (Unsplash).jpg; 2016-04-15
+  [File:Quaint vintage interior (Unsplash).jpg](https://commons.wikimedia.org/wiki/File:Quaint_vintage_interior_(Unsplash).jpg). Author: Jazmin Quaynor jazminantoinette. Licence: [CC0](http://creativecommons.org/publicdomain/zero/1.0/deed.en). Cropped, resized and recompressed, metadata removed. The adaptation retains the source licence.
+
+  Výběr: Selected from the saved Commons candidate pool for matching subject and difficulty after screening the final q82 processing. Pre-2022 file history and the saved source metadata establish provenance. Keep only if the pair passes the three-phrasing Qwen gate and visual review at 600 px. Processing: crop box [0, 0, 1, 1]; centre crop to aspect 1.3333333333333333; resize 960x720 Lanczos; common RGB colour conversion; EXIF/ICC/comments removed; baseline JPEG q82, 4:2:0, 72 dpi; zero padding after EOI to equalise byte length Oba obrázky prošly místní kontrolou modelem Qwen se třemi slepými zadáními a vizuální kontrolou při 600 px.
+
+- `cd8c1e97` – **OpenAI image_gen (image model version not reported)**. Text-only image generated for this quiz on 2026-11-02T08:40:50.697865+00:00
+  Generated for the Human or AI quiz with the built-in OpenAI image_gen tool in Codex. The image-model version was not reported. CC0 1.0 dedication: [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/). The exact prompt is recorded below.
+
+  Přesné původní zadání:
+
+  > Use case: photorealistic-natural. One landscape 3:2 ordinary colour snapshot in a crowded vintage home-furnishings shop. Tall old multipane industrial windows fill the left wall, daylight falling unevenly on a scuffed wooden plank floor. In the left foreground a worn dark wooden table has several folded and rolled striped rugs on it. The back wall is chipped white-painted brick. Shelves hold mismatched white ceramic pots, small brown bowls and a few potted plants. A narrow black ladder leans against the shelves. On the right a freestanding old white-painted fireplace mantel and a small white wooden table display a pot plant, a folded cloth and a plain round white clock; only simple numerals 12, 3, 6 and 9 on its face, no words. One other cream wall clock high in the back, some plain empty decorative frames. Unarranged worn furniture, warm brown and off-white colours, moderate depth of field and a little handheld softness, consumer Canon compact-camera look, mild sensor noise, no HDR or polished architectural rendering. No people, no signs, no logos, no watermarks.
+
+  Výběr: First and only generation from this prompt; selected for difficulty after the blind and visual gates. The model received only a written scene description, without the source photograph. Every attempt and rejected version is retained. Processing: crop box [0, 0, 1, 1]; centre crop to aspect 1.3333333333333333; resize 960x720 Lanczos; common RGB colour conversion; EXIF/ICC/comments removed; baseline JPEG q82, 4:2:0, 72 dpi; zero padding after EOI to equalise byte length Oba obrázky prošly místní kontrolou modelem Qwen se třemi slepými zadáními a vizuální kontrolou při 600 px. Při slepé kontrole ho jeden ze dvou modelů označil za výtvor AI.
 
 ### scbee10 – Heslo české Wikipedie „Hrnek“: napsali ho wikipedisté, nebo AI?
 
@@ -2390,6 +2258,22 @@ Anglický kvíz obsahuje také původní odpovědi ChatGPT z prosince 2022: Guo 
 
   Výběr: Pravidlo: první výstup, který prošel předem stanovenou kontrolou (u básní přesný počet veršů; délka nejvýš o 25 % odlišná od originálu; žádný shodný úsek dvanácti slov) a kontrolou modelem jiné rodiny. Ten hledal zjevné jazykové chyby, anachronismy, porušení formy, citace a nápadné znaky psaní AI. Použili jsme pokus č. 1; kontroloval ho gpt-6.1-sol via codex exec, reasoning effort high, no web; výsledek: prošel (pass). Text jsme neupravovali, jen vysázeli stejně jako ostatní. Neúspěšné výstupy jsme generovali znovu, nejvýš třikrát; všechny pokusy jsou zaznamenané.
 
+### sce7904 – Starší muž odpočívá u moře.
+
+- `d333dd2f` – **Wilfredor**. File:Portrait of an elderly man beside a damaged pier in Los Puertos de Altagracia, Venezuela.jpg; 2013-03-02 09:27:06
+  [File:Portrait of an elderly man beside a damaged pier in Los Puertos de Altagracia, Venezuela.jpg](https://commons.wikimedia.org/wiki/File:Portrait_of_an_elderly_man_beside_a_damaged_pier_in_Los_Puertos_de_Altagracia,_Venezuela.jpg). Author: Wilfredor. Licence: [CC0](http://creativecommons.org/publicdomain/zero/1.0/deed.en). Cropped, resized and recompressed, metadata removed. The adaptation retains the source licence.
+
+  Výběr: Selected from the saved Commons candidate pool for matching subject and difficulty after screening the final q82 processing. Pre-2022 file history and the saved source metadata establish provenance. Keep only if the pair passes the three-phrasing Qwen gate and visual review at 600 px. Processing: crop box [0, 0, 1, 1]; centre crop to aspect 1.5311004784688995; resize 960x627 Lanczos; common RGB colour conversion; EXIF/ICC/comments removed; baseline JPEG q82, 4:2:0, 72 dpi; zero padding after EOI to equalise byte length Oba obrázky prošly místní kontrolou modelem Qwen se třemi slepými zadáními a vizuální kontrolou při 600 px.
+
+- `97ae8c1c` – **OpenAI image_gen (image model version not reported)**. Text-only image generated for this quiz on 2026-11-02T08:51:45.318394+00:00
+  Generated for the Human or AI quiz with the built-in OpenAI image_gen tool in Codex. The image-model version was not reported. CC0 1.0 dedication: [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/). The exact prompt is recorded below.
+
+  Přesné původní zadání:
+
+  > Use case: photorealistic-natural. An ordinary colour holiday snapshot, landscape 3:2, of an entirely fictional older man resting beside a sea-front concrete pier. He has short wispy grey hair, a broad weathered face with a different individual appearance from any real person, a thin grey moustache and a slightly tired neutral expression, looking a little to the side of the camera. He wears a loose green polo shirt with narrow cream and dark teal horizontal stripes, a soft collar and three ordinary small buttons. Half-length framing: head to forearms, sitting slightly to the right of centre, arms loosely crossed low in front, one ordinary hand resting over the other forearm, partly cut off at the lower edge. At left, an old concrete landing has chipped edges and uneven pale stones. Behind is flat blue-grey sea and a plain hazy sky. Flat overcast light, low to moderate contrast, ordinary camera colour, mild sharpening and slight sensor noise, Canon compact-camera look circa 2010. Keep uneven skin and age spots, natural wrinkles, normal ears and fingers, no beauty retouching, no dramatic shadows, no studio background, no HDR, no lettering or watermark. This is a fictional person and must not resemble any real individual.
+
+  Výběr: First and only generation from this prompt; selected for difficulty after the blind and visual gates. The model received only a written scene description, without the source photograph. Every attempt and rejected version is retained. Processing: crop box [0, 0, 1, 1]; centre crop to aspect 1.5311004784688995; resize 960x627 Lanczos; common RGB colour conversion; EXIF/ICC/comments removed; baseline JPEG q82, 4:2:0, 72 dpi; zero padding after EOI to equalise byte length Oba obrázky prošly místní kontrolou modelem Qwen se třemi slepými zadáními a vizuální kontrolou při 600 px. Při slepé kontrole ho ani jeden ze dvou modelů neoznačil za výtvor AI.
+
 ### scf8965 – Heslo české Wikipedie „Bramborák“: napsali ho wikipedisté, nebo AI?
 
 - `20f2fbb9` – **Wikipedisté (autoři české Wikipedie)**. heslo „Bramborák“ na české Wikipedii, verze z 2021-05-25
@@ -2431,85 +2315,39 @@ Anglický kvíz obsahuje také původní odpovědi ChatGPT z prosince 2022: Guo 
 
   Výběr: Pravidlo: první výstup, který prošel předem stanovenou kontrolou (u básní přesný počet veršů; délka nejvýš o 25 % odlišná od originálu; žádný shodný úsek dvanácti slov) a kontrolou modelem jiné rodiny. Ten hledal zjevné jazykové chyby, anachronismy, porušení formy, citace a nápadné znaky psaní AI. Použili jsme pokus č. 1; kontroloval ho gpt-6.1-sol via codex exec, reasoning effort high, no web; výsledek: prošel (pass). Text jsme neupravovali, jen vysázeli stejně jako ostatní. Neúspěšné výstupy jsme generovali znovu, nejvýš třikrát; všechny pokusy jsou zaznamenané.
 
-### sd212c9 – Botanická rytina růže: vyrytá kolem roku 1800, nebo od AI?
+### sd212c9 – Počítačová ilustrace smyšlené oceánské planety.
 
-- `5fc3ea1e` – **Pierre-Joseph Redouté**. Rosa gallica flore giganteo; c. 1817-24.
-  [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Redoute_-_Rosa_gallica_flore_giganteo.jpg). Licence: Public domain. Autorství: Pierre-Joseph Redouté. Pro kvíz oříznuto, zmenšeno a znovu uloženo; metadata odstraněna.
-
-  Výběr: Vybráno do sady se stejným námětem a technikou. Obrázky v sadě mají stejné rozměry, jednotný postup ořezu a formát JPEG; kvalita komprese byla upravena tak, aby si velikosti souborů byly bližší. Metadata byla odstraněna. Záznam zpracování: crop box [0.03, 0.03, 0.97, 0.875], centre-crop to aspect 0.74, resize 888x1200, RGB, metadata stripped, baseline JPEG 4:2:0 72dpi.
-
-- `9b4c1e29` – **OpenAI image tool (image_gen) via Codex CLI – AI**. Vytvořeno pro tento kvíz 2026-11-01 generátorem obrázků OpenAI přes Codex CLI podle slovního popisu lidského obrázku (model ho neviděl).
-  Vytvořeno pro tento kvíz 2026-11-01; uvolněno pod [CC0](https://creativecommons.org/publicdomain/zero/1.0/).
+- `3c3ef8e1` – **OpenAI image_gen via codex exec -m gpt-6.1-sol (reasoning low); image-model name not reported**. Generated for this quiz on 2026-11-02.
+  Made for this quiz; released under CC0: [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/). No input image supplied to the model. Paired human reference: Merikanto. Ocean planet1.png. [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Ocean_planet1.png). Licence: Public domain ([Status volného díla](https://creativecommons.org/publicdomain/mark/1.0/)). Attribution retained; centre-cropped, resized and recompressed.
 
   Přesné původní zadání:
 
-  > A hand-coloured stipple engraving of a rose from an early-nineteenth-century botanical folio, portrait format, printed on greyish cream laid paper, subdued rather than bright colours. A single enormous fully double rose in dusky crimson-pink with slightly transparent, dotted petals, three buds, a thorny green stem curving to the lower centre with large serrated dark-green leaves in groups, delicately veined, some with grey undersides. Soft, slightly pale printing, fine dotted shading, a faint plate mark, and a lot of empty paper. No text, no colour glow, no vignette, no shadow behind the plant.
+  > A plain horizontal 4:3 image of a fictional blue ocean planet, drawn as a basic 2010 hobbyist POV-Ray CGI rendering. Composition is critical: the ENTIRE circular planet is visible, with a generous empty black band above it and below it. The planet's diameter is only 75 percent of the image height. Put its centre exactly at the centre of the image. Leave at least 12 percent black space above the planet and 12 percent below it. Absolutely no part of the sphere touches or crosses any edge of the picture. Wide completely black margins on both sides. No stars or other objects. The sphere is muted periwinkle-blue with thin cloudy pale-cream curls and streaks spread over its surface, and about twelve tiny isolated flat pale beige islands scattered mainly down the middle and lower half. The clouds are coarse procedural wisps, not realistic complex Earth weather systems. Pale milky clouds are a little denser near the bottom. The upper right part is lit with a cool diffuse light, and the lower left softly fades into a dark crescent; a very narrow pale blue atmospheric rim. Simple low-detail texture mapping, faded dull colours, modest resolution, beginner CGI planet illustration. No recognizable Earth continents, no nebula, lens flare, sunlight rays, cinematic saturation, text, interface or border. Show the whole sphere small enough to have black empty space on all four sides.
 
-  Výběr: Pravidlo: nejvýš dva pokusy na obrázek, druhý jen tehdy, když první vypadal na první pohled jako výtvor AI. Použili jsme pokus č. 2 (b1). Vybráno do sady se stejným námětem a technikou. Obrázky v sadě mají stejné rozměry, jednotný postup ořezu a formát JPEG; kvalita komprese byla upravena tak, aby si velikosti souborů byly bližší. Metadata byla odstraněna. Vyřazený první pokus: a1, 2026-11-01T23:31:57+01:00; rejected: obvious - oversaturated stock-vector look with clean digital gradients. Barvy vygenerovaného obrázku jsme přizpůsobili papíru nebo paletě lidské předlohy. Záznam zpracování: colour matched to human (paper); crop box [0.035, 0.035, 0.965, 0.965], centre-crop to aspect 0.74, resize 888x1200, RGB, metadata stripped, baseline JPEG 4:2:0 72dpi.
+  Exact submitted prompt given to codex exec with an instruction to use image_gen once, verbatim. Image-model name and internal tool rewriting were not exposed.
 
-  vyřazený: a1, 2026-11-01T23:31:57+01:00; OpenAI image_gen via codex exec -m gpt-6.1-sol (reasoning low). rejected: obvious - oversaturated stock-vector look with clean digital gradients
+  Výběr: Up to two successful image generations per slot. Keep the first that passes three blind Qwen phrasings and the visual review at 600 px. Text prompt describes the paired human medium and subject. All attempted prompts, including failed infrastructure calls, are preserved. Final preparation processing: Centre crop with full source box [0,0,1,1] to aspect 1.3333333333333333; common intermediate long side 960px; resize 1200x900; RGB; baseline JPEG quality 82, 4:2:0, 72dpi; no EXIF, XMP or comments; neutral zero padding after EOI to 73542 bytes for every member. Before resizing, both sources use the same black-margin crop (RGB maximum >8), then object centering on black with visible globe height at 80% of frame height. Oba obrázky prošly místní kontrolou modelem Qwen se třemi slepými zadáními a vizuální kontrolou při 600 px. Při slepé kontrole ho ani jeden ze dvou modelů neoznačil za výtvor AI.
 
-  Přesné původní zadání:
+- `989438d8` – **Merikanto**. Ocean planet1.png; 2010-08-23.
+  Merikanto. Ocean planet1.png. [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Ocean_planet1.png). Licence: Public domain ([Status volného díla](https://creativecommons.org/publicdomain/mark/1.0/)). Attribution retained; centre-cropped, resized and recompressed.
 
-  > An eighteenth-century botanical plate, portrait format: a hand-coloured stipple engraving on warm cream-grey laid paper with a faint plate mark. A single large, fully open double rose in deep magenta-crimson and rose-pink with softly ruffled overlapping petals shaded by tiny stippled dots, a yellow-brown centre of stamens, with two closed buds in green sepals, one on top and one at right and a small half-hidden bud at left. A thorny green stem curves down with several serrated glossy dark-green leaves in groups of five, finely veined, with some leaves turned to show a paler underside. The specimen is isolated on empty paper with generous white space. No text, no caption, no signature.
+  Výběr: Selected from a disclosed candidate pool for an ambiguous human-made picture, then paired by subject and medium. No image editing beyond the documented common processing. Final preparation processing: Centre crop with full source box [0,0,1,1] to aspect 1.3333333333333333; common intermediate long side 960px; resize 1200x900; RGB; baseline JPEG quality 82, 4:2:0, 72dpi; no EXIF, XMP or comments; neutral zero padding after EOI to 73542 bytes for every member. Before resizing, both sources use the same black-margin crop (RGB maximum >8), then object centering on black with visible globe height at 80% of frame height. Oba obrázky prošly místní kontrolou modelem Qwen se třemi slepými zadáními a vizuální kontrolou při 600 px.
 
-  použitý: b1, 2026-11-01T23:38:48+01:00; OpenAI image_gen via codex exec -m gpt-6.1-sol (reasoning low).
+### sd3821a – Katalogová fotografie hromady ovoce.
 
-- `a0eb8436` – **OpenAI image tool (image_gen) via Codex CLI – AI**. Vytvořeno pro tento kvíz 2026-11-01 generátorem obrázků OpenAI přes Codex CLI podle slovního popisu lidského obrázku (model ho neviděl).
-  Vytvořeno pro tento kvíz 2026-11-01; uvolněno pod [CC0](https://creativecommons.org/publicdomain/zero/1.0/).
+- `59cb46ee` – **Bill Ebbesen (credited in description and original 2010 upload by Atomicbre; transferred by Ionutzmovie)**. File:Culinary fruits front view.jpg; 8 May 2010 (according to Exif data)
+  [File:Culinary fruits front view.jpg](https://commons.wikimedia.org/wiki/File:Culinary_fruits_front_view.jpg). Author: Bill Ebbesen (credited in description and original 2010 upload by Atomicbre; transferred by Ionutzmovie). Licence: [CC BY 3.0](https://creativecommons.org/licenses/by/3.0). Cropped, resized and recompressed; metadata removed. The adaptation retains the source licence.
 
-  Přesné původní zadání:
+  Výběr: Selected from the saved Commons candidate pool for subject match and difficulty. A pre-2022 file revision establishes that the photograph predates current text-to-image generators. Every final picture must pass the three-phrasing Qwen gate and a 600 px visual review. Processing: crop box [0, 0, 1, 1]; centre crop to aspect 1.5023474178403755; resize 960x639 Lanczos; common RGB colour conversion; EXIF/ICC/comments removed; baseline JPEG q82, 4:2:0, 72 dpi; zero padding after EOI to equalise byte length Oba obrázky prošly místní kontrolou modelem Qwen se třemi slepými zadáními a vizuální kontrolou při 600 px.
 
-  > A botanical plate from a late eighteenth-century flower book, portrait format: copperplate stipple engraving finished by hand in watercolour, on slightly grey-toned cream paper with a faint centre fold shadow and plate impression. One large, heavy, full cabbage rose in muted rose-madder and mauve with translucent layered petals shaded by fine dots, small half-open buds in green calyxes, a prickly stem curving down with compound leaves in dark olive-green, one leaf turned to show its pale reverse. Colours slightly faded, flat, matte, no gradients, no glossy highlight, no text, no border.
-
-  Výběr: Pravidlo: nejvýš dva pokusy na obrázek, druhý jen tehdy, když první vypadal na první pohled jako výtvor AI. Použili jsme pokus č. 2 (b2). Vybráno do sady se stejným námětem a technikou. Obrázky v sadě mají stejné rozměry, jednotný postup ořezu a formát JPEG; kvalita komprese byla upravena tak, aby si velikosti souborů byly bližší. Metadata byla odstraněna. Vyřazený první pokus: a2, 2026-11-01T23:32:12+01:00; rejected: obvious - oversaturated stock-vector look with clean digital gradients. Barvy vygenerovaného obrázku jsme přizpůsobili papíru nebo paletě lidské předlohy. Záznam zpracování: colour matched to human (paper); crop box [0.035, 0.035, 0.965, 0.965], centre-crop to aspect 0.74, resize 888x1200, RGB, metadata stripped, baseline JPEG 4:2:0 72dpi.
-
-  vyřazený: a2, 2026-11-01T23:32:12+01:00; OpenAI image_gen via codex exec -m gpt-6.1-sol (reasoning low). rejected: obvious - oversaturated stock-vector look with clean digital gradients
+- `e4984943` – **OpenAI image_gen (image model version not reported)**. Text-only image generated for this quiz on 2026-11-02T08:05:25.886422+00:00
+  Generated for the Human or AI quiz using the built-in OpenAI image_gen tool in Codex. The image model version was not reported. CC0 1.0 dedication for this quiz asset: [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/). The exact prompt is recorded below.
 
   Přesné původní zadání:
 
-  > A late-eighteenth-century scientific flower illustration, vertical format, printed in copperplate stipple technique and delicately finished by hand with watercolour on aged ivory paper. A big cabbage-type rose in full bloom, petals in layers of carmine, mauve and pale pink with translucent, silky transitions made of fine dots, centred in the upper half; around it a few buds in green calyxes. A single prickly stem with compound leaves of dark green, serrated edges and visible veining spreads below and to the left, with a leaf bent to show its lighter reverse. Soft shadows, botanical accuracy, a clean unprinted background with gentle paper toning and subtle ink-plate impression. No lettering, no signature.
+  > A photograph for a modest grocery catalogue around 2005. A tightly packed heap of everyday fruit on a black cloth backdrop, viewed from the front at table height: a large striped watermelon a little left of centre, a pineapple standing at the back right, bananas curving in from both edges, cantaloupe behind, apples and oranges among green pears, scattered strawberries and dark grapes near the bottom edge. Landscape 4:3 frame, the fruit nearly fills it and is slightly cropped along the bottom. Taken with a Canon EOS 350D and 50 mm lens at f/8, two inexpensive softboxes, broad flat highlights, black backdrop with faint wrinkles. Realistic waxy supermarket fruit, some bruises and uneven skins, a few dusty grapes, banal arrangement. Mild early digital camera sharpening, slight luminance noise in shadow, ordinary colour saturation. No HDR, no decorative plates, no lettering, no watermarks. Keep the pineapple crown slightly cut by the top edge.
 
-  použitý: b2, 2026-11-01T23:38:55+01:00; OpenAI image_gen via codex exec -m gpt-6.1-sol (reasoning low).
-
-### sd45d43 – Fotka kamarádů, kteří se společně fotí: skutečná, nebo od AI?
-
-- `16184cef` – **Unknown stock photographer; redistributed by the study authors (Casu, Guarnera, Zangara, Caponnetto, Battiato)**. stimuli/epsilon/07_real.jpg (image_id epsilon_07); 2025 (study release; individual date not given).
-  [Casu et al. 2025 stimulus set (CC BY 4.0)](https://github.com/mirkocasu/a-mid-journey-through-reality/blob/597f90bbe5dcf5dc75f41dc27e4eae424595ae21/stimuli/epsilon/07_real.jpg). Licence: [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Autorství: Unknown stock photographer; redistributed by the study authors (Casu, Guarnera, Zangara, Caponnetto, Battiato). Casu, Guarnera, Zangara, Caponnetto, Battiato (2025), A (Mid)journey Through Reality: Assessing Accuracy, Impostor Bias, and Automation Bias in Human Detection of AI-Generated Images, Human Behavior and Emerging Technologies, https://doi.org/10.1155/hbe2/9977058. Pro kvíz oříznuto, zmenšeno a znovu uloženo; metadata odstraněna.
-
-  Ve studii Casu a kol. (2025) správně určilo původ tohoto obrázku 85,9 % z 92 účastníků.
-
-  Výběr: Vybráno do sady se stejným námětem a technikou. Obrázky v sadě mají stejné rozměry, jednotný postup ořezu a formát JPEG; kvalita komprese byla upravena tak, aby si velikosti souborů byly bližší. Metadata byla odstraněna.
-
-- `55cda8b1` – **Midjourney v6 – AI**. stimuli/alpha/08_m.jpg (image_id alpha_08); 2025 (study release; individual date not given).
-  [Casu et al. 2025 stimulus set (CC BY 4.0)](https://github.com/mirkocasu/a-mid-journey-through-reality/blob/597f90bbe5dcf5dc75f41dc27e4eae424595ae21/stimuli/alpha/08_m.jpg). Licence: [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Autorství: Casu, Guarnera, Zangara, Caponnetto, Battiato (generated for the study). Casu, Guarnera, Zangara, Caponnetto, Battiato (2025), A (Mid)journey Through Reality: Assessing Accuracy, Impostor Bias, and Automation Bias in Human Detection of AI-Generated Images, Human Behavior and Emerging Technologies, https://doi.org/10.1155/hbe2/9977058. Pro kvíz oříznuto, zmenšeno a znovu uloženo; metadata odstraněna.
-
-  Ve studii Casu a kol. (2025) správně určilo původ tohoto obrázku 54,7 % z 256 účastníků.
-
-  Výběr: Vybráno do sady se stejným námětem a technikou. Obrázky v sadě mají stejné rozměry, jednotný postup ořezu a formát JPEG; kvalita komprese byla upravena tak, aby si velikosti souborů byly bližší. Metadata byla odstraněna. Přesné zadání generátoru není ve zdroji uvedené.
-
-- `df8094e5` – **Midjourney v6 + Magnific upscaler – AI**. stimuli/alpha/02_mm.jpg (image_id alpha_02); 2025 (study release; individual date not given).
-  [Casu et al. 2025 stimulus set (CC BY 4.0)](https://github.com/mirkocasu/a-mid-journey-through-reality/blob/597f90bbe5dcf5dc75f41dc27e4eae424595ae21/stimuli/alpha/02_mm.jpg). Licence: [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Autorství: Casu, Guarnera, Zangara, Caponnetto, Battiato (generated for the study). Casu, Guarnera, Zangara, Caponnetto, Battiato (2025), A (Mid)journey Through Reality: Assessing Accuracy, Impostor Bias, and Automation Bias in Human Detection of AI-Generated Images, Human Behavior and Emerging Technologies, https://doi.org/10.1155/hbe2/9977058. Pro kvíz oříznuto, zmenšeno a znovu uloženo; metadata odstraněna.
-
-  Ve studii Casu a kol. (2025) správně určilo původ tohoto obrázku 17,6 % z 256 účastníků.
-
-  Výběr: Vybráno do sady se stejným námětem a technikou. Obrázky v sadě mají stejné rozměry, jednotný postup ořezu a formát JPEG; kvalita komprese byla upravena tak, aby si velikosti souborů byly bližší. Metadata byla odstraněna. Přesné zadání generátoru není ve zdroji uvedené.
-
-### sd6a74f – Produktová fotka kufříku na bílém pozadí: skutečná, nebo od AI?
-
-- `751b3904` – **Jorge Barrios**. File:Aluminium Briefcase.jpg; 2008-05-23.
-  [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Aluminium_Briefcase.jpg). Licence: [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/). Autorství: Jorge Barrios. Pro kvíz oříznuto, zmenšeno a znovu uloženo; metadata odstraněna.
-
-  Výběr: Vybráno do sady se stejným námětem a technikou. Obrázky v sadě mají stejné rozměry, jednotný postup ořezu a formát JPEG; kvalita komprese byla upravena tak, aby si velikosti souborů byly bližší. Metadata byla odstraněna.
-
-- `f3d00152` – **FLUX.2 Pro (source label flux-2-pro-25-11-25) – AI**. Rapidata/Flux-2-pro_t2i_human_preference train row 2000 column image1; datum vzniku neuvedeno.
-  [Rapidata preference dataset (CDLA-Permissive-2.0)](https://huggingface.co/datasets/Rapidata/Flux-2-pro_t2i_human_preference/viewer/default/train?row=2000). Licence: [CDLA-Permissive-2.0](https://cdla.dev/permissive-2-0/). Autorství: Rapidata (dataset publisher); generated by FLUX.2 Pro. [CDLA-Permissive-2.0: text licence](../licences/CDLA-Permissive-2.0.txt). Pro kvíz oříznuto, zmenšeno a znovu uloženo; metadata odstraněna.
-
-  Přesné původní zadání:
-
-  > A brown carrier of some sort with a red handle
-
-  Výběr: Vybráno do sady se stejným námětem a technikou. Obrázky v sadě mají stejné rozměry, jednotný postup ořezu a formát JPEG; kvalita komprese byla upravena tak, aby si velikosti souborů byly bližší. Metadata byla odstraněna.
+  Výběr: First and only generation from this prompt; later screened against the blind and visual gates. Rejected attempts remain recorded. The model received only a written description of the human photograph, without the photograph itself. Selection for difficulty is deliberate; all source candidates and generation attempts are retained in preparation. Processing: crop box [0, 0, 1, 1]; centre crop to aspect 1.5023474178403755; resize 960x639 Lanczos; common RGB colour conversion; EXIF/ICC/comments removed; baseline JPEG q82, 4:2:0, 72 dpi; zero padding after EOI to equalise byte length Oba obrázky prošly místní kontrolou modelem Qwen se třemi slepými zadáními a vizuální kontrolou při 600 px. Při slepé kontrole ho ani jeden ze dvou modelů neoznačil za výtvor AI.
 
 ### sd9af64 – Zpráva z Wikizpráv „Trojská lávka se zřítila do Vltavy“: napsal ji člověk, nebo AI?
 
@@ -2559,6 +2397,22 @@ Anglický kvíz obsahuje také původní odpovědi ChatGPT z prosince 2022: Guo 
   > Interpunkce jako v článku tohoto rozsahu, zhruba: 6 čárek, 0 pomlček (–), 0 závorek, 0 výpustek (…), 1 středníků, 0 dvojteček, 0 vykřičníků, 0 otazníků, 0 uvozovek (párů). Rytmus vět: zhruba 6 vět, nejkratší asi 8 slov a nejdelší asi 21 slov; střídej krátké a dlouhé věty, jak to dělá člověk, který píše tenhle druh textu. Nepoužívej kulaté závorky. Kvalita: text má být k nerozeznání od skutečné zprávy z Wikizpráv, kterou napsal dobrovolník: věcný, konkrétní, s údaji, které zpráva tohoto druhu uvádí; žádné hodnoticí přívlastky ani shrnující nebo hodnotící závěr. Vyhni se znakům textu psaného umělou inteligencí: konstrukcím „nejde o X, ale o Y“ a „ne proto, že…, ale protože…“, otázkám, na které hned odpovídáš („Výsledek? Klid.“), trojicím a řetězcům stejně dlouhých krátkých vět pro rytmus, umělé rovnováze („přínosné, ale zároveň riskantní“), závěrečnému shrnutí či ponaučení, frázím „ať už jde o“, „co se týče“, „v dnešní době“, „hraje klíčovou roli“, „v neposlední řadě“, kalkům z angličtiny („ponořit se do“, „na konci dne“, „je svědectvím toho“) a obecnosti: kde by je skutečný text uvedl, uveď konkrétní jména, místa, čísla a data. Česká typografie: uvozovky „…“, pomlčka s mezerami ( – ), mezera před % a jednotkami.
 
   Výběr: Pravidlo: první výstup, který prošel předem stanovenou kontrolou (u básní přesný počet veršů; délka nejvýš o 25 % odlišná od originálu; žádný shodný úsek dvanácti slov) a kontrolou modelem jiné rodiny. Ten hledal zjevné jazykové chyby, anachronismy, porušení formy, citace a nápadné znaky psaní AI. Použili jsme pokus č. 2; kontroloval ho claude-opus-5-5 via claude -p, effort high, no tools; výsledek: prošel (pass). Text jsme neupravovali, jen vysázeli stejně jako ostatní. Neúspěšné výstupy jsme generovali znovu, nejvýš třikrát; všechny pokusy jsou zaznamenané.
+
+### sda6e05 – Černobílý detail mýdlové pěny.
+
+- `811578d9` – **Paul VanDerWerf**. File:Soap Bubbles (41493399275).jpg; 2018-05-22 11:53
+  [File:Soap Bubbles (41493399275).jpg](https://commons.wikimedia.org/wiki/File:Soap_Bubbles_(41493399275).jpg). Author: Paul VanDerWerf. Licence: [CC BY 2.0](https://creativecommons.org/licenses/by/2.0). Cropped, resized and recompressed; metadata removed. The adaptation retains the source licence.
+
+  Výběr: Selected from the saved Commons candidate pool for subject match and difficulty. A pre-2022 file revision establishes that the photograph predates current text-to-image generators. Every final picture must pass the three-phrasing Qwen gate and a 600 px visual review. Processing: crop box [0, 0, 1, 1]; centre crop to aspect 1.400437636761488; resize 960x686 Lanczos; common greyscale conversion; EXIF/ICC/comments removed; baseline JPEG q82, 4:2:0, 72 dpi; zero padding after EOI to equalise byte length Oba obrázky prošly místní kontrolou modelem Qwen se třemi slepými zadáními a vizuální kontrolou při 600 px.
+
+- `26d64bcb` – **OpenAI image_gen (image model version not reported)**. Text-only image generated for this quiz on 2026-11-02T08:08:59.835Z
+  Generated for the Human or AI quiz using the built-in OpenAI image_gen tool in Codex. The image model version was not reported. CC0 1.0 dedication for this quiz asset: [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/). The exact prompt is recorded below.
+
+  Přesné původní zadání:
+
+  > A black and white macro photograph of a small patch of soap foam. Landscape 4:3 crop, the frame is entirely filled with transparent irregular bubbles a few millimetres across, a densely tangled network of thin grey bright edges and dark interiors. Some bubbles are polygons where they press together, others round and overlapping; sizes vary a lot. The centre and right are sharp while the upper left is a little out of focus. Taken with a Panasonic Lumix compact camera in macro mode under one ordinary window, no microscope and no illustration. Fairly flat grey contrast, uneven reflected daylight along the bubble walls, faint compact-camera noise and soft corners. An unremarkable close-up during washing up. No perfect hexagonal grid, no embossed metal appearance, no text, no watermark.
+
+  Výběr: First and only generation from this prompt; later screened against the blind and visual gates. Rejected attempts remain recorded. The model received only a written description of the human photograph, without the photograph itself. Selection for difficulty is deliberate; all source candidates and generation attempts are retained in preparation. Processing: crop box [0, 0, 1, 1]; centre crop to aspect 1.400437636761488; resize 960x686 Lanczos; common greyscale conversion; EXIF/ICC/comments removed; baseline JPEG q82, 4:2:0, 72 dpi; zero padding after EOI to equalise byte length Oba obrázky prošly místní kontrolou modelem Qwen se třemi slepými zadáními a vizuální kontrolou při 600 px. Při slepé kontrole ho ani jeden ze dvou modelů neoznačil za výtvor AI.
 
 ### sdc7e3e – **Jiří Mahen** (1882–1939): pravá báseň, nebo napodobenina od AI?
 
@@ -2904,23 +2758,39 @@ Anglický kvíz obsahuje také původní odpovědi ChatGPT z prosince 2022: Guo 
 
   Výběr: Pravidlo: první výstup, který prošel předem stanovenou kontrolou (u básní přesný počet veršů; délka nejvýš o 25 % odlišná od originálu; žádný shodný úsek dvanácti slov) a kontrolou modelem jiné rodiny. Ten hledal zjevné jazykové chyby, anachronismy, porušení formy, citace a nápadné znaky psaní AI. Použili jsme pokus č. 1; kontroloval ho gpt-6.1-sol via codex exec, reasoning effort high, no web; výsledek: prošel (pass). Text jsme neupravovali, jen vysázeli stejně jako ostatní. Neúspěšné výstupy jsme generovali znovu, nejvýš třikrát; všechny pokusy jsou zaznamenané.
 
-### sf78403 – Olejomalba obrovské síně se zářivým otvorem: namalovaná rukou, nebo od AI?
+### sf78403 – Počítačově vykreslené horské jezero ve večerním světle.
 
-- `430c1d7d` – **Hubert Robert**. Imaginary View of the Grande Galerie of the Louvre in Ruins; 1796.
-  [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Hubert_Robert_-_Imaginary_View_of_the_Grande_Galerie_in_the_Louvre_in_Ruins_-_WGA19589.jpg). Licence: Public domain. Autorství: Hubert Robert. Pro kvíz oříznuto, zmenšeno a znovu uloženo; metadata odstraněna.
+- `ed159c64` – **Lissen**. TerragenLake.jpg; 2008-03-14.
+  Lissen. TerragenLake.jpg. [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:TerragenLake.jpg). Licence: Public domain ([Status volného díla](https://creativecommons.org/publicdomain/mark/1.0/)). Attribution retained; centre-cropped, resized and recompressed.
 
-  Výběr: Vybráno do sady se stejným námětem a technikou. Obrázky v sadě mají stejné rozměry, jednotný postup ořezu a formát JPEG; kvalita komprese byla upravena tak, aby si velikosti souborů byly bližší. Metadata byla odstraněna. Záznam zpracování: crop box [0.03, 0.03, 0.97, 0.97], centre-crop to aspect 1.4, resize 1200x857, RGB, metadata stripped, baseline JPEG 4:2:0 72dpi.
+  Výběr: Selected from a disclosed candidate pool for an ambiguous human-made picture, then paired by subject and medium. No image editing beyond the documented common processing. Final preparation processing: Centre crop with full source box [0,0,1,1] to aspect 1.3333333333333333; common intermediate long side 1200px; resize 1200x900; RGB; baseline JPEG quality 82, 4:2:0, 72dpi; no EXIF, XMP or comments; neutral zero padding after EOI to 95946 bytes for every member. Oba obrázky prošly místní kontrolou modelem Qwen se třemi slepými zadáními a vizuální kontrolou při 600 px.
 
-- `8846b8c0` – **OpenAI image tool (image_gen) via Codex CLI – AI**. Vytvořeno pro tento kvíz 2026-11-01 generátorem obrázků OpenAI přes Codex CLI podle slovního popisu lidského obrázku (model ho neviděl).
-  Vytvořeno pro tento kvíz 2026-11-01; uvolněno pod [CC0](https://creativecommons.org/publicdomain/zero/1.0/).
+- `4ed8ad4e` – **OpenAI image_gen via codex exec -m gpt-6.1-sol (reasoning low); image-model name not reported**. Generated for this quiz on 2026-11-02.
+  Made for this quiz; released under CC0: [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/). No input image supplied to the model. Paired human reference: Lissen. TerragenLake.jpg. [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:TerragenLake.jpg). Licence: Public domain ([Status volného díla](https://creativecommons.org/publicdomain/mark/1.0/)). Attribution retained; centre-cropped, resized and recompressed.
 
   Přesné původní zadání:
 
-  > An eighteenth-century oil painting on canvas, horizontal format, of an immense colonnaded hall in ruins. Colossal weathered stone columns and heavy entablatures in warm golden-brown shadow flank a long gallery that recedes to a distant triumphal arch; the barrel vault overhead is broken open in a great arch of luminous blue sky with soft white clouds, ferns and small trees growing on the fallen masonry. At lower left a dark bronze statue of a god with an outstretched cloak on a plinth, a toppled carved block, and small figures in robes: an artist sketching, a woman bending, a man in a red cloak. Thin smoke rises from a small fire in the middle distance. Dark, rich, painterly, no signature.
+  > A deliberately simple old hobbyist landscape image rendered in Terragen Classic in 2008, horizontal 4:3. The upper third is a pale cold grey sky with thin horizontal pink and light grey streaks, not an orange sky. An enormous dark flat grey cloud with a ragged white edge enters the upper left, the low sun hidden behind it near the left horizon. Blunt angular, poorly resolved bare mountain ridges fill the middle. One big near-black rounded slope cuts from the left edge diagonally down to the lake at centre-right. A second ochre rock mass sits behind it in the middle and a bright flat orange-brown triangular face catches light at the right edge. The bottom half is a small almost black placid lake. The lake has one broad pale creamy irregular reflection near lower centre-left, and one orange reflection at far right. Very crude diffuse mottled grey and umber procedural terrain textures, visibly rounded low-detail geometry, harsh flat lighting on one face, the remaining terrain in muddy uniform shadow. Only a little fine repetitive rippling on the lake, nearly smooth water, no realistic photographic waves or high-definition rock erosion. Plain early CGI demonstration, banal and awkward, like a beginner learning the terrain editor. No trees, no people, no buildings, no sun disk, no lens flare, no orange sky gradient, no film grading, no interface or text, no border.
 
-  Výběr: Pravidlo: nejvýš dva pokusy na obrázek, druhý jen tehdy, když první vypadal na první pohled jako výtvor AI. Použili jsme pokus č. 1 (a1). Vybráno do sady se stejným námětem a technikou. Obrázky v sadě mají stejné rozměry, jednotný postup ořezu a formát JPEG; kvalita komprese byla upravena tak, aby si velikosti souborů byly bližší. Metadata byla odstraněna. Záznam zpracování: crop box [0.03, 0.03, 0.97, 0.97], centre-crop to aspect 1.4, resize 1200x857, RGB, metadata stripped, baseline JPEG 4:2:0 72dpi.
+  Exact submitted prompt given to codex exec with an instruction to use image_gen once, verbatim. Image-model name and internal tool rewriting were not exposed.
 
-  použitý: a1, 2026-11-01T23:35:56+01:00; OpenAI image_gen via codex exec -m gpt-6.1-sol (reasoning low).
+  Výběr: Up to two successful image generations per slot. Keep the first that passes three blind Qwen phrasings and the visual review at 600 px. Text prompt describes the paired human medium and subject. All attempted prompts, including failed infrastructure calls, are preserved. Final preparation processing: Centre crop with full source box [0,0,1,1] to aspect 1.3333333333333333; common intermediate long side 1200px; resize 1200x900; RGB; baseline JPEG quality 82, 4:2:0, 72dpi; no EXIF, XMP or comments; neutral zero padding after EOI to 95946 bytes for every member. Oba obrázky prošly místní kontrolou modelem Qwen se třemi slepými zadáními a vizuální kontrolou při 600 px. Při slepé kontrole ho ani jeden ze dvou modelů neoznačil za výtvor AI.
+
+### sfd2bb2 – Chůze po chodníku v dešti.
+
+- `2bfc02cf` – **OpenAI image_gen (image model version not reported)**. Text-only image generated for this quiz on 2026-11-02T08:48:54.951371+00:00
+  Generated for the Human or AI quiz with the built-in OpenAI image_gen tool in Codex. The image-model version was not reported. CC0 1.0 dedication: [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/). The exact prompt is recorded below.
+
+  Přesné původní zadání:
+
+  > Use case: photorealistic-natural. One mundane dark colour photograph, landscape 3:2, of a wet pavement during steady rain, taken at curb level. An out-of-focus black vertical shape at the left edge fills about one third of the picture, like the near edge of a doorway. Across the middle-right, only the lower legs of a fictional passer-by are visible from above the knees down; plain dark trousers and low black shoes, one foot planted on the wet paving and one stepping forward. Small raindrops strike the ground with tiny splashes and rings. A shallow puddle in the foreground contains a broken upside-down reflection of the legs and a pale building wall. Behind the walker is the lower part of a white clapboard wall above dark grey masonry. Cool green-grey shadows, low contrast except for reflected daylight, imperfect focus, a slight handheld tilt and sensor noise, ordinary compact-camera street snapshot. No face, no hands, no lettering, no watermark, no cinematic lighting or HDR.
+
+  Výběr: First and only generation from this prompt; selected for difficulty after the blind and visual gates. The model received only a written scene description, without the source photograph. Every attempt and rejected version is retained. Processing: crop box [0, 0, 1, 1]; centre crop to aspect 1.5; resize 960x640 Lanczos; common RGB colour conversion; EXIF/ICC/comments removed; baseline JPEG q82, 4:2:0, 72 dpi; zero padding after EOI to equalise byte length Oba obrázky prošly místní kontrolou modelem Qwen se třemi slepými zadáními a vizuální kontrolou při 600 px. Při slepé kontrole ho ani jeden ze dvou modelů neoznačil za výtvor AI.
+
+- `8492b8de` – **Jonathan Crews joncrews**. File:Cold Rain (Unsplash).jpg; 2017-05-02
+  [File:Cold Rain (Unsplash).jpg](https://commons.wikimedia.org/wiki/File:Cold_Rain_(Unsplash).jpg). Author: Jonathan Crews joncrews. Licence: [CC0](http://creativecommons.org/publicdomain/zero/1.0/deed.en). Cropped, resized and recompressed, metadata removed. The adaptation retains the source licence.
+
+  Výběr: Selected from the saved Commons candidate pool for matching subject and difficulty after screening the final q82 processing. Pre-2022 file history and the saved source metadata establish provenance. Keep only if the pair passes the three-phrasing Qwen gate and visual review at 600 px. Processing: crop box [0, 0, 1, 1]; centre crop to aspect 1.5; resize 960x640 Lanczos; common RGB colour conversion; EXIF/ICC/comments removed; baseline JPEG q82, 4:2:0, 72 dpi; zero padding after EOI to equalise byte length Oba obrázky prošly místní kontrolou modelem Qwen se třemi slepými zadáními a vizuální kontrolou při 600 px.
 
 ### sfdaf8c – Zpráva z Wikizpráv „Muzeum uspořádalo padělatelskou soutěž pro děti i dospělé“: napsal ji člověk, nebo AI?
 
@@ -2970,6 +2840,22 @@ Anglický kvíz obsahuje také původní odpovědi ChatGPT z prosince 2022: Guo 
   > Interpunkce jako v článku tohoto rozsahu, zhruba: 10 čárek, 0 pomlček (–), 0 závorek, 0 výpustek (…), 0 středníků, 0 dvojteček, 0 vykřičníků, 0 otazníků, 1 uvozovek (párů). Rytmus vět: zhruba 10 vět, nejkratší asi 1 slov a nejdelší asi 24 slov; střídej krátké a dlouhé věty, jak to dělá člověk, který píše tenhle druh textu. Nepoužívej kulaté závorky. Kvalita: text má být k nerozeznání od skutečné zprávy z Wikizpráv, kterou napsal dobrovolník: věcný, konkrétní, s údaji, které zpráva tohoto druhu uvádí; žádné hodnoticí přívlastky ani shrnující nebo hodnotící závěr. Vyhni se znakům textu psaného umělou inteligencí: konstrukcím „nejde o X, ale o Y“ a „ne proto, že…, ale protože…“, otázkám, na které hned odpovídáš („Výsledek? Klid.“), trojicím a řetězcům stejně dlouhých krátkých vět pro rytmus, umělé rovnováze („přínosné, ale zároveň riskantní“), závěrečnému shrnutí či ponaučení, frázím „ať už jde o“, „co se týče“, „v dnešní době“, „hraje klíčovou roli“, „v neposlední řadě“, kalkům z angličtiny („ponořit se do“, „na konci dne“, „je svědectvím toho“) a obecnosti: kde by je skutečný text uvedl, uveď konkrétní jména, místa, čísla a data. Česká typografie: uvozovky „…“, pomlčka s mezerami ( – ), mezera před % a jednotkami.
 
   Výběr: Pravidlo: první výstup, který prošel předem stanovenou kontrolou (u básní přesný počet veršů; délka nejvýš o 25 % odlišná od originálu; žádný shodný úsek dvanácti slov) a kontrolou modelem jiné rodiny. Ten hledal zjevné jazykové chyby, anachronismy, porušení formy, citace a nápadné znaky psaní AI. Použili jsme pokus č. 1; kontroloval ho gpt-6.1-sol via codex exec, reasoning effort high, no web; výsledek: prošel (pass). Text jsme neupravovali, jen vysázeli stejně jako ostatní. Neúspěšné výstupy jsme generovali znovu, nejvýš třikrát; všechny pokusy jsou zaznamenané.
+
+### sfe562b – Košík s vejci vyfotografovaný venku.
+
+- `04eab3d7` – **George Chernilevsky**. File:Eggs in basket 2020 G1.jpg; 2020-08-01 15:12:56
+  [File:Eggs in basket 2020 G1.jpg](https://commons.wikimedia.org/wiki/File:Eggs_in_basket_2020_G1.jpg). Author: George Chernilevsky. Licence: [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0). Cropped, resized and recompressed; metadata removed. The adaptation retains the source licence. This adaptation retains the stated ShareAlike licence.
+
+  Výběr: Selected from the saved Commons candidate pool for subject match and difficulty. A pre-2022 file revision establishes that the photograph predates current text-to-image generators. Every final picture must pass the three-phrasing Qwen gate and a 600 px visual review. Processing: crop box [0, 0, 1, 1]; centre crop to aspect 1.0; resize 960x960 Lanczos; common RGB colour conversion; EXIF/ICC/comments removed; baseline JPEG q82, 4:2:0, 72 dpi; zero padding after EOI to equalise byte length Oba obrázky prošly místní kontrolou modelem Qwen se třemi slepými zadáními a vizuální kontrolou při 600 px.
+
+- `4b7eb1b9` – **OpenAI image_gen (image model version not reported)**. Text-only image generated for this quiz on 2026-11-02T08:10:38.929Z
+  Generated for the Human or AI quiz using the built-in OpenAI image_gen tool in Codex. The image model version was not reported. CC0 1.0 dedication for this quiz asset: [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/). The exact prompt is recorded below.
+
+  Přesné původní zadání:
+
+  > A slightly staged but ordinary outdoor photograph of a small round wicker basket full of eggs sitting in dry straw and rough grass. Landscape 4:3 crop. The brown woven basket is centred, with a tall curved wicker handle over the eggs. Several plain white chicken eggs and warm brown chicken eggs are mixed with much smaller speckled quail eggs; a loose small feather lies in the straw in front. Soft overcast daylight, the grass behind the basket mildly out of focus. Taken on a Nikon D7200 with a 50 mm lens at f/5.6 and ISO 400, ordinary natural colour, mild digital sharpening, slight noise. The wicker is uneven and worn, eggs have faint dirt and irregular marks, straw is tangled. Camera a little above the basket, no dramatic bokeh, no dramatic sunlight, no farm signs or lettering, no text, no watermark.
+
+  Výběr: First and only generation from this prompt; later screened against the blind and visual gates. Rejected attempts remain recorded. The model received only a written description of the human photograph, without the photograph itself. Selection for difficulty is deliberate; all source candidates and generation attempts are retained in preparation. Processing: crop box [0, 0, 1, 1]; centre crop to aspect 1.0; resize 960x960 Lanczos; common RGB colour conversion; EXIF/ICC/comments removed; baseline JPEG q82, 4:2:0, 72 dpi; zero padding after EOI to equalise byte length Oba obrázky prošly místní kontrolou modelem Qwen se třemi slepými zadáními a vizuální kontrolou při 600 px. Při slepé kontrole ho ani jeden ze dvou modelů neoznačil za výtvor AI.
 
 ### sffcd2e – **Ladislav Klíma**, *Zde by měly růst brambory*: pravý úryvek, nebo napodobenina od AI?
 
