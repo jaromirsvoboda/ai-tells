@@ -335,7 +335,7 @@ test('quiz: exact guessing message for each score, including a perfect small rou
       await page.getByRole('button', { name: nextName }).click();
     }
     await expect(page.locator('.score')).toHaveText(`${k} / ${n}`);
-    const message = cs ? `${k} a víc ${n === 6 ? 'ze' : 'z'} ${n} čistým hádáním: ${oddsCS}. Více položek dá přesnější představu.`
+    const message = cs ? `${k} a víc ${[2, 3, 4, 6, 7, 12, 13, 14, 17].includes(n) ? 'ze' : 'z'} ${n} čistým hádáním: ${oddsCS}. Více položek dá přesnější představu.`
       : `${k} or more of ${n} by pure guessing: ${oddsEN}. More items give a clearer picture.`;
     await expect(page.locator('.score + p')).toHaveText(message);
     await page.unroute(pattern);
