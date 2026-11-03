@@ -1,16 +1,16 @@
 :root{
   --bg:#f7f5f0; --panel:#fffdf8; --ink:#1d1d1b; --muted:#5f5b53; --line:#d9d3c7; --accent:#2b5c8a; --accent-ink:#fff;
   --human:#2f6b3a; --ai:#8a3b2b; --ok:#2f6b3a; --bad:#9b2c1f; --focus:#9a6200; --chip:#ece6da;
-  --chart-bar:#928c80;
+  --chart-bar:#928c80; --bar-shadow:0 -8px 20px rgb(29 29 27 / .14);
   --serif:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,"Times New Roman",serif;
   --sans:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
 }
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
   --bg:#141412; --panel:#1d1c19; --ink:#ece8df; --muted:#a8a296; --line:#3a3731; --accent:#7fb0e0; --accent-ink:#0d1a26;
-  --human:#86c48f; --ai:#e39a86; --ok:#86c48f; --bad:#f08c7c; --focus:#f2b84b; --chip:#2a2824; --chart-bar:#898276;}}
+  --human:#86c48f; --ai:#e39a86; --ok:#86c48f; --bad:#f08c7c; --focus:#f2b84b; --chip:#2a2824; --chart-bar:#898276; --bar-shadow:0 -8px 20px rgb(0 0 0 / .55);}}
 :root[data-theme="dark"]{
   --bg:#141412; --panel:#1d1c19; --ink:#ece8df; --muted:#a8a296; --line:#3a3731; --accent:#7fb0e0; --accent-ink:#0d1a26;
-  --human:#86c48f; --ai:#e39a86; --ok:#86c48f; --bad:#f08c7c; --focus:#f2b84b; --chip:#2a2824; --chart-bar:#898276;}
+  --human:#86c48f; --ai:#e39a86; --ok:#86c48f; --bad:#f08c7c; --focus:#f2b84b; --chip:#2a2824; --chart-bar:#898276; --bar-shadow:0 -8px 20px rgb(0 0 0 / .55);}
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
 body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 var(--sans)}
@@ -36,8 +36,11 @@ h3{font-size:1rem;margin:1.2rem 0 .3rem}
 .round span{color:var(--muted);font-size:.88rem}
 .round .tag{display:inline-block;margin-top:.45rem;font-size:.75rem;background:var(--chip);border-radius:99px;padding:.05rem .55rem;color:var(--muted)}
 .card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:1.1rem 1.1rem 1.2rem;margin:1rem 0}
+/* The playhead sticks to the top of the viewport while a long item scrolls, so
+   "Item 3 of 15" stays in sight. */
+.playhead{position:sticky;top:0;z-index:5;background:var(--bg);padding:.3rem 0 .8rem}
 .progress{display:flex;justify-content:space-between;align-items:center;font-size:.88rem;color:var(--muted);gap:.5rem}
-.bar{height:4px;background:var(--line);border-radius:4px;overflow:hidden;margin:.4rem 0 1rem}
+.bar{height:4px;background:var(--line);border-radius:4px;overflow:hidden;margin:.4rem 0 0}
 .bar i{display:block;height:100%;background:var(--accent);width:0;transition:width .3s}
 .round-actions{margin:.6rem 0 1rem}
 .round-actions .btn{font-size:.88rem}
@@ -81,6 +84,12 @@ details.question .text{font:.95rem/1.5 var(--sans)}
 .prompt{font:.85rem/1.45 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;white-space:pre-wrap;background:var(--chip);border-radius:8px;padding:.6rem;margin:.4rem 0;overflow-wrap:anywhere}
 .sib{border-top:1px dashed var(--line);padding-top:.6rem;margin-top:.6rem}
 .next{margin-top:1rem;display:flex;justify-content:flex-end}
+/* Action bars: while the item is on screen the answer controls stick to the bottom
+   of the viewport, so a long item never needs a hunt for the buttons; after the
+   answer, #ask stops sticking and the reveal's next bar takes over. */
+#ask,.reveal .next{position:sticky;bottom:0;z-index:4;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:.7rem .8rem;box-shadow:var(--bar-shadow)}
+#ask{margin-top:1rem}
+article.answered #ask{position:static;box-shadow:none}
 .score{font:700 clamp(2.4rem,10vw,3.6rem)/1 var(--serif);margin:.4rem 0}
 .chart{margin:1rem 0;padding:1rem .75rem;background:var(--panel);border:1px solid var(--line);border-radius:14px;overflow-wrap:anywhere}
 .chance-graph{border:2px solid var(--accent)}
@@ -113,8 +122,19 @@ table.res td.num{text-align:right;font-variant-numeric:tabular-nums;white-space:
 footer{border-top:1px solid var(--line);margin-top:2.5rem;padding-top:1rem;font-size:.85rem;color:var(--muted)}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 .kbd{font:.8rem ui-monospace,monospace;border:1px solid var(--line);border-bottom-width:2px;border-radius:4px;padding:0 .3rem}
+/* Touch devices have no keyboard: drop the shortcut hint so the bar stays compact. */
+@media (pointer:coarse){.keys-hint{display:none}}
+/* Portrait phones: size the picture so item, image and the stuck answer bar fit
+   one screen — no scrolling at all for image items. */
+@media (max-width:48rem) and (orientation:portrait){figure.img img{max-height:44vh}}
 @media (max-width:30rem){.text{font-size:1.02rem}.poem{font-size:1rem}.card{padding:.9rem .85rem 1rem}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
 
 /* Long tokens in credits (dataset paths, model ids, URLs) must wrap on narrow screens. */
 .reveal, .reveal .truth, .reveal .why, .reveal .small, .res td { overflow-wrap: anywhere; }
+
+/* mdview pages (CREDITS.html, fairness.html) */
+.md blockquote{border-left:2px solid var(--line);margin:.5rem 0;padding:.1rem 0 .1rem 1rem;color:var(--muted);font-size:.95rem}
+.md code{font:.85em ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;background:var(--chip);border-radius:4px;padding:.05em .3em;overflow-wrap:anywhere}
+.md ul,.md ol{padding-left:1.4rem;margin:.5rem 0}
+.md li{margin:.35rem 0}

@@ -110,8 +110,13 @@ blockquote { margin: 0.5rem 0 0.75rem; padding: 0 0 0 1rem; border-left: 2px sol
 .group .intro { font-size: 0.95rem; color: var(--ink-2); margin: 0.4rem 0 0.6rem; }
 .group .themehead { font-size: 0.95rem; font-weight: 700; font-style: italic; margin: 1rem 0 0.1rem; color: var(--ink-2); }
 .group .themehead::first-letter { text-transform: uppercase; }
-#detection td:last-child { min-width: 15rem; }
-#detection td:first-child { min-width: 9rem; }
+/* On narrow screens the table scrolls horizontally; keep every column wide
+   enough to read instead of wrapping into fragments. */
+#detection td { min-width: 5.5rem; }
+#detection td:first-child { min-width: 10rem; }
+#detection td:last-child { min-width: 17rem; }
+#obs-table td:first-child { min-width: 9rem; }
+#obs-table td:last-child { min-width: 13rem; }
 details.entry { border-bottom: 1px solid var(--rule); }
 details.entry > summary .nm::after { content: " +"; color: var(--ink-3); font-weight: 400; }
 details.entry[open] > summary .nm::after { content: " \2212"; }

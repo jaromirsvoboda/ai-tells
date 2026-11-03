@@ -308,8 +308,10 @@
   function showItem() {
     const g = game, it = ITEMS[g.ids[g.i]], set = SETS[it.set];
     main.innerHTML = `
-      <div class="progress"><span>${esc(g.round.title)}</span><span>${esc(T.progress(g.i + 1, g.ids.length))}</span></div>
-      <div class="bar" aria-hidden="true"><i style="width:${100 * g.i / g.ids.length}%"></i></div>
+      <div class="playhead">
+        <div class="progress"><span>${esc(g.round.title)}</span><span>${esc(T.progress(g.i + 1, g.ids.length))}</span></div>
+        <div class="bar" aria-hidden="true"><i style="width:${100 * g.i / g.ids.length}%"></i></div>
+      </div>
       <p class="round-actions"><button class="btn" type="button" id="endRound"${g.answers.length ? '' : ' disabled'}>${esc(T.endRound)}</button></p>
       ${g.i === 0 && g.exhausted ? `<p class="note small">${esc(T.exhausted)}</p>` : ''}
       <article class="card" aria-labelledby="ctx">
@@ -322,7 +324,7 @@
             <button class="btn ai" type="button" data-ans="ai">${esc(T.ai)}</button>
           </div>
           <label class="known"><input type="checkbox" id="known"> <span>${esc(T.known(it.mod === 'image' ? T.kPic : T.kText))}</span></label>
-          <p class="small muted" style="margin:.6rem 0 0">${T.keys}</p>
+          <p class="small muted keys-hint" style="margin:.6rem 0 0">${T.keys}</p>
         </div>
         <div id="rev"></div>
       </article>`;
@@ -338,6 +340,7 @@
     const known = knownTick || prevOrig;  // a player who has seen the set's original can compare from memory
     const ok = (choice === 'human') === !!it.h;
     g.answers[g.i] = { id: it.id, choice, known, ok, h: !!it.h, cat: set.cat, family: x.family || null, era: x.era || null };
+    main.querySelector('article.card').classList.add('answered');  // the answer bar stops sticking; the reveal's next bar takes over
     $('#endRound').disabled = false;
     store.seen[it.id] = seenCount(it.id) + 1; store.setsShown[set.id] = (store.setsShown[set.id] || 0) + 1;
     if (it.h) store.origSeen[set.id] = 1;

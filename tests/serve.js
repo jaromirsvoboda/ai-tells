@@ -12,6 +12,7 @@ const types = {
   '.jpeg': 'image/jpeg', '.webp': 'image/webp', '.gif': 'image/gif',
   '.mp3': 'audio/mpeg', '.wav': 'audio/wav', '.mp4': 'video/mp4',
   '.webm': 'video/webm', '.ogg': 'audio/ogg', '.woff2': 'font/woff2',
+  '.md': 'text/markdown; charset=utf-8',
 };
 
 const server = http.createServer(async (req, res) => {
