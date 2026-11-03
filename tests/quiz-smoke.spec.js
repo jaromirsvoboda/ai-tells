@@ -73,7 +73,7 @@ for (const lang of ['en', 'cs']) {
     await assertNoOverflow(page);
     const aboutLinks = await page.locator('main a[href]').evaluateAll(links =>
       [...new Set(links.map(a => a.getAttribute('href')))]);
-    expect(aboutLinks).toContain(lang === 'cs' ? '../fairness.md' : 'fairness.md');
+    expect(aboutLinks).toContain(lang === 'cs' ? '../fairness.html' : 'fairness.html');
     for (const href of aboutLinks) {
       const url = new URL(href, page.url());
       expect(url.origin, href).toBe(new URL(baseURL).origin);

@@ -38,7 +38,7 @@ test('quiz mobile: answer buttons are in reach at the top and middle of the long
   await playLongItem(page, base, request, false);
   const atTop = await page.evaluate(inViewport, '[data-ans="human"]');
   expect(atTop, 'Human button must be fully in the viewport at the top of a long item').toBe(true);
-  await page.evaluate(() => window.scrollTo(0, Math.round(scrollHeight / 2)));
+  await page.evaluate(() => window.scrollTo(0, Math.round(document.documentElement.scrollHeight / 2)));
   const atMiddle = await page.evaluate(inViewport, '[data-ans="human"]');
   expect(atMiddle, 'Human button must stay fully in the viewport while the item scrolls').toBe(true);
   await assertNoOverflow(page);
@@ -60,7 +60,7 @@ test('quiz mobile: next button is in reach while reading the reveal', async ({ p
 
 test('quiz mobile: the playhead stays in sight while a long item scrolls', async ({ page, request }) => {
   await playLongItem(page, base, request, false);
-  await page.evaluate(() => window.scrollTo(0, Math.round(scrollHeight / 2)));
+  await page.evaluate(() => window.scrollTo(0, Math.round(document.documentElement.scrollHeight / 2)));
   const visible = await page.evaluate(inViewport, '.playhead');
   expect(visible, 'Playhead (round name, item number, bar) must stay in the viewport').toBe(true);
 });
