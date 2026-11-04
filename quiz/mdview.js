@@ -102,11 +102,33 @@
     return html;
   }
 
+  /* Scrollable table regions need an explicit focus target (WCAG 2.1.1). */
+  function markScrollable() {
+    const cs = document.documentElement.lang === 'cs';
+    function labelFor(w) {
+      const heads = [...main.querySelectorAll('h1, h2, h3, h4')].filter(h => h.compareDocumentPosition(w) & Node.DOCUMENT_POSITION_FOLLOWING);
+      const last = heads[heads.length - 1];
+      return last ? (cs ? 'Tabulka: ' + last.textContent.trim() : last.textContent.trim().replace(/[.:\s]+$/, '') + ' table')
+        : (cs ? 'Tabulka s daty' : 'Data table');
+    }
+    main.querySelectorAll('.tablewrap').forEach(w => {
+      if (w.scrollWidth > w.clientWidth + 1) {
+        if (w.getAttribute('tabindex') !== '0') w.setAttribute('tabindex', '0');
+        if (!w.getAttribute('aria-label')) w.setAttribute('aria-label', labelFor(w));
+      } else if (w.getAttribute('tabindex') === '0') {
+        w.removeAttribute('tabindex');
+        w.removeAttribute('aria-label');
+      }
+    });
+  }
+  window.addEventListener('resize', markScrollable);
+
   fetch(src, { cache: 'no-cache' }).then(r => {
     if (!r.ok) throw new Error('HTTP ' + r.status);
     return r.text();
   }).then(text => {
     main.innerHTML = '<div class="md">' + parseBlocks(text.replace(/\r/g, '').split('\n')) + '</div>';
+    markScrollable();
   }).catch(e => {
     main.innerHTML = '<p class="card">Could not load ' + esc(src) + ' (' + esc(e.message) + ').</p>';
   });

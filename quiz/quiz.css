@@ -13,9 +13,17 @@
   --human:#86c48f; --ai:#e39a86; --ok:#86c48f; --bad:#f08c7c; --focus:#f2b84b; --chip:#2a2824; --chart-bar:#898276; --bar-shadow:0 -8px 20px rgb(0 0 0 / .55);}
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
+/* While a round is in play the answer bar sticks to the bottom of the viewport;
+   reserve room for it so keyboard focus never lands behind it (WCAG 2.4.11).
+   The extra page padding (behind the stuck bar) gives short pages enough scroll
+   range for the footer links to reach the clear zone. */
+html.in-round{scroll-padding-bottom:220px}
+html.in-round .wrap{padding-bottom:calc(4rem + 220px)}
 body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 var(--sans)}
 a{color:var(--accent);overflow-wrap:anywhere}
 :focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+.skip{position:absolute;left:-999px}
+.skip:focus{left:16px;top:8px;background:var(--panel);padding:.3rem .5rem;z-index:20}
 .wrap{max-width:46rem;margin:0 auto;padding:0 16px 4rem}
 header.top{display:flex;align-items:center;justify-content:space-between;gap:.5rem 1rem;flex-wrap:wrap;padding:.8rem 0 .5rem;border-bottom:1px solid var(--line);margin-bottom:1.25rem}
 header.top a.home{font-weight:700;text-decoration:none;color:var(--ink);font-size:1.05rem;white-space:nowrap}
@@ -114,6 +122,8 @@ article.answered #ask{position:static;box-shadow:none}
 table.res{border-collapse:collapse;width:100%;font-size:.92rem;margin:.5rem 0}
 table.res th,table.res td{text-align:left;padding:.4rem .4rem;border-bottom:1px solid var(--line);vertical-align:top}
 table.res td.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+table.res .ok{color:var(--ok);font-weight:700}
+table.res .bad{color:var(--bad);font-weight:700}
 .meter{position:relative;height:10px;background:var(--line);border-radius:6px;min-width:4rem}
 .meter i{position:absolute;left:0;top:0;bottom:0;background:var(--accent);border-radius:6px}
 .meter b{position:absolute;left:50%;top:-3px;bottom:-3px;width:2px;background:var(--muted)}

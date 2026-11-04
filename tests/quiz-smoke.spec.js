@@ -1,4 +1,4 @@
-const { test, expect, load, assertNoOverflow } = require('./helpers');
+const { test, expect, load, assertNoOverflow, assertScrollableTables } = require('./helpers');
 
 async function activate(page, control) {
   await expect(control).toBeVisible();
@@ -69,6 +69,7 @@ for (const lang of ['en', 'cs']) {
     }
     await activate(page, page.locator('header a[href="#about"]'));
     await expect(page.locator('h1#about')).toBeVisible();
+    await assertScrollableTables(page);
     await expect(page.locator('main')).not.toContainText(/confidence|How sure|Jak moc si jste jistí|Podle vaší jistoty/i);
     await assertNoOverflow(page);
     const aboutLinks = await page.locator('main a[href]').evaluateAll(links =>

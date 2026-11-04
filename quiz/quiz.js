@@ -32,7 +32,7 @@
       historyUnscored: 'Unscored rounds leave gaps in the line.', historyNoScores: 'No scored answers yet.',
       byKind: 'By what it was', kind: 'Kind', origH: 'Human originals', origA: 'AI imitations', byCat: 'By category', cat: 'Category', cats: { literature: 'Literature & poetry', everyday: 'Everyday writing', images: 'Images' },
       byModel: 'AI imitations by model', model: 'Model', byEra: 'By era of the item', era: 'Era',
-      rightCol: 'Right', meterSr: 'Share right; the line marks 50 %', allRounds: (a, b, p) => `All your rounds in this browser so far: ${a} right out of ${b} (${p} %).`,
+      rightCol: 'Right', rightQ: 'Right?', meterSr: 'Share right; the line marks 50 %', allRounds: (a, b, p) => `All your rounds in this browser so far: ${a} right out of ${b} (${p} %).`,
       others: 'How others have done', review: 'Review this round', item: 'Item', youSaid: 'You said', knownShort: 'not scored',
       again: t => `Play another round: ${t}`, another: 'Choose another round', copy: 'Copy my result', copied: 'Copied',
       share: (t, ok, n) => `Human or AI? ${t}: ${ok}/${n}.`,
@@ -64,7 +64,7 @@
       historyUnscored: 'Kola bez skóre přerušují čáru v grafu.', historyNoScores: 'Zatím žádné započítané odpovědi.',
       byKind: 'Podle původu', kind: 'Původ', origH: 'Lidské originály', origA: 'Napodobeniny od AI', byCat: 'Podle kategorie', cat: 'Kategorie', cats: { literature: 'Literatura a poezie', everyday: 'Běžné texty', images: 'Obrázky' },
       byModel: 'Napodobeniny podle modelu', model: 'Model', byEra: 'Podle doby vzniku', era: 'Doba',
-      rightCol: 'Správně', meterSr: 'Podíl správných odpovědí; čára značí 50 %', allRounds: (a, b, p) => `Všechna vaše kola v tomto prohlížeči: ${a} správně z ${b} (${p} %).`,
+      rightCol: 'Správně', rightQ: 'Správně?', meterSr: 'Podíl správných odpovědí; čára značí 50 %', allRounds: (a, b, p) => `Všechna vaše kola v tomto prohlížeči: ${a} správně z ${b} (${p} %).`,
       others: 'Jak dopadli jiní', review: 'Přehled kola', item: 'Položka', youSaid: 'Vaše odpověď', knownShort: 'nepočítá se',
       again: t => `Další kolo: ${t}`, another: 'Vybrat jiné kolo', copy: 'Zkopírovat výsledek', copied: 'Zkopírováno',
       share: (t, ok, n) => `Člověk, nebo AI? ${t}: ${ok}/${n}.`,
@@ -218,6 +218,26 @@
     ? new Intl.DateTimeFormat(LANG === 'cs' ? 'cs-CZ' : 'en-GB').format(new Date(date + 'T12:00:00')) : date;
   function say(t) { live.textContent = ''; setTimeout(() => { live.textContent = t; }, 30); }
   function focusMain() { main.focus({ preventScroll: true }); window.scrollTo({ top: 0 }); }
+  /* Scrollable table regions need an explicit focus target (WCAG 2.1.1). */
+  function markScrollable(scope) {
+    function labelFor(w) {
+      const heads = [...(scope || document).querySelectorAll('h1, h2, h3, h4')]
+        .filter(h => h.compareDocumentPosition(w) & Node.DOCUMENT_POSITION_FOLLOWING);
+      const last = heads[heads.length - 1];
+      return last ? (LANG === 'cs' ? 'Tabulka: ' + last.textContent.trim() : last.textContent.trim().replace(/[.:\s]+$/, '') + ' table')
+        : (LANG === 'cs' ? 'Tabulka s daty' : 'Data table');
+    }
+    (scope || document).querySelectorAll('.tablewrap').forEach(w => {
+      if (w.scrollWidth > w.clientWidth + 1) {
+        if (w.getAttribute('tabindex') !== '0') w.setAttribute('tabindex', '0');
+        if (!w.getAttribute('aria-label')) w.setAttribute('aria-label', labelFor(w));
+      } else if (w.getAttribute('tabindex') === '0') {
+        w.removeAttribute('tabindex');
+        w.removeAttribute('aria-label');
+      }
+    });
+  }
+  window.addEventListener('resize', () => markScrollable(main));
 
   /* ---------- data ---------- */
   let DATA, ITEMS = {}, SETS = {};
@@ -236,9 +256,12 @@
     e.preventDefault();
     if (a.dataset.go === 'home') { if (location.hash) history.pushState(null, '', location.pathname); route(); } else location.hash = a.dataset.go;
   });
+  let routed = false;
   function route() {
     if (!DATA) return;
     const h = location.hash.slice(1);
+    if (h === 'main' && routed) return;  // skip link: the browser focuses #main itself
+    routed = true;
     if (h === 'about') return about();
     if (h.startsWith('play-')) { const r = DATA.rounds.find(x => x.id === h.slice(5)); if (r) return start(r); }
     home();
@@ -247,6 +270,7 @@
   /* ---------- home ---------- */
   function home() {
     game = null;
+    root.classList.remove('in-round');
     const hist = store.history.slice(-5).reverse();
     main.innerHTML = `
       <h1>${esc(T.title)}</h1>
@@ -263,10 +287,13 @@
     $('#startMixed').addEventListener('click', () => { const r = DATA.rounds.find(x => x.id === 'mixed') || DATA.rounds[0]; location.hash = 'play-' + r.id; });
     const f = $('#forget'); if (f) f.addEventListener('click', () => { store = { seen: {}, history: [], setsShown: {}, origSeen: {} }; save(store); home(); });
     document.title = T.doc;
+    markScrollable(main);
+    focusMain();
   }
 
   function about() {
     main.innerHTML = DATA.about_html.replace('<h1>', '<h1 id="about">') + `<p class="row"><button class="btn primary" type="button" data-go="home">${esc(T.back)}</button></p>`;
+    markScrollable(main);
     focusMain();
   }
 
@@ -302,12 +329,14 @@
   function start(round) {
     const d = draw(round);
     game = { round, ids: d.ids, exhausted: d.exhausted, i: 0, answers: [] };
+    root.classList.add('in-round');
     document.title = round.title + (LANG === 'cs' ? ' – ' : ' — ') + T.title;
     showItem();
   }
   function showItem() {
     const g = game, it = ITEMS[g.ids[g.i]], set = SETS[it.set];
     main.innerHTML = `
+      <h1 class="sr">${esc(T.title)}${LANG === 'cs' ? ' – ' : ' — '}${esc(g.round.title)}, ${esc(T.progress(g.i + 1, g.ids.length))}</h1>
       <div class="playhead">
         <div class="progress"><span>${esc(g.round.title)}</span><span>${esc(T.progress(g.i + 1, g.ids.length))}</span></div>
         <div class="bar" aria-hidden="true"><i style="width:${100 * g.i / g.ids.length}%"></i></div>
@@ -390,6 +419,7 @@
     const g = game;
     if (!g || !g.answers.length) return;
     game = null;
+    root.classList.remove('in-round');
     const scored = g.answers.filter(a => !a.known), ok = scored.filter(a => a.ok).length, n = scored.length;
     const date = new Date().toISOString().slice(0, 10);
     store.history.push({ round: g.round.id, title: g.round.title, date, ok, n, answers: g.answers.map(a => ({ id: a.id, ok: a.ok, known: a.known })) });
@@ -408,14 +438,15 @@
       <h2>${esc(T.others)}</h2>
       <ul class="studies">${DATA.studies.map(s => `<li>${md(s)}</li>`).join('')}</ul>
       <h2>${esc(T.review)}</h2>
-      <div class="tablewrap"><table class="res"><thead><tr><th>#</th><th>${esc(T.item)}</th><th>${esc(T.youSaid)}</th><th></th></tr></thead><tbody>${g.answers.map((a, k) => { const x = decode(ITEMS[a.id].x); return `
-        <tr><td class="num">${k + 1}</td><td><span class="badge ${a.h ? 'human' : 'ai'}">${esc(a.h ? T.badgeH : T.badgeA)}</span>${md(x.who)}</td><td>${esc(a.choice === 'human' ? T.human : T.ai)}</td><td>${a.known ? `<span class="small muted">${esc(T.knownShort)}</span>` : a.ok ? '✓' : '✗'}</td></tr>`; }).join('')}</tbody></table></div>
+      <div class="tablewrap"><table class="res"><thead><tr><th>#</th><th>${esc(T.item)}</th><th>${esc(T.youSaid)}</th><th>${esc(T.rightQ)}</th></tr></thead><tbody>${g.answers.map((a, k) => { const x = decode(ITEMS[a.id].x); return `
+        <tr><td class="num">${k + 1}</td><td><span class="badge ${a.h ? 'human' : 'ai'}">${esc(a.h ? T.badgeH : T.badgeA)}</span>${md(x.who)}</td><td>${esc(a.choice === 'human' ? T.human : T.ai)}</td><td>${a.known ? `<span class="small muted">${esc(T.knownShort)}</span>` : `<span class="${a.ok ? 'ok' : 'bad'}">${a.ok ? '✓' : '✗'}</span>`}</td></tr>`; }).join('')}</tbody></table></div>
       <div class="row">
         <button class="btn primary" type="button" id="again">${esc(T.again(g.round.title))}</button>
         <button class="btn" type="button" data-go="home">${esc(T.another)}</button>
         <button class="btn" type="button" id="copy">${esc(T.copy)}</button>
       </div>
       <p class="small muted">${T.learn}</p>`;
+    markScrollable(main);
     $('#again').addEventListener('click', () => start(g.round));
     $('#copy').addEventListener('click', e => {
       const t = `${T.share(g.round.title, ok, n)} ${verdict} ${location.href.split('#')[0]}`;

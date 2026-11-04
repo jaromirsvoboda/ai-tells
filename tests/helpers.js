@@ -43,6 +43,22 @@ async function expandAll(page) {
   await expect(page.locator('details.entry:not([data-filled])')).toHaveCount(0);
 }
 
+async function assertScrollableTables(page) {
+  // WCAG 2.1.1: a table region that scrolls horizontally must have an explicit
+  // focus target (tabindex) and an accessible name.
+  const wraps = await page.evaluate(() => [...document.querySelectorAll('.tablewrap')].map(w => ({
+    scrolls: w.scrollWidth > w.clientWidth + 1,
+    tabindex: w.getAttribute('tabindex'),
+    label: w.getAttribute('aria-label') || '',
+  })));
+  for (const w of wraps) {
+    if (w.scrolls) {
+      expect(w.tabindex, 'Scrolling table region must have tabindex="0"').toBe('0');
+      expect(w.label, 'Scrolling table region must have an aria-label').toBeTruthy();
+    }
+  }
+}
+
 async function assertNoOverflow(page) {
   const result = await page.evaluate(() => {
     const width = document.documentElement.clientWidth;
@@ -60,4 +76,4 @@ async function assertNoOverflow(page) {
   expect(result.oversized, 'Wide elements must be inside explicit horizontal scroll containers').toEqual([]);
 }
 
-module.exports = { test, expect, load, settle, expandAll, assertNoOverflow };
+module.exports = { test, expect, load, settle, expandAll, assertNoOverflow, assertScrollableTables };

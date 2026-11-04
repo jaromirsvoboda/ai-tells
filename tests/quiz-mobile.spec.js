@@ -1,4 +1,4 @@
-const { test, expect, load, assertNoOverflow } = require('./helpers');
+const { test, expect, load, assertNoOverflow, assertScrollableTables } = require('./helpers');
 const { readFileSync } = require('node:fs');
 const { join } = require('node:path');
 
@@ -65,6 +65,37 @@ test('quiz mobile: the playhead stays in sight while a long item scrolls', async
   expect(visible, 'Playhead (round name, item number, bar) must stay in the viewport').toBe(true);
 });
 
+test('quiz mobile: keyboard focus never lands behind the stuck answer bar', async ({ page, request }) => {
+  // WCAG 2.2 SC 2.4.11 regression: while the answer bar is stuck to the bottom
+  // of the viewport, focusing any control or link must land it in the clear
+  // zone above the bar, in both the question and the reveal phase.
+  await playLongItem(page, base, request, false);
+  for (const [answered, barSel] of [[false, '#ask'], [true, '.reveal .next']]) {
+    if (answered) {
+      // The shortcuts only fire while focus is inside #main (the footer links
+      // are outside it), so move focus back before answering.
+      await page.evaluate(() => document.querySelector('#main').focus());
+      await page.keyboard.press('h');
+    }
+    const obscured = await page.evaluate(barSel => {
+      const focusables = [...document.querySelectorAll('a[href], button:not([disabled]), input, select, summary, [tabindex]')]
+        .filter(el => el.offsetParent !== null && el.id !== 'main' && !el.closest('#ask') && !el.closest(barSel) && !el.closest('header'));
+      const bad = [];
+      for (const el of focusables) {
+        el.focus();
+        // The bar is sticky: measure it after each focus, not once up front.
+        const bar = document.querySelector(barSel).getBoundingClientRect();
+        if (bar.bottom < innerHeight - 1) continue;  // not stuck: nothing to obscure
+        const r = el.getBoundingClientRect();
+        if (r.bottom > bar.top && r.top < bar.bottom && r.right > 0 && r.left < innerWidth)
+          bad.push({ text: (el.textContent || '').trim().slice(0, 40), top: Math.round(r.top), bottom: Math.round(r.bottom), barTop: Math.round(bar.top) });
+      }
+      return bad;
+    }, barSel);
+    expect(obscured, `No control may be focused behind the stuck bar (answered=${answered})`).toEqual([]);
+  }
+});
+
 test('quiz mobile: an image item fits one screen with its answer bar', async ({ page, request }, testInfo) => {
   const { width } = testInfo.project.use.viewport;
   test.skip(width > 768, 'phone-sized check');
@@ -105,6 +136,7 @@ test(`md page ${pagePath} renders ${file} in the quiz styling`, async ({ page, r
     expect(info.blocks, 'Prompt blockquotes render').toBeGreaterThan(50);
   }
   if (file.endsWith('CREDITS.md')) expect(info.links, 'External links render').toBeGreaterThan(0);
+  await assertScrollableTables(page);
   // Same-origin links in the rendered document must resolve.
   const hrefs = await page.locator('.md a[href]').evaluateAll(nodes => [...new Set(nodes.map(a => a.getAttribute('href')))]);
   for (const href of hrefs) {

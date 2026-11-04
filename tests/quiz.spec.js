@@ -1,4 +1,4 @@
-const { test, expect, load, assertNoOverflow } = require('./helpers');
+const { test, expect, load, assertNoOverflow, assertScrollableTables } = require('./helpers');
 const { readFileSync } = require('node:fs');
 const { join } = require('node:path');
 const { runInNewContext } = require('node:vm');
@@ -141,9 +141,31 @@ for (const base of ['/quiz/', '/quiz/cs/']) {
 test.describe(base, () => {
 test('quiz: loads without console errors or horizontal overflow', async ({ page }) => {
   await load(page, base);
+  await expect(page.getByRole('button', { name: startName }).first()).toBeVisible();
+  expect(await page.evaluate(() => document.activeElement.id), 'Fresh home load must focus #main').toBe('main');
   await assertNoOverflow(page);
   await start(page);
   await assertNoOverflow(page);
+});
+
+test('quiz: item page has exactly one level-one heading', async ({ page, request }) => {
+  const { document } = await quizItems(request, base);
+  await page.route(`**${base}items.json`, route => route.fulfill({ json: isolatedFixture(document, document.items[0]) }));
+  await load(page, `${base}#play-mixed`);
+  await expect(page.getByRole('button', { name: humanName }).first()).toBeVisible();
+  const h1 = page.locator('h1');
+  await expect(h1, 'Item page must carry a (visually hidden) h1').toHaveCount(1);
+  await expect(h1).toHaveText(new RegExp(base.includes('/cs/') ? 'Člověk, nebo AI\\?' : 'Human or AI\\?'));
+});
+
+test('quiz: skip link focuses the content without resetting the route', async ({ page, request }) => {
+  const { document } = await quizItems(request, base);
+  await page.route(`**${base}items.json`, route => route.fulfill({ json: isolatedFixture(document, document.items[0]) }));
+  await load(page, `${base}#play-mixed`);
+  await expect(page.getByRole('button', { name: humanName }).first()).toBeVisible();
+  await page.getByRole('link', { name: base.includes('/cs/') ? 'Přeskočit na kvíz' : 'Skip to the quiz' }).evaluate(a => a.click());
+  expect(await page.evaluate(() => document.activeElement.id), 'Skip link must focus #main').toBe('main');
+  await expect(page.getByRole('button', { name: humanName }).first(), 'Item must survive the skip link').toBeVisible();
 });
 
 test('quiz: every referenced quiz/media resource returns 200', async ({ request, baseURL }) => {
@@ -296,6 +318,7 @@ test(`quiz: end early after ${count} answers${pending ? ' with the next item una
   await expect(end).toBeEnabled();
   await keyboardActivate(page, end);
   await expect(page.getByRole('heading', { name: /^(Your result|Váš výsledek)$/ })).toBeVisible();
+  await assertScrollableTables(page);
   await expect(page.locator('.score')).toHaveText(`0 / ${count}`);
   await expect(page.locator('.chance-graph .chance-bar')).toHaveCount(count + 1);
   await expect(page.locator('.chance-graph .player-bar')).toHaveAttribute('data-score', '0');

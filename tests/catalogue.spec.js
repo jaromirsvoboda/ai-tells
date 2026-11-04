@@ -1,6 +1,6 @@
 const fs = require('node:fs');
 const path = require('node:path');
-const { test, expect, load, settle, expandAll, assertNoOverflow } = require('./helpers');
+const { test, expect, load, settle, expandAll, assertNoOverflow, assertScrollableTables } = require('./helpers');
 const data = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'catalogue.json'), 'utf8'));
 const entries = data.entries;
 
@@ -88,8 +88,18 @@ test('direct hashes: 20 spread-out entries and every section, group and era', as
 test('no horizontal overflow with entries closed or open', async ({ page }) => {
   await load(page);
   await assertNoOverflow(page);
+  await assertScrollableTables(page);
   await expandAll(page);
   await assertNoOverflow(page);
+  await assertScrollableTables(page);
+});
+
+test('catalogue: heading levels never skip a level', async ({ page }) => {
+  await load(page);
+  const levels = await page.evaluate(() => [...document.querySelectorAll('h1, h2, h3, h4, h5, h6')].map(h => +h.tagName[1]));
+  for (let i = 1; i < levels.length; i++) {
+    expect(levels[i] - levels[i - 1], `Heading level ${levels[i - 1]} to ${levels[i]} skips a level`).toBeLessThanOrEqual(1);
+  }
 });
 
 test('console, network and external link hygiene', async ({ page, request }) => {
@@ -264,6 +274,9 @@ async function assertFocusIndicator(page) {
 }
 
 test('Tab order reaches filters then every summary; Enter and Space open entries', async ({ page }) => {
+  // ~500 awaited Tab presses with a round-trip each: this walk hovers around the
+  // default 120 s timeout on tablet/desktop widths (measured 114–126 s quiet).
+  test.setTimeout(300_000);
   await load(page);
   const expected = await page.locator('#filters select, #filters input, #f-reset, #f-open, details.entry > summary')
     .evaluateAll(nodes => nodes.map(el => el.id || (el.matches('summary') ? `${el.parentElement.id}:summary` : `status:${el.value}`)));

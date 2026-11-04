@@ -49,10 +49,10 @@ a:hover { text-decoration-thickness: 2px; }
 .measure { max-width: 42rem; }
 
 /* masthead */
-.mast { padding: 2.5rem 0 1.25rem; border-bottom: 3px solid var(--rule-strong); display: grid; gap: 0.5rem; }
+.mast { padding: 2.5rem 0 0; display: grid; gap: 0.5rem; }
 .mast h1 { font-size: clamp(3rem, 11vw, 6.5rem); line-height: 0.9; margin: 0; font-weight: 800; letter-spacing: -0.02em; }
 .mast .sub { font-size: 1.2rem; max-width: 36rem; margin: 0.4rem 0 0; color: var(--ink-2); }
-.imprint { font-size: 0.9rem; color: var(--ink-2); display: flex; flex-wrap: wrap; gap: 0.25rem 1.25rem; padding: 0.75rem 0; border-bottom: 1px solid var(--rule); }
+.imprint { font-size: 0.9rem; color: var(--ink-2); display: flex; flex-wrap: wrap; gap: 0.25rem 1.25rem; padding: 0.75rem 0; margin-top: 0.75rem; border-top: 3px solid var(--rule-strong); border-bottom: 1px solid var(--rule); }
 .imprint b { color: var(--ink); font-weight: 600; }
 .theme-toggle { font: inherit; font-size: 0.9rem; background: none; border: 0; padding: 0; color: var(--link); text-decoration: underline; cursor: pointer; }
 
@@ -127,6 +127,7 @@ summary .meta { grid-column: 2; font-size: 0.85rem; color: var(--ink-2); }
 details.entry[open] > summary .nm { font-weight: 800; }
 details.entry > summary:hover .nm { text-decoration: underline; text-decoration-thickness: 1px; }
 details.entry > summary:focus-visible { outline: 2px solid var(--link); outline-offset: 2px; }
+.tablewrap:focus-visible { outline: 2px solid var(--link); outline-offset: 2px; }
 .body { padding: 0 0 1rem 1.3rem; max-width: 44rem; }
 .body dl { margin: 0; display: grid; grid-template-columns: 1fr; }
 @media (min-width: 700px) { .body dl { grid-template-columns: 9.5rem minmax(0, 1fr); gap: 0 1rem; } }
@@ -159,7 +160,7 @@ mark { background: var(--hl); color: inherit; }
 @media (min-width: 760px) { .era { grid-template-columns: 9rem minmax(0, 1fr); } }
 .era .yrs { font-size: 1.6rem; font-weight: 800; line-height: 1.05; }
 .era .yrs small { display: block; font-size: 0.85rem; line-height: 1.35; font-weight: 400; color: var(--ink-2); margin-top: 0.35rem; }
-.era h4 { margin: 0.2rem 0 0.25rem; font-size: 1rem; }
+.era h3 { margin: 0.2rem 0 0.25rem; font-size: 1rem; }
 .era ul { margin: 0.1rem 0 0.6rem; padding-left: 1.1rem; }
 .era li { margin: 0.12rem 0; }
 .era ul.tells { list-style: none; padding-left: 0; columns: 2 15rem; column-gap: 1.5rem; }
@@ -203,15 +204,15 @@ footer { margin-top: 3rem; border-top: 3px solid var(--rule-strong); padding-top
 <header class="mast">
   <h1>AI tells</h1>
   <p class="sub">A dated catalogue of the signs that give machine-made text, pictures, video, sound, design and code away, and of the signs that stopped working.</p>
+  <div class="imprint">
+    <span>Compiled by <b>Jaromír Svoboda</b> with AI research assistants (Claude, Codex, Gemini, Qwen); every claim links to its source.</span>
+    <span>Last updated <b>1 November 2026</b></span>
+    <span><b id="n-entries">207</b> entries</span>
+    <span><a href="quiz/">Take the quiz: human or machine?</a></span>
+    <span><a href="catalogue.json">Data (JSON)</a></span>
+    <button class="theme-toggle" id="theme-toggle" type="button">Dark page</button>
+  </div>
 </header>
-<div class="imprint">
-  <span>Compiled by <b>Jaromír Svoboda</b> with AI research assistants (Claude, Codex, Gemini, Qwen); every claim links to its source.</span>
-  <span>Last updated <b>1 November 2026</b></span>
-  <span><b id="n-entries">207</b> entries</span>
-  <span><a href="quiz/">Take the quiz: human or machine?</a></span>
-  <span><a href="catalogue.json">Data (JSON)</a></span>
-  <button class="theme-toggle" id="theme-toggle" type="button">Dark page</button>
-</div>
 
 <main>
 <section class="part" id="about">
@@ -235,7 +236,7 @@ footer { margin-top: 3rem; border-top: 3px solid var(--rule-strong); padding-top
         <li><a href="#avoid">Not looking machine-made</a></li>
         <li><a href="#method">Method and sources</a></li>
       </ol>
-      <p class="mods">By medium: <a href="#text">text</a>, <a href="#chat">chat leftovers</a>, <a href="#images">images</a>, <a href="#video">video</a>, <a href="#audio">voice and music</a>, <a href="#design">design and slides</a>, <a href="#code">code</a>, <a href="#languages">other languages</a>, <a href="#czech">czech</a></p>
+      <p class="mods">By medium: <a href="#text">text</a>, <a href="#chat">chat leftovers</a>, <a href="#images">images</a>, <a href="#video">video</a>, <a href="#audio">voice and music</a>, <a href="#design">design and slides</a>, <a href="#code">code</a>, <a href="#languages">other languages</a>, <a href="#czech">Czech</a></p>
     </nav>
   </div>
 </section>
@@ -260,7 +261,7 @@ footer { margin-top: 3rem; border-top: 3px solid var(--rule-strong); padding-top
     <p>Filter by medium, theme, status and strength of evidence, or search for a word, a model or a year. Click an entry to open it. <em>Strong</em> evidence means peer-reviewed or large measured studies, or a vendor documenting its own product; <em>moderate</em> means a single study, a preprint, careful journalism or several independent practitioners; <em>weak</em> means one practitioner or vendor blog; <em>anecdotal</em> means forum posts or single examples.</p>
 <p>Many entries show an example. Where possible it is a real case: an image or video from Wikimedia Commons, or an edit quoted in Wikipedia’s guide to AI writing, with the tell outlined or highlighted. Where no licensed real case exists, the example is labelled as a mock-up made for this catalogue (for design patterns) or as output generated for it on 1 November 2026 with the model named; obsolete tells are shown with historical outputs where any survive. The one exception, the strawberry miscount, is a reconstruction and is labelled as one. Credits are in <a href="examples/CREDITS.md">examples/CREDITS.md</a>.</p>
 
-    <div class="key" aria-label="Status key">
+    <div class="key" role="group" aria-label="Status key">
       <span><span class="st current" aria-hidden="true"></span>current: still seen in 2026 output</span>
       <span><span class="st fading" aria-hidden="true"></span>fading: rarer in the newest models, still common in older or cheaper ones</span>
       <span><span class="st obsolete" aria-hidden="true"></span>obsolete: fixed; do not rely on it</span>
@@ -712,7 +713,7 @@ footer { margin-top: 3rem; border-top: 3px solid var(--rule-strong); padding-top
     right.appendChild(el("p", { text: er.summary }));
     function list(title, ids) {
       if (!ids || !ids.length) return;
-      right.appendChild(el("h4", { text: title }));
+      right.appendChild(el("h3", { text: title }));
       var ul = el("ul", { "class": "tells" });
       ids.forEach(function (x) {
         var id = typeof x === "string" ? x : x.id, note = typeof x === "string" ? "" : x.note, e = byId[id];
@@ -724,7 +725,7 @@ footer { margin-top: 3rem; border-top: 3px solid var(--rule-strong); padding-top
     }
     list("Tells of the period", er.tells);
     if (er.fixes && er.fixes.length) {
-      right.appendChild(el("h4", { text: "What changed" }));
+      right.appendChild(el("h3", { text: "What changed" }));
       var ul2 = el("ul"); er.fixes.forEach(function (f) { ul2.appendChild(el("li", { text: f })); }); right.appendChild(ul2);
     }
     box.appendChild(right); erasEl.appendChild(box);
@@ -774,6 +775,28 @@ footer { margin-top: 3rem; border-top: 3px solid var(--rule-strong); padding-top
      tr.appendChild(el("td", { text: e.fixed_by || e.status_note || "" }));
      tb.appendChild(tr);
    });
+
+  /* scrollable table regions need an explicit focus target (WCAG 2.1.1) */
+  function markScrollable() {
+    function labelFor(w) {
+      var heads = document.querySelectorAll("h1, h2, h3, h4");
+      var last = null;
+      heads.forEach(function (h) { if (h.compareDocumentPosition(w) & Node.DOCUMENT_POSITION_FOLLOWING) last = h; });
+      return last ? last.textContent.trim().replace(/[.:\s]+$/, "") + " table" : "Data table";
+    }
+    document.querySelectorAll(".tablewrap").forEach(function (w) {
+      if (w.scrollWidth > w.clientWidth + 1) {
+        if (w.getAttribute("tabindex") !== "0") w.setAttribute("tabindex", "0");
+        if (!w.getAttribute("aria-label")) w.setAttribute("aria-label", labelFor(w));
+      } else if (w.getAttribute("tabindex") === "0") {
+        w.removeAttribute("tabindex");
+        w.removeAttribute("aria-label");
+      }
+    });
+  }
+  markScrollable();
+  window.addEventListener("resize", markScrollable);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(markScrollable);
 
   /* deep links: open an entry, or clear filters for a medium anchor */
   function onHash() {
