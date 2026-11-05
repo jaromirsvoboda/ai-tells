@@ -45,14 +45,16 @@ async function expandAll(page) {
 
 async function assertScrollableTables(page) {
   // WCAG 2.1.1: a table region that scrolls horizontally must have an explicit
-  // focus target (tabindex) and an accessible name.
+  // focus target (tabindex), region role and an accessible name.
   const wraps = await page.evaluate(() => [...document.querySelectorAll('.tablewrap')].map(w => ({
     scrolls: w.scrollWidth > w.clientWidth + 1,
     tabindex: w.getAttribute('tabindex'),
     label: w.getAttribute('aria-label') || '',
+    role: w.getAttribute('role'),
   })));
   for (const w of wraps) {
     if (w.scrolls) {
+      expect(w.role, 'Scrolling table region must have role="region"').toBe('region');
       expect(w.tabindex, 'Scrolling table region must have tabindex="0"').toBe('0');
       expect(w.label, 'Scrolling table region must have an aria-label').toBeTruthy();
     }

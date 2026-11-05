@@ -12,7 +12,7 @@
 
   let theme = null;
   try { theme = localStorage.getItem('human-or-ai/theme'); } catch (e) { /* private mode */ }
-  if (theme) root.dataset.theme = theme;
+  if (theme === 'light' || theme === 'dark') root.dataset.theme = theme;
   const tbtn = document.getElementById('theme');
   if (tbtn) tbtn.addEventListener('click', () => {
     const dark = root.dataset.theme ? root.dataset.theme === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
@@ -20,13 +20,17 @@
     try { localStorage.setItem('human-or-ai/theme', root.dataset.theme); } catch (e) { /* ignore */ }
   });
 
-  const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+  const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  const allowedURL = u => {
+    const scheme = String(u).replace(/[\u0000-\u0020]/g, '').match(/^([a-z][a-z0-9+.-]*):/i);
+    return !scheme || /^(?:https?|mailto|tel)$/i.test(scheme[1]);
+  };
   function inline(s) {
     const codes = [];
     s = String(s).replace(/`([^`]+)`/g, (m, c) => { codes.push(c); return '\u0000' + (codes.length - 1) + '\u0000'; });
     s = esc(s);
     s = s.replace(/\*\*([^*]+)\*\*/g, '<b>$1</b>').replace(/\*([^*]+)\*/g, '<em>$1</em>');
-    s = s.replace(/\[([^\]]+)\]\(([^)\s]+)\)/g, (m, l, u) => '<a href="' + u + '"' + (/^https?:/.test(u) ? ' rel="noopener"' : '') + '>' + l + '</a>');
+    s = s.replace(/\[([^\]]+)\]\(((?:[^()\s]|\([^()\s]*\))+)\)/g, (m, l, u) => allowedURL(u) ? '<a href="' + u + '"' + (/^(?:https?:|\/\/)/i.test(u) ? ' rel="noopener"' : '') + '>' + l + '</a>' : l);
     return s.replace(/\u0000(\d+)\u0000/g, (m, i) => '<code>' + esc(codes[+i]) + '</code>');
   }
 
@@ -43,24 +47,27 @@
   }
 
   function listHTML(lines, i, ordered) {
-    const itemRe = ordered ? /^(\d+)\.\s+(.*)$/ : /^[-*]\s+(.*)$/;
-    let n = 0, start = 0;
+    const itemRe = ordered ? /^\s*(\d+)\.\s+(.*)$/ : /^\s*[-*]\s+(.*)$/;
+    let n = 0, start = 0, ws = 0;
     const items = [];
     while (i < lines.length) {
       const m = lines[i].match(itemRe);
       if (!m) break;
+      if (!n) ws = lines[i].match(/^\s*/)[0].length;
       if (ordered) { if (!n && +m[1] !== 1) start = +m[1]; n++; }
       const inner = [ordered ? m[2] : m[1]];
       i++;
-      // Continuation lines are indented two or more spaces; a blank line belongs
-      // to the item only if indented content follows it.
+      // Continuation lines are indented past the item marker (its indent plus
+      // two); a line indented only to the marker level starts a new list. A
+      // blank line belongs to the item only if such content follows it.
+      const contRe = new RegExp('^\\s{' + (ws + 2) + ',}\\S');
       while (i < lines.length) {
         if (!lines[i].trim()) {
           let j = i;
           while (j < lines.length && !lines[j].trim()) j++;
-          if (j < lines.length && /^\s{2,}/.test(lines[j])) { inner.push(''); i = j; }
+          if (j < lines.length && contRe.test(lines[j])) { inner.push(''); i = j; }
           else break;
-        } else if (/^\s{2,}\S/.test(lines[i])) { inner.push(lines[i].replace(/^\s{2}/, '')); i++; }
+        } else if (contRe.test(lines[i])) { inner.push(lines[i].replace(/^\s{2}/, '')); i++; }
         else break;
       }
       items.push('<li>' + parseBlocks(inner) + '</li>');
@@ -115,9 +122,11 @@
       if (w.scrollWidth > w.clientWidth + 1) {
         if (w.getAttribute('tabindex') !== '0') w.setAttribute('tabindex', '0');
         if (!w.getAttribute('aria-label')) w.setAttribute('aria-label', labelFor(w));
+        w.setAttribute('role', 'region');
       } else if (w.getAttribute('tabindex') === '0') {
         w.removeAttribute('tabindex');
         w.removeAttribute('aria-label');
+        w.removeAttribute('role');
       }
     });
   }

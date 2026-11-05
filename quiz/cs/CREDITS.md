@@ -10,7 +10,7 @@ Obrázky od AI vznikly generátorem obrázků OpenAI přes Codex CLI podle slovn
 
 Osm nových plakátových dvojic zahrnuje osvětové a výstavní plakáty WPA, etiketu na citrusy a moderní grafický návrh. Protějšky od AI jsou první z nejvýše šesti pokusů, které prošly úplnou kontrolou v plném rozlišení včetně rukou, písma, mechanických souvislostí a jmen; u každého uvádíme číslo pokusu. Při slepé kontrole, v níž každý hodnotitel viděl jen jeden obrázek z každé sady, označil Codex gpt-6.1-sol za AI 3 z 8 plakátů od AI s jistotou 60–67 % a Gemini 3.8 Flash žádný; žádný z nich neoznačil lidský plakát za AI. Dřívější verze oba hodnotitelé rozpoznali a následovalo nové generování.
 
-Údaje o zdrojích a licencích přebíráme z uložených podkladů. U některých textů není ověřené první vydání. Malý počet sad, znalost originálů a opakované vybírání omezují, co lze ze skóre vyvozovat. Aktuální výsledky včetně tří textových výsledků nad 62 % při vynechávání celých sad uvádí [zpráva o férovosti](../fairness.md).
+Údaje o zdrojích a licencích přebíráme z uložených podkladů. U některých textů není ověřené první vydání. Malý počet sad, znalost originálů a opakované vybírání omezují, co lze ze skóre vyvozovat. Aktuální výsledky včetně tří textových výsledků nad 62 % při vynechávání celých sad uvádí [zpráva o férovosti](../fairness.html).
 
 Anglický kvíz obsahuje také původní odpovědi ChatGPT z prosince 2022: Guo a kol. (2023), [korpus HC3](https://huggingface.co/datasets/Hello-SimpleAI/HC3), [arXiv:2301.07597](https://arxiv.org/abs/2301.07597), CC BY-SA 4.0.
 

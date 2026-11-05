@@ -4,11 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Člověk, nebo AI? – kvíz</title>
-<meta name="description" content="Poznáte pravou báseň, úryvek nebo obrázek od napodobeniny z umělé inteligence? Česká literatura a poezie, běžné texty a obrázky. Bez sledování.">
+<meta name="description" content="Poznáte pravou báseň, úryvek nebo obrázek od napodobeniny z umělé inteligence? Odpovědi zůstávají v prohlížeči, web vede anonymní počty návštěv a kol.">
 <meta name="color-scheme" content="light dark">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23233'/%3E%3Ctext x='16' y='22' font-size='16' text-anchor='middle' fill='%23fff' font-family='sans-serif'%3E%3F%3C/text%3E%3C/svg%3E">
 <link rel="alternate" hreflang="en" href="../">
 <link rel="stylesheet" href="../quiz.css">
+<script defer src="/usage-counts.js"></script>
 </head>
 <body>
 <a class="skip" href="#main">Přeskočit na kvíz</a>
@@ -23,17 +24,25 @@
   </nav>
 </header>
 <main id="main" tabindex="-1">
-  <noscript><p class="card">Kvíz potřebuje JavaScript. Běží celý ve vašem prohlížeči a nikam nic neposílá.</p></noscript>
+  <noscript><p class="card">Kvíz potřebuje JavaScript. Odpovědi a výsledky zůstávají ve vašem prohlížeči.</p></noscript>
   <p class="muted">Načítám kvíz…</p>
 </main>
 <footer>
-  <p>Žádné sledování, cookies ani účty: kvíz běží ve vašem prohlížeči a výsledky si ukládá jen do jeho místního úložiště.
+  <p>Bez účtů. Odpovědi a výsledky zůstávají v místním úložišti tohoto prohlížeče. Anonymní statistiky počítají zobrazení stránek, zdroje návštěv a zahájená či dokončená kola.
   Lidské texty a obrázky jsou volná díla nebo díla s licencí Creative Commons, u každého je uveden zdroj a celý seznam je v souboru <a href="CREDITS.html">CREDITS.md</a>.
-  Většinu napodobenin od AI jsme vytvořili pro tento kvíz (u každé uvádíme model, datum a přesné zadání); starší obrázky od AI pocházejí z Wikimedia Commons.
+  Většinu napodobenin od AI jsme vytvořili pro tento kvíz (u každé uvádíme model, datum a přesné zadání).
   Sestavil Jaromír Svoboda s pomocí výzkumných asistentů AI. <a href="https://github.com/jaromirsvoboda/ai-tells">Zdrojový kód</a>.</p>
+  <p>Tento web vede anonymní statistiky návštěv (počty zobrazení stránek a odkud návštěvníci přišli). Bez cookies a osobních údajů. <a href="/privacy/#cesky">Co se počítá</a>.</p>
 </footer>
 </div>
 <div id="live" class="sr" aria-live="polite"></div>
+<script>
+if (typeof BigInt !== 'undefined') {
+  const odds = document.createElement('script');
+  odds.src = '../quiz-bignum.js';
+  document.head.appendChild(odds);
+}
+</script>
 <script src="../quiz.js"></script>
 </body>
 </html>

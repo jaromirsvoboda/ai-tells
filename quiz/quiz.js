@@ -1,5 +1,7 @@
 /* Human or AI? / Člověk, nebo AI? — static quiz shared by quiz/ (English) and quiz/cs/ (Czech).
-   No network calls except this folder's items.json and media. Answers and history stay in this browser's localStorage. */
+   No network calls except this folder's items.json and media, plus the anonymous counts from the
+   locally served /usage-counts.js reporter (see /privacy/ on the origin). Answers and history stay
+   in this browser's localStorage. */
 (function () {
   'use strict';
   const $ = (s, el = document) => el.querySelector(s);
@@ -7,7 +9,7 @@
   const LANG = document.documentElement.lang === 'cs' ? 'cs' : 'en';
   const T = {
     en: {
-      title: 'Human or AI?', doc: 'Human or AI? — a quiz', loadErr: 'Could not load the quiz items', start: 'Start: a mixed round',
+      title: 'Human or AI?', doc: 'Human or AI? — a quiz', loadErr: 'Could not load the quiz. Check your connection and try again.', retry: 'Retry', unavailable: 'Picture unavailable.', skip: 'Picture unavailable: skip this item', notScoredUnavailable: '(picture unavailable: not scored)', start: 'Start: a mixed round',
       lede: 'Each item is either the real thing — a poem or a passage by a great writer, a Wikipedia paragraph, a forum answer, a photograph — or an imitation that an AI model wrote or drew for the same slot. Decide which. Then see who or what made it, and why it is hard or what gives it away.',
       choose: 'Or choose a round', items: n => `${n} items`, recent: 'Your recent rounds', round: 'Round', date: 'Date', score: 'Score', forget: 'Forget my history in this browser',
       poolNote: (ni, n) => `${ni} items in ${n} matched sets. A round draws one item from each of several sets; a coin flip decides whether you see the original or an AI imitation. The split need not be even, so counting will not help. New rounds show sets you have not seen first.`,
@@ -39,7 +41,7 @@
       learn: 'Want to learn the tells? The <a href="../">catalogue of AI tells</a> lists them by medium and by when they appeared.', back: 'Back to the rounds',
     },
     cs: {
-      title: 'Člověk, nebo AI?', doc: 'Člověk, nebo AI? – kvíz', loadErr: 'Nepodařilo se načíst položky kvízu', start: 'Začít: smíšené kolo',
+      title: 'Člověk, nebo AI?', doc: 'Člověk, nebo AI? – kvíz', loadErr: 'Kvíz se nepodařilo načíst. Zkontrolujte připojení a zkuste to znovu.', retry: 'Zkusit znovu', unavailable: 'Obrázek není dostupný.', skip: 'Obrázek není dostupný: přeskočit položku', notScoredUnavailable: '(obrázek není dostupný, nepočítá se)', start: 'Začít: smíšené kolo',
       lede: 'Každá položka je buď pravá (báseň nebo úryvek od velkého autora, heslo z Wikipedie, zpráva, fotka), anebo napodobenina, kterou pro stejný námět vytvořila umělá inteligence. Poznáte, co je co? Hned potom uvidíte, kdo nebo co položku vytvořilo a čím se prozradí, případně proč je těžké to poznat.',
       choose: 'Nebo si vyberte kolo', items: n => `${n} položek`, recent: 'Vaše poslední kola', round: 'Kolo', date: 'Datum', score: 'Skóre', forget: 'Smazat moji historii v tomto prohlížeči',
       poolNote: (ni, n) => `${ni} položek v ${n} sadách. Kolo vybere po jedné položce z několika sad a o tom, jestli uvidíte originál, nebo napodobeninu, rozhodne hod mincí. Poměr nemusí vyjít půl na půl a počítat se nevyplatí. Nová kola dávají přednost sadám, které jste ještě neviděli.`,
@@ -84,14 +86,48 @@
 
   /* ---------- storage (optional: everything works without it) ---------- */
   const KEY = 'human-or-ai/v2/' + LANG;
-  function load() { try { return JSON.parse(localStorage.getItem(KEY)) || {}; } catch (e) { return {}; } }
+  // Cap allocations made by probability charts and keep the existing 200-round history.
+  const MAX_ROUND_ITEMS = 100, MAX_HISTORY = 200;
+  const isObject = v => Object.prototype.toString.call(v) === '[object Object]';
+  const integer = (v, max) => Number.isInteger(v) && v >= 0 && v <= max;
+  const freshStore = () => ({ seen: {}, history: [], setsShown: {}, origSeen: {} });
+  function calendarDate(v) {
+    if (typeof v !== 'string' || !/^\d{4}-\d{2}-\d{2}$/.test(v)) return false;
+    const date = new Date(v + 'T12:00:00Z');
+    return Number.isFinite(date.getTime()) && date.toISOString().slice(0, 10) === v;
+  }
+  function load() {
+    try {
+      const v = JSON.parse(localStorage.getItem(KEY));
+      if (!isObject(v)) return freshStore();
+      const clean = freshStore();
+      for (const key of ['seen', 'setsShown', 'origSeen']) {
+        if (isObject(v[key])) clean[key] = Object.fromEntries(Object.entries(v[key])
+          .filter(([id, count]) => id.length <= 200 && integer(count, 1000000000)));
+      }
+      if (Array.isArray(v.history)) clean.history = v.history.filter(h => isObject(h) &&
+        integer(h.n, MAX_ROUND_ITEMS) && integer(h.ok, h.n) && calendarDate(h.date))
+        .slice(-MAX_HISTORY).map(h => ({
+          round: typeof h.round === 'string' ? h.round.slice(0, 200) : '',
+          title: typeof h.title === 'string' ? h.title.slice(0, 200) : '',
+          date: h.date, ok: h.ok, n: h.n,
+          answers: Array.isArray(h.answers) ? h.answers.slice(0, MAX_ROUND_ITEMS)
+            .filter(a => isObject(a) && typeof a.id === 'string' && a.id.length <= 200 &&
+              typeof a.ok === 'boolean' && typeof a.known === 'boolean')
+            .map(a => ({ id: a.id, ok: a.ok, known: a.known })) : [],
+        }));
+      // Validate against the fetched data before trying to resume.
+      if (Object.prototype.hasOwnProperty.call(v, 'active')) clean.active = v.active;
+      return clean;
+    } catch (e) { return freshStore(); }
+  }
   function save(s) { try { localStorage.setItem(KEY, JSON.stringify(s)); } catch (e) { /* private mode */ } }
-  let store = load(); store.seen = store.seen || {}; store.history = store.history || []; store.setsShown = store.setsShown || {}; store.origSeen = store.origSeen || {};
+  let store = load();
 
   /* ---------- theme ---------- */
   const root = document.documentElement;
   let theme = null; try { theme = localStorage.getItem('human-or-ai/theme'); } catch (e) { /* ignore */ }
-  if (theme) root.dataset.theme = theme;
+  if (theme === 'light' || theme === 'dark') root.dataset.theme = theme;
   $('#theme').addEventListener('click', () => {
     const dark = root.dataset.theme ? root.dataset.theme === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
     root.dataset.theme = dark ? 'light' : 'dark';
@@ -100,22 +136,26 @@
 
   /* ---------- helpers ---------- */
   const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
-  const md = s => esc(s).replace(/\[([^\]]+)\]\(((?:[^()\s]|\([^()\s]*\))+)\)/g, (m, l, u) => `<a href="${u}"${/^https?:/.test(u) ? ' rel="noopener"' : ''}>${l}</a>`)
+  const allowedURL = u => {
+    const scheme = String(u).replace(/[\u0000-\u0020]/g, '').match(/^([a-z][a-z0-9+.-]*):/i);
+    return !scheme || /^(?:https?|mailto|tel)$/i.test(scheme[1]);
+  };
+  const md = s => esc(s).replace(/\[([^\]]+)\]\(((?:[^()\s]|\([^()\s]*\))+)\)/g, (m, l, u) => allowedURL(u) ? `<a href="${u}"${/^(?:https?:|\/\/)/i.test(u) ? ' rel="noopener"' : ''}>${l}</a>` : l)
     .replace(/\*\*([^*]+)\*\*/g, '<b>$1</b>').replace(/\*([^*]+)\*/g, '<em>$1</em>');
   const plain = s => String(s).replace(/\*+/g, '').replace(/\[([^\]]+)\]\([^)]*\)/g, '$1');
   const shuffle = a => { for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
   function decode(x) { const b = atob(x), u = new Uint8Array(b.length); for (let i = 0; i < b.length; i++) u[i] = b.charCodeAt(i); return JSON.parse(new TextDecoder().decode(u)); }
   function textHTML(it) {
-    if (it.form === 'poem') return `<div class="text poem" lang="${it.lang}">${it.text.split(/\n\n+/).map(st => `<p class="st">${st.split('\n').map(l => `<span class="l">${esc(l)}</span>`).join('')}</p>`).join('')}</div>`;
-    return `<div class="text" lang="${it.lang}">${it.text.split(/\n\n+/).map(p => `<p>${esc(p)}</p>`).join('')}</div>`;
+    if (it.form === 'poem') return `<div class="text poem" lang="${esc(it.lang)}">${it.text.split(/\n\n+/).map(st => `<p class="st">${st.split('\n').map(l => `<span class="l">${esc(l)}</span>`).join('')}</p>`).join('')}</div>`;
+    return `<div class="text" lang="${esc(it.lang)}">${it.text.split(/\n\n+/).map(p => `<p>${esc(p)}</p>`).join('')}</div>`;
   }
   function contentHTML(it) {
-    if (it.mod === 'image') return `<figure class="img"><img src="${esc(it.img)}" alt="${esc(it.alt)}" width="${it.w}" height="${it.h}" decoding="async"></figure>`;
+    if (it.mod === 'image') return `<figure class="img"><img src="${esc(it.img)}" alt="${esc(it.alt)}" width="${esc(it.w)}" height="${esc(it.h)}" decoding="async"></figure>`;
     return textHTML(it);
   }
   function binomialTail(k, n) {
     // Pooled histories can exceed the range of unscaled binomial coefficients.
-    if (n > 1000) return binomialDistribution(n).slice(k).reduce((sum, p) => sum + p, 0);
+    if (n > 1000 || typeof window.exactChanceValues !== 'function') return binomialDistribution(n).slice(k).reduce((sum, p) => sum + p, 0);
     let combinations = 1, tail = 0;
     for (let j = 0; j <= n; j++) {
       if (j >= k) tail += combinations;
@@ -125,24 +165,12 @@
   }
   function chanceMessage(k, n) {
     const probability = binomialTail(k, n), locale = LANG === 'cs' ? 'cs-CZ' : 'en-GB';
-    const extreme = Number.isFinite(1 / probability) ? null : exactChanceValues(k, n);
+    const extreme = Number.isFinite(1 / probability) || typeof window.exactChanceValues !== 'function' ? null : window.exactChanceValues(k, n);
     const percent = new Intl.NumberFormat(locale, { maximumSignificantDigits: 2 }).format(extreme ? extreme.percent : 100 * probability);
     // Common outcomes read more clearly as a percentage than as "1 in 1".
-    const odds = probability > 0.5 ? `${percent}\u00a0%`
+    const odds = !extreme && !Number.isFinite(1 / probability) ? (LANG === 'cs' ? 'méně než 10⁻³⁰⁰\u00a0%' : 'less than 10⁻³⁰⁰\u00a0%') : probability > 0.5 ? `${percent}\u00a0%`
       : T.odds(new Intl.NumberFormat(locale).format(extreme ? extreme.oneIn : Math.round(1 / probability)), percent);
     return T.chance(k, n, odds);
-  }
-  function exactChanceValues(k, n) {
-    // Only extreme pooled tails need BigInt. Keep the existing number formats,
-    // including a nonzero decimal percentage when Number would underflow.
-    let combinations = 1n, tail = 0n;
-    for (let j = n; j >= k; j--) {
-      tail += combinations;
-      combinations = combinations * BigInt(j) / BigInt(n - j + 1);
-    }
-    const outcomes = 2n ** BigInt(n);
-    const digits = (100n * tail * 5n ** BigInt(n)).toString().padStart(n + 1, '0');
-    return { oneIn: (outcomes + tail / 2n) / tail, percent: `${digits.slice(0, -n)}.${digits.slice(-n)}` };
   }
   function binomialDistribution(n) {
     // Start at the mode, then normalise. This is the same exact binomial
@@ -231,24 +259,49 @@
       if (w.scrollWidth > w.clientWidth + 1) {
         if (w.getAttribute('tabindex') !== '0') w.setAttribute('tabindex', '0');
         if (!w.getAttribute('aria-label')) w.setAttribute('aria-label', labelFor(w));
+        w.setAttribute('role', 'region');
       } else if (w.getAttribute('tabindex') === '0') {
         w.removeAttribute('tabindex');
         w.removeAttribute('aria-label');
+        w.removeAttribute('role');
       }
     });
   }
   window.addEventListener('resize', () => markScrollable(main));
 
   /* ---------- data ---------- */
-  let DATA, ITEMS = {}, SETS = {};
-  fetch('items.json', { cache: 'no-cache' }).then(r => r.json()).then(d => {
-    DATA = d;
-    d.items.forEach(i => { ITEMS[i.id] = i; i.h = decode(i.x).kind === 'human'; });  // in memory only
-    // tolerate partial data: keep only members that exist
-    d.sets = d.sets.map(s => Object.assign({}, s, { members: s.members.filter(m => ITEMS[m]) })).filter(s => s.members.length);
-    d.sets.forEach(s => { SETS[s.id] = s; });
-    route();
-  }).catch(e => { main.innerHTML = `<p class="card">${esc(T.loadErr)} (${esc(e.message)}).</p>`; });
+  let DATA, ITEMS = Object.create(null), SETS = Object.create(null);
+  function fetchItems() {
+    main.innerHTML = `<p class="muted">${esc(T.title)}…</p>`;
+    fetch('items.json', { cache: 'no-cache' }).then(r => {
+      if (!r.ok) throw new Error('HTTP ' + r.status);
+      return r.json();
+    }).then(d => {
+      ITEMS = Object.create(null); SETS = Object.create(null);
+      d.items.forEach(i => { ITEMS[i.id] = i; i.human = decode(i.x).kind === 'human'; });
+      // tolerate partial data: keep only members that exist
+      d.sets = d.sets.map(s => Object.assign({}, s, { members: s.members.filter(m => ITEMS[m]) })).filter(s => s.members.length);
+      d.sets.forEach(s => { SETS[s.id] = s; });
+      DATA = d;
+      if (Object.prototype.hasOwnProperty.call(store, 'active')) {
+        const resumed = restoreRound(store.active);
+        if (resumed) {
+          game = resumed;
+          history.replaceState(null, '', location.pathname + location.search + '#play-' + encodeURIComponent(game.round.id));
+          routed = true;
+          enterRound(); showItem(); return;
+        }
+        delete store.active; save(store);
+        history.replaceState(null, '', location.pathname + location.search);
+      }
+      route();
+    }).catch(() => {
+      DATA = null;
+      main.innerHTML = `<div class="card"><p>${esc(T.loadErr)}</p><button class="btn primary" type="button" id="retryLoad">${esc(T.retry)}</button></div>`;
+      $('#retryLoad').addEventListener('click', fetchItems);
+    });
+  }
+  fetchItems();
 
   window.addEventListener('hashchange', route);
   document.addEventListener('click', e => {
@@ -270,6 +323,7 @@
   /* ---------- home ---------- */
   function home() {
     game = null;
+    delete store.active; save(store);
     root.classList.remove('in-round');
     const hist = store.history.slice(-5).reverse();
     main.innerHTML = `
@@ -278,10 +332,10 @@
       <p class="row"><button class="btn primary" type="button" id="startMixed">${esc(T.start)}</button></p>
       <h2>${esc(T.choose)}</h2>
       <div class="rounds">${DATA.rounds.map(r => `
-        <button class="round" type="button" data-round="${r.id}"><b>${esc(r.title)}</b><span>${esc(r.blurb)}</span><br><span class="tag">${esc(T.items(roundSize(r)))} · ${esc(r.tag)}</span></button>`).join('')}
+        <button class="round" type="button" data-round="${esc(r.id)}"><b>${esc(r.title)}</b><span>${esc(r.blurb)}</span><br><span class="tag">${esc(T.items(roundSize(r)))} · ${esc(r.tag)}</span></button>`).join('')}
       </div>
       <p class="small muted">${esc(T.poolNote(DATA.items.length, DATA.sets.length))} <a href="#about">${esc(T.howLink)}</a>.</p>
-      ${hist.length ? `<h2>${esc(T.recent)}</h2>${historyGraphHTML()}<div class="tablewrap"><table class="res"><thead><tr><th>${esc(T.round)}</th><th>${esc(T.date)}</th><th class="num">${esc(T.score)}</th></tr></thead><tbody>${hist.map(h => `<tr><td>${esc(h.title)}</td><td>${esc(displayDate(h.date))}</td><td class="num">${h.ok} / ${h.n}</td></tr>`).join('')}</tbody></table></div>
+      ${hist.length ? `<h2>${esc(T.recent)}</h2>${historyGraphHTML()}<div class="tablewrap"><table class="res"><thead><tr><th>${esc(T.round)}</th><th>${esc(T.date)}</th><th class="num">${esc(T.score)}</th></tr></thead><tbody>${hist.map(h => `<tr><td>${esc(h.title)}</td><td>${esc(displayDate(h.date))}</td><td class="num">${esc(h.ok)} / ${esc(h.n)}</td></tr>`).join('')}</tbody></table></div>
       <p class="small"><button type="button" class="linkbtn" id="forget">${esc(T.forget)}</button></p>` : ''}`;
     main.querySelectorAll('[data-round]').forEach(b => b.addEventListener('click', () => { location.hash = 'play-' + b.dataset.round; }));
     $('#startMixed').addEventListener('click', () => { const r = DATA.rounds.find(x => x.id === 'mixed') || DATA.rounds[0]; location.hash = 'play-' + r.id; });
@@ -303,7 +357,7 @@
   const eligibleSets = round => DATA.sets.filter(s => round.cats.includes(s.cat) && (!round.lang || s.lang === round.lang) && (!round.sub || s.sub === round.sub));
   function roundSize(round) {
     const available = eligibleSets(round).length;
-    return Math.min(available, !round.sub && round.cats.length === 1 && round.cats[0] === 'images' ? 12 : round.n);
+    return Math.min(MAX_ROUND_ITEMS, available, !round.sub && round.cats.length === 1 && round.cats[0] === 'images' ? 12 : round.n);
   }
   function draw(round) {
     let sets = eligibleSets(round);
@@ -318,7 +372,7 @@
     const exhausted = sets.some(s => lvl(s) > 0);
     // the coin flip does not depend on what was seen; among AI members the least-seen one is shown
     const ids = shuffle(sets).map(s => {
-      const human = s.members.filter(m => ITEMS[m].h), ai = s.members.filter(m => !ITEMS[m].h);
+      const human = s.members.filter(m => ITEMS[m].human), ai = s.members.filter(m => !ITEMS[m].human);
       const pool = !ai.length || (human.length && Math.random() < 0.5) ? human : ai;
       const least = Math.min(...pool.map(seenCount));
       const c = pool.filter(m => seenCount(m) === least);
@@ -326,12 +380,53 @@
     });
     return { ids, exhausted };
   }
+  function answerRecord(it, choice, known, reason) {
+    const x = decode(it.x), set = SETS[it.set];
+    return { id: it.id, choice, known, reason, ok: choice !== 'skip' && (choice === 'human') === it.human,
+      h: it.human, cat: set.cat, family: x.family || null, era: x.era || null };
+  }
+  function restoreRound(v) {
+    if (!isObject(v) || v.version !== DATA.version || typeof v.round !== 'string') return null;
+    const round = DATA.rounds.find(r => r.id === v.round);
+    if (!round || !Array.isArray(v.ids) || !v.ids.length || v.ids.length > roundSize(round) ||
+      !integer(v.i, v.ids.length - 1) || typeof v.exhausted !== 'boolean' || !Array.isArray(v.answers) ||
+      (v.answers.length !== v.i && v.answers.length !== v.i + 1)) return null;
+    const eligible = new Set(eligibleSets(round).map(s => s.id)), sets = new Set();
+    for (const id of v.ids) {
+      if (typeof id !== 'string' || !ITEMS[id]) return null;
+      const it = ITEMS[id];
+      if (!eligible.has(it.set) || !SETS[it.set].members.includes(id) || sets.has(it.set)) return null;
+      sets.add(it.set);
+    }
+    const answers = [];
+    for (let i = 0; i < v.answers.length; i++) {
+      const a = v.answers[i];
+      if (!isObject(a) || a.id !== v.ids[i] || !['human', 'ai', 'skip'].includes(a.choice) ||
+        typeof a.known !== 'boolean' || !['', 'known', 'seen', 'unavailable'].includes(a.reason) ||
+        a.known !== (a.reason !== '') || (a.choice === 'skip') !== (a.reason === 'unavailable')) return null;
+      answers.push(answerRecord(ITEMS[a.id], a.choice, a.known, a.reason));
+    }
+    return { round, ids: v.ids, exhausted: v.exhausted, i: v.i, answers };
+  }
+  function persistRound() {
+    const g = game;
+    store.active = { version: DATA.version, round: g.round.id, ids: g.ids, exhausted: g.exhausted,
+      i: g.i, answers: g.answers.map(a => ({ id: a.id, choice: a.choice, known: a.known, reason: a.reason })) };
+    save(store);
+  }
+  function enterRound() {
+    root.classList.add('in-round');
+    document.title = game.round.title + (LANG === 'cs' ? ' – ' : ' — ') + T.title;
+  }
+  // No optional chaining here: it would raise the parse floor (M15 keeps the
+  // script parseable where BigInt is absent).
+  const usageEvent = name => { if (typeof window.usageCount === 'function') window.usageCount(name); };
   function start(round) {
     const d = draw(round);
     game = { round, ids: d.ids, exhausted: d.exhausted, i: 0, answers: [] };
-    root.classList.add('in-round');
-    document.title = round.title + (LANG === 'cs' ? ' – ' : ' — ') + T.title;
-    showItem();
+    // A replay created by start is a new round; a restored round (fetchItems) is not counted here.
+    usageEvent(LANG === 'cs' ? 'quiz-start-cs' : 'quiz-start-en');
+    enterRound(); persistRound(); showItem();
   }
   function showItem() {
     const g = game, it = ITEMS[g.ids[g.i]], set = SETS[it.set];
@@ -345,7 +440,7 @@
       ${g.i === 0 && g.exhausted ? `<p class="note small">${esc(T.exhausted)}</p>` : ''}
       <article class="card" aria-labelledby="ctx">
         <p class="context" id="ctx">${md(set.context)}${LANG === 'en' && it.lang === 'cs' ? '<span class="flag" title="Czech">CZ</span>' : ''}${LANG === 'cs' && it.lang === 'en' ? '<span class="flag" title="anglicky">EN</span>' : ''}</p>
-        ${set.question ? `<details class="question"><summary>${esc(T.question)}</summary><div class="text" lang="${set.lang}">${set.question.split(/\n\n+/).map(p => `<p>${esc(p)}</p>`).join('')}</div></details>` : ''}
+        ${set.question ? `<details class="question"><summary>${esc(T.question)}</summary><div class="text" lang="${esc(set.lang)}">${set.question.split(/\n\n+/).map(p => `<p>${esc(p)}</p>`).join('')}</div></details>` : ''}
         ${contentHTML(it)}
         <div id="ask">
           <div class="answer">
@@ -359,28 +454,66 @@
       </article>`;
     main.querySelectorAll('[data-ans]').forEach(b => b.addEventListener('click', () => answer(b.dataset.ans)));
     $('#endRound').addEventListener('click', results);
+    if (g.answers[g.i]) renderAnswer(g.answers[g.i]);
+    watchImages(main);
     focusMain();
     say(`${T.progress(g.i + 1, g.ids.length)}. ${plain(set.context)}`);
   }
+  function watchImages(scope) {
+    scope.querySelectorAll('figure.img img').forEach(img => {
+      img.onerror = () => {
+        if (!img.isConnected || img.nextElementSibling) return;
+        const primary = img.closest('figure').parentElement.matches('article.card');
+        const asking = primary && game && !game.answers[game.i];
+        if (asking) {
+          game.imageFailed = true;
+          main.querySelectorAll('#ask button, #ask input').forEach(el => { el.disabled = true; });
+        }
+        const controls = document.createElement('div');
+        controls.className = 'note image-error';
+        controls.setAttribute('role', 'status');
+        controls.innerHTML = `<p>${esc(T.unavailable)}</p><button class="btn" type="button">${esc(T.retry)}</button>` +
+          (asking ? ` <button class="btn" type="button" data-skip>${esc(T.skip)}</button>` : '');
+        img.after(controls);
+        controls.querySelector('button').addEventListener('click', () => {
+          controls.remove();
+          img.src = img.getAttribute('src');
+        });
+        const skip = controls.querySelector('[data-skip]');
+        if (skip) skip.addEventListener('click', () => answer('skip'));
+        say(T.unavailable);
+      };
+      img.onload = () => {
+        if (!img.isConnected) return;
+        if (img.closest('figure').parentElement.matches('article.card') && game && !game.answers[game.i]) {
+          game.imageFailed = false;
+          main.querySelectorAll('#ask button, #ask input').forEach(el => { el.disabled = false; });
+        }
+      };
+      if (img.complete && !img.naturalWidth) img.onerror();
+    });
+  }
   function answer(choice) {
-    const g = game, it = ITEMS[g.ids[g.i]], x = decode(it.x), set = SETS[it.set];
-    if (g.answers[g.i]) return;
-    const knownTick = $('#known').checked, prevOrig = !!store.origSeen[set.id];
-    const known = knownTick || prevOrig;  // a player who has seen the set's original can compare from memory
-    const ok = (choice === 'human') === !!it.h;
-    g.answers[g.i] = { id: it.id, choice, known, ok, h: !!it.h, cat: set.cat, family: x.family || null, era: x.era || null };
-    main.querySelector('article.card').classList.add('answered');  // the answer bar stops sticking; the reveal's next bar takes over
-    $('#endRound').disabled = false;
+    const g = game, it = ITEMS[g.ids[g.i]], set = SETS[it.set];
+    if (g.answers[g.i] || (g.imageFailed && choice !== 'skip') || (choice === 'skip' && !g.imageFailed)) return;
+    const reason = choice === 'skip' ? 'unavailable' : $('#known').checked ? 'known' : store.origSeen[set.id] ? 'seen' : '';
+    const a = answerRecord(it, choice, !!reason, reason);
+    g.answers[g.i] = a;
     store.seen[it.id] = seenCount(it.id) + 1; store.setsShown[set.id] = (store.setsShown[set.id] || 0) + 1;
-    if (it.h) store.origSeen[set.id] = 1;
-    save(store);
-    main.querySelectorAll('#ask button, #ask input').forEach(el => { el.disabled = true; });
-    main.querySelector(`[data-ans=${choice}]`).setAttribute('aria-pressed', 'true');
+    if (it.human && choice !== 'skip') store.origSeen[set.id] = 1;
+    persistRound(); renderAnswer(a);
+  }
+  function renderAnswer(a) {
+    const g = game, it = ITEMS[a.id], x = decode(it.x), set = SETS[it.set], ok = a.ok;
+    main.querySelector('article.card').classList.add('answered');
+    $('#endRound').disabled = false;
+    main.querySelectorAll('#ask button, #ask input, .image-error [data-skip]').forEach(el => { el.disabled = true; });
+    if (a.choice !== 'skip') main.querySelector(`[data-ans=${a.choice}]`).setAttribute('aria-pressed', 'true');
     const last = g.i === g.ids.length - 1;
-    const why = knownTick ? T.notScoredKnown : prevOrig ? T.notScoredSeen : '';
+    const why = a.reason === 'unavailable' ? T.notScoredUnavailable : a.reason === 'known' ? T.notScoredKnown : a.reason === 'seen' ? T.notScoredSeen : '';
     $('#rev').innerHTML = `<section class="reveal" aria-labelledby="verdict">
-      <p class="verdict ${ok ? 'ok' : 'bad'}" id="verdict" tabindex="-1">${esc(ok ? T.right : T.wrong)}${LANG === 'cs' ? ' – ' : ' — '}${esc(it.h ? T.madeH : T.madeA)}.${why ? ` <span class="small muted">${esc(why)}</span>` : ''}</p>
-      <p class="truth"><span class="badge ${it.h ? 'human' : 'ai'}">${esc(it.h ? T.badgeH : T.badgeA)}</span><span class="who">${md(x.who)}</span>${x.what ? (LANG === 'cs' ? ' – ' : ' — ') + md(x.what) : ''}</p>
+      <p class="verdict ${ok ? 'ok' : 'bad'}" id="verdict" tabindex="-1">${esc(a.choice === 'skip' ? T.unavailable : ok ? T.right : T.wrong)}${LANG === 'cs' ? ' – ' : ' — '}${esc(it.human ? T.madeH : T.madeA)}.${why ? ` <span class="small muted">${esc(why)}</span>` : ''}</p>
+      <p class="truth"><span class="badge ${it.human ? 'human' : 'ai'}">${esc(it.human ? T.badgeH : T.badgeA)}</span><span class="who">${md(x.who)}</span>${x.what ? (LANG === 'cs' ? ' – ' : ' — ') + md(x.what) : ''}</p>
       ${x.why && x.why.length ? `<ul class="why">${x.why.map(w => `<li>${md(w)}</li>`).join('')}</ul>` : ''}
       ${x.source ? `<p class="small muted">${md(x.source)}</p>` : ''}
       ${x.prompt ? `<details><summary>${esc(T.promptSum)}</summary><div class="prompt">${esc(x.prompt)}</div><p class="small">${md(x.selection || '')}</p></details>` : ''}
@@ -389,20 +522,21 @@
     </section>`;
     main.querySelectorAll('details.spoil').forEach(d => d.addEventListener('toggle', () => { if (d.open) { store.origSeen[set.id] = 1; save(store); } }));
     $('#next').addEventListener('click', next);
+    watchImages($('#rev'));
     $('#verdict').focus({ preventScroll: false });
-    say(T.said(ok, it.h));
+    say(a.choice === 'skip' ? `${T.unavailable} ${T.notScoredUnavailable}` : T.said(ok, it.human));
   }
   function siblingsHTML(it) {
     const set = SETS[it.set];
     const others = set.members.filter(m => m !== it.id).map(m => ITEMS[m]);
-    const orig = others.filter(o => o.h), fakes = others.filter(o => !o.h);
-    const block = o => { const x = decode(o.x); return `<div class="sib"><p class="small"><span class="badge ${o.h ? 'human' : 'ai'}">${esc(o.h ? T.badgeH : T.badgeA)}</span>${md(x.who)}</p>${contentHTML(o)}</div>`; };
+    const orig = others.filter(o => o.human), fakes = others.filter(o => !o.human);
+    const block = o => { const x = decode(o.x); return `<div class="sib"><p class="small"><span class="badge ${o.human ? 'human' : 'ai'}">${esc(o.human ? T.badgeH : T.badgeA)}</span>${md(x.who)}</p>${contentHTML(o)}</div>`; };
     let h = '';
     if (orig.length) h += `<details class="spoil"><summary>${esc(T.cmpOrig)}</summary><p class="small muted">${esc(T.spoil)}</p>${orig.map(block).join('')}</details>`;
-    if (fakes.length) h += `<details class="spoil"><summary>${esc(it.h ? T.cmpAI(fakes.length) : T.otherAI(fakes.length))}</summary><p class="small muted">${esc(T.spoil)}</p>${fakes.map(block).join('')}</details>`;
+    if (fakes.length) h += `<details class="spoil"><summary>${esc(it.human ? T.cmpAI(fakes.length) : T.otherAI(fakes.length))}</summary><p class="small muted">${esc(T.spoil)}</p>${fakes.map(block).join('')}</details>`;
     return h;
   }
-  function next() { if (game.i < game.ids.length - 1) { game.i++; showItem(); } else results(); }
+  function next() { if (game.i < game.ids.length - 1) { game.i++; game.imageFailed = false; persistRound(); showItem(); } else results(); }
 
   /* ---------- results ---------- */
   function tally(rows, keyFn) {
@@ -418,13 +552,17 @@
   function results() {
     const g = game;
     if (!g || !g.answers.length) return;
+    usageEvent(LANG === 'cs' ? 'quiz-finish-cs' : 'quiz-finish-en');
     game = null;
+    delete store.active; save(store);
     root.classList.remove('in-round');
     const scored = g.answers.filter(a => !a.known), ok = scored.filter(a => a.ok).length, n = scored.length;
+    history.replaceState(null, '', location.pathname + location.search);
+    document.title = T.result + (LANG === 'cs' ? ' – ' : ' — ') + T.title;
     const date = new Date().toISOString().slice(0, 10);
     store.history.push({ round: g.round.id, title: g.round.title, date, ok, n, answers: g.answers.map(a => ({ id: a.id, ok: a.ok, known: a.known })) });
-    store.history = store.history.slice(-200); save(store);
-    const verdict = !n ? T.allKnown : chanceMessage(ok, n);
+    store.history = store.history.slice(-MAX_HISTORY); save(store);
+    const verdict = !n ? (g.answers.some(a => a.choice === 'skip') ? T.notScoredUnavailable : T.allKnown) : chanceMessage(ok, n);
     const allRows = store.history.flatMap(h => h.answers || []).filter(a => !a.known && ITEMS[a.id]);
     main.innerHTML = `
       <h1>${esc(T.result)}</h1>
@@ -439,7 +577,7 @@
       <ul class="studies">${DATA.studies.map(s => `<li>${md(s)}</li>`).join('')}</ul>
       <h2>${esc(T.review)}</h2>
       <div class="tablewrap"><table class="res"><thead><tr><th>#</th><th>${esc(T.item)}</th><th>${esc(T.youSaid)}</th><th>${esc(T.rightQ)}</th></tr></thead><tbody>${g.answers.map((a, k) => { const x = decode(ITEMS[a.id].x); return `
-        <tr><td class="num">${k + 1}</td><td><span class="badge ${a.h ? 'human' : 'ai'}">${esc(a.h ? T.badgeH : T.badgeA)}</span>${md(x.who)}</td><td>${esc(a.choice === 'human' ? T.human : T.ai)}</td><td>${a.known ? `<span class="small muted">${esc(T.knownShort)}</span>` : `<span class="${a.ok ? 'ok' : 'bad'}">${a.ok ? '✓' : '✗'}</span>`}</td></tr>`; }).join('')}</tbody></table></div>
+        <tr><td class="num">${k + 1}</td><td><span class="badge ${a.h ? 'human' : 'ai'}">${esc(a.h ? T.badgeH : T.badgeA)}</span>${md(x.who)}</td><td>${esc(a.choice === 'skip' ? T.knownShort : a.choice === 'human' ? T.human : T.ai)}</td><td>${a.known ? `<span class="small muted">${esc(T.knownShort)}</span>` : `<span class="${a.ok ? 'ok' : 'bad'}">${a.ok ? '✓' : '✗'}</span>`}</td></tr>`; }).join('')}</tbody></table></div>
       <div class="row">
         <button class="btn primary" type="button" id="again">${esc(T.again(g.round.title))}</button>
         <button class="btn" type="button" data-go="home">${esc(T.another)}</button>

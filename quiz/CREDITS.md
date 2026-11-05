@@ -10,7 +10,7 @@ AI pictures were made with OpenAI image generation through the Codex CLI from wr
 
 The eight new poster pairs include WPA campaigns and exhibitions, a citrus label and modern graphic design. AI partners were the first of up to six attempts to pass a full-resolution checklist for hands, lettering, mechanics and names; each selection records the attempt number. In a blind check where each judge saw only one picture per set, Codex gpt-6.1-sol flagged 3 of the 8 AI posters at 60–67 % confidence and Gemini 3.8 Flash flagged none; neither called any human poster AI. Earlier versions were identified by both judges and were regenerated.
 
-Source and licence claims follow the saved source records. Some text first-publication dates remain unverified. A small collection, familiarity with originals and repeated selection limit what a score can establish. The [fairness report](fairness.md) gives the current results, including the three text results above 62% LOSO.
+Source and licence claims follow the saved source records. Some text first-publication dates remain unverified. A small collection, familiarity with originals and repeated selection limit what a score can establish. The [fairness report](fairness.html) gives the current results, including the three text results above 62% LOSO.
 
 HC3: Guo et al. (2023), [Human ChatGPT Comparison Corpus](https://huggingface.co/datasets/Hello-SimpleAI/HC3), [arXiv:2301.07597](https://arxiv.org/abs/2301.07597), CC BY-SA 4.0. The seven December 2022 ChatGPT answers retain their original prompts and notes.
 

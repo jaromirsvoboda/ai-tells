@@ -14,7 +14,7 @@ test('quiz: exact binomial upper-tail probabilities', () => {
   const source = readFileSync(join(__dirname, '../quiz/quiz.js'), 'utf8');
   const helper = source.match(/  function binomialTail\(k, n\) \{[\s\S]*?\n  \}/);
   expect(helper, 'The exact probability helper must exist').not.toBeNull();
-  const binomialTail = runInNewContext(`(${helper[0]})`);
+  const binomialTail = runInNewContext(`(${helper[0]})`, { window: { exactChanceValues() {} } });
   for (const [k, n, expected] of [[5, 6, 7 / 64], [6, 6, 1 / 64], [3, 6, 42 / 64], [8, 12, 794 / 4096], [0, 6, 1], [1, 1, 0.5]]) {
     expect(binomialTail(k, n), `P(X >= ${k}) for ${n} fair coin flips`).toBeCloseTo(expected, 12);
   }
@@ -27,7 +27,7 @@ test('quiz: pooled guessing probabilities stay finite beyond 1000 answers', () =
     expect(helper, `${name} must exist`).not.toBeNull();
     return helper[0];
   }).join('\n');
-  const { tail, distribution } = runInNewContext(`${helpers}; ({ tail: binomialTail, distribution: binomialDistribution })`);
+  const { tail, distribution } = runInNewContext(`${helpers}; ({ tail: binomialTail, distribution: binomialDistribution })`, { window: {} });
   for (const n of [1001, 1021, 1024, 2400]) {
     const probabilities = distribution(n);
     expect(probabilities).toHaveLength(n + 1);
@@ -39,7 +39,7 @@ test('quiz: pooled guessing probabilities stay finite beyond 1000 answers', () =
 });
 
 test('quiz: extreme pooled odds retain finite reciprocals and nonzero percentages', () => {
-  const source = readFileSync(join(__dirname, '../quiz/quiz.js'), 'utf8');
+  const source = readFileSync(join(__dirname, '../quiz/quiz-bignum.js'), 'utf8');
   const helper = source.match(/  function exactChanceValues\(k, n\) \{[\s\S]*?\n  \}/);
   expect(helper).not.toBeNull();
   const exactChanceValues = runInNewContext(`(${helper[0]})`);
@@ -267,6 +267,10 @@ test('quiz: pre-answer classes/data do not disclose origin; encoded lengths are 
     tokens.forEach(token => vocabularies[decoded[i].answer].add(token));
     // Raw encoded answers in DOM attributes also reveal origin after decoding.
     expect(tokens.some(t => t.includes(decoded[i].value)), 'Encoded answer must not be embedded in DOM attributes').toBe(false);
+    await page.evaluate(lang => {
+      const key = `human-or-ai/v2/${lang}`, store = JSON.parse(localStorage.getItem(key)) || {};
+      delete store.active; localStorage.setItem(key, JSON.stringify(store));
+    }, base.includes('/cs/') ? 'cs' : 'en');
     await page.unroute(routePattern);
   }
   expect([...vocabularies.human].sort(), 'Human and AI items must expose identical class/data vocabulary before answering')

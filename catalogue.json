@@ -4663,10 +4663,10 @@
     "date": "2018",
     "label": "2018, StyleGAN"
    },
-   "peak": "2019-2023 detection demonstrations",
-   "peak_date": "2023",
+   "peak": "",
+   "peak_date": "",
    "status_2026": "obsolete",
-   "status_note": "Later general scene generators do not require fixed face crops, so this tell is obsolete as a universal test but still useful for identifying specific aligned GAN collections.",
+   "status_note": "Later general scene generators do not require fixed face crops, so this tell is obsolete as a universal test but still useful for identifying specific aligned GAN collections. Detection demonstrations covered 2019–2023; those dates do not establish a prevalence peak.",
    "fixed_by": "General scene generators such as DALL-E 2 (April 2022) no longer use aligned face crops",
    "end_date": "2022-04",
    "what_it_looks_like": "When you overlay many portraits from a suspected AI collection, the centres of the eyes stay in nearly the same place with similar spacing. You can only see it across a set of images; one picture shows nothing.",
