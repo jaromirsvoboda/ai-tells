@@ -1,6 +1,6 @@
 /* Human or AI? / Člověk, nebo AI? — static quiz shared by quiz/ (English) and quiz/cs/ (Czech).
-   No network calls except this folder's items.json and media, plus the anonymous counts from the
-   locally served /usage-counts.js reporter (see /privacy/ on the origin). Answers and history stay
+   No network calls except this folder's items.json and media, plus the count requests from the
+   locally served /usage-counts.js reporter. Answers and history stay
    in this browser's localStorage. */
 (function () {
   'use strict';

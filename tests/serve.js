@@ -26,15 +26,6 @@ const server = http.createServer(async (req, res) => {
       res.end("window.usageCount = function (n) { if (typeof n !== 'string' || !/^[a-z0-9-]{1,40}$/.test(n)) return; };\n");
       return;
     }
-    // /privacy/ likewise lives in the user-site deployment; stub its section
-    // anchors (english/cesky) so cross-deployment links resolve as in production.
-    if (pathname === '/privacy/' || pathname === '/privacy/index.html') {
-      res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'no-store' });
-      res.end('<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Privacy (test stub)</title></head>' +
-        '<body><section id="english">Anonymous usage counts only.</section>' +
-        '<section id="cesky">Pouze anonymní statistiky návštěv.</section></body></html>');
-      return;
-    }
     let file = path.resolve(root, '.' + pathname);
     if (file !== root && !file.startsWith(root + path.sep)) {
       res.writeHead(403).end('Forbidden');
