@@ -38,9 +38,24 @@
 }
 * { box-sizing: border-box; }
 html { -webkit-text-size-adjust: 100%; }
+/* Metric-compatible stand-in for the pre-swap fallback: size-adjust (measured
+   2026-11-07) scales the local serif to Literata's width so the swap-in does
+   not reflow the text. Only resolves where the local font exists (Linux);
+   elsewhere the original fallback chain applies unchanged. */
+@font-face {
+  font-family: "LiterataFB";
+  src: local("Liberation Serif");
+  size-adjust: 110%;
+}
+@font-face {
+  font-family: "LiterataFB";
+  src: local("Liberation Serif Bold");
+  font-weight: 700;
+  size-adjust: 112%;
+}
 body {
   margin: 0; background: var(--paper); color: var(--ink);
-  font-family: Literata, Georgia, "Times New Roman", serif;
+  font-family: Literata, LiterataFB, Georgia, "Times New Roman", serif;
   font-size: 1.0625rem; line-height: 1.55;
   font-optical-sizing: auto;
 }
